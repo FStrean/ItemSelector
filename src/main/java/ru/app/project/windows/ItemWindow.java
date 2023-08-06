@@ -17,7 +17,10 @@ public class ItemWindow extends JFrame {
     private final JFrame parent;
     private JPanel descriptionPanel;
     private FileChooserButton imageChooserButton;
-    private ImagePanel imagePanel;
+    private ImagePanel[] images = {new ImagePanel(), new ImagePanel(), new ImagePanel()};
+
+    private int lastImageNumber = 0;
+
     private FileChooserButton videoChooserButton;
     private EmbeddedMediaPlayerComponent videoPlayer;
     public ItemWindow(String title, JFrame parent) throws HeadlessException {
@@ -122,7 +125,6 @@ public class ItemWindow extends JFrame {
     }
 
     private void createImagePanel(JFrame frame) {
-        imagePanel = new ImagePanel();
         imageChooserButton = new FileChooserButton(this) {
             @Override
             public void fileSelectedActionPerformed(File file) {
@@ -133,15 +135,16 @@ public class ItemWindow extends JFrame {
                         throw new RuntimeException("Image is null");
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(frame, e.getMessage(),
+                            "Unknown error", JOptionPane.ERROR_MESSAGE);
                 } catch (RuntimeException e) {
                     JOptionPane.showMessageDialog(frame, e.getMessage(),
                             "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                imagePanel.addImage(image);
-                imagePanel.repaint();
+                images[lastImageNumber].setImage(image);
+                lastImageNumber = (lastImageNumber + 1) % 3;
             }
         };
         GridBagConstraints imageChooserButtonConstraints = getDefaultDesign();
@@ -150,13 +153,16 @@ public class ItemWindow extends JFrame {
         imageChooserButtonConstraints.gridheight = 1;
         imageChooserButtonConstraints.fill = GridBagConstraints.NONE;
         frame.add(imageChooserButton, imageChooserButtonConstraints);
-        GridBagConstraints imagePanelConstraints = getDefaultDesign();
-        imagePanelConstraints.gridy = 2;
-        imagePanelConstraints.gridwidth = 1;
-        imagePanelConstraints.gridheight = 3;
-        imagePanelConstraints.weighty = 1;
 
-        frame.add(imagePanel, imagePanelConstraints);
+        for (int i = 0; i < 3; i++) {
+            GridBagConstraints imagePanelConstraints = getDefaultDesign();
+            imagePanelConstraints.gridy = 2 + i;
+            imagePanelConstraints.gridwidth = 1;
+            imagePanelConstraints.gridheight = 1;
+            imagePanelConstraints.weighty = 1;
+
+            frame.add(images[i], imagePanelConstraints);
+        }
     }
 
     private void createVideoPlayer(JFrame frame) {

@@ -3,54 +3,54 @@ package ru.app.project.components;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 public class ImagePanel extends JPanel {
-    private final ArrayList<BufferedImage> images = new ArrayList<>();
+    private BufferedImage image;
 
     public ImagePanel(LayoutManager layout, boolean isDoubleBuffered) {
         super(layout, isDoubleBuffered);
+        image = null;
     }
 
     public ImagePanel(LayoutManager layout) {
         super(layout);
+        image = null;
     }
 
     public ImagePanel(boolean isDoubleBuffered) {
         super(isDoubleBuffered);
+        image = null;
     }
 
     public ImagePanel() {
+        image = null;
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(images.size() != 0) {
+        if(image != null) {
             int width = this.getWidth();
-            int height = this.getHeight() / images.size();
+            int height = this.getHeight();
 
-            int imageNumber = 0;
-            for (var image : images) {
-                int imageWidth = image.getWidth();
-                int imageHeight = image.getHeight();
+            int imageWidth = image.getWidth();
+            int imageHeight = image.getHeight();
 
-                int intermediateRationWidth = (int)Math.ceil((double)imageWidth / width);
-                int intermediateRationHeight = (int)Math.ceil((double)imageHeight / height);
+            double intermediateRationWidth = (double)imageWidth / width;
+            double intermediateRationHeight = (double)imageHeight / height;
 
-                int ration = Math.max(intermediateRationWidth, intermediateRationHeight);
+            double ration = Math.max(intermediateRationWidth, intermediateRationHeight);
 
-                int newImageWidth = imageWidth / ration;
-                int newImageHeight = imageHeight / ration;
-                g.drawImage(image, 0, height * imageNumber, newImageWidth, newImageHeight, this);
+            int newImageWidth = (int) (imageWidth / ration);
+            int newImageHeight = (int) (imageHeight / ration);
 
-                imageNumber++;
-            }
+            g.drawImage(image, 0, 0, newImageWidth, newImageHeight, this);
         }
     }
 
-    public void addImage(BufferedImage image) {
-        images.add(image);
+    public void setImage(BufferedImage image) {
+        this.image = image;
+        this.repaint();
     }
 
     @Override
