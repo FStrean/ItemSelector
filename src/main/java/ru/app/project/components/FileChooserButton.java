@@ -8,23 +8,10 @@ import java.io.File;
 public class FileChooserButton extends JButton implements ActionListener {
     private final JFrame parent;
 
-    public FileChooserButton(JFrame parent) {
-        super("Выбрать файл");
+    public FileChooserButton(JFrame parent, String text) {
+        super(text);
         this.addActionListener(this);
         this.parent = parent;
-    }
-
-    private void actionPerformed(JButton button) {
-        button.addActionListener(action -> {
-            JFileChooser fileToUpload = new JFileChooser();
-
-            int response = fileToUpload.showOpenDialog(parent);
-            if(response == JFileChooser.APPROVE_OPTION) {
-                File uploadedFile = new File(fileToUpload.getSelectedFile().getAbsolutePath());
-
-                fileSelectedActionPerformed(uploadedFile);
-            }
-        });
     }
 
     public void fileSelectedActionPerformed(File file) {

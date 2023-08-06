@@ -125,7 +125,7 @@ public class ItemWindow extends JFrame {
     }
 
     private void createImagePanel(JFrame frame) {
-        imageChooserButton = new FileChooserButton(this) {
+        imageChooserButton = new FileChooserButton(this, "Выбрать изображение") {
             @Override
             public void fileSelectedActionPerformed(File file) {
                 BufferedImage image = null;
@@ -144,6 +144,9 @@ public class ItemWindow extends JFrame {
                 }
 
                 images[lastImageNumber].setImage(image);
+                if(!images[lastImageNumber].isVisible()) {
+                    images[lastImageNumber].setVisible(true);
+                }
                 lastImageNumber = (lastImageNumber + 1) % 3;
             }
         };
@@ -160,6 +163,7 @@ public class ItemWindow extends JFrame {
             imagePanelConstraints.gridwidth = 1;
             imagePanelConstraints.gridheight = 1;
             imagePanelConstraints.weighty = 1;
+            images[i].setVisible(false);
 
             frame.add(images[i], imagePanelConstraints);
         }
@@ -169,7 +173,7 @@ public class ItemWindow extends JFrame {
         JPanel playerPanel = new JPanel(new BorderLayout());
         videoPlayer = new EmbeddedMediaPlayerComponent();
         playerPanel.add(videoPlayer);
-        videoChooserButton = new FileChooserButton(this) {
+        videoChooserButton = new FileChooserButton(this, "Выбрать видео") {
             @Override
             public void fileSelectedActionPerformed(File file) {
                 videoPlayer.mediaPlayer().controls().setRepeat(true);
