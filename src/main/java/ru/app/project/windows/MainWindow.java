@@ -25,7 +25,7 @@ public class MainWindow {
         int x = (width - height) / 2;
         int y = (width - height) / 2;
 
-        frame.setSize(width / 3, height / 2);
+        frame.setSize(width / 3, (int)((double)height / 1.5));
         frame.setLocation(x, y);
 
         frame.setLocationRelativeTo(null);
@@ -73,7 +73,12 @@ public class MainWindow {
                 new JButton("7"),
                 new JButton("8"),
                 new JButton("9"),
-                new JButton("10")
+                new JButton("10"),
+                new JButton("11"),
+                new JButton("12"),
+                new JButton("13"),
+                new JButton("14"),
+                new JButton("15")
         };
     }
 }

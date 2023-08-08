@@ -41,7 +41,12 @@ public class ItemWindowStateUtil {
                         new ItemWindowConfig.Item(7, new ArrayList<>(), ""),
                         new ItemWindowConfig.Item(8, new ArrayList<>(), ""),
                         new ItemWindowConfig.Item(9, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(10, new ArrayList<>(), "")
+                        new ItemWindowConfig.Item(10, new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(11, new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(12, new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(13, new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(14, new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(15, new ArrayList<>(), "")
                     )
             );
 
