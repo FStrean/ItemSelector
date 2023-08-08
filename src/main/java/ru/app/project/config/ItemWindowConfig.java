@@ -25,14 +25,16 @@ public final class ItemWindowConfig {
 
     public static class Item {
         private int id;
+        private String description;
         private List<String> images = new ArrayList<>();
         private String video;
 
         public Item() {
         }
 
-        public Item(int id, List<String> images, String video) {
+        public Item(int id, String description, List<String> images, String video) {
             this.id = id;
+            this.description = description;
             this.images = images;
             this.video = video;
         }
@@ -40,6 +42,11 @@ public final class ItemWindowConfig {
         @XmlAttribute
         public int getId() {
             return id;
+        }
+
+        @XmlElement
+        public String getDescription() {
+            return description;
         }
 
         @XmlElement(name = "image")
@@ -52,16 +59,20 @@ public final class ItemWindowConfig {
             return video;
         }
 
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
         public void setImages(List<String> images) {
             this.images = images;
         }
 
         public void setVideo(String video) {
             this.video = video;
-        }
-
-        public void setId(int id) {
-            this.id = id;
         }
     }
 }

@@ -93,40 +93,20 @@ public class ItemWindow extends JFrame {
         }
     }
 
-    private String getDescription() {
-        return """
-                <html>
-                    It is a long established fact that a reader will be distracted by the
-                    readable content of a page when looking at its layout.
-                    The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters, as opposed to using 'Content here,
-                    content here', making it look like readable English.
-                    Many desktop publishing packages and web page editors<br>
-                    now use Lorem Ipsum as their default model text, and a search for
-                    'lorem ipsum' will uncover many web sites still in their infancy.
-                    Various versions have evolved over the years, sometimes by accident,
-                    sometimes on purpose (injected humour and the like).
-                <html>
-                """;
-    }
-
     private void createDescriptionPanel() {
         descriptionPanel = new JPanel(new BorderLayout());
         JLabel description = new JLabel();
-        description.setText(getDescription());
+        description.setText(config.getDescription());
         descriptionPanel.add(description);
         designBuilder.buildDescriptionPanelDesign(descriptionPanel);
     }
 
     private void loadImage(String path, JFrame frame) {
         try {
-            if(path != null) {
-                images[lastImageNumber].loadImage(path);
-                images[lastImageNumber].getImageBasicPanel().setVisible(true);
-                lastImageNumber = (lastImageNumber + 1) % 3;
-            } else {
-                images[lastImageNumber].getImageBasicPanel().setVisible(false);
-            }
+            images[lastImageNumber].loadImage(path);
+            images[lastImageNumber].getImageBasicPanel().setVisible(true);
+            lastImageNumber = (lastImageNumber + 1) % 3;
+
         } catch (IOException e) {
             JOptionPane.showMessageDialog(frame, e.getMessage(),
                     "Error", JOptionPane.ERROR_MESSAGE);
@@ -149,7 +129,7 @@ public class ItemWindow extends JFrame {
         for (int i = 0; i < 3; i++) {
             designBuilder.buildImageDesign(images[i].getImageBasicPanel(), i);
             if(i >= config.getImages().size()) {
-                loadImage(null, frame);
+                images[i].getImageBasicPanel().setVisible(false);
             } else {
                 loadImage(config.getImages().get(i), frame);
             }

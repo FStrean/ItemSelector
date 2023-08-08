@@ -32,21 +32,21 @@ public class ItemWindowStateUtil {
         if(!configFile.exists()) {
             ItemWindowConfig itemWindowConfig = new ItemWindowConfig(
                     List.of(
-                        new ItemWindowConfig.Item(1, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(2, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(3, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(4, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(5, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(6, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(7, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(8, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(9, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(10, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(11, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(12, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(13, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(14, new ArrayList<>(), ""),
-                        new ItemWindowConfig.Item(15, new ArrayList<>(), "")
+                        new ItemWindowConfig.Item(1, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(2, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(3, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(4, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(5, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(6, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(7, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(8, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(9, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(10, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(11, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(12, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(13, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(14, getDescription(), new ArrayList<>(), ""),
+                        new ItemWindowConfig.Item(15, getDescription(), new ArrayList<>(), "")
                     )
             );
 
@@ -72,6 +72,7 @@ public class ItemWindowStateUtil {
                 .filter(listItem -> listItem.getId() == item.getId()).findFirst()
                 .ifPresent(listItem -> {
                     listItem.setId(item.getId());
+                    listItem.setDescription(item.getDescription());
                     listItem.setImages(item.getImages());
                     listItem.setVideo(item.getVideo());
                 });
@@ -87,5 +88,22 @@ public class ItemWindowStateUtil {
         } catch (JAXBException | FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String getDescription() {
+        return """
+                <html>
+                    It is a long established fact that a reader will be distracted by the
+                    readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here,
+                    content here', making it look like readable English.
+                    Many desktop publishing packages and web page editors<br>
+                    now use Lorem Ipsum as their default model text, and a search for
+                    'lorem ipsum' will uncover many web sites still in their infancy.
+                    Various versions have evolved over the years, sometimes by accident,
+                    sometimes on purpose (injected humour and the like).
+                <html>
+                """;
     }
 }
