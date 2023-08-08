@@ -115,6 +115,7 @@ public class ItemWindow extends JFrame {
         JLabel description = new JLabel();
         description.setText(getDescription());
         descriptionPanel.add(description);
+        designBuilder.buildDescriptionPanelDesign(descriptionPanel);
     }
 
     private void loadImage(String path, JFrame frame) {

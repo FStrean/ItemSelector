@@ -18,6 +18,12 @@ public class ItemWindowBasicDesignBuilder implements ItemWindowDesignBuilder {
     }
 
     @Override
+    public void buildDescriptionPanelDesign(JPanel descriptionPanel) {
+        GridBagConstraints descriptionPanelConstraints = getDefaultLayoutSettings();
+        frame.add(descriptionPanel, descriptionPanelConstraints);
+    }
+
+    @Override
     public void buildImageChooserButtonDesign(FileChooserButton imageChooserButton) {
         GridBagConstraints constraints = getImageChooserButtonLayoutSettings();
         frame.add(imageChooserButton, constraints);
