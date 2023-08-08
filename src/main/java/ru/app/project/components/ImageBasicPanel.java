@@ -4,25 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class ImagePanel extends JPanel {
+public class ImageBasicPanel extends JPanel {
     private BufferedImage image;
 
-    public ImagePanel(LayoutManager layout, boolean isDoubleBuffered) {
+    public ImageBasicPanel(LayoutManager layout, boolean isDoubleBuffered) {
         super(layout, isDoubleBuffered);
         image = null;
     }
 
-    public ImagePanel(LayoutManager layout) {
+    public ImageBasicPanel(LayoutManager layout) {
         super(layout);
         image = null;
     }
 
-    public ImagePanel(boolean isDoubleBuffered) {
+    public ImageBasicPanel(boolean isDoubleBuffered) {
         super(isDoubleBuffered);
         image = null;
     }
 
-    public ImagePanel() {
+    public ImageBasicPanel() {
         image = null;
     }
 
@@ -51,6 +51,10 @@ public class ImagePanel extends JPanel {
     public void setImage(BufferedImage image) {
         this.image = image;
         this.repaint();
+    }
+
+    public BufferedImage getImage() {
+        return image;
     }
 
     @Override

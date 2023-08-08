@@ -1,64 +1,72 @@
 package ru.app.project.windows;
 
 import ru.app.project.components.FileChooserButton;
-import ru.app.project.components.ImagePanel;
-import ru.app.project.config.SystemProperties;
+import ru.app.project.components.ImageBasicPanel;
+import ru.app.project.config.ItemWindowConfig;
+import ru.app.project.design.ItemWindowDesignBuilder;
+import ru.app.project.design.impl.ItemWindowBasicDesignBuilder;
+import ru.app.project.utility.ImageBasicPanelUtil;
+import ru.app.project.utility.ItemWindowStateUtil;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class ItemWindow extends JFrame {
+    private final int id;
     private final JFrame parent;
+
+
+
+    private final ItemWindowStateUtil itemWindowState = new ItemWindowStateUtil("ItemWindow.xml");
+    private final ItemWindowConfig.Item config;
+
+
+
+    private final ItemWindowDesignBuilder designBuilder;
+
+
+
     private JPanel descriptionPanel;
     private FileChooserButton imageChooserButton;
-    private ImagePanel[] images = {new ImagePanel(), new ImagePanel(), new ImagePanel()};
-
+    private final ImageBasicPanelUtil[] images = {
+            new ImageBasicPanelUtil(new ImageBasicPanel()),
+            new ImageBasicPanelUtil(new ImageBasicPanel()),
+            new ImageBasicPanelUtil(new ImageBasicPanel())
+    };
     private int lastImageNumber = 0;
+
+
 
     private FileChooserButton videoChooserButton;
     private EmbeddedMediaPlayerComponent videoPlayer;
-    public ItemWindow(String title, JFrame parent) throws HeadlessException {
+
+
+
+    public ItemWindow(String title, JFrame parent, int id) throws HeadlessException {
         super(title);
 
         this.parent = parent;
+        this.id = id;
 
-        defineInitialWindowSize(this);
-        applyLayout(this);
+        this.config = this.itemWindowState.load(this.id);
+        this.designBuilder = new ItemWindowBasicDesignBuilder(this);
+
         createStructure(this);
         parent.setVisible(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-    private void defineInitialWindowSize(JFrame frame) {
-        int width = SystemProperties.getScreenWidth();
-        int height = SystemProperties.getScreenHeight();
-
-        int x = (width - height) / 2;
-        int y = (width - height) / 2;
-
-        frame.setSize(width / 2, height / 2);
-        frame.setLocation(x, y);
-
-        frame.setLocationRelativeTo(null);
-    }
-
-    private void applyLayout(JFrame frame) {
-        frame.setLayout(new GridBagLayout());
-    }
 
     private void createStructure(JFrame frame) {
-        createDescriptionPanel(frame);
+        createDescriptionPanel();
         createImagePanel(frame);
-        createVideoPlayer(frame);
+        createVideoPlayer();
     }
-
 
     @Override
     protected void processWindowEvent(final WindowEvent e) {
@@ -67,15 +75,20 @@ public class ItemWindow extends JFrame {
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
             videoPlayer.release();
             parent.setVisible(true);
+            itemWindowState.save(config);
+
             switch (super.getDefaultCloseOperation()) {
                 case HIDE_ON_CLOSE -> setVisible(false);
                 case DISPOSE_ON_CLOSE -> dispose();
-                case EXIT_ON_CLOSE ->
-                    // This needs to match the checkExit call in
-                    // setDefaultCloseOperation
-                        System.exit(0);
+                case EXIT_ON_CLOSE -> System.exit(0);
                 default -> {
                 }
+            }
+        }
+
+        if(e.getID() == WindowEvent.WINDOW_OPENED) {
+            if(!config.getVideo().isEmpty()) {
+                videoPlayer.mediaPlayer().media().play(config.getVideo());
             }
         }
     }
@@ -97,107 +110,67 @@ public class ItemWindow extends JFrame {
                 """;
     }
 
-    private GridBagConstraints getDefaultDesign() {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.gridwidth = 2;
-        constraints.gridheight = 1;
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.ipadx = 10;
-        constraints.ipady = 10;
-        constraints.insets = new Insets(10, 10, 10, 10);
-        constraints.anchor = GridBagConstraints.FIRST_LINE_START;
-        constraints.weightx = 1;
-        constraints.weighty = 0;
-
-        return constraints;
-    }
-
-    private void createDescriptionPanel(JFrame frame) {
+    private void createDescriptionPanel() {
         descriptionPanel = new JPanel(new BorderLayout());
         JLabel description = new JLabel();
         description.setText(getDescription());
         descriptionPanel.add(description);
-        GridBagConstraints descriptionPanelConstraints = getDefaultDesign();
+    }
 
-        frame.add(descriptionPanel, descriptionPanelConstraints);
+    private void loadImage(String path, JFrame frame) {
+        try {
+            if(path != null) {
+                images[lastImageNumber].loadImage(path);
+                images[lastImageNumber].getImageBasicPanel().setVisible(true);
+                lastImageNumber = (lastImageNumber + 1) % 3;
+            } else {
+                images[lastImageNumber].getImageBasicPanel().setVisible(false);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(frame, e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void createImagePanel(JFrame frame) {
         imageChooserButton = new FileChooserButton(this, "Выбрать изображение") {
             @Override
             public void fileSelectedActionPerformed(File file) {
-                BufferedImage image = null;
-                try {
-                    image = ImageIO.read(file);
-                    if(image == null) {
-                        throw new RuntimeException("Image is null");
-                    }
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(frame, e.getMessage(),
-                            "Unknown error", JOptionPane.ERROR_MESSAGE);
-                } catch (RuntimeException e) {
-                    JOptionPane.showMessageDialog(frame, e.getMessage(),
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
+                if(config.getImages().size() <= lastImageNumber) {
+                    config.getImages().add(file.getAbsolutePath());
+                } else {
+                    config.getImages().set(lastImageNumber, file.getAbsolutePath());
                 }
-
-                images[lastImageNumber].setImage(image);
-                if(!images[lastImageNumber].isVisible()) {
-                    images[lastImageNumber].setVisible(true);
-                }
-                lastImageNumber = (lastImageNumber + 1) % 3;
+                loadImage(file.getAbsolutePath(), frame);
             }
         };
-        GridBagConstraints imageChooserButtonConstraints = getDefaultDesign();
-        imageChooserButtonConstraints.gridy = 1;
-        imageChooserButtonConstraints.gridwidth = 1;
-        imageChooserButtonConstraints.gridheight = 1;
-        imageChooserButtonConstraints.fill = GridBagConstraints.NONE;
-        frame.add(imageChooserButton, imageChooserButtonConstraints);
 
         for (int i = 0; i < 3; i++) {
-            GridBagConstraints imagePanelConstraints = getDefaultDesign();
-            imagePanelConstraints.gridy = 2 + i;
-            imagePanelConstraints.gridwidth = 1;
-            imagePanelConstraints.gridheight = 1;
-            imagePanelConstraints.weighty = 1;
-            images[i].setVisible(false);
-
-            frame.add(images[i], imagePanelConstraints);
+            designBuilder.buildImageDesign(images[i].getImageBasicPanel(), i);
+            if(i >= config.getImages().size()) {
+                loadImage(null, frame);
+            } else {
+                loadImage(config.getImages().get(i), frame);
+            }
         }
+
+        designBuilder.buildImageChooserButtonDesign(imageChooserButton);
     }
 
-    private void createVideoPlayer(JFrame frame) {
+    private void createVideoPlayer() {
         JPanel playerPanel = new JPanel(new BorderLayout());
         videoPlayer = new EmbeddedMediaPlayerComponent();
+        videoPlayer.mediaPlayer().controls().setRepeat(true);
         playerPanel.add(videoPlayer);
         videoChooserButton = new FileChooserButton(this, "Выбрать видео") {
             @Override
             public void fileSelectedActionPerformed(File file) {
-                videoPlayer.mediaPlayer().controls().setRepeat(true);
+                config.setVideo(file.getAbsolutePath());
                 videoPlayer.mediaPlayer().media().play(file.getAbsolutePath());
             }
         };
-        GridBagConstraints videoChooserButtonConstraints = getDefaultDesign();
-        videoChooserButtonConstraints.gridx = 1;
-        videoChooserButtonConstraints.gridy = 1;
-        videoChooserButtonConstraints.gridwidth = 1;
-        videoChooserButtonConstraints.fill = GridBagConstraints.NONE;
-        videoChooserButtonConstraints.anchor = GridBagConstraints.LINE_END;
-        frame.add(videoChooserButton, videoChooserButtonConstraints);
-        GridBagConstraints videoPanelConstraints = getDefaultDesign();
-        videoPanelConstraints.gridx = 1;
-        videoPanelConstraints.gridy = 2;
-        videoPanelConstraints.gridwidth = 1;
-        videoPanelConstraints.gridheight = 3;
-        videoPanelConstraints.weighty = 1;
-        videoChooserButtonConstraints.fill = GridBagConstraints.BOTH;
 
-        videoPanelConstraints.fill = GridBagConstraints.BOTH;
-        videoPanelConstraints.anchor = GridBagConstraints.LINE_END;
-        playerPanel.setMinimumSize(new Dimension(10, 10));
-        frame.add(playerPanel, videoPanelConstraints);
+        designBuilder.buildVideoChooserButtonDesign(videoChooserButton);
+        designBuilder.buildVideoPlayerDesign(videoPlayer);
     }
 }

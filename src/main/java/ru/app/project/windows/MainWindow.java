@@ -39,14 +39,16 @@ public class MainWindow {
         BoxLayout boxLayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
         mainPanel.setLayout(boxLayout);
 
+        int id = 1;
         for (JButton button : itemButton) {
-            applyButtonAction(button, window);
+            applyButtonAction(button, window, id);
 
             JPanel buttonPanel = new JPanel(new BorderLayout());
             buttonPanel.add(button);
             applyButtonPanelUI(buttonPanel);
 
             mainPanel.add(buttonPanel);
+            id++;
         }
 
         frame.add(mainPanel);
@@ -56,8 +58,8 @@ public class MainWindow {
         buttonPanel.setBorder(new EmptyBorder(5, 1, 5, 1));
     }
 
-    private void applyButtonAction(JButton button, final JFrame parent) {
-        button.addActionListener(e -> new ItemWindow("Item Window", parent));
+    private void applyButtonAction(JButton button, final JFrame parent, int id) {
+        button.addActionListener(e -> new ItemWindow("Item Window", parent, id));
     }
 
     private JButton[] getButtons() {
