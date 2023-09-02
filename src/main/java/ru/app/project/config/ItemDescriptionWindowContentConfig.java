@@ -5,16 +5,17 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @XmlRootElement
-public final class ItemWindowConfig {
+public final class ItemDescriptionWindowContentConfig {
     private List<Item> items = new ArrayList<>();
 
-    public ItemWindowConfig() {
+    public ItemDescriptionWindowContentConfig() {
     }
 
-    public ItemWindowConfig(List<Item> items) {
+    public ItemDescriptionWindowContentConfig(List<Item> items) {
         this.items = items;
     }
 
@@ -26,14 +27,21 @@ public final class ItemWindowConfig {
     public static class Item {
         private int id;
         private String description;
-        private List<String> images = new ArrayList<>();
+        private List<String> images;
         private String video;
 
+        private static int id_count = 1;
+
+
         public Item() {
+            this.id = id_count++;
+            this.description = "";
+            this.images = new ArrayList<>(Arrays.asList("", "", ""));
+            this.video = "";
         }
 
-        public Item(int id, String description, List<String> images, String video) {
-            this.id = id;
+        public Item(String description, List<String> images, String video) {
+            this.id = id_count++;
             this.description = description;
             this.images = images;
             this.video = video;

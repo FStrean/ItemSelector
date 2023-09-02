@@ -1,24 +1,27 @@
 package ru.app.project.windows;
 
+import ru.app.project.config.AppProperties;
 import ru.app.project.config.SystemProperties;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class MainWindow {
-    private final JFrame window;
-    public MainWindow(String title) throws HeadlessException {
-        window = new JFrame(title);
+public class ItemDescriptionSelectorWindow {
+    private final JFrame frame ;
+    private final ItemDescriptionWindow itemDescriptionWindow;
+    public ItemDescriptionSelectorWindow(String title) {
+        frame = new JFrame(title);
+        itemDescriptionWindow = new ItemDescriptionWindow(AppProperties.getItemWindowName(), frame);
 
-        createStructure(window);
-        defineInitialWindowSize(window);
+        createStructure();
+        defineInitialWindowSize();
 
-        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        window.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 
-    private void defineInitialWindowSize(JFrame frame) {
+    private void defineInitialWindowSize() {
         int width = SystemProperties.getScreenWidth();
         int height = SystemProperties.getScreenHeight();
 
@@ -32,23 +35,21 @@ public class MainWindow {
     }
 
 
-    private void createStructure(JFrame frame) {
+    private void createStructure() {
         JButton[] itemButton = getButtons();
 
         JPanel mainPanel = new JPanel();
         BoxLayout boxLayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
         mainPanel.setLayout(boxLayout);
 
-        int id = 1;
-        for (JButton button : itemButton) {
-            applyButtonAction(button, window, id);
+        for (int i = 0; i < itemButton.length; i++) {
+            applyButtonAction(itemButton[i], i + 1);
 
             JPanel buttonPanel = new JPanel(new BorderLayout());
-            buttonPanel.add(button);
+            buttonPanel.add(itemButton[i]);
             applyButtonPanelUI(buttonPanel);
 
             mainPanel.add(buttonPanel);
-            id++;
         }
 
         frame.add(mainPanel);
@@ -58,8 +59,8 @@ public class MainWindow {
         buttonPanel.setBorder(new EmptyBorder(5, 1, 5, 1));
     }
 
-    private void applyButtonAction(JButton button, final JFrame parent, int id) {
-        button.addActionListener(e -> new ItemWindow("Item Window", parent, id));
+    private void applyButtonAction(JButton button, int id) {
+        button.addActionListener(event -> itemDescriptionWindow.show(id));
     }
 
     private JButton[] getButtons() {

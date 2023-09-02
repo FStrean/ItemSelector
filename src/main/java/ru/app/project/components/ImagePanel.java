@@ -4,45 +4,29 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class ImageBasicPanel extends JPanel {
-    private BufferedImage image;
-
-    public ImageBasicPanel(LayoutManager layout, boolean isDoubleBuffered) {
-        super(layout, isDoubleBuffered);
-        image = null;
-    }
-
-    public ImageBasicPanel(LayoutManager layout) {
-        super(layout);
-        image = null;
-    }
-
-    public ImageBasicPanel(boolean isDoubleBuffered) {
-        super(isDoubleBuffered);
-        image = null;
-    }
-
-    public ImageBasicPanel() {
-        image = null;
+public class ImagePanel extends JPanel {
+    private BufferedImage image = null;
+    private String path = null;
+    public ImagePanel() {
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if(image != null) {
-            int width = this.getWidth();
-            int height = this.getHeight();
+            int panelWidth = this.getWidth();
+            int panelHeight = this.getHeight();
 
             int imageWidth = image.getWidth();
             int imageHeight = image.getHeight();
 
-            double intermediateRationWidth = (double)imageWidth / width;
-            double intermediateRationHeight = (double)imageHeight / height;
+            double intermediateImageWidthRatio = (double)imageWidth / panelWidth;
+            double intermediateImageHeightRatio = (double)imageHeight / panelHeight;
 
-            double ration = Math.max(intermediateRationWidth, intermediateRationHeight);
+            double imageRatio = Math.max(intermediateImageWidthRatio, intermediateImageHeightRatio);
 
-            int newImageWidth = (int) (imageWidth / ration);
-            int newImageHeight = (int) (imageHeight / ration);
+            int newImageWidth = (int) (imageWidth / imageRatio);
+            int newImageHeight = (int) (imageHeight / imageRatio);
 
             g.drawImage(image, 0, 0, newImageWidth, newImageHeight, this);
         }
@@ -53,8 +37,16 @@ public class ImageBasicPanel extends JPanel {
         this.repaint();
     }
 
+    public void removeImage() {
+        this.setImage(null);
+    }
+
     public BufferedImage getImage() {
         return image;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     @Override

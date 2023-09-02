@@ -1,18 +1,19 @@
 package ru.app.project.utility;
 
-import ru.app.project.components.ImageBasicPanel;
+import ru.app.project.components.ImagePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ImageBasicPanelUtil {
-    private final ImageBasicPanel imageBasicPanel;
+public class ImageUtil {
+    private final ImagePanel imagePanel;
     private String path;
 
-    public ImageBasicPanelUtil(ImageBasicPanel image) {
-        this.imageBasicPanel = image;
+    public ImageUtil() {
+        this.imagePanel = new ImagePanel();
+        this.path = null;
     }
 
     public void loadImage(String path) throws IOException {
@@ -24,11 +25,16 @@ public class ImageBasicPanelUtil {
             throw new IOException("Image is null");
         }
 
-        imageBasicPanel.setImage(image);
+        imagePanel.setImage(image);
     }
 
-    public ImageBasicPanel getImageBasicPanel() {
-        return imageBasicPanel;
+    public void clearImage() {
+        imagePanel.setImage(null);
+        path = null;
+    }
+
+    public ImagePanel getImageBasicPanel() {
+        return imagePanel;
     }
 
     public String getPath() {
