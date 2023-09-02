@@ -5,7 +5,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
-      <element id="module-output" name="ItemSelector" />
+      <element id="module-output" name="Multimedia-Software" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/angus/angus-activation/2.0.1/angus-activation-2.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/uk/co/caprica/vlcj/4.8.2/vlcj-4.8.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/sun/xml/bind/jaxb-core/4.0.3/jaxb-core-4.0.3.jar" path-in-jar="/" />
