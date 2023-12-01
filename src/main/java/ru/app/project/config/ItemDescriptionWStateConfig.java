@@ -9,13 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @XmlRootElement
-public final class ItemDescriptionWindowContentConfig {
+public final class ItemDescriptionWStateConfig {
     private List<Item> items = new ArrayList<>();
 
-    public ItemDescriptionWindowContentConfig() {
+    public ItemDescriptionWStateConfig() {
     }
 
-    public ItemDescriptionWindowContentConfig(List<Item> items) {
+    public ItemDescriptionWStateConfig(List<Item> items) {
         this.items = items;
     }
 

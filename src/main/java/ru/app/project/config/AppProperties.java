@@ -14,14 +14,18 @@ public class AppProperties {
     }
 
     public static String getItemWindowContentConfigName() {
-        return ItemDescriptionWindowContentConfig.class.getSimpleName() + ".xml";
+        return ItemDescriptionWStateConfig.class.getSimpleName() + ".xml";
     }
 
-    public static int getMaxNumberOfImagesInItemWindow() {
+    public static int getNumberOfButtonsInItemDescriptionSelectorWindow() {
+        return 15;
+    }
+
+    public static int getMaxNumberOfImagesInItemDescriptionWindow() {
         return 3;
     }
 
-    public static int getMaxNumberOfVideosInItemWindow() {
+    public static int getMaxNumberOfVideosInItemDescriptionWindow() {
         return 2;
     }
 }

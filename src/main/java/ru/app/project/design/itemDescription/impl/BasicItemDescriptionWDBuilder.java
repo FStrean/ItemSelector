@@ -1,16 +1,16 @@
-package ru.app.project.design.impl;
+package ru.app.project.design.itemDescription.impl;
 
 import ru.app.project.config.SystemProperties;
-import ru.app.project.design.ItemDescriptionWindowDesignBuilder;
-import ru.app.project.windows.panels.ItemWindowImages;
+import ru.app.project.design.itemDescription.interf.ItemDescriptionWDBuilder;
+import ru.app.project.windows.itemDescription.panels.ImagesP;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ItemDescriptionWindowBasicDesignBuilder implements ItemDescriptionWindowDesignBuilder {
+public class BasicItemDescriptionWDBuilder implements ItemDescriptionWDBuilder {
     private final JFrame frame;
-    public ItemDescriptionWindowBasicDesignBuilder(JFrame frame) {
+    public BasicItemDescriptionWDBuilder(JFrame frame) {
         this.frame = frame;
         frame.setLayout(new GridBagLayout());
         defineInitialWindowSize();
@@ -19,17 +19,17 @@ public class ItemDescriptionWindowBasicDesignBuilder implements ItemDescriptionW
     @Override
     public JPanel buildDescriptionPanelDesign() {
         JPanel descriptionPanel = new JPanel();
-        GridBagConstraints descriptionPanelConstraints = getDescriptionPanelLayoutSettings();
-        frame.add(descriptionPanel, descriptionPanelConstraints);
+        GridBagConstraints constraints = getDescriptionPanelLayoutSettings();
+        frame.add(descriptionPanel, constraints);
         return descriptionPanel;
     }
 
     @Override
-    public ItemWindowImages buildImagePanelDesign() {
-        ItemWindowImages itemWindowImagesPanel = new ItemWindowImages();
+    public ImagesP buildImagePanelDesign() {
+        ImagesP imagesP = new ImagesP();
         GridBagConstraints constraints = getImagePanelLayoutSettings();
-        frame.add(itemWindowImagesPanel, constraints);
-        return itemWindowImagesPanel;
+        frame.add(imagesP, constraints);
+        return imagesP;
     }
 
     @Override

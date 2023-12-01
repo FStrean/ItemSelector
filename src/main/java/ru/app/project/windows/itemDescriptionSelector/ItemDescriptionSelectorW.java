@@ -1,18 +1,19 @@
-package ru.app.project.windows;
+package ru.app.project.windows.itemDescriptionSelector;
 
 import ru.app.project.config.AppProperties;
 import ru.app.project.config.SystemProperties;
+import ru.app.project.windows.itemDescription.ItemDescriptionW;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class ItemDescriptionSelectorWindow {
+public class ItemDescriptionSelectorW {
     private final JFrame frame ;
-    private final ItemDescriptionWindow itemDescriptionWindow;
-    public ItemDescriptionSelectorWindow(String title) {
+    private final ItemDescriptionW itemDescriptionW;
+    public ItemDescriptionSelectorW(String title) {
         frame = new JFrame(title);
-        itemDescriptionWindow = new ItemDescriptionWindow(AppProperties.getItemWindowName(), frame);
+        itemDescriptionW = new ItemDescriptionW(AppProperties.getItemWindowName(), frame);
 
         createStructure();
         defineInitialWindowSize();
@@ -55,12 +56,16 @@ public class ItemDescriptionSelectorWindow {
         frame.add(mainPanel);
     }
 
+    private void createMenuPanel() {
+
+    }
+
     private void applyButtonPanelUI(JPanel buttonPanel) {
         buttonPanel.setBorder(new EmptyBorder(5, 1, 5, 1));
     }
 
     private void applyButtonAction(JButton button, int id) {
-        button.addActionListener(event -> itemDescriptionWindow.show(id));
+        button.addActionListener(event -> itemDescriptionW.show(id));
     }
 
     private JButton[] getButtons() {

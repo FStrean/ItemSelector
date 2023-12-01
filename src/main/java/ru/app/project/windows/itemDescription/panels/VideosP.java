@@ -1,4 +1,4 @@
-package ru.app.project.windows.panels;
+package ru.app.project.windows.itemDescription.panels;
 
 import ru.app.project.algo.RingBuffer;
 import ru.app.project.config.AppProperties;
@@ -8,13 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class ItemWindowVideos extends JPanel {
+public class VideosP extends JPanel {
     private final RingBuffer<EmbeddedMediaPlayerComponent> videos;
 
-    public ItemWindowVideos() {
+    public VideosP() {
         this.setLayout(new GridBagLayout());
 
-        EmbeddedMediaPlayerComponent[] videosArray = new EmbeddedMediaPlayerComponent[AppProperties.getMaxNumberOfVideosInItemWindow()];
+        EmbeddedMediaPlayerComponent[] videosArray = new EmbeddedMediaPlayerComponent[AppProperties.getMaxNumberOfVideosInItemDescriptionWindow()];
         for(int i = 0; i < videosArray.length; i++) {
             videosArray[i] = new EmbeddedMediaPlayerComponent();
         }

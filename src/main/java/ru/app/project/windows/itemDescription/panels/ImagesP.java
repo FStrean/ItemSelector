@@ -1,4 +1,4 @@
-package ru.app.project.windows.panels;
+package ru.app.project.windows.itemDescription.panels;
 
 import ru.app.project.algo.RingBuffer;
 import ru.app.project.components.ImagePanel;
@@ -6,26 +6,26 @@ import ru.app.project.config.AppProperties;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ItemWindowImages extends JPanel {
+public class ImagesP extends JPanel {
     private final RingBuffer<ImagePanel> images;
 
-    public ItemWindowImages() {
-        this.setLayout(new GridBagLayout());
+    public ImagesP() {
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        ImagePanel[] imagesArray = new ImagePanel[AppProperties.getMaxNumberOfImagesInItemWindow()];
-        for(int i = 0; i < imagesArray.length; i++) {
-            imagesArray[i] = new ImagePanel();
+        List<ImagePanel> imagePanels = new ArrayList<>(AppProperties.getMaxNumberOfImagesInItemDescriptionWindow());
+        for (int i = 0; i < AppProperties.getMaxNumberOfImagesInItemDescriptionWindow(); i++) {
+            imagePanels.add(new ImagePanel());
         }
 
-        this.images = new RingBuffer<>(List.of(imagesArray));
+        this.images = new RingBuffer<>(imagePanels);
 
-        for(ImagePanel image : images.getElements()) {
+        for (ImagePanel image : imagePanels) {
             this.add(image);
         }
     }
@@ -48,7 +48,7 @@ public class ItemWindowImages extends JPanel {
             throw new IOException("Image is null");
         }
 
-        imagePanel.setVisible(true);
         imagePanel.setImage(image);
+        imagePanel.setVisible(true);
     }
 }

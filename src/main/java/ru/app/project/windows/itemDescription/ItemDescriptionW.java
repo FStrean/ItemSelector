@@ -1,12 +1,12 @@
-package ru.app.project.windows;
+package ru.app.project.windows.itemDescription;
 
 import ru.app.project.components.ImagePanel;
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.ItemDescriptionWindowContentConfig;
-import ru.app.project.design.ItemDescriptionWindowDesignBuilder;
-import ru.app.project.design.impl.ItemDescriptionWindowBasicDesignBuilder;
-import ru.app.project.utility.ItemDescriptionWindowContentUtil;
-import ru.app.project.windows.panels.ItemWindowImages;
+import ru.app.project.config.ItemDescriptionWStateConfig;
+import ru.app.project.design.itemDescription.interf.ItemDescriptionWDBuilder;
+import ru.app.project.design.itemDescription.impl.BasicItemDescriptionWDBuilder;
+import ru.app.project.utility.ItemDescriptionWContentUtil;
+import ru.app.project.windows.itemDescription.panels.ImagesP;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
@@ -17,26 +17,27 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-public class ItemDescriptionWindow {
+public class ItemDescriptionW {
     private final JFrame frame;
     private final JFrame parentFrame;
 
-    private final ItemDescriptionWindowContentUtil itemWindowState = new ItemDescriptionWindowContentUtil(AppProperties.getItemWindowContentConfigName());
-    private ItemDescriptionWindowContentConfig.Item config;
+    private final ItemDescriptionWContentUtil itemWindowState =
+            new ItemDescriptionWContentUtil(AppProperties.getItemWindowContentConfigName());
+    private ItemDescriptionWStateConfig.Item config;
 
-    private final ItemDescriptionWindowDesignBuilder designBuilder;
+    private final ItemDescriptionWDBuilder designBuilder;
 
     private JPanel descriptionPanel;
     private JLabel description;
-    private ItemWindowImages images;
+    private ImagesP images;
 
     private EmbeddedMediaPlayerComponent videoPlayer;
 
-    public ItemDescriptionWindow(String title, JFrame parentFrame) throws HeadlessException {
+    public ItemDescriptionW(String title, JFrame parentFrame) throws HeadlessException {
         this.frame = new JFrame(title);
 
         this.parentFrame = parentFrame;
-        this.designBuilder = new ItemDescriptionWindowBasicDesignBuilder(this.frame);
+        this.designBuilder = new BasicItemDescriptionWDBuilder(this.frame);
 
         this.initializeDesign();
         this.createStructure();
@@ -56,7 +57,7 @@ public class ItemDescriptionWindow {
     private void createStructure() {
         createDescriptionPanel();
         createImagePanel();
-        createVideoPlayer();
+        createVideoPlayerPanel();
     }
 
     private void createDescriptionPanel() {
@@ -68,7 +69,7 @@ public class ItemDescriptionWindow {
         images.getImages().forEach(image -> image.setVisible(false));
     }
 
-    private void createVideoPlayer() {
+    private void createVideoPlayerPanel() {
         videoPlayer.setVisible(false);
         videoPlayer.mediaPlayer().controls().setRepeat(true);
         videoPlayer.addMouseListener(new MouseAdapter() {
@@ -87,15 +88,15 @@ public class ItemDescriptionWindow {
                 //TODO
                 images.reset();
 
-                for(ImagePanel image : ItemDescriptionWindow.this.images.getImages()) {
+                for(ImagePanel image : ItemDescriptionW.this.images.getImages()) {
                     image.removeImage();
                     image.setVisible(false);
                 }
 
-                ItemDescriptionWindow.this.videoPlayer.mediaPlayer().controls().stop();
-                ItemDescriptionWindow.this.videoPlayer.setVisible(false);
+                ItemDescriptionW.this.videoPlayer.mediaPlayer().controls().stop();
+                ItemDescriptionW.this.videoPlayer.setVisible(false);
 
-                ItemDescriptionWindow.this.parentFrame.setVisible(true);
+                ItemDescriptionW.this.parentFrame.setVisible(true);
             }
         });
     }
