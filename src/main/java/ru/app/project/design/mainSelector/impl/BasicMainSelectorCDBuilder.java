@@ -1,0 +1,41 @@
+package ru.app.project.design.mainSelector.impl;
+
+import ru.app.project.design.mainSelector.interf.MainSelectorCDBuilder;
+import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.cards.mainSelector.panels.ButtonsP;
+import ru.app.project.windows.cards.mainSelector.panels.FooterP;
+import ru.app.project.windows.cards.mainSelector.panels.HeaderP;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
+    private MainWindow mainWindow;
+    private final JPanel panel;
+    public BasicMainSelectorCDBuilder(MainWindow mainWindow, JPanel panel) {
+        this.mainWindow = mainWindow;
+        this.panel = panel;
+        this.panel.setLayout(new GridLayout(0,1));
+    }
+
+    @Override
+    public HeaderP buildHeaderPanelDesign() {
+        HeaderP headerPanel = new HeaderP();
+        panel.add(headerPanel);
+        return headerPanel;
+    }
+
+    @Override
+    public ButtonsP buildButtonsPanelDesign() {
+        ButtonsP buttonsPanel = new ButtonsP(mainWindow);
+        panel.add(buttonsPanel);
+        return buttonsPanel;
+    }
+
+    @Override
+    public FooterP buildFooterPanelDesign() {
+        FooterP headerPanel = new FooterP();
+        panel.add(headerPanel);
+        return headerPanel;
+    }
+}

@@ -1,5 +1,7 @@
 package ru.app.project.config;
 
+import ru.app.project.config.window.ItemDescriptionWStateConfig;
+
 public class AppProperties {
     public static String getConfigFolderPath() {
         return "config";
@@ -17,7 +19,7 @@ public class AppProperties {
         return ItemDescriptionWStateConfig.class.getSimpleName() + ".xml";
     }
 
-    public static int getNumberOfButtonsInItemDescriptionSelectorWindow() {
+    public static int getNumberOfItemsInItemDescriptionWindow() {
         return 15;
     }
 

@@ -1,6 +1,6 @@
 package ru.app.project.utility;
 
-import ru.app.project.components.ImagePanel;
+import ru.app.project.components.JImage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -8,11 +8,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class ImageUtil {
-    private final ImagePanel imagePanel;
+    private final JImage jImage;
     private String path;
 
     public ImageUtil() {
-        this.imagePanel = new ImagePanel();
+        this.jImage = new JImage();
         this.path = null;
     }
 
@@ -25,16 +25,16 @@ public class ImageUtil {
             throw new IOException("Image is null");
         }
 
-        imagePanel.setImage(image);
+        jImage.setImage(image);
     }
 
     public void clearImage() {
-        imagePanel.setImage(null);
+        jImage.setImage(null);
         path = null;
     }
 
-    public ImagePanel getImageBasicPanel() {
-        return imagePanel;
+    public JImage getImageBasicPanel() {
+        return jImage;
     }
 
     public String getPath() {
