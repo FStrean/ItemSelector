@@ -1,5 +1,6 @@
 package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
+import ru.app.project.config.AppProperties;
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.ButtonsPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -39,7 +40,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {
             int id = i + 1;
             buttons.get(i).setText(String.valueOf(id));
             buttons.get(i).addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, id));
