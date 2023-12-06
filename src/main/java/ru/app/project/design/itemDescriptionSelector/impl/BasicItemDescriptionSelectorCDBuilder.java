@@ -11,18 +11,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSelectorCDBuilder {
-    private final RootWindow rootWindow;
     private final JPanel panel;
 
-    public BasicItemDescriptionSelectorCDBuilder(RootWindow rootWindow, JPanel panel) {
-        this.rootWindow = rootWindow;
+    public BasicItemDescriptionSelectorCDBuilder(JPanel panel) {
         this.panel = panel;
         this.panel.setLayout(new GridBagLayout());
     }
 
     @Override
     public HeaderP buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP(rootWindow);
+        HeaderP headerPanel = new HeaderP();
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 0;
@@ -38,7 +36,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
 
     @Override
     public ButtonsP buildButtonsPanelDesign() {
-        ButtonsP buttonsPanel = new ButtonsP(rootWindow);
+        ButtonsP buttonsPanel = new ButtonsP();
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 0;
@@ -54,7 +52,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
 
     @Override
     public FooterP buildFooterPanelDesign() {
-        FooterP footerP = new FooterP(rootWindow);
+        FooterP footerP = new FooterP();
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 0;

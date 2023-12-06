@@ -12,7 +12,7 @@ import java.awt.*;
 public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
     private RootWindow rootWindow;
     private final JPanel panel;
-    public BasicMainSelectorCDBuilder(RootWindow rootWindow, JPanel panel) {
+    public BasicMainSelectorCDBuilder(JPanel panel) {
         this.rootWindow = rootWindow;
         this.panel = panel;
         this.panel.setLayout(new GridLayout(0,1));
@@ -27,7 +27,7 @@ public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
 
     @Override
     public ButtonsP buildButtonsPanelDesign() {
-        ButtonsP buttonsPanel = new ButtonsP(rootWindow);
+        ButtonsP buttonsPanel = new ButtonsP();
         panel.add(buttonsPanel);
         return buttonsPanel;
     }

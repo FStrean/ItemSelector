@@ -2,6 +2,8 @@ package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.ButtonsPDBuilder;
+import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
 
@@ -9,19 +11,25 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ButtonsP extends JPanel {
-    private final RootWindow rootWindow;
+public class ButtonsP extends JPanel implements BasicPanel {
+    private RootWindow rootWindow;
+    private MutableComponent parent;
+
     private final List<JButton> buttons;
+
     private final ButtonsPDBuilder designBuilder;
-    public ButtonsP(RootWindow rootWindow) {
+    public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
         this.buttons = new ArrayList<>(3);
-        this.rootWindow = rootWindow;
 
-        applyDesign();
-        applyLogic();
+        this.rootWindow = null;
+
+        this.applyDesign();
+        this.applyLogic();
+        this.loadConfig();
     }
 
+    @Override
     public void applyDesign() {
         for(int i = 0; i < 15; i++) {
             JButton jButton = designBuilder.buildJButtonDesign();
@@ -29,11 +37,37 @@ public class ButtonsP extends JPanel {
         }
     }
 
+    @Override
     public void applyLogic() {
         for(int i = 0; i < 15; i++) {
             int id = i + 1;
             buttons.get(i).setText(String.valueOf(id));
             buttons.get(i).addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, id));
         }
+    }
+
+    @Override
+    public void runOnLeaveAction() {
+
+    }
+
+    @Override
+    public void setParent(MutableComponent parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public void loadConfig() {
+
+    }
+
+    @Override
+    public void setRootWindow(RootWindow rootWindow) {
+        this.rootWindow = rootWindow;
+    }
+
+    @Override
+    public void setConfig(Object config) {
+
     }
 }

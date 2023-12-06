@@ -5,6 +5,7 @@ import ru.app.project.config.window.ItemDescriptionWStateConfig;
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
 import ru.app.project.design.itemDescription.impl.BasicItemDescriptionCDBuilder;
 import ru.app.project.utility.ItemDescriptionCStateUtil;
+import ru.app.project.windows.BasicCard;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.panels.FooterP;
 import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
@@ -18,7 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-public class ItemDescriptionC extends JPanel {
+public class ItemDescriptionC extends JPanel implements BasicCard {
     private final RootWindow rootWindow;
 
     private final ItemDescriptionCStateUtil itemWindowState =
@@ -34,18 +35,22 @@ public class ItemDescriptionC extends JPanel {
 
     public ItemDescriptionC(RootWindow rootWindow) throws HeadlessException {
         this.rootWindow = rootWindow;
-        this.designBuilder = new BasicItemDescriptionCDBuilder(rootWindow, this);
+        this.designBuilder = new BasicItemDescriptionCDBuilder(this);
+
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
     }
 
     public void showState(int id) {
-        headerPanel.setId(id);
         config = itemWindowState.load(id);
+        imagesPanel.setConfig(config);
+        headerPanel.setConfig(config);
         loadConfig();
     }
 
+    @Override
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
         imagesPanel = designBuilder.buildImagePanelDesign();
@@ -53,6 +58,7 @@ public class ItemDescriptionC extends JPanel {
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 
+    @Override
     public void applyLogic() {
         videoPlayerPanel.setVisible(false);
         videoPlayerPanel.mediaPlayer().controls().setRepeat(true);
@@ -64,44 +70,32 @@ public class ItemDescriptionC extends JPanel {
             }
         });
 
-        footerPanel.onLeaveButtonPressedEvent(event -> {
-            onLeave();
-        });
-
-        headerPanel.onLeaveButtonPressedEvent(event -> {
-            onLeave();
-        });
+        headerPanel.setParent(this);
+        imagesPanel.setParent(this);
+        footerPanel.setParent(this);
+        headerPanel.setRootWindow(rootWindow);
+        imagesPanel.setRootWindow(rootWindow);
+        footerPanel.setRootWindow(rootWindow);
     }
 
-    private void onLeave() {
-        imagesPanel.resetImages();
-        this.videoPlayerPanel.mediaPlayer().controls().stop();
-        this.videoPlayerPanel.setVisible(false);
-
-        rootWindow.showCard(MainSelectorC.class);
-    }
-
-    private void loadConfig() {
-        headerPanel.setDescriptionText(config.getDescription());
+    @Override
+    public void loadConfig() {
+        headerPanel.loadConfig();
 
         if(!config.getVideo().isEmpty()) {
             videoPlayerPanel.setVisible(true);
             videoPlayerPanel.mediaPlayer().media().play(config.getVideo());
         }
 
-        for(String path : config.getImages()) {
-            if(!path.isEmpty()) {
-                addImageToFrame(path);
-            }
-        }
+        imagesPanel.loadConfig();
     }
 
-    private void addImageToFrame(String path) {
-        try {
-            imagesPanel.load(path);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog((JFrame) rootWindow, e.getMessage(),
-                    "Ошибка", JOptionPane.ERROR_MESSAGE);
-        }
+    @Override
+    public void runOnLeaveAction() {
+        imagesPanel.runOnLeaveAction();
+        this.videoPlayerPanel.mediaPlayer().controls().stop();
+        this.videoPlayerPanel.setVisible(false);
+
+        rootWindow.showCard(MainSelectorC.class);
     }
 }

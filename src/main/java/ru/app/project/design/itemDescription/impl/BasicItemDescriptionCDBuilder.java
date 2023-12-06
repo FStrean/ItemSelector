@@ -12,17 +12,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
-    private final RootWindow rootWindow;
     private final JPanel panel;
-    public BasicItemDescriptionCDBuilder(RootWindow rootWindow, JPanel panel) {
-        this.rootWindow = rootWindow;
+    public BasicItemDescriptionCDBuilder(JPanel panel) {
         this.panel = panel;
         this.panel.setLayout(new GridBagLayout());
     }
 
     @Override
     public HeaderP buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP(rootWindow);
+        HeaderP headerPanel = new HeaderP();
         GridBagConstraints constraints = getHeaderPanelLayoutSettings();
         panel.add(headerPanel, constraints);
         return headerPanel;
@@ -52,7 +50,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
 
     @Override
     public FooterP buildFooterPanelDesign() {
-        FooterP headerPanel = new FooterP(rootWindow);
+        FooterP headerPanel = new FooterP();
         GridBagConstraints constraints = getFooterLayoutSettings();
         panel.add(headerPanel, constraints);
         return headerPanel;

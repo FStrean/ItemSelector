@@ -12,7 +12,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RootWindowImpl extends JFrame implements RootWindow {
+public class RootWindowImpl extends JFrame implements RootWindow, CustomizableComponent {
     private final CardLayout cardLayout;
 
     private final Map<String, JPanel> cards = new HashMap<>();
@@ -30,11 +30,13 @@ public class RootWindowImpl extends JFrame implements RootWindow {
         applyLogic();
     }
 
-    private void applyDesign() {
+    @Override
+    public void applyDesign() {
         setLayout(cardLayout);
     }
 
-    private void applyLogic() {
+    @Override
+    public void applyLogic() {
         MainSelectorC mainSelectorC = new MainSelectorC(this);
         cards.put(MainSelectorC.class.getSimpleName(), mainSelectorC);
         add(mainSelectorC, MainSelectorC.class.getSimpleName());

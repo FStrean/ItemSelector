@@ -1,37 +1,65 @@
 package ru.app.project.windows.cards.itemDescription.panels;
 
+import ru.app.project.config.window.ItemDescriptionWStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.FooterPDBuilder;
+import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
-public class FooterP extends JPanel {
-    private final RootWindow rootWindow;
+public class FooterP extends JPanel implements BasicPanel {
+    private RootWindow rootWindow;
+    private ItemDescriptionWStateConfig.Item config;
+    private MutableComponent parent;
+
     private JLabel description;
     private JButton button;
 
     private final FooterPDBuilder designBuilder;
-    public FooterP(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);
+
+        this.config = null;
+        this.rootWindow = null;
+
         this.applyDesign();
         this.applyLogic();
     }
 
+    @Override
     public void applyDesign() {
         description = designBuilder.buildJLabelDesign();
         button = designBuilder.buildJButtonDesign();
     }
 
+    @Override
     public void applyLogic(){
-    }
-    public void onLeaveButtonPressedEvent(ActionListener l) {
-        button.addActionListener(l);
+        button.addActionListener(event -> parent.runOnLeaveAction());
     }
 
-    public void setDescriptionText(String text) {
-        description.setText(text);
+    @Override
+    public void loadConfig() {
+    }
+
+    @Override
+    public void runOnLeaveAction() {
+
+    }
+
+    @Override
+    public void setParent(MutableComponent parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public void setRootWindow(RootWindow rootWindow) {
+        this.rootWindow = rootWindow;
+    }
+
+    @Override
+    public void setConfig(Object config) {
+        this.config = (ItemDescriptionWStateConfig.Item)config;
     }
 }

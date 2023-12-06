@@ -1,50 +1,79 @@
 package ru.app.project.windows.cards.itemDescription.panels;
 
+import ru.app.project.config.window.ItemDescriptionWStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.HeaderPDBuilder;
+import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
-public class HeaderP extends JPanel {
-    private final RootWindow rootWindow;
-    private int id;
+public class HeaderP extends JPanel implements BasicPanel {
+    private RootWindow rootWindow;
+    private ItemDescriptionWStateConfig.Item config;
+    private MutableComponent parent;
+
     private JButton buttonLeft;
     private JButton buttonRight;
     private JLabel description;
 
+    private int id;
+
     private final HeaderPDBuilder designBuilder;
-    public HeaderP(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public HeaderP() {
         this.designBuilder = new BasicHeaderPDBuilder(this);
-        this.id = 1;
+
+        this.config = null;
+        this.rootWindow = null;
+
         this.applyDesign();
         this.applyLogic();
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    @Override
     public void applyDesign() {
         buttonLeft = designBuilder.buildJButtonLeftDesign();
         buttonRight = designBuilder.buildJButtonRightDesign();
         description = designBuilder.buildJLabelDesign();
     }
 
+    @Override
     public void applyLogic(){
-        buttonLeft.addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, (id - 1) < 1 ? 15 : (id - 1)));
-        buttonRight.addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, (id + 1) > 15 ? 1 : (id + 1)));
+        buttonLeft.addActionListener(event -> {
+            parent.runOnLeaveAction();
+            rootWindow.showCard(ItemDescriptionC.class, (id - 1) < 1 ? 15 : (id - 1));
+        });
+        buttonRight.addActionListener(event -> {
+            parent.runOnLeaveAction();
+            rootWindow.showCard(ItemDescriptionC.class, (id + 1) > 15 ? 1 : (id + 1));
+        });
     }
 
-    public void onLeaveButtonPressedEvent(ActionListener l) {
-        buttonLeft.addActionListener(l);
-        buttonRight.addActionListener(l);
+    @Override
+    public void loadConfig() {
+        id = config.getId();
+        description.setText(config.getDescription());
     }
 
-    public void setDescriptionText(String text) {
-        description.setText(text);
+    @Override
+    public void runOnLeaveAction() {
+
+    }
+
+    @Override
+    public void setParent(MutableComponent parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public void setRootWindow(RootWindow rootWindow) {
+        this.rootWindow = rootWindow;
+    }
+
+    @Override
+    public void setConfig(Object config) {
+        this.config = (ItemDescriptionWStateConfig.Item)config;
     }
 }
