@@ -12,12 +12,12 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainWindowImpl extends JFrame implements MainWindow {
+public class RootWindowImpl extends JFrame implements RootWindow {
     private final CardLayout cardLayout;
 
     private final Map<String, JPanel> cards = new HashMap<>();
 
-    public MainWindowImpl(String title) {
+    public RootWindowImpl(String title) {
         this.setTitle(title);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
@@ -54,8 +54,6 @@ public class MainWindowImpl extends JFrame implements MainWindow {
         ItemDescriptionC itemDescriptionC = new ItemDescriptionC(this);
         cards.put(ItemDescriptionC.class.getSimpleName(), itemDescriptionC);
         add(itemDescriptionC, ItemDescriptionC.class.getSimpleName());
-
-
     }
 
     @Override

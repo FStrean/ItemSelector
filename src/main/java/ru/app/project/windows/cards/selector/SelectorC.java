@@ -1,12 +1,12 @@
 package ru.app.project.windows.cards.selector;
 
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
 
 public class SelectorC extends JPanel {
-    private final MainWindow mainWindow;
-    public SelectorC(MainWindow mainWindow) {
-        this.mainWindow = mainWindow;
+    private final RootWindow rootWindow;
+    public SelectorC(RootWindow rootWindow) {
+        this.rootWindow = rootWindow;
     }
 }

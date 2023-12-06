@@ -1,7 +1,7 @@
 package ru.app.project.design.mainSelector.impl;
 
 import ru.app.project.design.mainSelector.interf.MainSelectorCDBuilder;
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.mainSelector.panels.ButtonsP;
 import ru.app.project.windows.cards.mainSelector.panels.FooterP;
 import ru.app.project.windows.cards.mainSelector.panels.HeaderP;
@@ -10,10 +10,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
-    private MainWindow mainWindow;
+    private RootWindow rootWindow;
     private final JPanel panel;
-    public BasicMainSelectorCDBuilder(MainWindow mainWindow, JPanel panel) {
-        this.mainWindow = mainWindow;
+    public BasicMainSelectorCDBuilder(RootWindow rootWindow, JPanel panel) {
+        this.rootWindow = rootWindow;
         this.panel = panel;
         this.panel.setLayout(new GridLayout(0,1));
     }
@@ -27,7 +27,7 @@ public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
 
     @Override
     public ButtonsP buildButtonsPanelDesign() {
-        ButtonsP buttonsPanel = new ButtonsP(mainWindow);
+        ButtonsP buttonsPanel = new ButtonsP(rootWindow);
         panel.add(buttonsPanel);
         return buttonsPanel;
     }

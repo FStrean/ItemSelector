@@ -2,7 +2,7 @@ package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.HeaderPDBuilder;
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.description.DescriptionC;
 import ru.app.project.windows.cards.selector.SelectorC;
 
@@ -10,14 +10,14 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 public class HeaderP extends JPanel {
-    private final MainWindow mainWindow;
+    private final RootWindow rootWindow;
     private JButton buttonLeft;
     private JLabel description;
     private JButton buttonRight;
 
     private final HeaderPDBuilder designBuilder;
-    public HeaderP(MainWindow mainWindow) {
-        this.mainWindow = mainWindow;
+    public HeaderP(RootWindow rootWindow) {
+        this.rootWindow = rootWindow;
         this.designBuilder = new BasicHeaderPDBuilder(this);
         this.applyDesign();
         this.applyLogic();
@@ -30,8 +30,8 @@ public class HeaderP extends JPanel {
     }
 
     public void applyLogic(){
-        buttonLeft.addActionListener(event -> mainWindow.showCard(DescriptionC.class));
-        buttonRight.addActionListener(event -> mainWindow.showCard(SelectorC.class));
+        buttonLeft.addActionListener(event -> rootWindow.showCard(DescriptionC.class));
+        buttonRight.addActionListener(event -> rootWindow.showCard(SelectorC.class));
     }
 
     public void onLeaveButtonPressedEvent(ActionListener l) {

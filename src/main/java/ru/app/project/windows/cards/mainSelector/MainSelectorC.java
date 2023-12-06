@@ -2,7 +2,7 @@ package ru.app.project.windows.cards.mainSelector;
 
 import ru.app.project.design.mainSelector.impl.BasicMainSelectorCDBuilder;
 import ru.app.project.design.mainSelector.interf.MainSelectorCDBuilder;
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.mainSelector.panels.ButtonsP;
 import ru.app.project.windows.cards.mainSelector.panels.FooterP;
 import ru.app.project.windows.cards.mainSelector.panels.HeaderP;
@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainSelectorC extends JPanel {
-    private final MainWindow mainWindow;
+    private final RootWindow rootWindow;
 
     private HeaderP headerPanel;
     private ButtonsP buttonsPanel;
@@ -19,9 +19,9 @@ public class MainSelectorC extends JPanel {
 
     private final MainSelectorCDBuilder designBuilder;
 
-    public MainSelectorC(MainWindow mainWindow) throws HeadlessException {
-        this.mainWindow = mainWindow;
-        this.designBuilder = new BasicMainSelectorCDBuilder(this.mainWindow, this);
+    public MainSelectorC(RootWindow rootWindow) throws HeadlessException {
+        this.rootWindow = rootWindow;
+        this.designBuilder = new BasicMainSelectorCDBuilder(this.rootWindow, this);
 
         applyDesign();
         applyLogic();

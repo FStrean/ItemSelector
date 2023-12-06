@@ -1,12 +1,12 @@
 package ru.app.project.windows.cards.description;
 
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
 
 public class DescriptionC extends JPanel {
-    private final MainWindow mainWindow;
-    public DescriptionC(MainWindow mainWindow) {
-        this.mainWindow = mainWindow;
+    private final RootWindow rootWindow;
+    public DescriptionC(RootWindow rootWindow) {
+        this.rootWindow = rootWindow;
     }
 }

@@ -5,7 +5,7 @@ import ru.app.project.config.window.ItemDescriptionWStateConfig;
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
 import ru.app.project.design.itemDescription.impl.BasicItemDescriptionCDBuilder;
 import ru.app.project.utility.ItemDescriptionCStateUtil;
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.panels.FooterP;
 import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
 import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
@@ -19,7 +19,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class ItemDescriptionC extends JPanel {
-    private final MainWindow mainWindow;
+    private final RootWindow rootWindow;
 
     private final ItemDescriptionCStateUtil itemWindowState =
             new ItemDescriptionCStateUtil(AppProperties.getItemWindowContentConfigName());
@@ -32,9 +32,9 @@ public class ItemDescriptionC extends JPanel {
     private EmbeddedMediaPlayerComponent videoPlayerPanel;
     private FooterP footerPanel;
 
-    public ItemDescriptionC(MainWindow mainWindow) throws HeadlessException {
-        this.mainWindow = mainWindow;
-        this.designBuilder = new BasicItemDescriptionCDBuilder(mainWindow, this);
+    public ItemDescriptionC(RootWindow rootWindow) throws HeadlessException {
+        this.rootWindow = rootWindow;
+        this.designBuilder = new BasicItemDescriptionCDBuilder(rootWindow, this);
 
         this.applyDesign();
         this.applyLogic();
@@ -78,7 +78,7 @@ public class ItemDescriptionC extends JPanel {
         this.videoPlayerPanel.mediaPlayer().controls().stop();
         this.videoPlayerPanel.setVisible(false);
 
-        mainWindow.showCard(MainSelectorC.class);
+        rootWindow.showCard(MainSelectorC.class);
     }
 
     private void loadConfig() {
@@ -100,7 +100,7 @@ public class ItemDescriptionC extends JPanel {
         try {
             imagesPanel.load(path);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog((JFrame)mainWindow, e.getMessage(),
+            JOptionPane.showMessageDialog((JFrame) rootWindow, e.getMessage(),
                     "Ошибка", JOptionPane.ERROR_MESSAGE);
         }
     }

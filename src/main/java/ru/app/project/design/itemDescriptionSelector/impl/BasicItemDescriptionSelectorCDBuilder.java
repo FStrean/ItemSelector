@@ -2,7 +2,7 @@ package ru.app.project.design.itemDescriptionSelector.impl;
 
 import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescriptionSelector.interf.ItemDescriptionSelectorCDBuilder;
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.ButtonsP;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.FooterP;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.HeaderP;
@@ -11,18 +11,18 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSelectorCDBuilder {
-    private final MainWindow mainWindow;
+    private final RootWindow rootWindow;
     private final JPanel panel;
 
-    public BasicItemDescriptionSelectorCDBuilder(MainWindow mainWindow, JPanel panel) {
-        this.mainWindow = mainWindow;
+    public BasicItemDescriptionSelectorCDBuilder(RootWindow rootWindow, JPanel panel) {
+        this.rootWindow = rootWindow;
         this.panel = panel;
         this.panel.setLayout(new GridBagLayout());
     }
 
     @Override
     public HeaderP buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP(mainWindow);
+        HeaderP headerPanel = new HeaderP(rootWindow);
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 0;
@@ -38,7 +38,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
 
     @Override
     public ButtonsP buildButtonsPanelDesign() {
-        ButtonsP buttonsPanel = new ButtonsP(mainWindow);
+        ButtonsP buttonsPanel = new ButtonsP(rootWindow);
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 0;
@@ -54,7 +54,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
 
     @Override
     public FooterP buildFooterPanelDesign() {
-        FooterP footerP = new FooterP(mainWindow);
+        FooterP footerP = new FooterP(rootWindow);
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 0;

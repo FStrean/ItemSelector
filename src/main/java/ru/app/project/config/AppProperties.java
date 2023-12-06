@@ -7,14 +7,6 @@ public class AppProperties {
         return "config";
     }
 
-    public static String getItemWindowName() {
-        return "Item Window";
-    }
-
-    public static String getMainWindowName() {
-        return "Item Selector";
-    }
-
     public static String getItemWindowContentConfigName() {
         return ItemDescriptionWStateConfig.class.getSimpleName() + ".xml";
     }

@@ -2,7 +2,7 @@ package ru.app.project.design.itemDescription.impl;
 
 import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
-import ru.app.project.windows.MainWindow;
+import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.panels.FooterP;
 import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
 import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
@@ -12,17 +12,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
-    private final MainWindow mainWindow;
+    private final RootWindow rootWindow;
     private final JPanel panel;
-    public BasicItemDescriptionCDBuilder(MainWindow mainWindow, JPanel panel) {
-        this.mainWindow = mainWindow;
+    public BasicItemDescriptionCDBuilder(RootWindow rootWindow, JPanel panel) {
+        this.rootWindow = rootWindow;
         this.panel = panel;
         this.panel.setLayout(new GridBagLayout());
     }
 
     @Override
     public HeaderP buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP(mainWindow);
+        HeaderP headerPanel = new HeaderP(rootWindow);
         GridBagConstraints constraints = getHeaderPanelLayoutSettings();
         panel.add(headerPanel, constraints);
         return headerPanel;
@@ -52,7 +52,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
 
     @Override
     public FooterP buildFooterPanelDesign() {
-        FooterP headerPanel = new FooterP(mainWindow);
+        FooterP headerPanel = new FooterP(rootWindow);
         GridBagConstraints constraints = getFooterLayoutSettings();
         panel.add(headerPanel, constraints);
         return headerPanel;
