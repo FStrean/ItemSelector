@@ -12,13 +12,9 @@ import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
 import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
 import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 import ru.app.project.windows.cards.mainSelector.MainSelectorC;
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 public class ItemDescriptionC extends JPanel implements BasicCard {
     private final RootWindow rootWindow;
@@ -31,7 +27,7 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
 
     private HeaderP headerPanel;
     private ImagesP imagesPanel;
-    private VideosP videoPlayerPanel;
+    private VideosP videosPanel;
     private FooterP footerPanel;
 
     public ItemDescriptionC(RootWindow rootWindow) throws HeadlessException {
@@ -47,7 +43,7 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     public void showState(int id) {
         config = itemWindowState.load(id);
         imagesPanel.setConfig(config);
-        videoPlayerPanel.setConfig(config);
+        videosPanel.setConfig(config);
         headerPanel.setConfig(config);
         loadConfig();
     }
@@ -56,7 +52,7 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
         imagesPanel = designBuilder.buildImagePanelDesign();
-        videoPlayerPanel = designBuilder.buildVideoPlayerPanelDesign();
+        videosPanel = designBuilder.buildVideoPlayerPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 
@@ -73,14 +69,14 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     @Override
     public void loadConfig() {
         headerPanel.loadConfig();
-        videoPlayerPanel.loadConfig();
+        videosPanel.loadConfig();
         imagesPanel.loadConfig();
     }
 
     @Override
     public void runOnLeaveAction() {
         imagesPanel.runOnLeaveAction();
-        videoPlayerPanel.runOnLeaveAction();
+        videosPanel.runOnLeaveAction();
         rootWindow.showCard(MainSelectorC.class);
     }
 }
