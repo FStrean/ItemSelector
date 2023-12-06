@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <itemDescriptionWStateConfig>
     <item id="1">
-        <description><![CDATA[<html><p>Some description</p>]]></description>
-        <image>icons\home.png</image>
-        <image>icons\home.png</image>
-        <image>icons\home.png</image>
-        <video></video>
+        <description>В качестве примера напишу это.</description>
+        <image>D:\Documents\Pictures\A_Song_of_Ice_and_Fire\Jon_Snow_1.jpg</image>
+        <image>D:\Documents\Pictures\A_Song_of_Ice_and_Fire\Jon_Snow_2.jpg</image>
+        <image>D:\Documents\Pictures\A_Song_of_Ice_and_Fire\Some_picture.jpg</image>
+        <video>D:\Nvideo\Risk of Rain 2\Risk of Rain 2 2023.12.03 - 00.11.27.08.DVR.mp4</video>
+        <video>D:\Nvideo\Lethal Company\Lethal Company 2023.11.26 - 20.50.25.06.mp4_final3hF.mp4</video>
     </item>
     <item id="2">
-        <description><![CDATA[<html><p>Some description</p>]]></description>
-        <image>icons\home.png</image>
-        <image>icons\home.png</image>
-        <image>icons\home.png</image>
+        <description></description>
+        <image></image>
+        <image></image>
+        <image></image>
+        <video></video>
         <video></video>
     </item>
     <item id="3">
         <description></description>
-        <image>icons\arrow_left.png</image>
-        <image>icons\arrow_right.png</image>
         <image></image>
+        <image></image>
+        <image></image>
+        <video></video>
         <video></video>
     </item>
     <item id="4">
@@ -27,12 +30,14 @@
         <image></image>
         <image></image>
         <video></video>
+        <video></video>
     </item>
     <item id="5">
         <description></description>
         <image></image>
         <image></image>
         <image></image>
+        <video></video>
         <video></video>
     </item>
     <item id="6">
@@ -41,12 +46,14 @@
         <image></image>
         <image></image>
         <video></video>
+        <video></video>
     </item>
     <item id="7">
         <description></description>
         <image></image>
         <image></image>
         <image></image>
+        <video></video>
         <video></video>
     </item>
     <item id="8">
@@ -55,12 +62,14 @@
         <image></image>
         <image></image>
         <video></video>
+        <video></video>
     </item>
     <item id="9">
         <description></description>
         <image></image>
         <image></image>
         <image></image>
+        <video></video>
         <video></video>
     </item>
     <item id="10">
@@ -69,12 +78,14 @@
         <image></image>
         <image></image>
         <video></video>
+        <video></video>
     </item>
     <item id="11">
         <description></description>
         <image></image>
         <image></image>
         <image></image>
+        <video></video>
         <video></video>
     </item>
     <item id="12">
@@ -83,12 +94,14 @@
         <image></image>
         <image></image>
         <video></video>
+        <video></video>
     </item>
     <item id="13">
         <description></description>
         <image></image>
         <image></image>
         <image></image>
+        <video></video>
         <video></video>
     </item>
     <item id="14">
@@ -97,12 +110,14 @@
         <image></image>
         <image></image>
         <video></video>
+        <video></video>
     </item>
     <item id="15">
         <description></description>
         <image></image>
         <image></image>
         <image></image>
+        <video></video>
         <video></video>
     </item>
 </itemDescriptionWStateConfig>

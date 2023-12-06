@@ -2,49 +2,112 @@ package ru.app.project.windows.cards.itemDescription.panels;
 
 import ru.app.project.algo.RingBuffer;
 import ru.app.project.config.AppProperties;
+import ru.app.project.config.window.ItemDescriptionWStateConfig;
+import ru.app.project.design.itemDescription.impl.panels.BasicVideosPDBuilder;
+import ru.app.project.design.itemDescription.interf.panels.VideosPDBuilder;
+import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.MutableComponent;
+import ru.app.project.windows.RootWindow;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class VideosP extends JPanel {
-    private final RingBuffer<EmbeddedMediaPlayerComponent> videos;
+public class VideosP extends JPanel implements BasicPanel {
+    private RootWindow rootWindow;
+    private ItemDescriptionWStateConfig.Item config;
+    private MutableComponent parent;
+
+    private RingBuffer<EmbeddedMediaPlayerComponent> videos;
+
+    private final VideosPDBuilder designBuilder;
 
     public VideosP() {
-        this.setLayout(new GridBagLayout());
+        this.designBuilder = new BasicVideosPDBuilder(this);
 
-        EmbeddedMediaPlayerComponent[] videosArray = new EmbeddedMediaPlayerComponent[AppProperties.getMaxNumberOfVideosInItemDescriptionWindow()];
-        for(int i = 0; i < videosArray.length; i++) {
-            videosArray[i] = new EmbeddedMediaPlayerComponent();
+        this.config = null;
+        this.rootWindow = null;
+
+        this.applyDesign();
+        this.applyLogic();
+    }
+
+    @Override
+    public void applyDesign() {
+        List<EmbeddedMediaPlayerComponent> embeddedMediaPlayerComponents = new ArrayList<>(AppProperties.getMaxNumberOfVideosInItemDescriptionWindow());
+        for (int i = 0; i < AppProperties.getMaxNumberOfImagesInItemDescriptionWindow(); i++) {
+            EmbeddedMediaPlayerComponent video = designBuilder.buildEmbeddedMediaPlayerComponent();
+            embeddedMediaPlayerComponents.add(video);
+            video.setVisible(false);
         }
 
-        this.videos = new RingBuffer<>(java.util.List.of(videosArray));
+        videos = new RingBuffer<>(embeddedMediaPlayerComponents);
+    }
 
-        for(EmbeddedMediaPlayerComponent image : videos.getElements()) {
-            this.add(image);
+    @Override
+    public void applyLogic() {
+        for(EmbeddedMediaPlayerComponent video : videos.getElements()) {
+            video.mediaPlayer().controls().setRepeat(true);
+            video.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    video.mediaPlayer().controls()
+                            .setPause(video.mediaPlayer().status().isPlaying());
+                }
+            });
         }
     }
 
-    public List<EmbeddedMediaPlayerComponent> getVideos() {
-        return videos.getElements();
-    }
-
-    public void reset() {
+    @Override
+    public void runOnLeaveAction() {
         videos.reset();
+        for(EmbeddedMediaPlayerComponent video : videos.getElements()) {
+            video.mediaPlayer().controls().stop();
+            video.setVisible(false);
+        }
     }
 
-//    public void load(String path) throws IOException {
-//        EmbeddedMediaPlayerComponent videoPanel = videos.getNext();
-//
-//        File imageFile = new File(path);
-//        BufferedImage image = ImageIO.read(imageFile);
-//
-//        if(image == null) {
-//            throw new IOException("Image is null");
-//        }
-//
-//        videoPanel.setVisible(true);
-//        videoPanel.setImage(image);
-//    }
+    @Override
+    public void loadConfig() {
+        for(String path : config.getVideos()) {
+            if(!path.isEmpty()) {
+                addVideoToFrame(path);
+            }
+        }
+    }
+
+    @Override
+    public void setParent(MutableComponent parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public void setRootWindow(RootWindow rootWindow) {
+        this.rootWindow = rootWindow;
+    }
+
+    @Override
+    public void setConfig(Object config) {
+        this.config = (ItemDescriptionWStateConfig.Item)config;
+    }
+
+    private void addVideoToFrame(String path) {
+        try {
+            load(path);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog((JFrame) rootWindow, e.getMessage(),
+                    "Ошибка", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void load(String path) throws IOException {
+        EmbeddedMediaPlayerComponent video = videos.getNext();
+
+        video.setVisible(true);
+        video.mediaPlayer().media().play(path);
+    }
 }

@@ -6,6 +6,7 @@ import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.panels.FooterP;
 import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
 import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
+import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
@@ -35,15 +36,9 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     }
 
     @Override
-    public EmbeddedMediaPlayerComponent buildVideoPlayerPanelDesign() {
-        EmbeddedMediaPlayerComponent videoPlayerPanel = new EmbeddedMediaPlayerComponent() {
-            @Override
-            public void paint(Graphics g) {
-                super.paint(g);
-            }
-        };
+    public VideosP buildVideoPlayerPanelDesign() {
+        VideosP videoPlayerPanel = new VideosP();
         GridBagConstraints constraints = getVideoPlayerLayoutSettings();
-        videoPlayerPanel.setMinimumSize(new Dimension(50, 50));
         panel.add(videoPlayerPanel, constraints);
         return videoPlayerPanel;
     }

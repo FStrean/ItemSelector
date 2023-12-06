@@ -29,7 +29,7 @@ public final class ItemDescriptionWStateConfig {
         private int id;
         private String description;
         private List<String> images;
-        private String video;
+        private List<String> videos;
 
         private static int id_count = 1;
 
@@ -37,11 +37,16 @@ public final class ItemDescriptionWStateConfig {
         public Item() {
             this.id = id_count++;
             this.description = "";
+
             this.images = new ArrayList<>();
             for (int i = 0; i < AppProperties.getMaxNumberOfImagesInItemDescriptionWindow(); i++) {
                 this.images.add("");
             }
-            this.video = "";
+
+            this.videos = new ArrayList<>();
+            for (int i = 0; i < AppProperties.getMaxNumberOfVideosInItemDescriptionWindow(); i++) {
+                this.videos.add("");
+            }
         }
 
         @XmlAttribute
@@ -59,9 +64,9 @@ public final class ItemDescriptionWStateConfig {
             return images;
         }
 
-        @XmlElement
-        public String getVideo() {
-            return video;
+        @XmlElement(name = "video")
+        public List<String> getVideos() {
+            return videos;
         }
 
         public void setId(int id) {
@@ -76,8 +81,8 @@ public final class ItemDescriptionWStateConfig {
             this.images = images;
         }
 
-        public void setVideo(String video) {
-            this.video = video;
+        public void setVideo(List<String> videos) {
+            this.videos = videos;
         }
     }
 }

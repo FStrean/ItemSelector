@@ -10,6 +10,7 @@ import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.panels.FooterP;
 import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
 import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
+import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 import ru.app.project.windows.cards.mainSelector.MainSelectorC;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
@@ -30,7 +31,7 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
 
     private HeaderP headerPanel;
     private ImagesP imagesPanel;
-    private EmbeddedMediaPlayerComponent videoPlayerPanel;
+    private VideosP videoPlayerPanel;
     private FooterP footerPanel;
 
     public ItemDescriptionC(RootWindow rootWindow) throws HeadlessException {
@@ -46,6 +47,7 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     public void showState(int id) {
         config = itemWindowState.load(id);
         imagesPanel.setConfig(config);
+        videoPlayerPanel.setConfig(config);
         headerPanel.setConfig(config);
         loadConfig();
     }
@@ -60,16 +62,6 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
 
     @Override
     public void applyLogic() {
-        videoPlayerPanel.setVisible(false);
-        videoPlayerPanel.mediaPlayer().controls().setRepeat(true);
-        videoPlayerPanel.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                videoPlayerPanel.mediaPlayer().controls()
-                        .setPause(videoPlayerPanel.mediaPlayer().status().isPlaying());
-            }
-        });
-
         headerPanel.setParent(this);
         imagesPanel.setParent(this);
         footerPanel.setParent(this);
@@ -81,21 +73,14 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     @Override
     public void loadConfig() {
         headerPanel.loadConfig();
-
-        if(!config.getVideo().isEmpty()) {
-            videoPlayerPanel.setVisible(true);
-            videoPlayerPanel.mediaPlayer().media().play(config.getVideo());
-        }
-
+        videoPlayerPanel.loadConfig();
         imagesPanel.loadConfig();
     }
 
     @Override
     public void runOnLeaveAction() {
         imagesPanel.runOnLeaveAction();
-        this.videoPlayerPanel.mediaPlayer().controls().stop();
-        this.videoPlayerPanel.setVisible(false);
-
+        videoPlayerPanel.runOnLeaveAction();
         rootWindow.showCard(MainSelectorC.class);
     }
 }

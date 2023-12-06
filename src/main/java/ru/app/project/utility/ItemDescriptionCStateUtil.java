@@ -55,18 +55,6 @@ public class ItemDescriptionCStateUtil {
         }
     }
 
-    public void save(ItemDescriptionWStateConfig.Item item) {
-        itemDescriptionWStateConfig.getItems().stream()
-                .filter(listItem -> listItem.getId() == item.getId()).findFirst()
-                .ifPresent(listItem -> {
-                    listItem.setId(item.getId());
-                    listItem.setDescription(item.getDescription());
-                    listItem.setImages(item.getImages());
-                    listItem.setVideo(item.getVideo());
-                });
-        saveToFile();
-    }
-
     private void saveToFile() {
         try {
             JAXBContext contextObj = JAXBContext.newInstance(ItemDescriptionWStateConfig.class);

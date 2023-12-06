@@ -1,5 +1,6 @@
 package ru.app.project.windows.cards.itemDescription.panels;
 
+import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.ItemDescriptionWStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.HeaderPDBuilder;
@@ -41,13 +42,14 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic(){
+        int maxId = AppProperties.getNumberOfItemsInItemDescriptionWindow();
         buttonLeft.addActionListener(event -> {
             parent.runOnLeaveAction();
-            rootWindow.showCard(ItemDescriptionC.class, (id - 1) < 1 ? 15 : (id - 1));
+            rootWindow.showCard(ItemDescriptionC.class, (id - 1) < 1 ? maxId : (id - 1));
         });
         buttonRight.addActionListener(event -> {
             parent.runOnLeaveAction();
-            rootWindow.showCard(ItemDescriptionC.class, (id + 1) > 15 ? 1 : (id + 1));
+            rootWindow.showCard(ItemDescriptionC.class, (id + 1) > maxId ? 1 : (id + 1));
         });
     }
 
