@@ -75,8 +75,10 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
 
     @Override
     public void runOnLeaveAction() {
+        headerPanel.runOnLeaveAction();
         imagesPanel.runOnLeaveAction();
         videosPanel.runOnLeaveAction();
+        footerPanel.runOnLeaveAction();
         rootWindow.showCard(MainSelectorC.class);
     }
 }
