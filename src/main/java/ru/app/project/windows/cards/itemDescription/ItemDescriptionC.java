@@ -71,6 +71,7 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
         headerPanel.loadConfig();
         videosPanel.loadConfig();
         imagesPanel.loadConfig();
+        footerPanel.loadConfig();
     }
 
     @Override
@@ -79,6 +80,5 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
         imagesPanel.runOnLeaveAction();
         videosPanel.runOnLeaveAction();
         footerPanel.runOnLeaveAction();
-        rootWindow.showCard(MainSelectorC.class);
     }
 }

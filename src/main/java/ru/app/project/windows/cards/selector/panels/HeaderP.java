@@ -1,40 +1,38 @@
-package ru.app.project.windows.cards.itemDescriptionSelector.panels;
+package ru.app.project.windows.cards.selector.panels;
 
-import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicFooterPDBuilder;
-import ru.app.project.design.itemDescriptionSelector.interf.panels.FooterPDBuilder;
+import ru.app.project.design.selector.impl.panels.BasicHeaderPDBuilder;
+import ru.app.project.design.selector.interf.panels.HeaderPDBuilder;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.mainSelector.MainSelectorC;
 
 import javax.swing.*;
 
-public class FooterP extends JPanel implements BasicPanel {
+public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
     private MutableComponent parent;
 
     private JLabel description;
-    private JButton button;
 
-    private final FooterPDBuilder designBuilder;
-    public FooterP() {
-        this.designBuilder = new BasicFooterPDBuilder(this);
+    private final HeaderPDBuilder designBuilder;
+    public HeaderP() {
+        designBuilder = new BasicHeaderPDBuilder(this);
 
         this.rootWindow = null;
 
         this.applyDesign();
         this.applyLogic();
+        this.loadConfig();
     }
 
     @Override
     public void applyDesign() {
-        description = designBuilder.buildJLabelDesign();
-        button = designBuilder.buildHomeJButtonDesign();
+        this.description = designBuilder.buildJLabelDesign();
     }
 
     @Override
     public void applyLogic() {
-        button.addActionListener(event -> rootWindow.showCard(MainSelectorC.class));
+
     }
 
     @Override
@@ -49,7 +47,7 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-        description.setText("dflsadflsjalfjsadflsadf");
+        description.setText("dsflsadflsdflsadlfs");
     }
 
     @Override

@@ -1,11 +1,14 @@
 package ru.app.project.windows.cards.itemDescription.panels;
 
+import ru.app.project.components.ImageButton;
 import ru.app.project.config.window.ItemDescriptionWStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.FooterPDBuilder;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.cards.itemDescriptionSelector.ItemDescriptionSelectorC;
+import ru.app.project.windows.cards.mainSelector.MainSelectorC;
 
 import javax.swing.*;
 
@@ -14,10 +17,12 @@ public class FooterP extends JPanel implements BasicPanel {
     private ItemDescriptionWStateConfig.Item config;
     private MutableComponent parent;
 
-    private JLabel description;
     private JButton button;
+    private JLabel description;
+    private JButton homeButton;
 
     private final FooterPDBuilder designBuilder;
+
     public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);
 
@@ -30,17 +35,26 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        description = designBuilder.buildJLabelDesign();
         button = designBuilder.buildJButtonDesign();
+        description = designBuilder.buildJLabelDesign();
+        homeButton = designBuilder.buildHomeJButtonDesign();
     }
 
     @Override
     public void applyLogic(){
-        button.addActionListener(event -> parent.runOnLeaveAction());
+        button.addActionListener(event -> {
+            parent.runOnLeaveAction();
+            rootWindow.showCard(ItemDescriptionSelectorC.class);
+        });
+        homeButton.addActionListener(event -> {
+            parent.runOnLeaveAction();
+            rootWindow.showCard(MainSelectorC.class);
+        });
     }
 
     @Override
     public void loadConfig() {
+        description.setText("dfslfjsadlfjlsdfklslkfdljksfd");
     }
 
     @Override

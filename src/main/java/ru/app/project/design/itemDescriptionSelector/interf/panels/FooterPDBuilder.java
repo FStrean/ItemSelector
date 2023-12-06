@@ -6,5 +6,5 @@ import javax.swing.*;
 
 public interface FooterPDBuilder {
     JLabel buildJLabelDesign();
-    ImageButton buildJButtonDesign();
+    ImageButton buildHomeJButtonDesign();
 }

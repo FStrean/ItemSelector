@@ -1,12 +1,11 @@
-package ru.app.project.design.itemDescription.interf.panels;
+package ru.app.project.design.selector.interf.panels;
 
 import ru.app.project.components.ImageButton;
 
 import javax.swing.*;
 
 public interface FooterPDBuilder {
-    JButton buildJButtonDesign();
-
     JLabel buildJLabelDesign();
+
     ImageButton buildHomeJButtonDesign();
 }

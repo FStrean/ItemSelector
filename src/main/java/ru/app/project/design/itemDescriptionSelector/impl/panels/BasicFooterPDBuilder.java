@@ -16,33 +16,29 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public JLabel buildJLabelDesign() {
         JLabel description = new JLabel();
+        description.setHorizontalAlignment(SwingConstants.CENTER);
+        description.setVerticalAlignment(SwingConstants.CENTER);
         GridBagConstraints constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.WEST;
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.gridx = 0;
+        constraints.gridx = 1;
         constraints.gridy = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
         constraints.weightx = 1;
         constraints.weighty = 1;
-        constraints.anchor = GridBagConstraints.PAGE_START;
-
         panel.add(description, constraints);
         return description;
     }
 
     @Override
-    public ImageButton buildJButtonDesign() {
+    public ImageButton buildHomeJButtonDesign() {
         ImageButton button = new ImageButton("icons/home.png");
         GridBagConstraints constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.WEST;
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.gridx = 1;
+        constraints.gridx = 2;
         constraints.gridy = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 1;
+        constraints.weightx = 0.03;
         constraints.weighty = 1;
-        constraints.anchor = GridBagConstraints.PAGE_END;
-
         panel.add(button, constraints);
         return button;
     }

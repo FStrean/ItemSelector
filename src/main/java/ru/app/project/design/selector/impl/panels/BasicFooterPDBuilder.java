@@ -1,7 +1,7 @@
-package ru.app.project.design.itemDescription.impl.panels;
+package ru.app.project.design.selector.impl.panels;
 
 import ru.app.project.components.ImageButton;
-import ru.app.project.design.itemDescription.interf.panels.FooterPDBuilder;
+import ru.app.project.design.selector.interf.panels.FooterPDBuilder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,20 +10,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;
     public BasicFooterPDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setLayout(new GridBagLayout());
-    }
-    @Override
-    public JButton buildJButtonDesign() {
-        JButton button = new JButton();
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 0.04;
-        constraints.weighty = 1;
-        panel.add(button, constraints);
-        return button;
+        this.panel.setLayout(new GridLayout(1,1));
     }
     @Override
     public JLabel buildJLabelDesign() {
@@ -49,7 +36,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 2;
         constraints.gridy = 0;
-        constraints.weightx = 0.04;
+        constraints.weightx = 0.03;
         constraints.weighty = 1;
         panel.add(button, constraints);
         return button;
