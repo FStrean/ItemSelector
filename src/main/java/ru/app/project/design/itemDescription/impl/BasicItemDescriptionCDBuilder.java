@@ -69,7 +69,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
-        constraints.weightx = 1;
+        constraints.weightx = 0.5;
         constraints.weighty = 1;
 
         return constraints;
@@ -81,7 +81,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
-        constraints.weightx = 1;
+        constraints.weightx = 0.5;
         constraints.weighty = 1;
 
         return constraints;

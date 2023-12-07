@@ -3,7 +3,7 @@ package ru.app.project.windows.cards.itemDescription.panels;
 import ru.app.project.algo.RingBuffer;
 import ru.app.project.components.JImage;
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.ItemDescriptionWStateConfig;
+import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicImagesPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.ImagesPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ImagesP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private ItemDescriptionWStateConfig.Item config;
+    private ItemDescriptionCStateConfig.Item config;
     private MutableComponent parent;
 
     private RingBuffer<JImage> images;
@@ -83,7 +83,7 @@ public class ImagesP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-        this.config = (ItemDescriptionWStateConfig.Item) config;
+        this.config = (ItemDescriptionCStateConfig.Item) config;
     }
 
     private void addImageToFrame(String path) {

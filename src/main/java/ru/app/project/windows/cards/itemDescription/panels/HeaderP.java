@@ -1,7 +1,7 @@
 package ru.app.project.windows.cards.itemDescription.panels;
 
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.ItemDescriptionWStateConfig;
+import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.HeaderPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private ItemDescriptionWStateConfig.Item config;
+    private ItemDescriptionCStateConfig.Item config;
     private MutableComponent parent;
 
     private JButton buttonLeft;
@@ -76,6 +76,6 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-        this.config = (ItemDescriptionWStateConfig.Item)config;
+        this.config = (ItemDescriptionCStateConfig.Item)config;
     }
 }

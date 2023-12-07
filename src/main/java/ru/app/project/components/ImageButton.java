@@ -16,7 +16,7 @@ public class ImageButton extends JButton {
     }
 
     @Override
-    public void paint( Graphics g ) {
+    public void paintComponent(Graphics g) {
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
@@ -39,9 +39,9 @@ public class ImageButton extends JButton {
 //        if(getHeight() > newImageHeight) {
 //            dimHeight = newImageHeight;
 //        }
-        setSize(new Dimension(dimWidth, dimHeight));
 
-        super.paint(g);
+        setSize(new Dimension(dimWidth, dimHeight));
+        super.paintComponent(g);
         g.drawImage(image,  0 , 0 , newImageWidth , newImageHeight , imageObserver);
     }
 }

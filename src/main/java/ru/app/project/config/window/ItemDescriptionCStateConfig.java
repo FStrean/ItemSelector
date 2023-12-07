@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
-public final class ItemDescriptionWStateConfig {
+public final class ItemDescriptionCStateConfig {
     private final List<Item> items;
 
-    public ItemDescriptionWStateConfig() {
+    public ItemDescriptionCStateConfig() {
         this.items = new ArrayList<>();
 
         for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {

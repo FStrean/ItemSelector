@@ -2,7 +2,7 @@ package ru.app.project.windows.cards.itemDescription.panels;
 
 import ru.app.project.algo.RingBuffer;
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.ItemDescriptionWStateConfig;
+import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicVideosPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.VideosPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -11,6 +11,9 @@ import ru.app.project.windows.RootWindow;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -19,7 +22,7 @@ import java.util.List;
 
 public class VideosP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private ItemDescriptionWStateConfig.Item config;
+    private ItemDescriptionCStateConfig.Item config;
     private MutableComponent parent;
 
     private RingBuffer<EmbeddedMediaPlayerComponent> videos;
@@ -59,7 +62,26 @@ public class VideosP extends JPanel implements BasicPanel {
                             .setPause(video.mediaPlayer().status().isPlaying());
                 }
             });
+//            video.addComponentListener(new ComponentAdapter() {
+//                @Override
+//                public void componentResized(ComponentEvent e) {
+//                    int cardWidth = ((JPanel)parent).getWidth();
+//                    int componentWidth = e.getComponent().getWidth();
+//                    int componentHeight = e.getComponent().getHeight();
+//                    e.getComponent().setSize(new Dimension(cardWidth / 2 - 25, componentHeight));
+//                }
+//            });
         }
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                super.componentResized(e);
+                int cardWidth = ((JPanel)parent).getWidth();
+                int componentHeight = e.getComponent().getHeight();
+
+                e.getComponent().setSize(new Dimension(cardWidth / 2 - 25, componentHeight));
+            }
+        });
     }
 
     @Override
@@ -92,7 +114,7 @@ public class VideosP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-        this.config = (ItemDescriptionWStateConfig.Item)config;
+        this.config = (ItemDescriptionCStateConfig.Item)config;
     }
 
     private void addVideoToFrame(String path) {

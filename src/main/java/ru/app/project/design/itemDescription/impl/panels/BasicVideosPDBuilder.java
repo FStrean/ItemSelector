@@ -6,6 +6,8 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class BasicVideosPDBuilder implements VideosPDBuilder {
     private final JPanel panel;
@@ -16,7 +18,7 @@ public class BasicVideosPDBuilder implements VideosPDBuilder {
     @Override
     public EmbeddedMediaPlayerComponent buildEmbeddedMediaPlayerComponent() {
         EmbeddedMediaPlayerComponent videoPlayerPanel = new EmbeddedMediaPlayerComponent();
-        videoPlayerPanel.setMinimumSize(new Dimension(50, 50));
+        videoPlayerPanel.setMinimumSize(new Dimension(1, 1));
         panel.add(videoPlayerPanel);
         return videoPlayerPanel;
     }
