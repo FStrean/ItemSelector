@@ -5,14 +5,10 @@ import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
 import ru.app.project.design.itemDescription.impl.BasicItemDescriptionCDBuilder;
 import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicCard;
+import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.itemDescription.panels.FooterP;
-import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
-import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
-import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class ItemDescriptionC extends JPanel implements BasicCard {
     private final RootWindow rootWindow;
@@ -21,12 +17,12 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     private ItemDescriptionCStateConfig.Item config;
 
 
-    private HeaderP headerPanel;
-    private ImagesP imagesPanel;
-    private VideosP videosPanel;
-    private FooterP footerPanel;
+    private BasicPanel headerPanel;
+    private BasicPanel imagesPanel;
+    private BasicPanel videosPanel;
+    private BasicPanel footerPanel;
 
-    public ItemDescriptionC(RootWindow rootWindow) throws HeadlessException {
+    public ItemDescriptionC(RootWindow rootWindow) {
         this.rootWindow = rootWindow;
         this.designBuilder = new BasicItemDescriptionCDBuilder(this);
         this.configLoader = new ConfigLoader<>(ItemDescriptionCStateConfig.class);
@@ -52,8 +48,8 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     @Override
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
-        imagesPanel = designBuilder.buildImagePanelDesign();
-        videosPanel = designBuilder.buildVideoPlayerPanelDesign();
+        imagesPanel = designBuilder.buildLeftPanelDesign();
+        videosPanel = designBuilder.buildRightPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 

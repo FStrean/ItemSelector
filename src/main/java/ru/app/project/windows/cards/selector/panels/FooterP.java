@@ -32,7 +32,7 @@ public class FooterP extends JPanel implements BasicPanel {
 
     public void applyDesign() {
         description = designBuilder.buildJLabelDesign();
-        button = designBuilder.buildHomeJButtonDesign();
+        button = designBuilder.buildJButtonDesign();
     }
 
     @Override

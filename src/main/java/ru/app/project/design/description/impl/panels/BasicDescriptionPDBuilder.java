@@ -1,16 +1,17 @@
-package ru.app.project.design.mainSelector.impl.panels;
+package ru.app.project.design.description.impl.panels;
 
-import ru.app.project.design.mainSelector.interf.panels.FooterPDBuilder;
+import ru.app.project.design.description.interf.panels.DescriptionPDBuilder;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class BasicFooterPDBuilder implements FooterPDBuilder {
+public class BasicDescriptionPDBuilder implements DescriptionPDBuilder {
     private final JPanel panel;
-    public BasicFooterPDBuilder(JPanel panel) {
+    public BasicDescriptionPDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setLayout(new GridLayout(1,1));
+        this.panel.setLayout(new BorderLayout());
     }
+
     @Override
     public JLabel buildJLabelDesign() {
         JLabel description = new JLabel();

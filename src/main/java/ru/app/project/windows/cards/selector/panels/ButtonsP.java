@@ -6,6 +6,7 @@ import ru.app.project.design.selector.interf.panels.ButtonsPDBuilder;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -40,8 +41,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        //buttons.get(0).addActionListener(event -> rootWindow.showCard(DescriptionC.class));
-        //buttons.get(1).addActionListener(event -> rootWindow.showCard(ItemDescriptionSelectorC.class));
+        buttons.get(0).addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, 1));
+        buttons.get(1).addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, 1));
     }
 
     @Override

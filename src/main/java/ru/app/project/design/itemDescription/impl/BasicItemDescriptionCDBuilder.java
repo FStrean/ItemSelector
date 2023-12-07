@@ -2,15 +2,13 @@ package ru.app.project.design.itemDescription.impl;
 
 import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.itemDescription.panels.FooterP;
 import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
 import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
 import ru.app.project.windows.cards.itemDescription.panels.VideosP;
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
@@ -21,7 +19,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     }
 
     @Override
-    public HeaderP buildHeaderPanelDesign() {
+    public BasicPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
         GridBagConstraints constraints = getHeaderPanelLayoutSettings();
         panel.add(headerPanel, constraints);
@@ -29,7 +27,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     }
 
     @Override
-    public ImagesP buildImagePanelDesign() {
+    public BasicPanel buildLeftPanelDesign() {
         ImagesP imagesP = new ImagesP();
         GridBagConstraints constraints = getImagePanelLayoutSettings();
         panel.add(imagesP, constraints);
@@ -37,7 +35,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     }
 
     @Override
-    public VideosP buildVideoPlayerPanelDesign() {
+    public BasicPanel buildRightPanelDesign() {
         VideosP videoPlayerPanel = new VideosP();
         GridBagConstraints constraints = getVideoPlayerLayoutSettings();
         panel.add(videoPlayerPanel, constraints);
@@ -45,7 +43,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     }
 
     @Override
-    public FooterP buildFooterPanelDesign() {
+    public BasicPanel buildFooterPanelDesign() {
         FooterP headerPanel = new FooterP();
         GridBagConstraints constraints = getFooterLayoutSettings();
         panel.add(headerPanel, constraints);

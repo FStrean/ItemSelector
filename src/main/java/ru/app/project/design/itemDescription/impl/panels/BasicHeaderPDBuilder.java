@@ -1,7 +1,6 @@
 package ru.app.project.design.itemDescription.impl.panels;
 
 import ru.app.project.components.ImageButton;
-import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescription.interf.panels.HeaderPDBuilder;
 
 import javax.swing.*;
@@ -15,7 +14,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     }
 
     @Override
-    public ImageButton buildJButtonLeftDesign() {
+    public JButton buildJButton1Design() {
         ImageButton button = new ImageButton("icons/arrow_left.png");
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
@@ -28,7 +27,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     }
 
     @Override
-    public ImageButton buildJButtonRightDesign() {
+    public JButton buildJButton2Design() {
         ImageButton button = new ImageButton("icons/arrow_right.png");
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;

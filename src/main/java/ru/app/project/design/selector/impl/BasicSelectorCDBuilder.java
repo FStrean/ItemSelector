@@ -1,6 +1,7 @@
 package ru.app.project.design.selector.impl;
 
 import ru.app.project.design.selector.interf.SelectorCDBuilder;
+import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.selector.panels.ButtonsP;
 import ru.app.project.windows.cards.selector.panels.FooterP;
@@ -19,7 +20,7 @@ public class BasicSelectorCDBuilder implements SelectorCDBuilder {
     }
 
     @Override
-    public HeaderP buildHeaderPanelDesign() {
+    public BasicPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
@@ -32,7 +33,7 @@ public class BasicSelectorCDBuilder implements SelectorCDBuilder {
     }
 
     @Override
-    public ButtonsP buildButtonsPanelDesign() {
+    public BasicPanel buildCenterPanelDesign() {
         GridBagConstraints constraints__ = new GridBagConstraints();
         constraints__.fill = GridBagConstraints.BOTH;
         constraints__.gridx = 0;
@@ -62,7 +63,7 @@ public class BasicSelectorCDBuilder implements SelectorCDBuilder {
     }
 
     @Override
-    public FooterP buildFooterPanelDesign() {
+    public BasicPanel buildFooterPanelDesign() {
         FooterP headerPanel = new FooterP();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;

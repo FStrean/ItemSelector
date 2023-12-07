@@ -4,14 +4,13 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.HeaderPDBuilder;
-import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
 
 import javax.swing.*;
 
-public class HeaderP extends JPanel implements BasicPanel {
+public class HeaderP extends JPanel implements ru.app.project.windows.BasicPanel {
     private RootWindow rootWindow;
     private final HeaderPDBuilder designBuilder;
     private ItemDescriptionCStateConfig.Item config;
@@ -35,8 +34,8 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        buttonLeft = designBuilder.buildJButtonLeftDesign();
-        buttonRight = designBuilder.buildJButtonRightDesign();
+        buttonLeft = designBuilder.buildJButton1Design();
+        buttonRight = designBuilder.buildJButton2Design();
         description = designBuilder.buildJLabelDesign();
     }
 

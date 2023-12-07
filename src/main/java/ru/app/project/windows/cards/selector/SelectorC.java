@@ -5,10 +5,8 @@ import ru.app.project.design.selector.impl.BasicSelectorCDBuilder;
 import ru.app.project.design.selector.interf.SelectorCDBuilder;
 import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicCard;
+import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.selector.panels.ButtonsP;
-import ru.app.project.windows.cards.selector.panels.FooterP;
-import ru.app.project.windows.cards.selector.panels.HeaderP;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,9 +16,9 @@ public class SelectorC extends JPanel implements BasicCard {
     private final SelectorCDBuilder designBuilder;
     private final ConfigLoader<SelectorCStateConfig> configLoader;
 
-    private HeaderP headerPanel;
-    private ButtonsP buttonsPanel;
-    private FooterP footerPanel;
+    private BasicPanel headerPanel;
+    private BasicPanel buttonsPanel;
+    private BasicPanel footerPanel;
 
     public SelectorC(RootWindow rootWindow) throws HeadlessException {
         this.rootWindow = rootWindow;
@@ -35,7 +33,7 @@ public class SelectorC extends JPanel implements BasicCard {
     @Override
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
-        buttonsPanel = designBuilder.buildButtonsPanelDesign();
+        buttonsPanel = designBuilder.buildCenterPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 

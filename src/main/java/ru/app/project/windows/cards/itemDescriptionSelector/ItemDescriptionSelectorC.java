@@ -4,10 +4,8 @@ import ru.app.project.config.window.ItemDescriptionSelectorCStateConfig;
 import ru.app.project.design.itemDescriptionSelector.impl.BasicItemDescriptionSelectorCDBuilder;
 import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicCard;
+import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.itemDescriptionSelector.panels.ButtonsP;
-import ru.app.project.windows.cards.itemDescriptionSelector.panels.FooterP;
-import ru.app.project.windows.cards.itemDescriptionSelector.panels.HeaderP;
 
 import javax.swing.*;
 
@@ -16,9 +14,9 @@ public class ItemDescriptionSelectorC extends JPanel implements BasicCard {
     private final BasicItemDescriptionSelectorCDBuilder designBuilder;
     private final ConfigLoader<ItemDescriptionSelectorCStateConfig> configLoader;
 
-    private HeaderP headerPanel;
-    private ButtonsP buttonsPanel;
-    private FooterP footerPanel;
+    private BasicPanel headerPanel;
+    private BasicPanel buttonsPanel;
+    private BasicPanel footerPanel;
 
     public ItemDescriptionSelectorC(RootWindow rootWIndow) {
         this.rootWindow = rootWIndow;
@@ -33,7 +31,7 @@ public class ItemDescriptionSelectorC extends JPanel implements BasicCard {
     @Override
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
-        buttonsPanel = designBuilder.buildButtonsPanelDesign();
+        buttonsPanel = designBuilder.buildCenterPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 

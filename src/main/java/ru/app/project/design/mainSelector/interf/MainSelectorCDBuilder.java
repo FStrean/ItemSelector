@@ -1,11 +1,9 @@
 package ru.app.project.design.mainSelector.interf;
 
-import ru.app.project.windows.cards.mainSelector.panels.ButtonsP;
-import ru.app.project.windows.cards.mainSelector.panels.FooterP;
-import ru.app.project.windows.cards.mainSelector.panels.HeaderP;
+import ru.app.project.windows.BasicPanel;
 
 public interface MainSelectorCDBuilder {
-    HeaderP buildHeaderPanelDesign();
-    ButtonsP buildButtonsPanelDesign();
-    FooterP buildFooterPanelDesign();
+    BasicPanel buildHeaderPanelDesign();
+    BasicPanel buildCenterPanelDesign();
+    BasicPanel buildFooterPanelDesign();
 }

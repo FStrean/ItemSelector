@@ -2,7 +2,7 @@ package ru.app.project.design.itemDescriptionSelector.impl;
 
 import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescriptionSelector.interf.ItemDescriptionSelectorCDBuilder;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.ButtonsP;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.FooterP;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.HeaderP;
@@ -19,7 +19,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
     }
 
     @Override
-    public HeaderP buildHeaderPanelDesign() {
+    public BasicPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
@@ -35,7 +35,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
     }
 
     @Override
-    public ButtonsP buildButtonsPanelDesign() {
+    public BasicPanel buildCenterPanelDesign() {
         ButtonsP buttonsPanel = new ButtonsP();
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
@@ -51,7 +51,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
     }
 
     @Override
-    public FooterP buildFooterPanelDesign() {
+    public BasicPanel buildFooterPanelDesign() {
         FooterP footerP = new FooterP();
 
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();

@@ -3,7 +3,6 @@ package ru.app.project.design.mainSelector.impl.panels;
 import ru.app.project.design.mainSelector.interf.panels.HeaderPDBuilder;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class BasicHeaderPDBuilder implements HeaderPDBuilder {

@@ -1,4 +1,4 @@
-package ru.app.project.design.itemDescriptionSelector.interf.panels;
+package ru.app.project.design.description.interf.panels;
 
 import javax.swing.*;
 

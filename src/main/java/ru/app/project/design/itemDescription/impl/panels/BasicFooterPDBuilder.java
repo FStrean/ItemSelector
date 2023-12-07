@@ -13,7 +13,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         this.panel.setLayout(new GridBagLayout());
     }
     @Override
-    public JButton buildJButtonDesign() {
+    public JButton buildJButton1Design() {
         JButton button = new JButton();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
@@ -40,7 +40,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     }
 
     @Override
-    public ImageButton buildHomeJButtonDesign() {
+    public JButton buildJButton2Design() {
         ImageButton button = new ImageButton("icons/home.png");
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;

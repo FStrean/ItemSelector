@@ -1,6 +1,5 @@
 package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
-import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.config.window.ItemDescriptionSelectorCStateConfig;
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.FooterPDBuilder;
@@ -33,7 +32,7 @@ public class FooterP extends JPanel implements BasicPanel {
     @Override
     public void applyDesign() {
         description = designBuilder.buildJLabelDesign();
-        button = designBuilder.buildHomeJButtonDesign();
+        button = designBuilder.buildJButtonDesign();
     }
 
     @Override

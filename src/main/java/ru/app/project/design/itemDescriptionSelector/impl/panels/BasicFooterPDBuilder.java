@@ -1,7 +1,6 @@
 package ru.app.project.design.itemDescriptionSelector.impl.panels;
 
 import ru.app.project.components.ImageButton;
-import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.FooterPDBuilder;
 
 import javax.swing.*;
@@ -30,7 +29,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     }
 
     @Override
-    public ImageButton buildHomeJButtonDesign() {
+    public JButton buildJButtonDesign() {
         ImageButton button = new ImageButton("icons/home.png");
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;

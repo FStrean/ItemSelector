@@ -2,11 +2,9 @@ package ru.app.project.design.itemDescription.impl.panels;
 
 import ru.app.project.components.JImage;
 import ru.app.project.design.itemDescription.interf.panels.ImagesPDBuilder;
-import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
 
 public class BasicImagesPDBuilder implements ImagesPDBuilder {
     private final JPanel panel;

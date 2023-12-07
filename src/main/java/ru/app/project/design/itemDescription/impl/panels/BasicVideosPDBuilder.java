@@ -1,14 +1,11 @@
 package ru.app.project.design.itemDescription.impl.panels;
 
-import ru.app.project.components.JImage;
 import ru.app.project.design.itemDescription.interf.panels.VideosPDBuilder;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class BasicVideosPDBuilder implements VideosPDBuilder {
     private final JPanel panel;
