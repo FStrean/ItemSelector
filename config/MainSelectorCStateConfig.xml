@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mainSelectorCStateConfig>
+    <button1><![CDATA[<html>
+            <center style="font-size: 15;">
+                Назначение комплекса КРС КПТВ. 412168.002
+            </center>
+        </html>]]></button1>
+    <button2><![CDATA[<html>
+            <center style="font-size: 15;">
+                Состав и описание комплекса КРС КПТВ. 412168.002
+            </center>
+        </html>]]></button2>
+    <button3><![CDATA[<html>
+            <center style="font-size: 15;">
+                Работа комплекса КРС КПТВ. 412168.002
+            </center>
+        </html>]]></button3>
+    <fDescription><![CDATA[<html>
+            <center style="font-size: 20;">
+                Мультимедийное обучающее программное обеспечение
+            </center>
+        </html>]]></fDescription>
+    <hDescription><![CDATA[<html>
+            <center style="font-size: 40;">
+                Комплекс КРС
+            </center>
+        </html>]]></hDescription>
+</mainSelectorCStateConfig>

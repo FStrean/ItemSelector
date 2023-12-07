@@ -12,11 +12,11 @@ import java.util.List;
 
 public class ButtonsP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private final ButtonsPDBuilder designBuilder;
     private MutableComponent parent;
 
     private final List<JButton> buttons;
 
-    private final ButtonsPDBuilder designBuilder;
     public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
         this.buttons = new ArrayList<>(2);

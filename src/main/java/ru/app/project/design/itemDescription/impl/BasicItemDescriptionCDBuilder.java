@@ -59,7 +59,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridwidth = 2;
         constraints.gridheight = 1;
         constraints.weightx = 1;
-        constraints.weighty = 0.1;
+        constraints.weighty = 0.05;
 
         return constraints;
     }
@@ -71,7 +71,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 0.5;
-        constraints.weighty = 1;
+        constraints.weighty = 0.9;
 
         return constraints;
     }
@@ -83,7 +83,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 0.5;
-        constraints.weighty = 1;
+        constraints.weighty = 0.9;
 
         return constraints;
     }
@@ -95,7 +95,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridwidth = 2;
         constraints.gridheight = 1;
         constraints.weightx = 1;
-        constraints.weighty = 0.1;
+        constraints.weighty = 0.05;
 
         return constraints;
     }

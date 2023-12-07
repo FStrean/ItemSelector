@@ -20,12 +20,11 @@ import java.util.List;
 
 public class ImagesP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private final ImagesPDBuilder designBuilder;
     private ItemDescriptionCStateConfig.Item config;
     private MutableComponent parent;
 
     private RingBuffer<JImage> images;
-
-    private final ImagesPDBuilder designBuilder;
 
     public ImagesP() {
         this.designBuilder = new BasicImagesPDBuilder(this);

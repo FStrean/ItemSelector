@@ -21,7 +21,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 0;
         constraints.gridy = 0;
-        constraints.weightx = 1;
+        constraints.weightx = 0.25;
         constraints.weighty = 1;
         panel.add(button, constraints);
         return button;
@@ -34,7 +34,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 1;
         constraints.gridy = 0;
-        constraints.weightx = 1;
+        constraints.weightx = 0.25;
         constraints.weighty = 1;
         panel.add(button, constraints);
         return button;
@@ -49,7 +49,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 2;
         constraints.gridy = 0;
-        constraints.weightx = 2;
+        constraints.weightx = 0.5;
         constraints.weighty = 1;
         panel.add(description, constraints);
         return description;

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <itemDescriptionCStateConfig>
-    <button>Назад</button>
-    <description>В качестве другого примера напишу вот это.</description>
+    <button><![CDATA[<html>
+            <center style="font-size: 15;">
+                Состав комплекса КРС
+            </center>
+        </html>]]></button>
+    <description><![CDATA[<html>
+            <center style="font-size: 20;">
+                Мультимедийное обучающее программное обеспечение
+            </center>
+        </html>]]></description>
     <item id="1">
-        <description>В качестве примера напишу это</description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Альфа-радиометр удельной активности АР КПТВ.418242.002
+            </center>
+        </html>]]></description>
         <image>D:\Documents\Pictures\A_Song_of_Ice_and_Fire\Jon_Snow_1.jpg</image>
         <image>D:\Documents\Pictures\A_Song_of_Ice_and_Fire\Jon_Snow_2.jpg</image>
         <image>D:\Documents\Pictures\A_Song_of_Ice_and_Fire\Some_picture.jpg</image>
@@ -11,7 +23,11 @@
         <video></video>
     </item>
     <item id="2">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Бета-радиометр удельной активности БР КПТВ.418242.003
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -19,7 +35,11 @@
         <video></video>
     </item>
     <item id="3">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Бета-спектрометр на основе сцинтиллятора БСС КПТВ.418244.008
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -27,7 +47,11 @@
         <video></video>
     </item>
     <item id="4">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Гамма-спектрометр на основе сцинтиллятора ГСС КПТВ.418244.009
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -35,7 +59,11 @@
         <video></video>
     </item>
     <item id="5">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Гамма-спектрометр на основе полупроводникового детектора ГС ППД КПТВ.418241.003
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -43,7 +71,11 @@
         <video></video>
     </item>
     <item id="6">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Управляющая ПЭВМ КПТВ.422339.001
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -51,7 +83,11 @@
         <video></video>
     </item>
     <item id="7">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Устройство согласования УС КПТВ.468364.007
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -59,7 +95,11 @@
         <video></video>
     </item>
     <item id="8">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Устройство электропитания УЭП КПТВ.436747.004
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -67,7 +107,11 @@
         <video></video>
     </item>
     <item id="9">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Комплект отбора проб КОП КПТВ.412919.019
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -75,7 +119,11 @@
         <video></video>
     </item>
     <item id="10">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Комплект пробоподготовки КПП КПТВ.412919.029
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -83,7 +131,11 @@
         <video></video>
     </item>
     <item id="11">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Комплект контрольных источников ККИ КПТВ.418234.004
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -91,7 +143,11 @@
         <video></video>
     </item>
     <item id="12">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Комплект кабелей КПТВ.412911.003
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -99,7 +155,11 @@
         <video></video>
     </item>
     <item id="13">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Комплект ЗИП КПТВ.412913.001
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -107,7 +167,11 @@
         <video></video>
     </item>
     <item id="14">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Комплект упаковок КПТВ.4112915.013
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>
@@ -115,7 +179,11 @@
         <video></video>
     </item>
     <item id="15">
-        <description></description>
+        <description><![CDATA[<html>
+            <center style="font-size: 30;">
+                Комплект пополнения КП КПТВ.412919.023
+            </center>
+        </html>]]></description>
         <image></image>
         <image></image>
         <image></image>

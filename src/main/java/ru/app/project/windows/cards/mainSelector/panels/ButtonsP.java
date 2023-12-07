@@ -1,7 +1,9 @@
 package ru.app.project.windows.cards.mainSelector.panels;
 
+import ru.app.project.config.window.MainSelectorCStateConfig;
 import ru.app.project.design.mainSelector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.mainSelector.interf.panels.ButtonsPDBuilder;
+import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -15,20 +17,21 @@ import java.util.List;
 
 public class ButtonsP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private final ButtonsPDBuilder designBuilder;
+    private MainSelectorCStateConfig config;
     private MutableComponent parent;
 
     private final List<JButton> buttons;
 
-    private final ButtonsPDBuilder designBuilder;
     public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
         this.buttons = new ArrayList<>(3);
 
         this.rootWindow = null;
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
-        this.loadConfig();
     }
 
     @Override
@@ -41,13 +44,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        buttons.get(0).setText("Назначение");
         buttons.get(0).addActionListener(event -> rootWindow.showCard(DescriptionC.class));
-
-        buttons.get(1).setText("Состав");
         buttons.get(1).addActionListener(event -> rootWindow.showCard(ItemDescriptionSelectorC.class));
-
-        buttons.get(2).setText("Работа");
         buttons.get(2).addActionListener(event -> rootWindow.showCard(SelectorC.class));
     }
 
@@ -63,7 +61,9 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-
+        buttons.get(0).setText(config.getButton1());
+        buttons.get(1).setText(config.getButton2());
+        buttons.get(2).setText(config.getButton3());
     }
 
     @Override
@@ -73,6 +73,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-
+        this.config = (MainSelectorCStateConfig)config;
     }
 }

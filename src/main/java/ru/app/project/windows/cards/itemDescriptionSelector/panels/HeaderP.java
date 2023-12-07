@@ -14,6 +14,7 @@ import javax.swing.*;
 
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private final HeaderPDBuilder designBuilder;
     private ItemDescriptionSelectorCStateConfig config;
     private MutableComponent parent;
 
@@ -21,7 +22,6 @@ public class HeaderP extends JPanel implements BasicPanel {
     private JLabel description;
     private JButton buttonRight;
 
-    private final HeaderPDBuilder designBuilder;
     public HeaderP() {
         this.designBuilder = new BasicHeaderPDBuilder(this);
 

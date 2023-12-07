@@ -23,7 +23,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 1;
         constraints.gridy = 0;
-        constraints.weightx = 1;
+        constraints.weightx = 0.95;
         constraints.weighty = 1;
         panel.add(description, constraints);
         return description;
@@ -37,7 +37,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 2;
         constraints.gridy = 0;
-        constraints.weightx = 0.03;
+        constraints.weightx = 0.05;
         constraints.weighty = 1;
         panel.add(button, constraints);
         return button;

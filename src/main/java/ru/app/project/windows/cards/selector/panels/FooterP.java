@@ -11,12 +11,12 @@ import javax.swing.*;
 
 public class FooterP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private final FooterPDBuilder designBuilder;
     private MutableComponent parent;
 
     private JLabel description;
     private JButton button;
 
-    private final FooterPDBuilder designBuilder;
     public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);
 

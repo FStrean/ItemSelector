@@ -22,12 +22,11 @@ import java.util.List;
 
 public class VideosP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private final VideosPDBuilder designBuilder;
     private ItemDescriptionCStateConfig.Item config;
     private MutableComponent parent;
 
     private RingBuffer<EmbeddedMediaPlayerComponent> videos;
-
-    private final VideosPDBuilder designBuilder;
 
     public VideosP() {
         this.designBuilder = new BasicVideosPDBuilder(this);

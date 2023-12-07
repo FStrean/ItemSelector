@@ -10,11 +10,11 @@ import javax.swing.*;
 
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private final HeaderPDBuilder designBuilder;
     private MutableComponent parent;
 
     private JLabel description;
 
-    private final HeaderPDBuilder designBuilder;
     public HeaderP() {
         designBuilder = new BasicHeaderPDBuilder(this);
 
