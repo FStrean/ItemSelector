@@ -16,6 +16,8 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     @Override
     public JButton buildJButtonDesign() {
         JButton button = new JButton();
+        button.setHorizontalAlignment(SwingConstants.CENTER);
+        button.setVerticalAlignment(SwingConstants.CENTER);
         JPanel jPanel = new JPanel(new BorderLayout());
         jPanel.add(button);
         jPanel.setBorder(new EmptyBorder(15, 15, 15, 15));

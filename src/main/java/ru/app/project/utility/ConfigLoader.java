@@ -50,7 +50,7 @@ public class ConfigLoader<T> {
 
         JAXBContext jaxbContext;
         try {
-            jaxbContext = JAXBContext.newInstance(ItemDescriptionCStateConfig.class);
+            jaxbContext = JAXBContext.newInstance(configObjectClass);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
             configObject = configObjectClass.cast(jaxbUnmarshaller.unmarshal(configFile));

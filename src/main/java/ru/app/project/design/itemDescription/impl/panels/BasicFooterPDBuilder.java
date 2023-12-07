@@ -16,7 +16,6 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     public JButton buildJButtonDesign() {
         JButton button = new JButton();
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -31,7 +30,6 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         description.setHorizontalAlignment(SwingConstants.CENTER);
         description.setVerticalAlignment(SwingConstants.CENTER);
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 1;
         constraints.gridy = 0;
@@ -45,7 +43,6 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     public ImageButton buildHomeJButtonDesign() {
         ImageButton button = new ImageButton("icons/home.png");
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 2;
         constraints.gridy = 0;

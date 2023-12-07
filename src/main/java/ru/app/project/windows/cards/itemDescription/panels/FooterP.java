@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class FooterP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private ItemDescriptionCStateConfig.Item config;
+    private ItemDescriptionCStateConfig config;
     private MutableComponent parent;
 
     private JButton button;
@@ -53,7 +53,8 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-        description.setText("dfslfjsadlfjlsdfklslkfdljksfd");
+        description.setText(config.getDescription());
+        button.setText(config.getButton());
     }
 
     @Override
@@ -73,6 +74,6 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-        this.config = (ItemDescriptionCStateConfig.Item)config;
+        this.config = (ItemDescriptionCStateConfig)config;
     }
 }

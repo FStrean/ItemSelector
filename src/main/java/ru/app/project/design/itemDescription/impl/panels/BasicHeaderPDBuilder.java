@@ -18,7 +18,6 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     public ImageButton buildJButtonLeftDesign() {
         ImageButton button = new ImageButton("icons/arrow_left.png");
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.EAST;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -32,7 +31,6 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     public ImageButton buildJButtonRightDesign() {
         ImageButton button = new ImageButton("icons/arrow_right.png");
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.EAST;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 1;
         constraints.gridy = 0;
@@ -48,7 +46,6 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
         description.setHorizontalAlignment(SwingConstants.CENTER);
         description.setVerticalAlignment(SwingConstants.CENTER);
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.EAST;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 2;
         constraints.gridy = 0;

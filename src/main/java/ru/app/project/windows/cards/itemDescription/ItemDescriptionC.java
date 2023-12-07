@@ -1,6 +1,5 @@
 package ru.app.project.windows.cards.itemDescription;
 
-import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
 import ru.app.project.design.itemDescription.impl.BasicItemDescriptionCDBuilder;
@@ -17,11 +16,10 @@ import java.awt.*;
 
 public class ItemDescriptionC extends JPanel implements BasicCard {
     private final RootWindow rootWindow;
-
+    private final ItemDescriptionCDBuilder designBuilder;
     private final ConfigLoader<ItemDescriptionCStateConfig> configLoader;
     private ItemDescriptionCStateConfig.Item config;
 
-    private final ItemDescriptionCDBuilder designBuilder;
 
     private HeaderP headerPanel;
     private ImagesP imagesPanel;
@@ -29,23 +27,25 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     private FooterP footerPanel;
 
     public ItemDescriptionC(RootWindow rootWindow) throws HeadlessException {
-        this.configLoader = new ConfigLoader<>(ItemDescriptionCStateConfig.class);
         this.rootWindow = rootWindow;
         this.designBuilder = new BasicItemDescriptionCDBuilder(this);
-
+        this.configLoader = new ConfigLoader<>(ItemDescriptionCStateConfig.class);
         this.config = null;
 
         this.applyDesign();
         this.applyLogic();
+
+        this.footerPanel.setConfig(configLoader.getConfig());
+        this.footerPanel.loadConfig();
     }
 
     public void showState(int id) {
         config = configLoader.getConfig().getItems().stream()
                 .filter(listItem -> listItem.getId() == id).findFirst()
                 .orElse(new ItemDescriptionCStateConfig.Item());
+        headerPanel.setConfig(config);
         imagesPanel.setConfig(config);
         videosPanel.setConfig(config);
-        headerPanel.setConfig(config);
         loadConfig();
     }
 
@@ -74,7 +74,6 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
         headerPanel.loadConfig();
         videosPanel.loadConfig();
         imagesPanel.loadConfig();
-        footerPanel.loadConfig();
     }
 
     @Override

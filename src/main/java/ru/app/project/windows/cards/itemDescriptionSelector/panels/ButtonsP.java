@@ -1,6 +1,8 @@
 package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
 import ru.app.project.config.AppProperties;
+import ru.app.project.config.window.ItemDescriptionCStateConfig;
+import ru.app.project.config.window.ItemDescriptionSelectorCStateConfig;
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.ButtonsPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class ButtonsP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private ItemDescriptionSelectorCStateConfig config;
     private MutableComponent parent;
 
     private final List<JButton> buttons;
@@ -24,10 +27,10 @@ public class ButtonsP extends JPanel implements BasicPanel {
         this.buttons = new ArrayList<>(3);
 
         this.rootWindow = null;
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
-        this.loadConfig();
     }
 
     @Override
@@ -42,7 +45,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
     public void applyLogic() {
         for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {
             int id = i + 1;
-            buttons.get(i).setText(String.valueOf(id));
             buttons.get(i).addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, id));
         }
     }
@@ -59,7 +61,9 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-
+        for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {
+            buttons.get(i).setText(config.getButtons().get(i));
+        }
     }
 
     @Override
@@ -69,6 +73,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-
+        this.config = (ItemDescriptionSelectorCStateConfig)config;
     }
 }

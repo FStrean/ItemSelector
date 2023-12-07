@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <itemDescriptionCStateConfig>
+    <button>Назад</button>
+    <description>В качестве другого примера напишу вот это.</description>
     <item id="1">
         <description>В качестве примера напишу это</description>
         <image>D:\Documents\Pictures\A_Song_of_Ice_and_Fire\Jon_Snow_1.jpg</image>

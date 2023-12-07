@@ -5,6 +5,7 @@ import ru.app.project.design.itemDescription.interf.panels.ImagesPDBuilder;
 import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class BasicImagesPDBuilder implements ImagesPDBuilder {
@@ -17,7 +18,11 @@ public class BasicImagesPDBuilder implements ImagesPDBuilder {
     @Override
     public JImage buildJImageDesign() {
         JImage imagesPanel = new JImage();
-        panel.add(imagesPanel);
+        JPanel jPanel = new JPanel();
+        jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
+        jPanel.add(imagesPanel);
+        jPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        panel.add(jPanel);
         return imagesPanel;
     }
 }

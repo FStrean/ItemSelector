@@ -10,14 +10,17 @@ import java.util.List;
 
 @XmlRootElement
 public final class ItemDescriptionCStateConfig {
-    private final List<Item> items;
+    private List<Item> items;
+    private String button;
+    private String description;
 
     public ItemDescriptionCStateConfig() {
+        button = "";
         this.items = new ArrayList<>();
-
         for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {
             items.add(new Item());
         }
+        description = "";
     }
 
     @XmlElement(name = "item")
@@ -54,7 +57,7 @@ public final class ItemDescriptionCStateConfig {
             return id;
         }
 
-        @XmlElement
+        @XmlElement(name = "description")
         public String getDescription() {
             return description;
         }
@@ -84,5 +87,27 @@ public final class ItemDescriptionCStateConfig {
         public void setVideo(List<String> videos) {
             this.videos = videos;
         }
+    }
+
+    @XmlElement(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    @XmlElement(name = "button")
+    public String getButton() {
+        return button;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void setButton(String button) {
+        this.button = button;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

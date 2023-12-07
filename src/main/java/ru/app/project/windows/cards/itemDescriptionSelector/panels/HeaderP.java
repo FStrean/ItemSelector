@@ -1,5 +1,7 @@
 package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
+import ru.app.project.config.window.ItemDescriptionCStateConfig;
+import ru.app.project.config.window.ItemDescriptionSelectorCStateConfig;
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.HeaderPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -12,6 +14,7 @@ import javax.swing.*;
 
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private ItemDescriptionSelectorCStateConfig config;
     private MutableComponent parent;
 
     private JButton buttonLeft;
@@ -23,10 +26,10 @@ public class HeaderP extends JPanel implements BasicPanel {
         this.designBuilder = new BasicHeaderPDBuilder(this);
 
         this.rootWindow = null;
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
-        this.loadConfig();
     }
 
     @Override
@@ -54,7 +57,9 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-        description.setText("dflsadflsjalfjsadflsadf");
+        buttonLeft.setText(config.getLeftButton());
+        description.setText(config.getHDescription());
+        buttonRight.setText(config.getRightButton());
     }
 
     @Override
@@ -64,6 +69,6 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-
+        this.config = (ItemDescriptionSelectorCStateConfig)config;
     }
 }

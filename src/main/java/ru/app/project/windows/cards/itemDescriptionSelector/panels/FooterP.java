@@ -1,5 +1,7 @@
 package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
+import ru.app.project.config.window.ItemDescriptionCStateConfig;
+import ru.app.project.config.window.ItemDescriptionSelectorCStateConfig;
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.FooterPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -11,6 +13,7 @@ import javax.swing.*;
 
 public class FooterP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
+    private ItemDescriptionSelectorCStateConfig config;
     private MutableComponent parent;
 
     private JLabel description;
@@ -21,6 +24,7 @@ public class FooterP extends JPanel implements BasicPanel {
         this.designBuilder = new BasicFooterPDBuilder(this);
 
         this.rootWindow = null;
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -49,7 +53,7 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-        description.setText("dflsadflsjalfjsadflsadf");
+        description.setText(config.getFDescription());
     }
 
     @Override
@@ -59,6 +63,6 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-
+        this.config = (ItemDescriptionSelectorCStateConfig)config;
     }
 }

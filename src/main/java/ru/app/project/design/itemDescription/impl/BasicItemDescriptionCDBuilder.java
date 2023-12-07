@@ -10,6 +10,7 @@ import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
