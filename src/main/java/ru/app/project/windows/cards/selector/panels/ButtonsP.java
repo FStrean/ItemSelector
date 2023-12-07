@@ -1,5 +1,6 @@
 package ru.app.project.windows.cards.selector.panels;
 
+import ru.app.project.config.window.SelectorCStateConfig;
 import ru.app.project.design.selector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.selector.interf.panels.ButtonsPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -13,6 +14,7 @@ import java.util.List;
 public class ButtonsP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
     private final ButtonsPDBuilder designBuilder;
+    private SelectorCStateConfig config;
     private MutableComponent parent;
 
     private final List<JButton> buttons;
@@ -22,10 +24,10 @@ public class ButtonsP extends JPanel implements BasicPanel {
         this.buttons = new ArrayList<>(2);
 
         this.rootWindow = null;
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
-        this.loadConfig();
     }
 
     @Override
@@ -38,10 +40,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        buttons.get(0).setText("Калибровка");
         //buttons.get(0).addActionListener(event -> rootWindow.showCard(DescriptionC.class));
-
-        buttons.get(1).setText("Измерения");
         //buttons.get(1).addActionListener(event -> rootWindow.showCard(ItemDescriptionSelectorC.class));
     }
 
@@ -57,7 +56,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-
+        buttons.get(0).setText(config.getButton1());
+        buttons.get(1).setText(config.getButton2());
     }
 
     @Override
@@ -67,6 +67,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-
+        this.config = (SelectorCStateConfig)config;
     }
 }

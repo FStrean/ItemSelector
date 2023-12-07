@@ -15,12 +15,12 @@ public final class ItemDescriptionCStateConfig {
     private String description;
 
     public ItemDescriptionCStateConfig() {
-        button = "";
+        this.button = "";
         this.items = new ArrayList<>();
         for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {
-            items.add(new Item());
+            this.items.add(new Item());
         }
-        description = "";
+        this.description = "";
     }
 
     @XmlElement(name = "item")

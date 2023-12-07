@@ -1,5 +1,6 @@
 package ru.app.project.windows.cards.selector.panels;
 
+import ru.app.project.config.window.SelectorCStateConfig;
 import ru.app.project.design.selector.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.selector.interf.panels.FooterPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -12,6 +13,7 @@ import javax.swing.*;
 public class FooterP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
     private final FooterPDBuilder designBuilder;
+    private SelectorCStateConfig config;
     private MutableComponent parent;
 
     private JLabel description;
@@ -21,10 +23,10 @@ public class FooterP extends JPanel implements BasicPanel {
         this.designBuilder = new BasicFooterPDBuilder(this);
 
         this.rootWindow = null;
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
-        this.loadConfig();
     }
     @Override
 
@@ -50,7 +52,7 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-        description.setText("dsflsadflsdflsadlfs");
+        description.setText(config.getFDescription());
     }
 
     @Override
@@ -60,6 +62,6 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-
+        this.config = (SelectorCStateConfig)config;
     }
 }

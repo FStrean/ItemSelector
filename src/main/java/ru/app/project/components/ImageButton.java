@@ -36,10 +36,6 @@ public class ImageButton extends JButton {
         if(getWidth() != newImageWidth) {
             dimWidth = newImageWidth;
         }
-//        if(getHeight() > newImageHeight) {
-//            dimHeight = newImageHeight;
-//        }
-
         setSize(new Dimension(dimWidth, dimHeight));
         super.paintComponent(g);
         g.drawImage(image,  0 , 0 , newImageWidth , newImageHeight , imageObserver);

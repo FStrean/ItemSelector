@@ -3,20 +3,17 @@ package ru.app.project.config.window;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-
 @XmlRootElement
-public class MainSelectorCStateConfig {
+public class SelectorCStateConfig {
     private String hDescription;
     private String button1;
     private String button2;
-    private String button3;
     private String fDescription;
 
-    public MainSelectorCStateConfig() {
+    public SelectorCStateConfig() {
         this.hDescription = "";
         this.button1 = "";
         this.button2 = "";
-        this.button3 = "";
         this.fDescription = "";
     }
 
@@ -35,11 +32,6 @@ public class MainSelectorCStateConfig {
         return button2;
     }
 
-    @XmlElement(name = "button3")
-    public String getButton3() {
-        return button3;
-    }
-
     @XmlElement(name = "fDescription")
     public String getFDescription() {
         return fDescription;
@@ -55,10 +47,6 @@ public class MainSelectorCStateConfig {
 
     public void setButton2(String button2) {
         this.button2 = button2;
-    }
-
-    public void setButton3(String button3) {
-        this.button3 = button3;
     }
 
     public void setFDescription(String fDescription) {

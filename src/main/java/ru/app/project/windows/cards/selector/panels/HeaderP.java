@@ -1,5 +1,6 @@
 package ru.app.project.windows.cards.selector.panels;
 
+import ru.app.project.config.window.SelectorCStateConfig;
 import ru.app.project.design.selector.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.selector.interf.panels.HeaderPDBuilder;
 import ru.app.project.windows.BasicPanel;
@@ -11,6 +12,7 @@ import javax.swing.*;
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
     private final HeaderPDBuilder designBuilder;
+    private SelectorCStateConfig config;
     private MutableComponent parent;
 
     private JLabel description;
@@ -19,10 +21,10 @@ public class HeaderP extends JPanel implements BasicPanel {
         designBuilder = new BasicHeaderPDBuilder(this);
 
         this.rootWindow = null;
+        this.config = null;
 
         this.applyDesign();
         this.applyLogic();
-        this.loadConfig();
     }
 
     @Override
@@ -47,7 +49,7 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void loadConfig() {
-        description.setText("dsflsadflsdflsadlfs");
+        description.setText(config.getHDescription());
     }
 
     @Override
@@ -57,6 +59,6 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-
+        this.config = (SelectorCStateConfig)config;
     }
 }
