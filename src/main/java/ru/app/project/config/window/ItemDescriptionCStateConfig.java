@@ -31,6 +31,7 @@ public final class ItemDescriptionCStateConfig {
     public static class Item {
         private int id;
         private String description;
+        private String mainDescription;
         private List<String> images;
         private List<String> videos;
 
@@ -50,6 +51,8 @@ public final class ItemDescriptionCStateConfig {
             for (int i = 0; i < AppProperties.getMaxNumberOfVideosInItemDescriptionWindow(); i++) {
                 this.videos.add("");
             }
+
+            this.mainDescription = "";
         }
 
         @XmlAttribute
@@ -72,6 +75,11 @@ public final class ItemDescriptionCStateConfig {
             return videos;
         }
 
+        @XmlElement(name = "mainDescription")
+        public String getMainDescription() {
+            return mainDescription;
+        }
+
         public void setId(int id) {
             this.id = id;
         }
@@ -86,6 +94,10 @@ public final class ItemDescriptionCStateConfig {
 
         public void setVideo(List<String> videos) {
             this.videos = videos;
+        }
+
+        public void setMainDescription(String mainDescription) {
+            this.mainDescription = mainDescription;
         }
     }
 

@@ -49,7 +49,7 @@ public class DescriptionP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void loadConfig() {
+    public void applyConfig() {
         description.setText(config.getDescription());
     }
 

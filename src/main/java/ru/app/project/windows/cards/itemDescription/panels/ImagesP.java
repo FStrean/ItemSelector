@@ -53,7 +53,7 @@ public class ImagesP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void loadConfig() {
+    public void applyConfig() {
         for(String path : config.getImages()) {
             if(!path.isEmpty()) {
                 addImageToFrame(path);

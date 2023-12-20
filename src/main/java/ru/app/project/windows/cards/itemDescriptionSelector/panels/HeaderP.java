@@ -56,7 +56,7 @@ public class HeaderP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void loadConfig() {
+    public void applyConfig() {
         buttonLeft.setText(config.getLeftButton());
         description.setText(config.getHDescription());
         buttonRight.setText(config.getRightButton());

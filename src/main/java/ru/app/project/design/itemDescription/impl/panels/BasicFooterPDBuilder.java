@@ -47,7 +47,8 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         constraints.gridx = 2;
         constraints.gridy = 0;
         constraints.weightx = 0.15;
-        constraints.weighty = 1;
+        constraints.weighty = 0.9;
+
         panel.add(button, constraints);
         return button;
     }

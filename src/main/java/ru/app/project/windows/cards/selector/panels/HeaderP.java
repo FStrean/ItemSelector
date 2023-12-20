@@ -48,7 +48,7 @@ public class HeaderP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void loadConfig() {
+    public void applyConfig() {
         description.setText(config.getHDescription());
     }
 

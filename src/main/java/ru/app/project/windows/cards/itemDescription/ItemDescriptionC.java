@@ -17,9 +17,11 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     private ItemDescriptionCStateConfig.Item config;
 
 
-    private BasicPanel headerPanel;
+    private BasicPanel header1Panel;
+    private BasicPanel header2Panel;
     private BasicPanel imagesPanel;
-    private BasicPanel videosPanel;
+//    private BasicPanel videosPanel;
+    private BasicPanel descriptionPanel;
     private BasicPanel footerPanel;
 
     public ItemDescriptionC(RootWindow rootWindow) {
@@ -32,51 +34,62 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
         this.applyLogic();
 
         this.footerPanel.setConfig(configLoader.getConfig());
-        this.footerPanel.loadConfig();
+        this.footerPanel.applyConfig();
     }
 
     public void showState(int id) {
         config = configLoader.getConfig().getItems().stream()
                 .filter(listItem -> listItem.getId() == id).findFirst()
                 .orElse(new ItemDescriptionCStateConfig.Item());
-        headerPanel.setConfig(config);
+        header1Panel.setConfig(config);
+        header2Panel.setConfig(config);
         imagesPanel.setConfig(config);
-        videosPanel.setConfig(config);
-        loadConfig();
+//        videosPanel.setConfig(config);
+        descriptionPanel.setConfig(config);
+        applyConfig();
     }
 
     @Override
     public void applyDesign() {
-        headerPanel = designBuilder.buildHeaderPanelDesign();
+        header1Panel = designBuilder.buildHeader1PanelDesign();
+        header2Panel = designBuilder.buildHeader2PanelDesign();
         imagesPanel = designBuilder.buildLeftPanelDesign();
-        videosPanel = designBuilder.buildRightPanelDesign();
+//        videosPanel = designBuilder.buildRightPanelDesign();
+        descriptionPanel = designBuilder.buildRightPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 
     @Override
     public void applyLogic() {
-        headerPanel.setParent(this);
+        header1Panel.setParent(this);
+        header2Panel.setParent(this);
         imagesPanel.setParent(this);
-        videosPanel.setParent(this);
+//        videosPanel.setParent(this);
+        descriptionPanel.setParent(this);
         footerPanel.setParent(this);
-        headerPanel.setRootWindow(rootWindow);
+        header1Panel.setRootWindow(rootWindow);
         imagesPanel.setRootWindow(rootWindow);
-        videosPanel.setRootWindow(rootWindow);
+//        videosPanel.setRootWindow(rootWindow);
+        descriptionPanel.setRootWindow(rootWindow);
         footerPanel.setRootWindow(rootWindow);
     }
 
     @Override
-    public void loadConfig() {
-        headerPanel.loadConfig();
-        videosPanel.loadConfig();
-        imagesPanel.loadConfig();
+    public void applyConfig() {
+        header1Panel.applyConfig();
+        header2Panel.applyConfig();
+//        videosPanel.applyConfig();
+        descriptionPanel.applyConfig();
+        imagesPanel.applyConfig();
     }
 
     @Override
     public void runOnLeaveAction() {
-        headerPanel.runOnLeaveAction();
+        header1Panel.runOnLeaveAction();
+        header2Panel.runOnLeaveAction();
         imagesPanel.runOnLeaveAction();
-        videosPanel.runOnLeaveAction();
+//        videosPanel.runOnLeaveAction();
+        descriptionPanel.runOnLeaveAction();
         footerPanel.runOnLeaveAction();
     }
 }

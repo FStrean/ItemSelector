@@ -25,7 +25,7 @@ public class ItemDescriptionSelectorC extends JPanel implements BasicCard {
 
         this.applyDesign();
         this.applyLogic();
-        this.loadConfig();
+        this.applyConfig();
     }
 
     @Override
@@ -54,9 +54,9 @@ public class ItemDescriptionSelectorC extends JPanel implements BasicCard {
     }
 
     @Override
-    public void loadConfig() {
-        headerPanel.loadConfig();
-        buttonsPanel.loadConfig();
-        footerPanel.loadConfig();
+    public void applyConfig() {
+        headerPanel.applyConfig();
+        buttonsPanel.applyConfig();
+        footerPanel.applyConfig();
     }
 }

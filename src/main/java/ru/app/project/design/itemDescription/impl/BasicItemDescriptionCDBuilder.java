@@ -3,10 +3,8 @@ package ru.app.project.design.itemDescription.impl;
 import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
 import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.cards.itemDescription.panels.FooterP;
-import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
-import ru.app.project.windows.cards.itemDescription.panels.ImagesP;
-import ru.app.project.windows.cards.itemDescription.panels.VideosP;
+import ru.app.project.windows.cards.itemDescription.panels.*;
+//import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,11 +17,19 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     }
 
     @Override
-    public BasicPanel buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP();
-        GridBagConstraints constraints = getHeaderPanelLayoutSettings();
-        panel.add(headerPanel, constraints);
-        return headerPanel;
+    public BasicPanel buildHeader1PanelDesign() {
+        Header1P header1Panel = new Header1P();
+        GridBagConstraints constraints = getHeader1PanelLayoutSettings();
+        panel.add(header1Panel, constraints);
+        return header1Panel;
+    }
+
+    @Override
+    public BasicPanel buildHeader2PanelDesign() {
+        Header2P header2Panel = new Header2P();
+        GridBagConstraints constraints = getHeader2PanelLayoutSettings();
+        panel.add(header2Panel, constraints);
+        return header2Panel;
     }
 
     @Override
@@ -34,13 +40,21 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         return imagesP;
     }
 
+//    @Override
+//    public BasicPanel buildRightPanelDesign() {
+//        VideosP videoPlayerPanel = new VideosP();
+//        GridBagConstraints constraints = getVideoPlayerLayoutSettings();
+//        panel.add(videoPlayerPanel, constraints);
+//        return videoPlayerPanel;
+//    }
     @Override
     public BasicPanel buildRightPanelDesign() {
-        VideosP videoPlayerPanel = new VideosP();
-        GridBagConstraints constraints = getVideoPlayerLayoutSettings();
-        panel.add(videoPlayerPanel, constraints);
-        return videoPlayerPanel;
+        DescriptionP descriptionPanel = new DescriptionP();
+        GridBagConstraints constraints = getDescriptionPanelLayoutSettings();
+        panel.add(descriptionPanel, constraints);
+        return descriptionPanel;
     }
+
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
@@ -50,14 +64,26 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         return headerPanel;
     }
 
-    private GridBagConstraints getHeaderPanelLayoutSettings() {
+    private GridBagConstraints getHeader1PanelLayoutSettings() {
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 0;
         constraints.gridy = 0;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 1;
         constraints.gridheight = 1;
-        constraints.weightx = 1;
-        constraints.weighty = 0.05;
+        constraints.weightx = 0.1;
+        constraints.weighty = 0.1;
+
+        return constraints;
+    }
+
+    private GridBagConstraints getHeader2PanelLayoutSettings() {
+        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.weightx = 0.9;
+        constraints.weighty = 0.1;
 
         return constraints;
     }
@@ -69,19 +95,19 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 0.5;
-        constraints.weighty = 0.9;
+        constraints.weighty = 0.7;
 
         return constraints;
     }
 
-    private GridBagConstraints getVideoPlayerLayoutSettings() {
+    private GridBagConstraints getDescriptionPanelLayoutSettings() {
         GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 0.5;
-        constraints.weighty = 0.9;
+        constraints.weighty = 0.7;
 
         return constraints;
     }
@@ -93,7 +119,7 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         constraints.gridwidth = 2;
         constraints.gridheight = 1;
         constraints.weightx = 1;
-        constraints.weighty = 0.05;
+        constraints.weighty = 0.1;
 
         return constraints;
     }

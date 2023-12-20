@@ -1,40 +1,43 @@
-package ru.app.project.windows.cards.mainSelector.panels;
+package ru.app.project.windows.cards.itemDescription.panels;
 
-import ru.app.project.config.window.MainSelectorCStateConfig;
-import ru.app.project.design.mainSelector.impl.panels.BasicFooterPDBuilder;
-import ru.app.project.design.mainSelector.interf.panels.FooterPDBuilder;
-import ru.app.project.utility.ConfigLoader;
+import ru.app.project.config.window.ItemDescriptionCStateConfig;
+import ru.app.project.design.itemDescription.impl.panels.BasicHeader2PDBuilder;
+import ru.app.project.design.itemDescription.interf.panels.Header2PDBuilder;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
 
-public class FooterP extends JPanel implements BasicPanel {
+public class Header2P extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private final FooterPDBuilder designBuilder;
-    private MainSelectorCStateConfig config;
+    private final Header2PDBuilder designBuilder;
+    private ItemDescriptionCStateConfig.Item config;
     private MutableComponent parent;
-
     private JLabel description;
 
-    public FooterP() {
-        this.designBuilder = new BasicFooterPDBuilder(this);
+    public Header2P() {
+        this.designBuilder = new BasicHeader2PDBuilder(this);
 
-        this.rootWindow = null;
         this.config = null;
+        this.rootWindow = null;
 
         this.applyDesign();
         this.applyLogic();
     }
-    @Override
 
+    @Override
     public void applyDesign() {
         description = designBuilder.buildJLabelDesign();
     }
 
     @Override
     public void applyLogic(){
+    }
+
+    @Override
+    public void applyConfig() {
+        description.setText(config.getDescription());
     }
 
     @Override
@@ -48,17 +51,12 @@ public class FooterP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void applyConfig() {
-        description.setText(config.getFDescription());
-    }
-
-    @Override
     public void setRootWindow(RootWindow rootWindow) {
         this.rootWindow = rootWindow;
     }
 
     @Override
     public void setConfig(Object config) {
-        this.config = (MainSelectorCStateConfig)config;
+        this.config = (ItemDescriptionCStateConfig.Item)config;
     }
 }

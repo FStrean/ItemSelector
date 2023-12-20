@@ -60,7 +60,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void loadConfig() {
+    public void applyConfig() {
         for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {
             buttons.get(i).setText(config.getButtons().get(i));
         }

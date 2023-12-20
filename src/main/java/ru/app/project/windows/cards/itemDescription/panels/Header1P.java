@@ -2,17 +2,18 @@ package ru.app.project.windows.cards.itemDescription.panels;
 
 import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.ItemDescriptionCStateConfig;
-import ru.app.project.design.itemDescription.impl.panels.BasicHeaderPDBuilder;
-import ru.app.project.design.itemDescription.interf.panels.HeaderPDBuilder;
+import ru.app.project.design.itemDescription.impl.panels.BasicHeader1PDBuilder;
+import ru.app.project.design.itemDescription.interf.panels.Header1PDBuilder;
+import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
 
 import javax.swing.*;
 
-public class HeaderP extends JPanel implements ru.app.project.windows.BasicPanel {
+public class Header1P extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private final HeaderPDBuilder designBuilder;
+    private final Header1PDBuilder designBuilder;
     private ItemDescriptionCStateConfig.Item config;
     private MutableComponent parent;
 
@@ -22,8 +23,8 @@ public class HeaderP extends JPanel implements ru.app.project.windows.BasicPanel
 
     private int id;
 
-    public HeaderP() {
-        this.designBuilder = new BasicHeaderPDBuilder(this);
+    public Header1P() {
+        this.designBuilder = new BasicHeader1PDBuilder(this);
 
         this.config = null;
         this.rootWindow = null;
@@ -36,7 +37,6 @@ public class HeaderP extends JPanel implements ru.app.project.windows.BasicPanel
     public void applyDesign() {
         buttonLeft = designBuilder.buildJButton1Design();
         buttonRight = designBuilder.buildJButton2Design();
-        description = designBuilder.buildJLabelDesign();
     }
 
     @Override
@@ -53,9 +53,8 @@ public class HeaderP extends JPanel implements ru.app.project.windows.BasicPanel
     }
 
     @Override
-    public void loadConfig() {
+    public void applyConfig() {
         id = config.getId();
-        description.setText(config.getDescription());
     }
 
     @Override

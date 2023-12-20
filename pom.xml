@@ -6,7 +6,7 @@
 
   <groupId>ru.app.project</groupId>
   <artifactId>Multimedia-Software</artifactId>
-  <version>3.0.0-beta</version>
+  <version>3.0.0-pre-release</version>
 
   <name>ItemSelector</name>
 
@@ -22,11 +22,6 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>uk.co.caprica</groupId>
-      <artifactId>vlcj</artifactId>
-      <version>4.8.2</version>
     </dependency>
 
     <dependency>

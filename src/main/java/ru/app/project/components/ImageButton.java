@@ -31,13 +31,15 @@ public class ImageButton extends JButton {
         int newImageWidth = (int) (imageWidth / imageRatio);
         int newImageHeight = (int) (imageHeight / imageRatio);
 
-        int dimWidth = getWidth();
-        int dimHeight = getHeight();
+        int size = getWidth();
         if(getWidth() != newImageWidth) {
-            dimWidth = newImageWidth;
+            size = newImageWidth;
         }
-        setSize(new Dimension(dimWidth, dimHeight));
+        setSize(new Dimension(size, size));
         super.paintComponent(g);
-        g.drawImage(image,  0 , 0 , newImageWidth , newImageHeight , imageObserver);
+        int x = 0;
+        int y = 0;
+        //y = (int)((double)(panelHeight - newImageWidth) / 2);
+        g.drawImage(image,  x , y , newImageWidth , newImageHeight , imageObserver);
     }
 }

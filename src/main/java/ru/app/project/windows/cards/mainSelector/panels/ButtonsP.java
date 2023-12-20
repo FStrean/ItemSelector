@@ -60,7 +60,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void loadConfig() {
+    public void applyConfig() {
         buttons.get(0).setText(config.getButton1());
         buttons.get(1).setText(config.getButton2());
         buttons.get(2).setText(config.getButton3());
