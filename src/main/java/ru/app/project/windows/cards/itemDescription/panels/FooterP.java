@@ -1,5 +1,6 @@
 package ru.app.project.windows.cards.itemDescription.panels;
 
+import ru.app.project.components.ImageButton;
 import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.design.itemDescription.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.itemDescription.interf.panels.FooterPDBuilder;
@@ -19,7 +20,7 @@ public class FooterP extends JPanel implements BasicPanel {
 
     private JButton button;
     private JLabel description;
-    private JButton homeButton;
+    private ImageButton homeButton;
 
     public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);

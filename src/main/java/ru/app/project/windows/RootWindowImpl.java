@@ -1,5 +1,6 @@
 package ru.app.project.windows;
 
+import ru.app.project.config.AppProperties;
 import ru.app.project.config.SystemProperties;
 import ru.app.project.windows.cards.description.DescriptionC;
 import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
@@ -22,12 +23,12 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
 
-        defineInitialWindowSize();
+        this.defineInitialWindowSize();
 
-        cardLayout = new CardLayout();
+        this.cardLayout = new CardLayout();
 
-        applyDesign();
-        applyLogic();
+        this.applyDesign();
+        this.applyLogic();
     }
 
     @Override
@@ -80,7 +81,7 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
         int x = (width - height) / 2;
         int y = (width - height) / 2;
 
-        this.setSize((int)((double)width / 1.5), (int)((double)height / 1.5));
+        this.setSize(AppProperties.getWinW(), AppProperties.getWinH());
         this.setLocation(x, y);
 
         this.setLocationRelativeTo(null);

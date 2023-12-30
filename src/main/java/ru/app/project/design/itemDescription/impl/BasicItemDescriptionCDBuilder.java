@@ -1,126 +1,61 @@
 package ru.app.project.design.itemDescription.impl;
 
-import ru.app.project.design.BasicSettings;
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
+import ru.app.project.utility.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.itemDescription.panels.*;
 //import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     private final JPanel panel;
+
+    private final JPanel contentPanel;
     public BasicItemDescriptionCDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setLayout(new GridBagLayout());
+
+        this.contentPanel = new JPanel();
+
+        RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS);
+        RelativeLayout headerLayout = new RelativeLayout(RelativeLayout.X_AXIS);
+        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS);
+
+        mainLayout.setFill(true);
+        headerLayout.setFill(true);
+        contentLayout.setFill(true);
+
+        this.panel.setLayout(mainLayout);
+        this.contentPanel.setLayout(contentLayout);
     }
 
     @Override
-    public BasicPanel buildHeader1PanelDesign() {
-        Header1P header1Panel = new Header1P();
-        GridBagConstraints constraints = getHeader1PanelLayoutSettings();
-        panel.add(header1Panel, constraints);
-        return header1Panel;
-    }
-
-    @Override
-    public BasicPanel buildHeader2PanelDesign() {
-        Header2P header2Panel = new Header2P();
-        GridBagConstraints constraints = getHeader2PanelLayoutSettings();
-        panel.add(header2Panel, constraints);
-        return header2Panel;
+    public BasicPanel buildHeaderPanelDesign() {
+        HeaderP headerPanel = new HeaderP();
+        panel.add(headerPanel, 15.0f);
+        return headerPanel;
     }
 
     @Override
     public BasicPanel buildLeftPanelDesign() {
         ImagesP imagesP = new ImagesP();
-        GridBagConstraints constraints = getImagePanelLayoutSettings();
-        panel.add(imagesP, constraints);
+        contentPanel.add(imagesP, 35.0f);
         return imagesP;
     }
 
-//    @Override
-//    public BasicPanel buildRightPanelDesign() {
-//        VideosP videoPlayerPanel = new VideosP();
-//        GridBagConstraints constraints = getVideoPlayerLayoutSettings();
-//        panel.add(videoPlayerPanel, constraints);
-//        return videoPlayerPanel;
-//    }
     @Override
     public BasicPanel buildRightPanelDesign() {
         DescriptionP descriptionPanel = new DescriptionP();
-        GridBagConstraints constraints = getDescriptionPanelLayoutSettings();
-        panel.add(descriptionPanel, constraints);
+        contentPanel.add(descriptionPanel, 65.0f);
+        panel.add(contentPanel, 75.0f);
         return descriptionPanel;
     }
 
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
-        FooterP headerPanel = new FooterP();
-        GridBagConstraints constraints = getFooterLayoutSettings();
-        panel.add(headerPanel, constraints);
-        return headerPanel;
-    }
-
-    private GridBagConstraints getHeader1PanelLayoutSettings() {
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 0.1;
-        constraints.weighty = 0.1;
-
-        return constraints;
-    }
-
-    private GridBagConstraints getHeader2PanelLayoutSettings() {
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 0.9;
-        constraints.weighty = 0.1;
-
-        return constraints;
-    }
-
-    private GridBagConstraints getImagePanelLayoutSettings() {
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 0.5;
-        constraints.weighty = 0.7;
-
-        return constraints;
-    }
-
-    private GridBagConstraints getDescriptionPanelLayoutSettings() {
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 0.5;
-        constraints.weighty = 0.7;
-
-        return constraints;
-    }
-
-    private GridBagConstraints getFooterLayoutSettings() {
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        constraints.gridwidth = 2;
-        constraints.gridheight = 1;
-        constraints.weightx = 1;
-        constraints.weighty = 0.1;
-
-        return constraints;
+        FooterP header1Panel = new FooterP();
+        panel.add(header1Panel, 10.0f);
+        return header1Panel;
     }
 }

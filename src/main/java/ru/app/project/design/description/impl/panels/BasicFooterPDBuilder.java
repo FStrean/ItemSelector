@@ -29,8 +29,8 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     }
 
     @Override
-    public JButton buildJButtonDesign() {
-        JButton button = new ImageButton("icons/home.png");
+    public ImageButton buildJButtonDesign() {
+        ImageButton button = new ImageButton("icons/home.png");
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
         constraints.gridx = 1;

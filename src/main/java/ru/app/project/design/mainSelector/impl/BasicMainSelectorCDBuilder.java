@@ -1,6 +1,5 @@
 package ru.app.project.design.mainSelector.impl;
 
-import ru.app.project.design.BasicSettings;
 import ru.app.project.design.mainSelector.interf.MainSelectorCDBuilder;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.mainSelector.panels.ButtonsP;
@@ -20,13 +19,17 @@ public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
     @Override
     public BasicPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
+
+        GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 1;
         constraints.weighty = 0.05;
+        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.BOTH;
+
         panel.add(headerPanel, constraints);
         return headerPanel;
     }
@@ -42,13 +45,17 @@ public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
         panel.add(new JPanel(), constraints__);
 
         ButtonsP buttonsPanel = new ButtonsP();
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
+
+        GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 1;
         constraints.weighty = 0.35;
+        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.BOTH;
+
         panel.add(buttonsPanel, constraints);
 
         GridBagConstraints constraints_ = new GridBagConstraints();
@@ -64,13 +71,17 @@ public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
     @Override
     public BasicPanel buildFooterPanelDesign() {
         FooterP headerPanel = new FooterP();
-        GridBagConstraints constraints = BasicSettings.getDefaultGridBagLayout();
+
+        GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = 0;
         constraints.gridy = 4;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 1;
         constraints.weighty = 0.05;
+        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.BOTH;
+
         panel.add(headerPanel, constraints);
         return headerPanel;
     }

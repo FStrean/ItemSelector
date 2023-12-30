@@ -1,5 +1,6 @@
 package ru.app.project.windows.cards.selector.panels;
 
+import ru.app.project.components.ImageButton;
 import ru.app.project.config.window.SelectorCStateConfig;
 import ru.app.project.design.selector.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.selector.interf.panels.FooterPDBuilder;
@@ -17,7 +18,7 @@ public class FooterP extends JPanel implements BasicPanel {
     private MutableComponent parent;
 
     private JLabel description;
-    private JButton button;
+    private ImageButton button;
 
     public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);

@@ -4,8 +4,8 @@ import ru.app.project.components.ImageButton;
 
 import javax.swing.*;
 
-public interface FooterPDBuilder {
-    JButton buildJButton1Design();
-    JLabel buildJLabelDesign();
+public interface HeaderPDBuilder {
+    ImageButton buildJButton1Design();
     ImageButton buildJButton2Design();
+    JLabel buildJLabelDesign();
 }

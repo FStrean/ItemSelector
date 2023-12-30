@@ -1,8 +1,14 @@
 package ru.app.project.config;
 
-import ru.app.project.config.window.ItemDescriptionCStateConfig;
-
 public class AppProperties {
+    private static final int winW = (int)((double)SystemProperties.getScreenWidth() / 1.5);
+    private static final int winH = (int)((double)SystemProperties.getScreenHeight() / 1.5);
+    public static int getWinW() {
+        return winW;
+    }
+    public static int getWinH() {
+        return winH;
+    }
     public static String getConfigFolderPath() {
         return "config";
     }
