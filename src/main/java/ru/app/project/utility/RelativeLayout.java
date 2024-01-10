@@ -196,7 +196,7 @@ public class RelativeLayout implements LayoutManager2, java.io.Serializable
     /*
      *  Set the alignment of the component on the opposite axis.
      *
-     *  For X-AXIS this would refer to the Y alignemt.
+     *  For X-AXIS this would refer to the Y alignment.
      *  For Y-AXIS this would refer to the X alignment.
      *
      *  Must be between 0.0 and 1.0, or -1. Values can be specified using:
@@ -204,7 +204,7 @@ public class RelativeLayout implements LayoutManager2, java.io.Serializable
      *  RelativeLayout.LEADING
      *  RelativeLayout.CENTER
      *  RelativeLayout.TRAILING
-     *  RelativeLayout.COMPONENT - the getAlignemntX/Y method for the
+     *  RelativeLayout.COMPONENT - the getAlignmentX/Y method for the
      *							 opposite axis will be used
      */
     public void setAlignment(float alignment)

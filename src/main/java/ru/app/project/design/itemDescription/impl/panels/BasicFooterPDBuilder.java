@@ -11,7 +11,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;
     public BasicFooterPDBuilder(JPanel panel) {
         this.panel = panel;
-        RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS);
+        RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
         layout.setFill(true);
         this.panel.setLayout(layout);
     }
@@ -33,6 +33,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public ImageButton buildJButton2Design() {
         ImageButton button = new ImageButton("icons/home.png");
+        button.setAlign(BorderLayout.LINE_END, BorderLayout.LINE_END);
         panel.add(button, 5.0f);
         return button;
     }

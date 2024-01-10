@@ -1,6 +1,7 @@
 package ru.app.project.design.description.impl;
 
 import ru.app.project.design.description.interf.DescriptionCDBuilder;
+import ru.app.project.utility.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.description.panels.ButtonsP;
 import ru.app.project.windows.cards.description.panels.DescriptionP;
@@ -12,80 +13,47 @@ import java.awt.*;
 
 public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
     private final JPanel panel;
+    private final JPanel contentPanel;
     public BasicDescriptionCDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setLayout(new GridBagLayout());
+        this.contentPanel = new JPanel();
+
+        RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
+        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
+
+        mainLayout.setFill(true);
+        contentLayout.setFill(true);
+
+        this.panel.setLayout(mainLayout);
+        this.contentPanel.setLayout(contentLayout);
     }
 
     @Override
     public BasicPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.gridwidth = 2;
-        constraints.gridheight = 1;
-        constraints.weightx = 1;
-        constraints.weighty = 0.1;
-        constraints.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.BOTH;
-
-        panel.add(headerPanel, constraints);
+        panel.add(headerPanel, 15.0f);
         return headerPanel;
     }
 
     @Override
     public BasicPanel buildLeftPanelDesign() {
         ButtonsP buttonsPanel = new ButtonsP();
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 0.1;
-        constraints.weighty = 0.8;
-        constraints.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.BOTH;
-
-        panel.add(buttonsPanel, constraints);
+        contentPanel.add(buttonsPanel, 20.0f);
         return buttonsPanel;
     }
 
     @Override
     public BasicPanel buildRightPanelDesign() {
         DescriptionP descriptionPanel = new DescriptionP();
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 0.9;
-        constraints.weighty = 0.8;
-        constraints.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.BOTH;
-
-        panel.add(descriptionPanel, constraints);
+        contentPanel.add(descriptionPanel, 80.0f);
+        panel.add(contentPanel, 75.0f);
         return descriptionPanel;
     }
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
         FooterP footerPanel = new FooterP();
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        constraints.gridwidth = 2;
-        constraints.gridheight = 1;
-        constraints.weightx = 1;
-        constraints.weighty = 0.1;
-        constraints.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.BOTH;
-
-        panel.add(footerPanel, constraints);
+        panel.add(footerPanel, 10.0f);
         return footerPanel;
     }
 }

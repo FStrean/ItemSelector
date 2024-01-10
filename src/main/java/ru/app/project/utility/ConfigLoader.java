@@ -57,7 +57,7 @@ public class ConfigLoader<T> {
         }
         catch (JAXBException e) {
             JOptionPane.showMessageDialog(null,
-                    "Ошибка при парсинге конфигурационного файла: " + e.getMessage(),
+                    "Ошибка при распознавании конфигурационного файла: " + e.getMessage(),
                     "Ошибка", JOptionPane.ERROR_MESSAGE);
         }
     }

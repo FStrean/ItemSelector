@@ -17,12 +17,10 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
 
         this.contentPanel = new JPanel();
 
-        RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS);
-        RelativeLayout headerLayout = new RelativeLayout(RelativeLayout.X_AXIS);
-        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS);
+        RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
+        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
 
         mainLayout.setFill(true);
-        headerLayout.setFill(true);
         contentLayout.setFill(true);
 
         this.panel.setLayout(mainLayout);

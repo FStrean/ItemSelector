@@ -32,8 +32,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        button1 = designBuilder.buildJButton1Design();
-        button2 = designBuilder.buildJButton2Design();
+        button1 = designBuilder.buildJButtonDesign();
+        button2 = designBuilder.buildJButtonDesign();
     }
 
     @Override

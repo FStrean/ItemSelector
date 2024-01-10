@@ -5,12 +5,13 @@ import ru.app.project.design.itemDescription.interf.panels.HeaderPDBuilder;
 import ru.app.project.utility.RelativeLayout;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     private final JPanel panel;
     public BasicHeaderPDBuilder(JPanel panel) {
         this.panel = panel;
-        RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS);
+        RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
         layout.setFill(true);
         this.panel.setLayout(layout);
     }
@@ -18,6 +19,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     @Override
     public ImageButton buildJButton1Design() {
         ImageButton button = new ImageButton("icons/arrow_left.png");
+        button.setAlign(BorderLayout.LINE_START, BorderLayout.LINE_START);
         panel.add(button, 5.0f);
         return button;
     }
@@ -25,6 +27,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     @Override
     public ImageButton buildJButton2Design() {
         ImageButton button = new ImageButton("icons/arrow_right.png");
+        button.setAlign(BorderLayout.LINE_START, BorderLayout.LINE_START);
         panel.add(button, 5.0f);
         return button;
     }

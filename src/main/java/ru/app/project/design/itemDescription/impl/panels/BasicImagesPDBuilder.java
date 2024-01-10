@@ -19,7 +19,7 @@ public class BasicImagesPDBuilder implements ImagesPDBuilder {
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
         jPanel.add(imagesPanel);
-        jPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        jPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
         panel.add(jPanel);
         return imagesPanel;
     }
