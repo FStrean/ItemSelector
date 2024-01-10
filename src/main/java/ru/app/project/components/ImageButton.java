@@ -24,8 +24,6 @@ public class ImageButton extends JPanel {
     private float topRatio = 0.5f, leftRatio = 0.5f, bottomRatio = 0.5f, rightRatio = 0.5f;
     private int top = 0, left = 0, bottom = 0, right = 0;
 
-    private boolean isJustResized = false;
-
     public ImageButton(String path){
         super();
         ImageIcon icon = new ImageIcon(path);
@@ -38,6 +36,7 @@ public class ImageButton extends JPanel {
         button = new JButton() {
             @Override
             public void paintComponent(Graphics g) {
+                super.paintComponent(g);
                 setSize(new Dimension(newImageWidth, newImageHeight));
                 g.drawImage(image, x, y, newImageWidth, newImageHeight, imageObserver);
             }
@@ -65,8 +64,8 @@ public class ImageButton extends JPanel {
 
                 double imageRatio = Math.max(intermediateImageWidthRatio, intermediateImageHeightRatio);
 
-                newImageWidth = (int) ((double) imageWidth / imageRatio);
-                newImageHeight = (int) ((double) imageHeight / imageRatio);
+                newImageWidth = Math.min((int) ((double) imageWidth / imageRatio), imageWidth);
+                newImageHeight = Math.min((int) ((double) imageHeight / imageRatio), imageHeight);
 
                 top = (int) ((float) (panelHeight - newImageHeight) * topRatio);
                 left = (int) ((float) (panelWidth - newImageWidth) * leftRatio);
@@ -74,7 +73,9 @@ public class ImageButton extends JPanel {
                 right = (int) ((float) (panelWidth - newImageWidth) * rightRatio);
 
                 ImageButton.this.setBorder(new EmptyBorder(top, left, bottom, right));
-                updateUI();
+                if(isVisible()) {
+                    ImageButton.this.updateUI();
+                }
             }
 
         });
@@ -84,26 +85,34 @@ public class ImageButton extends JPanel {
     }
 
     public void setAlign(String xAlign, String yAlign) {
-        if (xAlign.equals(BorderLayout.LINE_START)) {
-            leftRatio = 0.0f;
-            rightRatio = 1.0f;
-        } else if (xAlign.equals(BorderLayout.CENTER)) {
-            leftRatio = 0.5f;
-            rightRatio = 0.5f;
-        } else if (xAlign.equals(BorderLayout.LINE_END)) {
-            leftRatio = 1.0f;
-            rightRatio = 0.0f;
+        switch (xAlign) {
+            case BorderLayout.LINE_START -> {
+                leftRatio = 0.0f;
+                rightRatio = 1.0f;
+            }
+            case BorderLayout.CENTER -> {
+                leftRatio = 0.5f;
+                rightRatio = 0.5f;
+            }
+            case BorderLayout.LINE_END -> {
+                leftRatio = 1.0f;
+                rightRatio = 0.0f;
+            }
         }
 
-        if (yAlign.equals(BorderLayout.LINE_START)) {
-            topRatio = 0.0f;
-            bottomRatio = 1.0f;
-        } else if (yAlign.equals(BorderLayout.CENTER)) {
-            topRatio = 0.5f;
-            bottomRatio = 0.5f;
-        } else if (yAlign.equals(BorderLayout.LINE_END)) {
-            topRatio = 1.0f;
-            bottomRatio = 0.0f;
+        switch (yAlign) {
+            case BorderLayout.LINE_START -> {
+                topRatio = 0.0f;
+                bottomRatio = 1.0f;
+            }
+            case BorderLayout.CENTER -> {
+                topRatio = 0.5f;
+                bottomRatio = 0.5f;
+            }
+            case BorderLayout.LINE_END -> {
+                topRatio = 1.0f;
+                bottomRatio = 0.0f;
+            }
         }
     }
 
