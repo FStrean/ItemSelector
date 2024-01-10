@@ -30,16 +30,14 @@ public class BasicSelectorCDBuilder implements SelectorCDBuilder {
     @Override
     public BasicPanel buildCenterPanelDesign() {
         ButtonsP buttonsPanel = new ButtonsP();
-        panel.add(new JPanel(), 15.0f);
-        panel.add(buttonsPanel, 40.0f);
-        panel.add(new JPanel(), 20.0f);
+        panel.add(buttonsPanel, 55.0f);
         return buttonsPanel;
     }
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
         FooterP headerPanel = new FooterP();
-        panel.add(headerPanel, 10.0f);
+        panel.add(headerPanel, 30.0f);
         return headerPanel;
     }
 }

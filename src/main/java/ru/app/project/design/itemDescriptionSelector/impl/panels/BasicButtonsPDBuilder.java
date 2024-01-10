@@ -1,5 +1,6 @@
 package ru.app.project.design.itemDescriptionSelector.impl.panels;
 
+import ru.app.project.config.AppProperties;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.ButtonsPDBuilder;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     private JPanel panel;
     public BasicButtonsPDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setLayout(new GridLayout(0,5));
+        this.panel.setLayout(new GridLayout(0, AppProperties.getNumberOfItemsInItemDescriptionWindow() / 3));
     }
 
     @Override

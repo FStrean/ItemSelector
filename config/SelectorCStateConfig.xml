@@ -20,4 +20,14 @@
                 Работа комплекса КРС КПТВ.412168.002
             </center>
         </html>]]></hDescription>
+    <leftButton1><![CDATA[<html>
+            <center style="font-size: 15;">
+                Состав комплекса
+            </center>
+        </html>]]></leftButton1>
+    <leftButton2><![CDATA[<html>
+            <center style="font-size: 15;">
+                Назначение комплекса
+            </center>
+        </html>]]></leftButton2>
 </selectorCStateConfig>

@@ -7,6 +7,8 @@ import ru.app.project.design.selector.interf.panels.FooterPDBuilder;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.cards.description.DescriptionC;
+import ru.app.project.windows.cards.itemDescriptionSelector.ItemDescriptionSelectorC;
 import ru.app.project.windows.cards.mainSelector.MainSelectorC;
 
 import javax.swing.*;
@@ -17,6 +19,9 @@ public class FooterP extends JPanel implements BasicPanel {
     private SelectorCStateConfig config;
     private MutableComponent parent;
 
+
+    private JButton leftButton1;
+    private JButton leftButton2;
     private JLabel description;
     private ImageButton button;
 
@@ -32,12 +37,16 @@ public class FooterP extends JPanel implements BasicPanel {
     @Override
 
     public void applyDesign() {
+        leftButton1 = designBuilder.buildLeftButtonDesign();
+        leftButton2 = designBuilder.buildLeftButtonDesign();
         description = designBuilder.buildJLabelDesign();
         button = designBuilder.buildJButtonDesign();
     }
 
     @Override
     public void applyLogic(){
+        leftButton1.addActionListener(event -> rootWindow.showCard(ItemDescriptionSelectorC.class));
+        leftButton2.addActionListener(event -> rootWindow.showCard(DescriptionC.class));
         button.addActionListener(event -> rootWindow.showCard(MainSelectorC.class));
     }
 
@@ -53,6 +62,8 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
+        leftButton1.setText(config.getLeftButton1());
+        leftButton2.setText(config.getLeftButton2());
         description.setText(config.getFDescription());
     }
 
