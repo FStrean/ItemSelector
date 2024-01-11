@@ -36,8 +36,14 @@ public class RoundButton extends JButton {
         g2.setStroke(new BasicStroke(2f));
         if (getModel().isRollover()) {
             g2.setColor(UIManager.getColor("Button.shadow"));
+        } else if(getModel().isArmed()) {
+            g2.setColor(Color.GRAY);
         } else {
             g2.setColor(color);
+        }
+
+        if(getModel().isArmed()) {
+            g2.setColor(Color.GRAY);
         }
 
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
