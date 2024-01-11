@@ -4,6 +4,8 @@ import ru.app.project.config.window.MainSelectorCStateConfig;
 import ru.app.project.design.mainSelector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.mainSelector.interf.panels.ButtonsPDBuilder;
 import ru.app.project.utility.ConfigLoader;
+import ru.app.project.utility.TextSizeCalculator;
+import ru.app.project.utility.TextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -12,6 +14,8 @@ import ru.app.project.windows.cards.itemDescriptionSelector.ItemDescriptionSelec
 import ru.app.project.windows.cards.selector.SelectorC;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +35,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
         this.config = null;
 
         this.applyDesign();
-        this.applyLogic();
     }
 
     @Override
@@ -47,6 +50,18 @@ public class ButtonsP extends JPanel implements BasicPanel {
         buttons.get(0).addActionListener(event -> rootWindow.showCard(DescriptionC.class));
         buttons.get(1).addActionListener(event -> rootWindow.showCard(ItemDescriptionSelectorC.class));
         buttons.get(2).addActionListener(event -> rootWindow.showCard(SelectorC.class));
+
+        double ratio = TextSizeRatioCalculator.getJButtonTextRatio(buttons.get(0), 0.5, 10);
+        if (ratio != -1.0) {
+            this.addComponentListener(new ComponentAdapter() {
+                @Override
+                public void componentResized(ComponentEvent e) {
+                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(0), getHeight(), ratio);
+                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(1), getHeight(), ratio);
+                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(2), getHeight(), ratio);
+                }
+            });
+        }
     }
 
     @Override
@@ -64,6 +79,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
         buttons.get(0).setText(config.getButton1());
         buttons.get(1).setText(config.getButton2());
         buttons.get(2).setText(config.getButton3());
+        applyLogic();
     }
 
     @Override

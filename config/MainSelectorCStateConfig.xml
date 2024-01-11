@@ -4,7 +4,7 @@
         <style>
             span, ol, li, div, center {
               font-size: 28px;
-              font-family: 'Calibri', sans-serif;;
+              font-family: 'Calibri', sans-serif;
             }
         </style>
         <center>
@@ -15,7 +15,7 @@
         <style>
             span, ol, li, div, center {
               font-size: 28px;
-              font-family: 'Calibri', sans-serif;;
+              font-family: 'Calibri', sans-serif;
             }
         </style>
         <center>
@@ -26,7 +26,7 @@
         <style>
             span, ol, li, div, center {
               font-size: 28px;
-              font-family: 'Calibri', sans-serif;;
+              font-family: 'Calibri', sans-serif;
             }
         </style>
         <center>
@@ -36,8 +36,8 @@
     <fDescription><![CDATA[<html>
         <style>
             span, ol, li, div, center {
-              font-size: 28px;
-              font-family: 'Calibri Light', sans-serif;;
+              font-size: 30px;
+              font-family: 'Calibri Light', sans-serif;
             }
         </style>
         <center>
@@ -48,7 +48,7 @@
         <style>
             span, ol, li, div, center {
               font-size: 60px;
-              font-family: 'Calibri Light', sans-serif;;
+              font-family: 'Calibri Light', sans-serif;
             }
         </style>
         <center>
