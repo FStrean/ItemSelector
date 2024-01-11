@@ -38,7 +38,9 @@ public class ImageButton extends JPanel {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 setSize(new Dimension(newImageWidth, newImageHeight));
-                g.drawImage(image, x, y, newImageWidth, newImageHeight, imageObserver);
+                if(!getModel().isArmed()) {
+                    g.drawImage(image, x, y, newImageWidth, newImageHeight, imageObserver);
+                }
             }
         };
 
