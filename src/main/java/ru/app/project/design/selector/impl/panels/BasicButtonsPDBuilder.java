@@ -7,6 +7,7 @@ import ru.app.project.design.selector.interf.panels.ButtonsPDBuilder;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -36,6 +37,10 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     @Override
     public JLabel buildDescription() {
         JLabel label = new JLabel();
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+        label.setBackground(Color.LIGHT_GRAY);
+        label.setOpaque(true);
         panel.add(label);
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
@@ -43,7 +48,12 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
         constraints.gridy = 0;
         constraints.weightx = 1;
         constraints.weighty = 0.2;
-        panel.add(label, constraints);
+
+        JPanel jPanel = new JPanel(new BorderLayout());
+        jPanel.add(label);
+        jPanel.setBorder(new EmptyBorder(0, 100, 0, 100));
+
+        panel.add(jPanel, constraints);
         return label;
     }
 
@@ -62,8 +72,10 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
         image.setImage(img);
         buttonPanel.add(image);
         JButton button = new JButton();
+        button.setBackground(Color.BLACK);
+        button.setForeground(Color.WHITE);
         JPanel jPanel = new JPanel(new BorderLayout());
-        jPanel.setBorder(new EmptyBorder(15, 40, 15, 40));
+        jPanel.setBorder(new EmptyBorder(0, 80, 15, 80));
         jPanel.add(button);
         buttonPanel.add(jPanel);
         buttonsPanel.add(buttonPanel, 50.0f);
