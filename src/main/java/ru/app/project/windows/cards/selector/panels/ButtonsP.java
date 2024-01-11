@@ -18,6 +18,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
     private SelectorCStateConfig config;
     private MutableComponent parent;
 
+    private JLabel description;
     private final List<JButton> buttons;
 
     public ButtonsP() {
@@ -33,6 +34,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
+        description = designBuilder.buildDescription();
         for(int i = 0; i < 2; i++) {
             JButton jButton = designBuilder.buildJButtonDesign();
             buttons.add(jButton);

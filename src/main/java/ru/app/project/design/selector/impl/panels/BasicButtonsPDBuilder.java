@@ -20,6 +20,12 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     }
 
     @Override
+    public JLabel buildDescription() {
+        JLabel label = new JLabel();
+        return label;
+    }
+
+    @Override
     public JButton buildJButtonDesign() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0,1));
