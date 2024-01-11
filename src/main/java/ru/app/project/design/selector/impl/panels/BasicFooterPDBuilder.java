@@ -1,6 +1,7 @@
 package ru.app.project.design.selector.impl.panels;
 
 import ru.app.project.components.ImageButton;
+import ru.app.project.components.RoundButton;
 import ru.app.project.design.selector.interf.panels.FooterPDBuilder;
 import ru.app.project.components.RelativeLayout;
 
@@ -23,7 +24,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
 
     @Override
     public JButton buildLeftButtonDesign() {
-        JButton button = new JButton();
+        RoundButton button = new RoundButton("", 40, Color.BLACK);
         JPanel jPanel = new JPanel(new BorderLayout());
         jPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
         jPanel.add(button);

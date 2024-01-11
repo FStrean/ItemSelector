@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <descriptionCStateConfig>
     <button1><![CDATA[<html>
-            <center style="font-size: 15;">
+            <center style="font-size: 25;">
                 Состав комплекса
             </center>
         </html>]]></button1>
     <button2><![CDATA[<html>
-            <center style="font-size: 15;">
+            <center style="font-size: 25;">
                 Работа комплекса
             </center>
         </html>]]></button2>
     <description><![CDATA[<html>
-            <ol style="font-size: 20;">
+            <ol style="font-size: 25;">
                 <li>Экспрессная оценка в полевых условиях источника загрязнения (обнаружения, идентификации радионуклидного состава гамма-излучения)</li>
                 <li>Отбор и подготовка проб различных объектов окружающей среды, пищевых продуктов, фуража</li>
                 <li>Проведение радиометрических измерений проб по альфа- и бета-излучениям</li>
@@ -22,12 +22,12 @@
             </ol>
         </html>]]></description>
     <fDescription><![CDATA[<html>
-            <center style="font-size: 20;">
+            <center style="font-size: 30;">
                 Мультимедийное обучающее программное обеспечение
             </center>
         </html>]]></fDescription>
     <hDescription><![CDATA[<html>
-            <center style="font-size: 35;">
+            <center style="font-size: 45;">
                 Назначение комплекса КРС КПТВ.412168.002
             </center>
         </html>]]></hDescription>

@@ -37,14 +37,21 @@ public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
     @Override
     public BasicPanel buildLeftPanelDesign() {
         ButtonsP buttonsPanel = new ButtonsP();
-        contentPanel.add(buttonsPanel, 20.0f);
+        JPanel jPanel = new JPanel();
+        RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
+        layout.setFill(true);
+        jPanel.setLayout(layout);
+        jPanel.add(new JPanel(), 10.0f);
+        jPanel.add(buttonsPanel, 80.0f);
+        jPanel.add(new JPanel(), 10.0f);
+        contentPanel.add(jPanel, 15.0f);
         return buttonsPanel;
     }
 
     @Override
     public BasicPanel buildRightPanelDesign() {
         DescriptionP descriptionPanel = new DescriptionP();
-        contentPanel.add(descriptionPanel, 80.0f);
+        contentPanel.add(descriptionPanel, 85.0f);
         panel.add(contentPanel, 75.0f);
         return descriptionPanel;
     }

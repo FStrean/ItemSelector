@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <itemDescriptionCStateConfig>
     <button><![CDATA[<html>
-            <center style="font-size: 15;">
+            <center style="font-size: 18;">
                 Состав комплекса КРС
             </center>
         </html>]]></button>
     <description><![CDATA[<html>
-            <center style="font-size: 20;">
+            <center style="font-size: 25;">
                 Мультимедийное обучающее программное обеспечение
             </center>
         </html>]]></description>
@@ -22,7 +22,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 «Альфа-радиометр удельной (объемной) активности АР»  ГО.2.115.00.01 КПТВ.418242.002 предназначен для проведения измерений внутри подвижной радиометрической лаборатории и служит для выполнения задач по:
                 проведению контроля функционирования с выдачей информации о неисправностях;
                 проверке чувствительности с помощью контрольных источников альфа-излучения;
@@ -43,7 +43,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 «Бета-радиометр удельной (объемной) активности БР» ГО.2.115.00.02 КПТВ.418242.003 предназначен для проведения измерений внутри подвижной радиометрической лаборатории и служит для выполнения задач по:
                 проведению контроля функционирования с выдачей информации о неисправностях;
                 проверке чувствительности с помощью контрольных источников бета-излучения;
@@ -64,7 +64,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 «Бета-спектрометр на основе сцинтиллятора БСС» ГО.2.115.00.03 КПТВ.418244.008 предназначен для проведения измерений внутри подвижной радиометрической лаборатории и служит для  выполнения следующих задач по:
                 проведению контроля функционирования с выдачей информации о неисправностях;
                 настройке энергетической шкалы с помощью контрольного источника бета-излучения;
@@ -130,7 +130,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 «Управляющая ПЭВМ» ГО.2.115.00.06 КПТВ.422339.001 предназначена для использования в составе автоматизированного рабочего места оператора.
                 ПЭВМ выполняет вычислительные функции, а также функции ввода-вывода, хранения, отображения и обработки информации.
             </span>
@@ -148,7 +148,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 «Устройство согласования УС» ГО.2.115.00.07 КПТВ.468364.007 предназначено для выполнения следующих функций:
                 устойчивую проводную связь узлов и блоков комплекса с управляющей ПЭВМ;
                 распределение устойчивого электропитания от устройства электропитания УЭП к составным частям комплекса КРС;
@@ -168,7 +168,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 «Устройство электропитания УЭП» ГО.2.115.00.08 КПТВ.436747.004, обеспечивает выполнение следующих функций:
                 преобразование напряжения 12 В (24В) сети постоянного тока, напряжения 220 В сети переменного тока в напряжение 24 В постоянного тока, необходимое для электропитания составных частей комплекса КРС;
                 электропитание составных частей комплекса КРС через устройство согласования УС;
@@ -188,7 +188,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 111
             </span>
         </html>]]></mainDescription>
@@ -205,7 +205,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 111
             </span>
         </html>]]></mainDescription>
@@ -222,7 +222,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 111
             </span>
         </html>]]></mainDescription>
@@ -239,7 +239,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 111
             </span>
         </html>]]></mainDescription>
@@ -256,7 +256,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 111
             </span>
         </html>]]></mainDescription>
@@ -273,14 +273,14 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 111
             </span>
         </html>]]></mainDescription>
     </item>
     <item id="15">
         <description><![CDATA[<html>
-            <center style="font-size: 35;">
+            <center style="font-size: 40;">
                 Комплект пополнения КП КПТВ.412919.023
             </center>
         </html>]]></description>
@@ -290,7 +290,7 @@
         <video></video>
         <video></video>
         <mainDescription><![CDATA[<html>
-            <span style="font-size: 20;">
+            <span style="font-size: 25;">
                 111
             </span>
         </html>]]></mainDescription>

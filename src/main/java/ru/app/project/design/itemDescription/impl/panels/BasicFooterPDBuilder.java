@@ -18,6 +18,8 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public JButton buildJButton1Design() {
         JButton button = new JButton();
+        button.setForeground(Color.WHITE);
+        button.setBackground(Color.BLACK);
         panel.add(button, 15.0f);
         return button;
     }
