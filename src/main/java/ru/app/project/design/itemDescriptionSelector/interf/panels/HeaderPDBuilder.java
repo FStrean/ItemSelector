@@ -3,7 +3,6 @@ package ru.app.project.design.itemDescriptionSelector.interf.panels;
 import javax.swing.*;
 
 public interface HeaderPDBuilder {
-    JButton buildJButtonLeftDesign();
+    JButton buildJButtonDesign();
     JLabel buildJLabelDesign();
-    JButton buildJButtonRightDesign();
 }

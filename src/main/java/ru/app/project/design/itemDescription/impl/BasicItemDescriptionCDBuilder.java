@@ -1,7 +1,7 @@
 package ru.app.project.design.itemDescription.impl;
 
 import ru.app.project.design.itemDescription.interf.ItemDescriptionCDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.itemDescription.panels.*;
 //import ru.app.project.windows.cards.itemDescription.panels.VideosP;

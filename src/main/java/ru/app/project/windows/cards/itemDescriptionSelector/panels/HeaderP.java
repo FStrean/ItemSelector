@@ -34,9 +34,9 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        buttonLeft = designBuilder.buildJButtonLeftDesign();
+        buttonLeft = designBuilder.buildJButtonDesign();
         description = designBuilder.buildJLabelDesign();
-        buttonRight = designBuilder.buildJButtonRightDesign();
+        buttonRight = designBuilder.buildJButtonDesign();
     }
 
     @Override

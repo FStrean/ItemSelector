@@ -1,7 +1,8 @@
 package ru.app.project.design.itemDescriptionSelector.impl.panels;
 
+import ru.app.project.components.RoundButton;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.HeaderPDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,8 +17,9 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     }
 
     @Override
-    public JButton buildJButtonLeftDesign() {
-        JButton button = new JButton();
+    public JButton buildJButtonDesign() {
+        RoundButton button = new RoundButton("", 40, Color.BLACK);
+        button.setForeground(Color.WHITE);
         panel.add(button, 15.0f);
         return button;
     }
@@ -29,12 +31,5 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
         description.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(description, 70.0f);
         return description;
-    }
-
-    @Override
-    public JButton buildJButtonRightDesign() {
-        JButton button = new JButton();
-        panel.add(button, 15.0f);
-        return button;
     }
 }

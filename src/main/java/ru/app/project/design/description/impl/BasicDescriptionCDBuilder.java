@@ -1,7 +1,7 @@
 package ru.app.project.design.description.impl;
 
 import ru.app.project.design.description.interf.DescriptionCDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.description.panels.ButtonsP;
 import ru.app.project.windows.cards.description.panels.DescriptionP;
@@ -9,7 +9,6 @@ import ru.app.project.windows.cards.description.panels.FooterP;
 import ru.app.project.windows.cards.description.panels.HeaderP;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
     private final JPanel panel;

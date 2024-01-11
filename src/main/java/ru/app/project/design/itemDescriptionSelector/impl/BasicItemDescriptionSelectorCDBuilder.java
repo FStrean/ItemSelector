@@ -1,14 +1,13 @@
 package ru.app.project.design.itemDescriptionSelector.impl;
 
 import ru.app.project.design.itemDescriptionSelector.interf.ItemDescriptionSelectorCDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.ButtonsP;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.FooterP;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.HeaderP;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSelectorCDBuilder {
     private final JPanel panel;

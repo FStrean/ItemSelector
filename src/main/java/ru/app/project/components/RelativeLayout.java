@@ -1,4 +1,4 @@
-package ru.app.project.utility;
+package ru.app.project.components;
 
 import java.awt.*;
 import java.util.*;

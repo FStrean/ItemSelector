@@ -1,5 +1,6 @@
 package ru.app.project.design.itemDescriptionSelector.impl.panels;
 
+import ru.app.project.components.RoundButton;
 import ru.app.project.config.AppProperties;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.ButtonsPDBuilder;
 
@@ -16,7 +17,8 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
 
     @Override
     public JButton buildJButtonDesign() {
-        JButton button = new JButton();
+        RoundButton button = new RoundButton("", 40, new Color(164, 164, 164));
+        button.setForeground(Color.BLACK);
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.setVerticalAlignment(SwingConstants.CENTER);
         JPanel jPanel = new JPanel(new BorderLayout());

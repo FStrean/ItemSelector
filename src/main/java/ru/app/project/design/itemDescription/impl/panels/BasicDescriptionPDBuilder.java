@@ -1,10 +1,9 @@
 package ru.app.project.design.itemDescription.impl.panels;
 
 import ru.app.project.design.itemDescription.interf.panels.DescriptionPDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BasicDescriptionPDBuilder implements DescriptionPDBuilder {
     private final JPanel panel;

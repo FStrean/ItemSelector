@@ -1,5 +1,6 @@
 package ru.app.project.design.mainSelector.impl.panels;
 
+import ru.app.project.components.RoundButton;
 import ru.app.project.design.mainSelector.interf.panels.ButtonsPDBuilder;
 
 import javax.swing.*;
@@ -16,7 +17,9 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
 
     @Override
     public JButton buildJButtonDesign() {
-        JButton button = new JButton();
+        RoundButton button = new RoundButton("", 40, Color.BLACK);
+        button.setForeground(Color.WHITE);
+        //button.setBorder(new RoundBorder(Color.BLACK, 40));
         JPanel jPanel = new JPanel(new BorderLayout());
         jPanel.setBorder(new EmptyBorder(15, 40, 15, 40));
         jPanel.add(button);

@@ -1,14 +1,13 @@
 package ru.app.project.design.mainSelector.impl;
 
 import ru.app.project.design.mainSelector.interf.MainSelectorCDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.mainSelector.panels.ButtonsP;
 import ru.app.project.windows.cards.mainSelector.panels.FooterP;
 import ru.app.project.windows.cards.mainSelector.panels.HeaderP;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
     private final JPanel panel;

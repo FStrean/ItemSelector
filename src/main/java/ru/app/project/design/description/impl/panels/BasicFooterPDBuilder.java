@@ -2,10 +2,9 @@ package ru.app.project.design.description.impl.panels;
 
 import ru.app.project.components.ImageButton;
 import ru.app.project.design.description.interf.panels.FooterPDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;

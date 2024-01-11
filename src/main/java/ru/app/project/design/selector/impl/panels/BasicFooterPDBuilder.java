@@ -2,7 +2,7 @@ package ru.app.project.design.selector.impl.panels;
 
 import ru.app.project.components.ImageButton;
 import ru.app.project.design.selector.interf.panels.FooterPDBuilder;
-import ru.app.project.utility.RelativeLayout;
+import ru.app.project.components.RelativeLayout;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
