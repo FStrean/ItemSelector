@@ -25,6 +25,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public JButton buildLeftButtonDesign() {
         RoundButton button = new RoundButton("", 40, Color.BLACK);
+        button.setForeground(Color.WHITE);
         JPanel jPanel = new JPanel(new BorderLayout());
         jPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
         jPanel.add(button);
