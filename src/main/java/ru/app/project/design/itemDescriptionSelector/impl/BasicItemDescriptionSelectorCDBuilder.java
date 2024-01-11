@@ -15,6 +15,7 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
 
     public BasicItemDescriptionSelectorCDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setBackground(Color.WHITE);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
         layout.setFill(true);
         this.panel.setLayout(layout);

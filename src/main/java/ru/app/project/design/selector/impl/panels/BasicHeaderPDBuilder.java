@@ -9,6 +9,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     private final JPanel panel;
     public BasicHeaderPDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setOpaque(false);
         this.panel.setLayout(new GridLayout(1,1));
     }
 

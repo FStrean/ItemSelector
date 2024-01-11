@@ -16,9 +16,9 @@ public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
     private final JPanel contentPanel;
     public BasicDescriptionCDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setBackground(Color.WHITE);
         this.contentPanel = new JPanel();
 
-        this.panel.setOpaque(false);
         this.contentPanel.setOpaque(false);
 
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
@@ -74,6 +74,5 @@ public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
 
     @Override
     public void paint(Graphics g) {
-
     }
 }

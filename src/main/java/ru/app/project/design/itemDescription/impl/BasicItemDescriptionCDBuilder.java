@@ -15,9 +15,9 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     private final JPanel contentPanel;
     public BasicItemDescriptionCDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setBackground(Color.WHITE);
         this.contentPanel = new JPanel();
 
-        this.panel.setOpaque(false);
         this.contentPanel.setOpaque(false);
 
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
