@@ -7,6 +7,7 @@ import ru.app.project.windows.cards.itemDescription.panels.*;
 //import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     private final JPanel panel;
@@ -14,8 +15,10 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
     private final JPanel contentPanel;
     public BasicItemDescriptionCDBuilder(JPanel panel) {
         this.panel = panel;
-
         this.contentPanel = new JPanel();
+
+        this.panel.setOpaque(false);
+        this.contentPanel.setOpaque(false);
 
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
         RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
@@ -55,5 +58,10 @@ public class BasicItemDescriptionCDBuilder implements ItemDescriptionCDBuilder {
         FooterP header1Panel = new FooterP();
         panel.add(header1Panel, 10.0f);
         return header1Panel;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+
     }
 }

@@ -9,12 +9,14 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     private final JPanel panel;
     public BasicHeaderPDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setOpaque(false);
         this.panel.setLayout(new BorderLayout());
     }
 
     @Override
     public JLabel buildJLabelDesign() {
         JLabel description = new JLabel();
+        description.setOpaque(false);
         description.setHorizontalAlignment(SwingConstants.CENTER);
         description.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(description);

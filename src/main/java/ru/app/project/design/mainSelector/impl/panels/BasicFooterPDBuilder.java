@@ -9,6 +9,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;
     public BasicFooterPDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setOpaque(false);
         this.panel.setLayout(new GridLayout(1,1));
     }
     @Override

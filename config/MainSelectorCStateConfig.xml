@@ -1,28 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mainSelectorCStateConfig>
     <button1><![CDATA[<html>
-            <center style="font-size: 25;">
-                Назначение комплекса КРС КПТВ. 412168.002
-            </center>
-        </html>]]></button1>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;;
+            }
+        </style>
+        <center>
+            Назначение комплекса КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button1>
     <button2><![CDATA[<html>
-            <center style="font-size: 25;">
-                Состав и описание комплекса КРС КПТВ. 412168.002
-            </center>
-        </html>]]></button2>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;;
+            }
+        </style>
+        <center>
+            Состав и описание комплекса КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button2>
     <button3><![CDATA[<html>
-            <center style="font-size: 25;">
-                Работа комплекса КРС КПТВ. 412168.002
-            </center>
-        </html>]]></button3>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;;
+            }
+        </style>
+        <center>
+            Работа комплекса КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button3>
     <fDescription><![CDATA[<html>
-            <center style="font-size: 30;">
-                Мультимедийное обучающее программное обеспечение
-            </center>
-        </html>]]></fDescription>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri Light', sans-serif;;
+            }
+        </style>
+        <center>
+            Мультимедийное обучающее программное обеспечение
+        </center>
+    </html>]]></fDescription>
     <hDescription><![CDATA[<html>
-            <center style="font-size: 65;">
-                Комплекс КРС
-            </center>
-        </html>]]></hDescription>
+        <style>
+            span, ol, li, div, center {
+              font-size: 60px;
+              font-family: 'Calibri Light', sans-serif;;
+            }
+        </style>
+        <center>
+            Комплекс КРС
+        </center>
+    </html>]]></hDescription>
 </mainSelectorCStateConfig>

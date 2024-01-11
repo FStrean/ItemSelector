@@ -16,6 +16,8 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         leftButtonPanel = new JPanel();
         leftButtonPanel.setLayout(new GridLayout(0,1));
         this.panel = panel;
+        this.panel.setOpaque(false);
+        leftButtonPanel.setOpaque(false);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
         layout.setFill(true);
         this.panel.setLayout(layout);
@@ -27,6 +29,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         RoundButton button = new RoundButton("", 40, Color.BLACK);
         button.setForeground(Color.WHITE);
         JPanel jPanel = new JPanel(new BorderLayout());
+        jPanel.setOpaque(false);
         jPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
         jPanel.add(button);
         leftButtonPanel.add(jPanel);
@@ -36,11 +39,15 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public JLabel buildJLabelDesign() {
         JPanel descriptionPanel = new JPanel();
+        descriptionPanel.setOpaque(false);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
         layout.setFill(true);
         descriptionPanel.setLayout(layout);
-        descriptionPanel.add(new JPanel(), 67.0f);
+        JPanel jPanel1  = new JPanel();
+        jPanel1.setOpaque(false);
+        descriptionPanel.add(jPanel1, 67.0f);
         JLabel description = new JLabel();
+        description.setOpaque(false);
         description.setHorizontalAlignment(SwingConstants.CENTER);
         description.setVerticalAlignment(SwingConstants.CENTER);
         descriptionPanel.add(description, 33.0f);
@@ -51,10 +58,13 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public ImageButton buildJButtonDesign() {
         JPanel homeButtonPanel = new JPanel();
+        homeButtonPanel.setOpaque(false);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
         layout.setFill(true);
         homeButtonPanel.setLayout(layout);
-        homeButtonPanel.add(new JPanel(), 67.0f);
+        JPanel jPanel1 = new JPanel();
+        jPanel1.setOpaque(false);
+        homeButtonPanel.add(jPanel1, 67.0f);
         ImageButton button = new ImageButton("icons/home.png");
         button.setAlign(BorderLayout.LINE_END, BorderLayout.LINE_END);
         homeButtonPanel.add(button, 33.0f);

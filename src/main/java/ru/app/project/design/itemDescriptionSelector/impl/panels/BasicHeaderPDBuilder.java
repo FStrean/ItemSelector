@@ -11,6 +11,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     private final JPanel panel;
     public BasicHeaderPDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setOpaque(false);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
         layout.setFill(true);
         this.panel.setLayout(layout);
@@ -27,6 +28,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     @Override
     public JLabel buildJLabelDesign() {
         JLabel description = new JLabel();
+        description.setOpaque(false);
         description.setHorizontalAlignment(SwingConstants.CENTER);
         description.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(description, 70.0f);

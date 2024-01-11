@@ -32,6 +32,9 @@ public class JImage extends JPanel {
             }
         };
 
+        this.imagePanel.setOpaque(false);
+        this.setOpaque(false);
+
         this.addComponentListener(
                 new ComponentAdapter() {
                     @Override

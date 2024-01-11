@@ -8,6 +8,7 @@ import ru.app.project.windows.cards.itemDescriptionSelector.panels.FooterP;
 import ru.app.project.windows.cards.itemDescriptionSelector.panels.HeaderP;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSelectorCDBuilder {
     private final JPanel panel;
@@ -38,5 +39,10 @@ public class BasicItemDescriptionSelectorCDBuilder implements ItemDescriptionSel
         FooterP footerP = new FooterP();
         panel.add(footerP, 10.0f);
         return footerP;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+
     }
 }

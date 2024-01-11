@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <selectorCStateConfig>
     <description><![CDATA[<html>
-            <center style="font-size: 25;">
+            <center style="font-size: 25; font-family:'Calibri', sans-serif;">
                 Использование изделия КРС
             </center>
         </html>]]></description>
     <button1><![CDATA[<html>
-            <center style="font-size: 25;">
+            <center style="font-size: 25; font-family:'Calibri', sans-serif;">
                 Описание ПО КРС КПТВ. 412168.002
             </center>
         </html>]]></button1>
     <button2><![CDATA[<html>
-            <center style="font-size: 25;">
+            <center style="font-size: 25; font-family:'Calibri', sans-serif;">
                 Измерения КРС КПТВ. 412168.002
             </center>
         </html>]]></button2>
     <fDescription><![CDATA[<html>
-            <center style="font-size: 30;">
+            <center style="font-size: 30; font-family:'Calibri Light', sans-serif;">
                 Мультимедийное обучающее программное обеспечение
             </center>
         </html>]]></fDescription>
     <hDescription><![CDATA[<html>
-            <center style="font-size: 35;">
+            <center style="font-size: 35; font-family:'Calibri Light', sans-serif;">
                 Работа комплекса КРС КПТВ.412168.002
             </center>
         </html>]]></hDescription>
     <leftButton1><![CDATA[<html>
-            <center style="font-size: 15;">
+            <center style="font-size: 15; font-family:'Calibri', sans-serif;">
                 Состав комплекса
             </center>
         </html>]]></leftButton1>
     <leftButton2><![CDATA[<html>
-            <center style="font-size: 15;">
+            <center style="font-size: 15; font-family:'Calibri', sans-serif;">
                 Назначение комплекса
             </center>
         </html>]]></leftButton2>

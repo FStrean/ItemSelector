@@ -9,6 +9,7 @@ import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class DescriptionC extends JPanel implements BasicCard {
     private final RootWindow rootWindow;
@@ -65,5 +66,11 @@ public class DescriptionC extends JPanel implements BasicCard {
         buttonsPanel.applyConfig();
         descriptionPanel.applyConfig();
         footerPanel.applyConfig();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        designBuilder.paint(g);
     }
 }

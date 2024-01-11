@@ -11,6 +11,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;
     public BasicFooterPDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setOpaque(false);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
         layout.setFill(true);
         this.panel.setLayout(layout);
@@ -26,6 +27,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public JLabel buildJLabelDesign() {
         JLabel description = new JLabel();
+        description.setOpaque(false);
         description.setHorizontalAlignment(SwingConstants.CENTER);
         description.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(description, 80.0f);

@@ -12,6 +12,7 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     private JPanel panel;
     public BasicButtonsPDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setOpaque(false);
         this.panel.setLayout(new GridLayout(0, AppProperties.getNumberOfItemsInItemDescriptionWindow() / 3));
     }
 
@@ -22,6 +23,7 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.setVerticalAlignment(SwingConstants.CENTER);
         JPanel jPanel = new JPanel(new BorderLayout());
+        jPanel.setOpaque(false);
         jPanel.add(button);
         jPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
         panel.add(jPanel);

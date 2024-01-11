@@ -61,4 +61,9 @@ public class MainSelectorC extends JPanel implements BasicCard {
         buttonsPanel.applyConfig();
         footerPanel.applyConfig();
     }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        designBuilder.paint(g);
+    }
 }

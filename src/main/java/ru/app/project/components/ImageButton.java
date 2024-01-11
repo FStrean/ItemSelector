@@ -26,6 +26,7 @@ public class ImageButton extends JPanel {
 
     public ImageButton(String path){
         super();
+        this.setOpaque(false);
         ImageIcon icon = new ImageIcon(path);
         this.image = icon.getImage();
         this.imageObserver = icon.getImageObserver();

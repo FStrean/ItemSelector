@@ -11,6 +11,7 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     private final JPanel panel;
     public BasicButtonsPDBuilder(JPanel panel) {
         this.panel = panel;
+        this.panel.setOpaque(false);
         this.panel.setLayout(new GridLayout(0,1));
     }
 
@@ -20,6 +21,7 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
         button.setBackground(Color.BLACK);
         button.setForeground(Color.WHITE);
         JPanel jPanel = new JPanel(new BorderLayout());
+        jPanel.setOpaque(false);
         jPanel.setBorder(new EmptyBorder(25, 0, 25, 0));
         jPanel.add(button);
         panel.add(jPanel);

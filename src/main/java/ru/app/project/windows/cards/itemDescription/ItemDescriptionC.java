@@ -9,6 +9,7 @@ import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ItemDescriptionC extends JPanel implements BasicCard {
     private final RootWindow rootWindow;
@@ -19,7 +20,6 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
 
     private BasicPanel headerPanel;
     private BasicPanel imagesPanel;
-//    private BasicPanel videosPanel;
     private BasicPanel descriptionPanel;
     private BasicPanel footerPanel;
 
@@ -42,7 +42,6 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
                 .orElse(new ItemDescriptionCStateConfig.Item());
         headerPanel.setConfig(config);
         imagesPanel.setConfig(config);
-//        videosPanel.setConfig(config);
         descriptionPanel.setConfig(config);
         applyConfig();
     }
@@ -51,7 +50,6 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
         imagesPanel = designBuilder.buildLeftPanelDesign();
-//        videosPanel = designBuilder.buildRightPanelDesign();
         descriptionPanel = designBuilder.buildRightPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
@@ -60,12 +58,10 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     public void applyLogic() {
         headerPanel.setParent(this);
         imagesPanel.setParent(this);
-//        videosPanel.setParent(this);
         descriptionPanel.setParent(this);
         footerPanel.setParent(this);
         headerPanel.setRootWindow(rootWindow);
         imagesPanel.setRootWindow(rootWindow);
-//        videosPanel.setRootWindow(rootWindow);
         descriptionPanel.setRootWindow(rootWindow);
         footerPanel.setRootWindow(rootWindow);
     }
@@ -73,7 +69,6 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     @Override
     public void applyConfig() {
         headerPanel.applyConfig();
-//        videosPanel.applyConfig();
         descriptionPanel.applyConfig();
         imagesPanel.applyConfig();
     }
@@ -82,8 +77,13 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     public void runOnLeaveAction() {
         headerPanel.runOnLeaveAction();
         imagesPanel.runOnLeaveAction();
-//        videosPanel.runOnLeaveAction();
         descriptionPanel.runOnLeaveAction();
         footerPanel.runOnLeaveAction();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        designBuilder.paint(g);
     }
 }

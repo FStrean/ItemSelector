@@ -8,6 +8,7 @@ import ru.app.project.windows.cards.mainSelector.panels.FooterP;
 import ru.app.project.windows.cards.mainSelector.panels.HeaderP;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
     private final JPanel panel;
@@ -28,9 +29,13 @@ public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
     @Override
     public BasicPanel buildCenterPanelDesign() {
         ButtonsP buttonsPanel = new ButtonsP();
-        panel.add(new JPanel(), 15.0f);
+        JPanel jPanel1 = new JPanel();
+        jPanel1.setOpaque(false);
+        JPanel jPanel2 = new JPanel();
+        jPanel2.setOpaque(false);
+        panel.add(jPanel1, 15.0f);
         panel.add(buttonsPanel, 50.0f);
-        panel.add(new JPanel(), 10.0f);
+        panel.add(jPanel2, 10.0f);
         return buttonsPanel;
     }
 
@@ -39,5 +44,17 @@ public class BasicMainSelectorCDBuilder implements MainSelectorCDBuilder {
         FooterP footerPanel = new FooterP();
         panel.add(footerPanel, 10.0f);
         return footerPanel;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = panel.getWidth(), h = panel.getHeight();
+        Color color1 = Color.WHITE;
+        Color color2 = Color.GRAY;
+        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);  // Изменены координаты здесь
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
     }
 }

@@ -9,6 +9,7 @@ import ru.app.project.windows.cards.description.panels.FooterP;
 import ru.app.project.windows.cards.description.panels.HeaderP;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
     private final JPanel panel;
@@ -16,6 +17,9 @@ public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
     public BasicDescriptionCDBuilder(JPanel panel) {
         this.panel = panel;
         this.contentPanel = new JPanel();
+
+        this.panel.setOpaque(false);
+        this.contentPanel.setOpaque(false);
 
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
         RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
@@ -38,12 +42,17 @@ public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
     public BasicPanel buildLeftPanelDesign() {
         ButtonsP buttonsPanel = new ButtonsP();
         JPanel jPanel = new JPanel();
+        jPanel.setOpaque(false);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
         layout.setFill(true);
         jPanel.setLayout(layout);
-        jPanel.add(new JPanel(), 10.0f);
+        JPanel jPanel1 = new JPanel();
+        jPanel1.setOpaque(false);
+        jPanel.add(jPanel1, 10.0f);
         jPanel.add(buttonsPanel, 80.0f);
-        jPanel.add(new JPanel(), 10.0f);
+        JPanel jPanel2 = new JPanel();
+        jPanel2.setOpaque(false);
+        jPanel.add(jPanel2, 10.0f);
         contentPanel.add(jPanel, 15.0f);
         return buttonsPanel;
     }
@@ -61,5 +70,10 @@ public class BasicDescriptionCDBuilder implements DescriptionCDBuilder {
         FooterP footerPanel = new FooterP();
         panel.add(footerPanel, 10.0f);
         return footerPanel;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+
     }
 }
