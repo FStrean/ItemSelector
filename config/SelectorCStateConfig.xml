@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <selectorCStateConfig>
+    <description><![CDATA[<html>
+            <center style="font-size: 25;">
+                Использование изделия КРС
+            </center>
+        </html>]]></description>
     <button1><![CDATA[<html>
-            <center style="font-size: 15;">
-                Калибровка КРС КПТВ. 412168.002
+            <center style="font-size: 25;">
+                Описание ПО КРС КПТВ. 412168.002
             </center>
         </html>]]></button1>
     <button2><![CDATA[<html>
-            <center style="font-size: 15;">
+            <center style="font-size: 25;">
                 Измерения КРС КПТВ. 412168.002
             </center>
         </html>]]></button2>

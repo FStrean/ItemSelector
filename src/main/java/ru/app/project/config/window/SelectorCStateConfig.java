@@ -6,6 +6,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class SelectorCStateConfig {
     private String hDescription;
+    private String description;
     private String button1;
     private String button2;
     private String leftButton1;
@@ -14,6 +15,7 @@ public class SelectorCStateConfig {
 
     public SelectorCStateConfig() {
         this.hDescription = "";
+        this.description = "";
         this.button1 = "";
         this.button2 = "";
         this.leftButton1 = "";
@@ -24,6 +26,11 @@ public class SelectorCStateConfig {
     @XmlElement(name = "hDescription")
     public String getHDescription() {
         return hDescription;
+    }
+
+    @XmlElement(name = "description")
+    public String getDescription() {
+        return description;
     }
 
     @XmlElement(name = "button1")
@@ -52,6 +59,10 @@ public class SelectorCStateConfig {
 
     public void setHDescription(String hDescription) {
         this.hDescription = hDescription;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setButton1(String button1) {
