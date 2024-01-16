@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 public class JImage extends JPanel {
     private BufferedImage image = null;
 
-    private final JPanel imagePanel;
+    private JPanel imagePanel;
 
     private int x = 0;
     private int y = 0;
@@ -23,48 +23,11 @@ public class JImage extends JPanel {
     private int newImageWidth = -1;
     private int newImageHeight = -1;
     public JImage() {
-        super();
-        this.imagePanel = new JPanel() {
-            @Override
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(image, x, y, newImageWidth, newImageHeight, this);
-            }
-        };
+        this.paintImage();
+        this.initResizeLogic();
 
         this.imagePanel.setOpaque(false);
         this.setOpaque(false);
-
-        this.addComponentListener(
-                new ComponentAdapter() {
-                    @Override
-                    public void componentResized(ComponentEvent e) {
-                        if(image != null) {
-                            int panelWidth = getWidth();
-                            int panelHeight = getHeight();
-
-                            double intermediateImageWidthRatio = (double)imageWidth / panelWidth;
-                            double intermediateImageHeightRatio = (double)imageHeight / panelHeight;
-
-                            double imageRatio = Math.max(intermediateImageWidthRatio, intermediateImageHeightRatio);
-
-                            newImageWidth = Math.min((int) ((double) imageWidth / imageRatio), imageWidth);
-                            newImageHeight = Math.min((int) ((double) imageHeight / imageRatio), imageHeight);
-
-                            top = (int) ((float) (panelHeight - newImageHeight) * topRatio);
-                            left = (int) ((float) (panelWidth - newImageWidth) * leftRatio);
-                            bottom = (int) ((float) (panelHeight - newImageHeight) * bottomRatio);
-                            right = (int) ((float) (panelWidth - newImageWidth) * rightRatio);
-
-                            JImage.this.setBorder(new EmptyBorder(top, left, bottom, right));
-
-                            if(JImage.this.isVisible()) {
-                                JImage.this.updateUI();
-                            }
-                        }
-                    }
-                }
-        );
 
         this.setLayout(new BorderLayout());
         this.add(imagePanel);
@@ -118,5 +81,48 @@ public class JImage extends JPanel {
                 bottomRatio = 0.0f;
             }
         }
+    }
+
+    private void paintImage() {
+        imagePanel = new JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, x, y, newImageWidth, newImageHeight, this);
+            }
+        };
+    }
+
+    private void initResizeLogic() {
+        addComponentListener(
+                new ComponentAdapter() {
+                    @Override
+                    public void componentResized(ComponentEvent e) {
+                        if(image != null) {
+                            int panelWidth = getWidth();
+                            int panelHeight = getHeight();
+
+                            double intermediateImageWidthRatio = (double)imageWidth / panelWidth;
+                            double intermediateImageHeightRatio = (double)imageHeight / panelHeight;
+
+                            double imageRatio = Math.max(intermediateImageWidthRatio, intermediateImageHeightRatio);
+
+                            newImageWidth = Math.min((int) ((double) imageWidth / imageRatio), imageWidth);
+                            newImageHeight = Math.min((int) ((double) imageHeight / imageRatio), imageHeight);
+
+                            top = (int) ((float) (panelHeight - newImageHeight) * topRatio);
+                            left = (int) ((float) (panelWidth - newImageWidth) * leftRatio);
+                            bottom = (int) ((float) (panelHeight - newImageHeight) * bottomRatio);
+                            right = (int) ((float) (panelWidth - newImageWidth) * rightRatio);
+
+                            JImage.this.setBorder(new EmptyBorder(top, left, bottom, right));
+
+                            if(JImage.this.isVisible()) {
+                                JImage.this.updateUI();
+                            }
+                        }
+                    }
+                }
+        );
     }
 }

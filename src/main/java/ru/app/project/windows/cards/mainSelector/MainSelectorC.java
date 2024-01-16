@@ -9,6 +9,8 @@ import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import java.awt.*;
 
 public class MainSelectorC extends JPanel implements BasicCard {
@@ -61,6 +63,7 @@ public class MainSelectorC extends JPanel implements BasicCard {
         buttonsPanel.applyConfig();
         footerPanel.applyConfig();
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

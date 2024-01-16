@@ -9,7 +9,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.image.ImageObserver;
 
 public class ImageButton extends JPanel {
-    private final JButton button;
+    private JButton button;
     private final Image image;
     private final ImageObserver imageObserver;
 
@@ -34,54 +34,8 @@ public class ImageButton extends JPanel {
         this.imageWidth = this.image.getWidth(this.imageObserver);
         this.imageHeight = this.image.getHeight(this.imageObserver);
 
-        button = new JButton() {
-            @Override
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                setSize(new Dimension(newImageWidth, newImageHeight));
-                if(!getModel().isArmed()) {
-                    g.drawImage(image, x, y, newImageWidth, newImageHeight, imageObserver);
-                }
-            }
-        };
-
-        this.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                int panelWidth = ImageButton.this.getWidth();
-                int panelHeight = ImageButton.this.getHeight();
-
-                double intermediateImageWidthRatio;
-                if (panelWidth == 0) {
-                    intermediateImageWidthRatio = imageWidth;
-                } else {
-                    intermediateImageWidthRatio = (double) imageWidth / panelWidth;
-                }
-
-                double intermediateImageHeightRatio;
-                if (panelHeight == 0) {
-                    intermediateImageHeightRatio = imageHeight;
-                } else {
-                    intermediateImageHeightRatio = (double) imageHeight / panelHeight;
-                }
-
-                double imageRatio = Math.max(intermediateImageWidthRatio, intermediateImageHeightRatio);
-
-                newImageWidth = Math.min((int) ((double) imageWidth / imageRatio), imageWidth);
-                newImageHeight = Math.min((int) ((double) imageHeight / imageRatio), imageHeight);
-
-                top = (int) ((float) (panelHeight - newImageHeight) * topRatio);
-                left = (int) ((float) (panelWidth - newImageWidth) * leftRatio);
-                bottom = (int) ((float) (panelHeight - newImageHeight) * bottomRatio);
-                right = (int) ((float) (panelWidth - newImageWidth) * rightRatio);
-
-                ImageButton.this.setBorder(new EmptyBorder(top, left, bottom, right));
-                if(isVisible()) {
-                    ImageButton.this.updateUI();
-                }
-            }
-
-        });
+        this.paintButton();
+        this.initResizeLogic();
 
         this.setLayout(new BorderLayout());
         this.add(button);
@@ -121,5 +75,58 @@ public class ImageButton extends JPanel {
 
     public void addActionListener(ActionListener l) {
         button.addActionListener(l);
+    }
+
+    private void paintButton() {
+        button = new JButton() {
+            @Override
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                setSize(new Dimension(newImageWidth, newImageHeight));
+                if(!getModel().isArmed()) {
+                    g.drawImage(image, x, y, newImageWidth, newImageHeight, imageObserver);
+                }
+            }
+        };
+    }
+
+    private void initResizeLogic() {
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                int panelWidth = ImageButton.this.getWidth();
+                int panelHeight = ImageButton.this.getHeight();
+
+                double intermediateImageWidthRatio;
+                if (panelWidth == 0) {
+                    intermediateImageWidthRatio = imageWidth;
+                } else {
+                    intermediateImageWidthRatio = (double) imageWidth / panelWidth;
+                }
+
+                double intermediateImageHeightRatio;
+                if (panelHeight == 0) {
+                    intermediateImageHeightRatio = imageHeight;
+                } else {
+                    intermediateImageHeightRatio = (double) imageHeight / panelHeight;
+                }
+
+                double imageRatio = Math.max(intermediateImageWidthRatio, intermediateImageHeightRatio);
+
+                newImageWidth = Math.min((int) ((double) imageWidth / imageRatio), imageWidth);
+                newImageHeight = Math.min((int) ((double) imageHeight / imageRatio), imageHeight);
+
+                top = (int) ((float) (panelHeight - newImageHeight) * topRatio);
+                left = (int) ((float) (panelWidth - newImageWidth) * leftRatio);
+                bottom = (int) ((float) (panelHeight - newImageHeight) * bottomRatio);
+                right = (int) ((float) (panelWidth - newImageWidth) * rightRatio);
+
+                ImageButton.this.setBorder(new EmptyBorder(top, left, bottom, right));
+                if(isVisible()) {
+                    ImageButton.this.updateUI();
+                }
+            }
+
+        });
     }
 }

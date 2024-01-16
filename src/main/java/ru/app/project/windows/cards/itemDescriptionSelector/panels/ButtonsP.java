@@ -1,16 +1,19 @@
 package ru.app.project.windows.cards.itemDescriptionSelector.panels;
 
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.ItemDescriptionCStateConfig;
 import ru.app.project.config.window.ItemDescriptionSelectorCStateConfig;
 import ru.app.project.design.itemDescriptionSelector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.itemDescriptionSelector.interf.panels.ButtonsPDBuilder;
+import ru.app.project.utility.TextSizeCalculator;
+import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
     private MutableComponent parent;
 
     private final List<JButton> buttons;
+
+    private Double buttonsRatio = null;
 
     public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
@@ -43,9 +48,26 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if(buttonsRatio == null) {
+                    buttonsRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(buttons.get(0));
+                }
+            }
+        });
+
         for(int i = 0; i < AppProperties.getNumberOfItemsInItemDescriptionWindow(); i++) {
             int id = i + 1;
             buttons.get(i).addActionListener(event -> rootWindow.showCard(ItemDescriptionC.class, id));
+
+            int finalI = i;
+            this.addComponentListener(new ComponentAdapter() {
+                @Override
+                public void componentResized(ComponentEvent e) {
+                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(finalI), buttons.get(finalI).getHeight(), buttonsRatio);
+                }
+            });
         }
     }
 

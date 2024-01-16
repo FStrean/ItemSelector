@@ -4,12 +4,16 @@ import ru.app.project.components.ImageButton;
 import ru.app.project.config.window.DescriptionCStateConfig;
 import ru.app.project.design.description.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.description.interf.panels.FooterPDBuilder;
+import ru.app.project.utility.TextSizeCalculator;
+import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.mainSelector.MainSelectorC;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class FooterP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
@@ -19,6 +23,8 @@ public class FooterP extends JPanel implements BasicPanel {
 
     private JLabel description;
     private ImageButton button;
+
+    private Double descriptionRatio = null;
 
     public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);
@@ -41,6 +47,16 @@ public class FooterP extends JPanel implements BasicPanel {
         button.addActionListener(event -> {
             parent.runOnLeaveAction();
             rootWindow.showCard(MainSelectorC.class);
+        });
+
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if(descriptionRatio == null) {
+                    descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
+                }
+                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
+            }
         });
     }
 

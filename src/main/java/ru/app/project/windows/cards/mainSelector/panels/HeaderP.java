@@ -4,7 +4,7 @@ import ru.app.project.config.window.MainSelectorCStateConfig;
 import ru.app.project.design.mainSelector.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.mainSelector.interf.panels.HeaderPDBuilder;
 import ru.app.project.utility.TextSizeCalculator;
-import ru.app.project.utility.TextSizeRatioCalculator;
+import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -21,6 +21,8 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     private JLabel description;
 
+    private Double descriptionRatio = null;
+
     public HeaderP() {
         designBuilder = new BasicHeaderPDBuilder(this);
 
@@ -28,6 +30,7 @@ public class HeaderP extends JPanel implements BasicPanel {
         this.config = null;
 
         this.applyDesign();
+        this.applyLogic();
     }
 
     @Override
@@ -37,15 +40,15 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        double ratio = TextSizeRatioCalculator.getJLabelTextRatio(description, 0.15, 10);
-        if(ratio != -1.0) {
-            this.addComponentListener(new ComponentAdapter() {
-                @Override
-                public void componentResized(ComponentEvent e) {
-                    TextSizeCalculator.calculateJLabelTextSize(description, getHeight(), ratio);
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if(descriptionRatio == null) {
+                    descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
                 }
-            });
-        }
+                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
+            }
+        });
     }
     @Override
     public void runOnLeaveAction() {
@@ -60,9 +63,6 @@ public class HeaderP extends JPanel implements BasicPanel {
     @Override
     public void applyConfig() {
         description.setText(config.getHDescription());
-        applyLogic();
-        //String updatedContent = config.getHDescription().replace("font-size: 60px", "font-size: 40px");
-        //description.setText(updatedContent);
     }
 
     @Override

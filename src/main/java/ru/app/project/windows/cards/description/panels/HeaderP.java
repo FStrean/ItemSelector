@@ -3,11 +3,15 @@ package ru.app.project.windows.cards.description.panels;
 import ru.app.project.config.window.DescriptionCStateConfig;
 import ru.app.project.design.description.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.description.interf.panels.HeaderPDBuilder;
+import ru.app.project.utility.TextSizeCalculator;
+import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
@@ -16,6 +20,7 @@ public class HeaderP extends JPanel implements BasicPanel {
     private MutableComponent parent;
 
     private JLabel description;
+    private Double descriptionRatio = null;
 
     public HeaderP() {
         designBuilder = new BasicHeaderPDBuilder(this);
@@ -34,7 +39,15 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if(descriptionRatio == null) {
+                    descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
+                }
+                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
+            }
+        });
     }
 
     @Override

@@ -3,9 +3,8 @@ package ru.app.project.windows.cards.mainSelector.panels;
 import ru.app.project.config.window.MainSelectorCStateConfig;
 import ru.app.project.design.mainSelector.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.mainSelector.interf.panels.ButtonsPDBuilder;
-import ru.app.project.utility.ConfigLoader;
 import ru.app.project.utility.TextSizeCalculator;
-import ru.app.project.utility.TextSizeRatioCalculator;
+import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -27,6 +26,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     private final List<JButton> buttons;
 
+    private Double buttonsRatio = null;
+
     public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
         this.buttons = new ArrayList<>(3);
@@ -35,6 +36,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
         this.config = null;
 
         this.applyDesign();
+        this.applyLogic();
     }
 
     @Override
@@ -51,17 +53,17 @@ public class ButtonsP extends JPanel implements BasicPanel {
         buttons.get(1).addActionListener(event -> rootWindow.showCard(ItemDescriptionSelectorC.class));
         buttons.get(2).addActionListener(event -> rootWindow.showCard(SelectorC.class));
 
-        double ratio = TextSizeRatioCalculator.getJButtonTextRatio(buttons.get(0), 0.5, 10);
-        if (ratio != -1.0) {
-            this.addComponentListener(new ComponentAdapter() {
-                @Override
-                public void componentResized(ComponentEvent e) {
-                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(0), getHeight(), ratio);
-                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(1), getHeight(), ratio);
-                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(2), getHeight(), ratio);
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if(buttonsRatio == null) {
+                    buttonsRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(buttons.get(0));
                 }
-            });
-        }
+                TextSizeCalculator.calculateJButtonTextSize(buttons.get(0), buttons.get(0).getHeight(), buttonsRatio);
+                TextSizeCalculator.calculateJButtonTextSize(buttons.get(1), buttons.get(1).getHeight(), buttonsRatio);
+                TextSizeCalculator.calculateJButtonTextSize(buttons.get(2), buttons.get(2).getHeight(), buttonsRatio);
+            }
+        });
     }
 
     @Override
@@ -79,7 +81,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
         buttons.get(0).setText(config.getButton1());
         buttons.get(1).setText(config.getButton2());
         buttons.get(2).setText(config.getButton3());
-        applyLogic();
     }
 
     @Override

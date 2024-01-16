@@ -7,6 +7,8 @@ import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicCard;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.cards.itemDescription.panels.DescriptionP;
+import ru.app.project.windows.cards.itemDescription.panels.HeaderP;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +18,7 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
     private final ItemDescriptionCDBuilder designBuilder;
     private final ConfigLoader<ItemDescriptionCStateConfig> configLoader;
     private ItemDescriptionCStateConfig.Item config;
-
+    private ItemDescriptionCStateConfig additionalConfig;
 
     private BasicPanel headerPanel;
     private BasicPanel imagesPanel;
@@ -34,12 +36,17 @@ public class ItemDescriptionC extends JPanel implements BasicCard {
 
         this.footerPanel.setConfig(configLoader.getConfig());
         this.footerPanel.applyConfig();
+
+        this.additionalConfig = configLoader.getConfig();
+        ((DescriptionP)this.descriptionPanel).setAdditionalConfig(additionalConfig);
+        ((HeaderP)this.headerPanel).setAdditionalConfig(additionalConfig);
     }
 
     public void showState(int id) {
-        config = configLoader.getConfig().getItems().stream()
+        config = additionalConfig.getItems().stream()
                 .filter(listItem -> listItem.getId() == id).findFirst()
                 .orElse(new ItemDescriptionCStateConfig.Item());
+
         headerPanel.setConfig(config);
         imagesPanel.setConfig(config);
         descriptionPanel.setConfig(config);

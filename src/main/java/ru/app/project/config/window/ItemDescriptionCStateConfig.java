@@ -13,6 +13,8 @@ public final class ItemDescriptionCStateConfig {
     private List<Item> items;
     private String button;
     private String description;
+    private String itemDescriptionStyle;
+    private String itemMainDescriptionStyle;
 
     public ItemDescriptionCStateConfig() {
         this.button = "";
@@ -21,11 +23,33 @@ public final class ItemDescriptionCStateConfig {
             this.items.add(new Item());
         }
         this.description = "";
+        this.itemDescriptionStyle = "";
+        this.itemMainDescriptionStyle = "";
     }
 
     @XmlElement(name = "item")
     public List<Item> getItems() {
         return items;
+    }
+
+    @XmlElement(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    @XmlElement(name = "button")
+    public String getButton() {
+        return button;
+    }
+
+    @XmlElement(name = "itemDescriptionStyle")
+    public String getItemDescriptionStyle() {
+        return itemDescriptionStyle;
+    }
+
+    @XmlElement(name = "itemMainDescriptionStyle")
+    public String getItemMainDescriptionStyle() {
+        return itemMainDescriptionStyle;
     }
 
     public static class Item {
@@ -101,25 +125,23 @@ public final class ItemDescriptionCStateConfig {
         }
     }
 
-    @XmlElement(name = "description")
-    public String getDescription() {
-        return description;
-    }
-
-    @XmlElement(name = "button")
-    public String getButton() {
-        return button;
-    }
-
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setButton(String button) {
         this.button = button;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setItemDescriptionStyle(String itemDescriptionStyle) {
+        this.itemDescriptionStyle = itemDescriptionStyle;
+    }
+
+    public void setItemMainDescriptionStyle(String itemMainDescriptionStyle) {
+        this.itemMainDescriptionStyle = itemMainDescriptionStyle;
     }
 }

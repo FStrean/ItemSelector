@@ -3,6 +3,8 @@ package ru.app.project.windows.cards.description.panels;
 import ru.app.project.config.window.DescriptionCStateConfig;
 import ru.app.project.design.description.interf.panels.ButtonsPDBuilder;
 import ru.app.project.design.description.impl.panels.BasicButtonsPDBuilder;
+import ru.app.project.utility.TextSizeCalculator;
+import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -10,6 +12,8 @@ import ru.app.project.windows.cards.itemDescriptionSelector.ItemDescriptionSelec
 import ru.app.project.windows.cards.selector.SelectorC;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class ButtonsP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
@@ -19,6 +23,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     private JButton button1;
     private JButton button2;
+
+    private Double buttonRatio = null;
 
     public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
@@ -40,6 +46,17 @@ public class ButtonsP extends JPanel implements BasicPanel {
     public void applyLogic() {
         button1.addActionListener(event -> rootWindow.showCard(ItemDescriptionSelectorC.class));
         button2.addActionListener(event -> rootWindow.showCard(SelectorC.class));
+
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if(buttonRatio == null) {
+                    buttonRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(button1);
+                }
+                TextSizeCalculator.calculateJButtonTextSize(button1, button1.getHeight(), buttonRatio);
+                TextSizeCalculator.calculateJButtonTextSize(button2, button1.getHeight(), buttonRatio);
+            }
+        });
     }
 
     @Override

@@ -1,8 +1,8 @@
 package ru.app.project.config;
 
 public class AppProperties {
-    private static final int winW = (int)((double)SystemProperties.getScreenWidth() / 1.3);
-    private static final int winH = (int)((double)SystemProperties.getScreenHeight() / 1.3);
+    private static final int winW = (int)((double)SystemProperties.getScreenWidth() / 1.2);
+    private static final int winH = (int)((double)SystemProperties.getScreenHeight() / 1.2);
     public static int getWinW() {
         return winW;
     }

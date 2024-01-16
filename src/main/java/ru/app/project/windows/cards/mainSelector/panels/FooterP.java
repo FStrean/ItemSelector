@@ -3,9 +3,8 @@ package ru.app.project.windows.cards.mainSelector.panels;
 import ru.app.project.config.window.MainSelectorCStateConfig;
 import ru.app.project.design.mainSelector.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.mainSelector.interf.panels.FooterPDBuilder;
-import ru.app.project.utility.ConfigLoader;
 import ru.app.project.utility.TextSizeCalculator;
-import ru.app.project.utility.TextSizeRatioCalculator;
+import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -22,6 +21,8 @@ public class FooterP extends JPanel implements BasicPanel {
 
     private JLabel description;
 
+    private Double descriptionRatio = null;
+
     public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);
 
@@ -29,6 +30,7 @@ public class FooterP extends JPanel implements BasicPanel {
         this.config = null;
 
         this.applyDesign();
+        this.applyLogic();
     }
     @Override
 
@@ -38,15 +40,15 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        double ratio = TextSizeRatioCalculator.getJLabelTextRatio(description, 0.1, 10);
-        if(ratio != -1.0) {
-            this.addComponentListener(new ComponentAdapter() {
-                @Override
-                public void componentResized(ComponentEvent e) {
-                    TextSizeCalculator.calculateJLabelTextSize(description, getHeight(), ratio);
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if(descriptionRatio == null) {
+                    descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
                 }
-            });
-        }
+                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
+            }
+        });
     }
 
     @Override
@@ -62,7 +64,6 @@ public class FooterP extends JPanel implements BasicPanel {
     @Override
     public void applyConfig() {
         description.setText(config.getFDescription());
-        applyLogic();
     }
 
     @Override
