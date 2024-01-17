@@ -4,12 +4,12 @@ import javax.swing.*;
 
 public class TextSizeCalculator {
     private static final String regExp = "font-size:\\s*\\d+(\\.\\d+)?px;";
-    public static void calculateJLabelTextSize(JLabel label, int height, double ratio) {
-        label.setText(label.getText().replaceAll(regExp, calculateTextSize(label.getWidth(), height, ratio)));
+    public static void calculateJLabelTextSize(JLabel label, double ratio) {
+        label.setText(label.getText().replaceAll(regExp, calculateTextSize(label.getWidth(), label.getHeight(), ratio)));
     }
 
-    public static void calculateJButtonTextSize(JButton button, int height, double ratio) {
-        button.setText(button.getText().replaceAll(regExp, calculateTextSize(button.getWidth(), height, ratio)));
+    public static void calculateJButtonTextSize(JButton button, double ratio) {
+        button.setText(button.getText().replaceAll(regExp, calculateTextSize(button.getWidth(), button.getHeight(), ratio)));
     }
 
     private static String calculateTextSize(double width, int height, double ratio) {

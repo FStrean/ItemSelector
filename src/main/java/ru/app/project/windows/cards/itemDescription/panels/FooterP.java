@@ -65,8 +65,8 @@ public class FooterP extends JPanel implements BasicPanel {
                     buttonRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(button);
                     descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
                 }
-                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
-                TextSizeCalculator.calculateJButtonTextSize(button, button.getHeight(), buttonRatio);
+                TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
+                TextSizeCalculator.calculateJButtonTextSize(button, buttonRatio);
             }
         });
     }

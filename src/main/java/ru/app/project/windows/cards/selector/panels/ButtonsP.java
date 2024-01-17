@@ -56,9 +56,9 @@ public class ButtonsP extends JPanel implements BasicPanel {
                     descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
                     buttonRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(button1);
                 }
-                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
-                TextSizeCalculator.calculateJButtonTextSize(button1, button1.getHeight(), buttonRatio);
-                TextSizeCalculator.calculateJButtonTextSize(button2, button2.getHeight(), buttonRatio);
+                TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
+                TextSizeCalculator.calculateJButtonTextSize(button1, buttonRatio);
+                TextSizeCalculator.calculateJButtonTextSize(button2, buttonRatio);
             }
         });
     }

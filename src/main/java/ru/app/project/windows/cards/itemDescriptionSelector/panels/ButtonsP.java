@@ -65,7 +65,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
-                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(finalI), buttons.get(finalI).getHeight(), buttonsRatio);
+                    TextSizeCalculator.calculateJButtonTextSize(buttons.get(finalI), buttonsRatio);
                 }
             });
         }

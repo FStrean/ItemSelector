@@ -66,7 +66,7 @@ public class HeaderP extends JPanel implements BasicPanel {
                 if(descriptionRatio == null) {
                     descriptionRatio = RelativeTextSizeRatioCalculator.getTextRatio(additionalConfig.getItemDescriptionStyle(), description.getWidth());
                 }
-                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
+                TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
             }
         });
     }
@@ -77,7 +77,7 @@ public class HeaderP extends JPanel implements BasicPanel {
 
         description.setText("<html>" + additionalConfig.getItemDescriptionStyle() + config.getDescription() + "</html>");
         if(descriptionRatio != null) {
-            TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
+            TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
         }
     }
 

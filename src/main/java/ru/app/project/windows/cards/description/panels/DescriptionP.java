@@ -46,7 +46,7 @@ public class DescriptionP extends JPanel implements BasicPanel {
                 if(descriptionRatio == null) {
                     descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
                 }
-                TextSizeCalculator.calculateJLabelTextSize(description, description.getHeight(), descriptionRatio);
+                TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
             }
         });
     }
