@@ -4,8 +4,8 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.IDescSelectCInfoCfg;
 import ru.app.project.design.iDescSelect.impl.panels.BasicHeaderPDBuilder;
 import ru.app.project.design.iDescSelect.interf.panels.HeaderPDBuilder;
-import ru.app.project.utility.TextSizeCalculator;
-import ru.app.project.utility.RelativeTextSizeRatioCalculator;
+import ru.app.project.utility.TSCalc;
+import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -17,23 +17,23 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class HeaderP extends JPanel implements BasicPanel {
-    private RootWindow rootWindow;
+    private RootWindow rootWin;
     private final HeaderPDBuilder designBuilder;
-    private IDescSelectCInfoCfg config;
+    private IDescSelectCInfoCfg cfg;
     private MutableComponent parent;
 
-    private JButton button1;
-    private JLabel description;
-    private JButton button2;
+    private JButton btn1;
+    private JLabel desc;
+    private JButton btn2;
 
-    private Double descriptionRatio = null;
-    private Double buttonRatio = null;
+    private Double descRatio = null;
+    private Double btnRatio = null;
 
     public HeaderP() {
         this.designBuilder = new BasicHeaderPDBuilder(this);
 
-        this.rootWindow = null;
-        this.config = null;
+        this.rootWin = null;
+        this.cfg = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -41,27 +41,27 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        button1 = designBuilder.buildJButtonDesign();
-        description = designBuilder.buildJLabelDesign();
-        button2 = designBuilder.buildJButtonDesign();
+        btn1 = designBuilder.buildJButtonDesign();
+        desc = designBuilder.buildJLabelDesign();
+        btn2 = designBuilder.buildJButtonDesign();
     }
 
     @Override
     public void applyLogic(){
-        button1.addActionListener(event -> rootWindow.showCard(DescC.class));
-        button2.addActionListener(event -> rootWindow.showCard(SelectC.class));
+        btn1.addActionListener(event -> rootWin.showCard(DescC.class));
+        btn2.addActionListener(event -> rootWin.showCard(SelectC.class));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
-                    if (descriptionRatio == null) {
-                        descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
-                        buttonRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(button1);
+                    if (descRatio == null) {
+                        descRatio = RelTSRatioCalc.getTextRatio(desc);
+                        btnRatio = RelTSRatioCalc.getTextRatio(btn1);
                     }
-                    TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
-                    TextSizeCalculator.calculateJButtonTextSize(button1, buttonRatio);
-                    TextSizeCalculator.calculateJButtonTextSize(button2, buttonRatio);
+                    TSCalc.calcTextSize(desc, descRatio);
+                    TSCalc.calcTextSize(btn1, btnRatio);
+                    TSCalc.calcTextSize(btn2, btnRatio);
                 }
             });
         }
@@ -79,18 +79,18 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        button1.setText(config.getLButton());
-        description.setText(config.getHHeader());
-        button2.setText(config.getRButton());
+        btn1.setText(cfg.getLButton());
+        desc.setText(cfg.getHHeader());
+        btn2.setText(cfg.getRButton());
     }
 
     @Override
-    public void setRootWindow(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public void setRootWin(RootWindow rootWin) {
+        this.rootWin = rootWin;
     }
 
     @Override
-    public void setConfig(Object config) {
-        this.config = (IDescSelectCInfoCfg)config;
+    public void setCfg(Object cfg) {
+        this.cfg = (IDescSelectCInfoCfg) cfg;
     }
 }

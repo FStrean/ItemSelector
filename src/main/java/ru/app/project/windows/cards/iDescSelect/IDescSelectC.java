@@ -10,7 +10,7 @@ import ru.app.project.windows.RootWindow;
 import javax.swing.*;
 
 public class IDescSelectC extends JPanel implements BasicCard {
-    private final RootWindow rootWindow;
+    private final RootWindow rootWin;
     private final BasicIDescSelectCDBuilder designBuilder;
     private final ConfigLoader<IDescSelectCInfoCfg> configLoader;
 
@@ -19,7 +19,7 @@ public class IDescSelectC extends JPanel implements BasicCard {
     private BasicPanel footerPanel;
 
     public IDescSelectC(RootWindow rootWIndow) {
-        this.rootWindow = rootWIndow;
+        this.rootWin = rootWIndow;
         this.designBuilder = new BasicIDescSelectCDBuilder(this);
         this.configLoader = new ConfigLoader<>(IDescSelectCInfoCfg.class);
 
@@ -40,12 +40,12 @@ public class IDescSelectC extends JPanel implements BasicCard {
         headerPanel.setParent(this);
         buttonsPanel.setParent(this);
         footerPanel.setParent(this);
-        headerPanel.setRootWindow(rootWindow);
-        buttonsPanel.setRootWindow(rootWindow);
-        footerPanel.setRootWindow(rootWindow);
-        headerPanel.setConfig(configLoader.getConfig());
-        buttonsPanel.setConfig(configLoader.getConfig());
-        footerPanel.setConfig(configLoader.getConfig());
+        headerPanel.setRootWin(rootWin);
+        buttonsPanel.setRootWin(rootWin);
+        footerPanel.setRootWin(rootWin);
+        headerPanel.setCfg(configLoader.getCfg());
+        buttonsPanel.setCfg(configLoader.getCfg());
+        footerPanel.setCfg(configLoader.getCfg());
     }
 
     @Override

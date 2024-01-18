@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MSelectC extends JPanel implements BasicCard {
-    private final RootWindow rootWindow;
+    private final RootWindow rootWin;
     private final MSelectCDBuilder designBuilder;
     private final ConfigLoader<MSelectCInfoCfg> configLoader;
 
@@ -20,8 +20,8 @@ public class MSelectC extends JPanel implements BasicCard {
     private BasicPanel buttonsPanel;
     private BasicPanel footerPanel;
 
-    public MSelectC(RootWindow rootWindow) throws HeadlessException {
-        this.rootWindow = rootWindow;
+    public MSelectC(RootWindow rootWin) throws HeadlessException {
+        this.rootWin = rootWin;
         this.designBuilder = new BasicMSelectCDBuilder(this);
         this.configLoader = new ConfigLoader<>(MSelectCInfoCfg.class);
 
@@ -42,12 +42,12 @@ public class MSelectC extends JPanel implements BasicCard {
         headerPanel.setParent(this);
         buttonsPanel.setParent(this);
         footerPanel.setParent(this);
-        headerPanel.setRootWindow(rootWindow);
-        buttonsPanel.setRootWindow(rootWindow);
-        footerPanel.setRootWindow(rootWindow);
-        headerPanel.setConfig(configLoader.getConfig());
-        buttonsPanel.setConfig(configLoader.getConfig());
-        footerPanel.setConfig(configLoader.getConfig());
+        headerPanel.setRootWin(rootWin);
+        buttonsPanel.setRootWin(rootWin);
+        footerPanel.setRootWin(rootWin);
+        headerPanel.setCfg(configLoader.getCfg());
+        buttonsPanel.setCfg(configLoader.getCfg());
+        footerPanel.setCfg(configLoader.getCfg());
     }
 
     @Override

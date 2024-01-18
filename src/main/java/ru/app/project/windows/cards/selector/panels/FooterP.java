@@ -5,8 +5,8 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.SelectCInfoCfg;
 import ru.app.project.design.select.impl.panels.BasicFooterPDBuilder;
 import ru.app.project.design.select.interf.panels.FooterPDBuilder;
-import ru.app.project.utility.TextSizeCalculator;
-import ru.app.project.utility.RelativeTextSizeRatioCalculator;
+import ru.app.project.utility.TSCalc;
+import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -19,25 +19,25 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class FooterP extends JPanel implements BasicPanel {
-    private RootWindow rootWindow;
+    private RootWindow rootWin;
     private final FooterPDBuilder designBuilder;
-    private SelectCInfoCfg config;
+    private SelectCInfoCfg cfg;
     private MutableComponent parent;
 
 
-    private JButton leftButton1;
-    private JButton leftButton2;
-    private JLabel description;
-    private JImageButton button;
+    private JButton lBtn1;
+    private JButton lBtn2;
+    private JLabel desc;
+    private JImageButton btn;
 
-    private Double leftButtonRatio = null;
-    private Double descriptionRatio = null;
+    private Double lBtnRatio = null;
+    private Double descRatio = null;
 
     public FooterP() {
         this.designBuilder = new BasicFooterPDBuilder(this);
 
-        this.rootWindow = null;
-        this.config = null;
+        this.rootWin = null;
+        this.cfg = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -45,29 +45,29 @@ public class FooterP extends JPanel implements BasicPanel {
     @Override
 
     public void applyDesign() {
-        leftButton1 = designBuilder.buildLeftButtonDesign();
-        leftButton2 = designBuilder.buildLeftButtonDesign();
-        description = designBuilder.buildJLabelDesign();
-        button = designBuilder.buildJButtonDesign();
+        lBtn1 = designBuilder.buildLeftButtonDesign();
+        lBtn2 = designBuilder.buildLeftButtonDesign();
+        desc = designBuilder.buildJLabelDesign();
+        btn = designBuilder.buildJButtonDesign();
     }
 
     @Override
     public void applyLogic(){
-        leftButton1.addActionListener(event -> rootWindow.showCard(IDescSelectC.class));
-        leftButton2.addActionListener(event -> rootWindow.showCard(DescC.class));
-        button.addActionListener(event -> rootWindow.showCard(MSelectC.class));
+        lBtn1.addActionListener(event -> rootWin.showCard(IDescSelectC.class));
+        lBtn2.addActionListener(event -> rootWin.showCard(DescC.class));
+        btn.addActionListener(event -> rootWin.showCard(MSelectC.class));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
-                    if (descriptionRatio == null) {
-                        descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
-                        leftButtonRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(leftButton1);
+                    if (descRatio == null) {
+                        descRatio = RelTSRatioCalc.getTextRatio(desc);
+                        lBtnRatio = RelTSRatioCalc.getTextRatio(lBtn1);
                     }
-                    TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
-                    TextSizeCalculator.calculateJButtonTextSize(leftButton1, leftButtonRatio);
-                    TextSizeCalculator.calculateJButtonTextSize(leftButton2, leftButtonRatio);
+                    TSCalc.calcTextSize(desc, descRatio);
+                    TSCalc.calcTextSize(lBtn1, lBtnRatio);
+                    TSCalc.calcTextSize(lBtn2, lBtnRatio);
                 }
             });
         }
@@ -85,18 +85,18 @@ public class FooterP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        leftButton1.setText(config.getLButton1());
-        leftButton2.setText(config.getLButton2());
-        description.setText(config.getFHeader());
+        lBtn1.setText(cfg.getLButton1());
+        lBtn2.setText(cfg.getLButton2());
+        desc.setText(cfg.getFHeader());
     }
 
     @Override
-    public void setRootWindow(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public void setRootWin(RootWindow rootWin) {
+        this.rootWin = rootWin;
     }
 
     @Override
-    public void setConfig(Object config) {
-        this.config = (SelectCInfoCfg)config;
+    public void setCfg(Object cfg) {
+        this.cfg = (SelectCInfoCfg) cfg;
     }
 }

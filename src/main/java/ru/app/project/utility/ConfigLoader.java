@@ -15,25 +15,25 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class ConfigLoader<T> {
-    private final Class<T> configObjectClass;
-    private T configObject;
+    private final Class<T> cfgObjClass;
+    private T cfgObj;
     private final StringBuilder filename;
 
-    public ConfigLoader(Class<T> configObjectClass) {
-        this.configObjectClass = configObjectClass;
+    public ConfigLoader(Class<T> cfgObjClass) {
+        this.cfgObjClass = cfgObjClass;
         this.filename = new StringBuilder(AppProperties.getCfgPath());
         this.load();
     }
 
-    public T getConfig() {
-        return configObject;
+    public T getCfg() {
+        return cfgObj;
     }
 
     private void load() {
-        File configFile = new File(filename.append("/").append(configObjectClass.getSimpleName()).append(".xml").toString());
-        if(!configFile.exists()) {
+        File cf = new File(filename.append("/").append(cfgObjClass.getSimpleName()).append(".xml").toString());
+        if(!cf.exists()) {
             JOptionPane.showMessageDialog(null,
-                    "Отсутствует конфигурационный файл: " + configFile.getAbsolutePath() + "\n" +
+                    "Отсутствует конфигурационный файл: " + cf.getAbsolutePath() + "\n" +
                             "Был создан новый пустой файл автоматически",
                     "Предупреждение", JOptionPane.WARNING_MESSAGE);
             try {
@@ -47,12 +47,12 @@ public class ConfigLoader<T> {
             return;
         }
 
-        JAXBContext jaxbContext;
+        JAXBContext jc;
         try {
-            jaxbContext = JAXBContext.newInstance(configObjectClass);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            jc = JAXBContext.newInstance(cfgObjClass);
+            Unmarshaller um = jc.createUnmarshaller();
 
-            configObject = configObjectClass.cast(jaxbUnmarshaller.unmarshal(configFile));
+            cfgObj = cfgObjClass.cast(um.unmarshal(cf));
         }
         catch (JAXBException e) {
             JOptionPane.showMessageDialog(null,
@@ -63,10 +63,10 @@ public class ConfigLoader<T> {
 
     private void saveToFile() {
         try {
-            JAXBContext contextObj = JAXBContext.newInstance(configObjectClass);
-            Marshaller marshallerObj = contextObj.createMarshaller();
-            marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshallerObj.marshal(configObject, new FileOutputStream(filename.toString()));
+            JAXBContext co = JAXBContext.newInstance(cfgObjClass);
+            Marshaller mo = co.createMarshaller();
+            mo.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            mo.marshal(cfgObj, new FileOutputStream(filename.toString()));
         } catch (JAXBException | FileNotFoundException e) {
             JOptionPane.showMessageDialog(null,
                     "Не удалось сохранить конфигурационный файл после создания: " + e.getMessage(),
@@ -75,7 +75,7 @@ public class ConfigLoader<T> {
     }
 
     private void loadObject() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Constructor<T> constructor = configObjectClass.getConstructor();
-        configObject = constructor.newInstance();
+        Constructor<T> c = cfgObjClass.getConstructor();
+        cfgObj = c.newInstance();
     }
 }

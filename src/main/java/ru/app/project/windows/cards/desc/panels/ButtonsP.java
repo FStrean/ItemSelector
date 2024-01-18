@@ -4,8 +4,8 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.DescCInfoCfg;
 import ru.app.project.design.desc.interf.panels.ButtonsPDBuilder;
 import ru.app.project.design.desc.impl.panels.BasicButtonsPDBuilder;
-import ru.app.project.utility.TextSizeCalculator;
-import ru.app.project.utility.RelativeTextSizeRatioCalculator;
+import ru.app.project.utility.TSCalc;
+import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -17,21 +17,21 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class ButtonsP extends JPanel implements BasicPanel {
-    private RootWindow rootWindow;
+    private RootWindow rootWin;
     private final ButtonsPDBuilder designBuilder;
-    private DescCInfoCfg config;
+    private DescCInfoCfg cfg;
     private MutableComponent parent;
 
-    private JButton button1;
-    private JButton button2;
+    private JButton btn1;
+    private JButton btn2;
 
-    private Double buttonRatio = null;
+    private Double btnRatio = null;
 
     public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
 
-        this.rootWindow = null;
-        this.config = null;
+        this.rootWin = null;
+        this.cfg = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -39,24 +39,24 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        button1 = designBuilder.buildJButtonDesign();
-        button2 = designBuilder.buildJButtonDesign();
+        btn1 = designBuilder.buildJButtonDesign();
+        btn2 = designBuilder.buildJButtonDesign();
     }
 
     @Override
     public void applyLogic() {
-        button1.addActionListener(event -> rootWindow.showCard(IDescSelectC.class));
-        button2.addActionListener(event -> rootWindow.showCard(SelectC.class));
+        btn1.addActionListener(event -> rootWin.showCard(IDescSelectC.class));
+        btn2.addActionListener(event -> rootWin.showCard(SelectC.class));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
-                    if(buttonRatio == null) {
-                        buttonRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(button1);
+                    if(btnRatio == null) {
+                        btnRatio = RelTSRatioCalc.getTextRatio(btn1);
                     }
-                    TextSizeCalculator.calculateJButtonTextSize(button1, buttonRatio);
-                    TextSizeCalculator.calculateJButtonTextSize(button2, buttonRatio);
+                    TSCalc.calcTextSize(btn1, btnRatio);
+                    TSCalc.calcTextSize(btn2, btnRatio);
                 }
             });
         }
@@ -69,8 +69,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        button1.setText(config.getButton1());
-        button2.setText(config.getButton2());
+        btn1.setText(cfg.getButton1());
+        btn2.setText(cfg.getButton2());
     }
 
     @Override
@@ -79,12 +79,12 @@ public class ButtonsP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setRootWindow(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public void setRootWin(RootWindow rootWin) {
+        this.rootWin = rootWin;
     }
 
     @Override
-    public void setConfig(Object config) {
-        this.config = (DescCInfoCfg)config;
+    public void setCfg(Object cfg) {
+        this.cfg = (DescCInfoCfg) cfg;
     }
 }

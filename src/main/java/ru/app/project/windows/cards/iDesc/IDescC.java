@@ -14,42 +14,42 @@ import javax.swing.*;
 import java.awt.*;
 
 public class IDescC extends JPanel implements BasicCard {
-    private final RootWindow rootWindow;
+    private final RootWindow rootWin;
     private final IDescCDBuilder designBuilder;
     private final ConfigLoader<IDescCInfoCfg> configLoader;
-    private IDescCInfoCfg.Item config;
-    private IDescCInfoCfg additionalConfig;
+    private IDescCInfoCfg.Item cfg;
+    private IDescCInfoCfg addCfg;
 
     private BasicPanel headerPanel;
     private BasicPanel imagesPanel;
     private BasicPanel descriptionPanel;
     private BasicPanel footerPanel;
 
-    public IDescC(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public IDescC(RootWindow rootWin) {
+        this.rootWin = rootWin;
         this.designBuilder = new BasicIDescCDBuilder(this);
         this.configLoader = new ConfigLoader<>(IDescCInfoCfg.class);
-        this.config = null;
+        this.cfg = null;
 
         this.applyDesign();
         this.applyLogic();
 
-        this.footerPanel.setConfig(configLoader.getConfig());
+        this.footerPanel.setCfg(configLoader.getCfg());
         this.footerPanel.applyConfig();
 
-        this.additionalConfig = configLoader.getConfig();
-        ((DescriptionP)this.descriptionPanel).setAdditionalConfig(additionalConfig);
-        ((HeaderP)this.headerPanel).setAdditionalConfig(additionalConfig);
+        this.addCfg = configLoader.getCfg();
+        ((DescriptionP)this.descriptionPanel).setAddCfg(addCfg);
+        ((HeaderP)this.headerPanel).setAddCfg(addCfg);
     }
 
     public void showState(int id) {
-        config = additionalConfig.getItems().stream()
+        cfg = addCfg.getItems().stream()
                 .filter(listItem -> listItem.getId() == id).findFirst()
                 .orElse(new IDescCInfoCfg.Item());
 
-        headerPanel.setConfig(config);
-        imagesPanel.setConfig(config);
-        descriptionPanel.setConfig(config);
+        headerPanel.setCfg(cfg);
+        imagesPanel.setCfg(cfg);
+        descriptionPanel.setCfg(cfg);
         applyConfig();
     }
 
@@ -67,10 +67,10 @@ public class IDescC extends JPanel implements BasicCard {
         imagesPanel.setParent(this);
         descriptionPanel.setParent(this);
         footerPanel.setParent(this);
-        headerPanel.setRootWindow(rootWindow);
-        imagesPanel.setRootWindow(rootWindow);
-        descriptionPanel.setRootWindow(rootWindow);
-        footerPanel.setRootWindow(rootWindow);
+        headerPanel.setRootWin(rootWin);
+        imagesPanel.setRootWin(rootWin);
+        descriptionPanel.setRootWin(rootWin);
+        footerPanel.setRootWin(rootWin);
     }
 
     @Override

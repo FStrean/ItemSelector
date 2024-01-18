@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImagesP extends JPanel implements BasicPanel {
-    private RootWindow rootWindow;
+    private RootWindow rootWin;
     private final ImagesPDBuilder designBuilder;
-    private IDescCInfoCfg.Item config;
+    private IDescCInfoCfg.Item cfg;
     private MutableComponent parent;
 
     private RingBuffer<JImage> images;
@@ -29,8 +29,8 @@ public class ImagesP extends JPanel implements BasicPanel {
     public ImagesP() {
         this.designBuilder = new BasicImagesPDBuilder(this);
 
-        this.config = null;
-        this.rootWindow = null;
+        this.cfg = null;
+        this.rootWin = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -54,7 +54,7 @@ public class ImagesP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        for(String path : config.getImages()) {
+        for(String path : cfg.getImages()) {
             if(!path.isEmpty()) {
                 addImageToFrame(path);
             }
@@ -76,20 +76,20 @@ public class ImagesP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setRootWindow(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public void setRootWin(RootWindow rootWin) {
+        this.rootWin = rootWin;
     }
 
     @Override
-    public void setConfig(Object config) {
-        this.config = (IDescCInfoCfg.Item) config;
+    public void setCfg(Object cfg) {
+        this.cfg = (IDescCInfoCfg.Item) cfg;
     }
 
     private void addImageToFrame(String path) {
         try {
             load(path);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog((JFrame) rootWindow, e.getMessage(),
+            JOptionPane.showMessageDialog((JFrame) rootWin, e.getMessage(),
                     "Ошибка", JOptionPane.ERROR_MESSAGE);
         }
     }

@@ -2,14 +2,13 @@ package ru.app.project.utility;
 
 import javax.swing.*;
 
-public class RelativeTextSizeRatioCalculator {
-    public static double getJLabelTextRatio(JLabel label) {
+public class RelTSRatioCalc {
+    public static double getTextRatio(JLabel label) {
         return getRatio(label.getText(), label.getWidth());
     }
-    public static double getJButtonTextRatio(JButton button) {
+    public static double getTextRatio(JButton button) {
         return getRatio(button.getText(), button.getWidth());
     }
-
     public static double getTextRatio(String text, double width) {
         return getRatio(text, width);
     }

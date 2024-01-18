@@ -4,8 +4,8 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.IDescSelectCInfoCfg;
 import ru.app.project.design.iDescSelect.impl.panels.BasicButtonsPDBuilder;
 import ru.app.project.design.iDescSelect.interf.panels.ButtonsPDBuilder;
-import ru.app.project.utility.TextSizeCalculator;
-import ru.app.project.utility.RelativeTextSizeRatioCalculator;
+import ru.app.project.utility.TSCalc;
+import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ButtonsP extends JPanel implements BasicPanel {
-    private RootWindow rootWindow;
+    private RootWindow rootWin;
     private final ButtonsPDBuilder designBuilder;
-    private IDescSelectCInfoCfg config;
+    private IDescSelectCInfoCfg cfg;
     private MutableComponent parent;
 
     private final List<JButton> buttons;
@@ -31,8 +31,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
         this.designBuilder = new BasicButtonsPDBuilder(this);
         this.buttons = new ArrayList<>(3);
 
-        this.rootWindow = null;
-        this.config = null;
+        this.rootWin = null;
+        this.cfg = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -52,21 +52,21 @@ public class ButtonsP extends JPanel implements BasicPanel {
             @Override
             public void componentResized(ComponentEvent e) {
                 if(buttonsRatio == null) {
-                    buttonsRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(buttons.get(0));
+                    buttonsRatio = RelTSRatioCalc.getTextRatio(buttons.get(0));
                 }
             }
         });
 
         for(int i = 0; i < AppProperties.getNumOfItemsInIDesc(); i++) {
             int id = i + 1;
-            buttons.get(i).addActionListener(event -> rootWindow.showCard(IDescC.class, id));
+            buttons.get(i).addActionListener(event -> rootWin.showCard(IDescC.class, id));
 
             if(AppProperties.isTextDynamic()) {
                 int finalI = i;
                 this.addComponentListener(new ComponentAdapter() {
                     @Override
                     public void componentResized(ComponentEvent e) {
-                        TextSizeCalculator.calculateJButtonTextSize(buttons.get(finalI), buttonsRatio);
+                        TSCalc.calcTextSize(buttons.get(finalI), buttonsRatio);
                     }
                 });
             }
@@ -86,17 +86,17 @@ public class ButtonsP extends JPanel implements BasicPanel {
     @Override
     public void applyConfig() {
         for(int i = 0; i < AppProperties.getNumOfItemsInIDesc(); i++) {
-            buttons.get(i).setText(config.getButtons().get(i));
+            buttons.get(i).setText(cfg.getButtons().get(i));
         }
     }
 
     @Override
-    public void setRootWindow(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public void setRootWin(RootWindow rootWin) {
+        this.rootWin = rootWin;
     }
 
     @Override
-    public void setConfig(Object config) {
-        this.config = (IDescSelectCInfoCfg)config;
+    public void setCfg(Object cfg) {
+        this.cfg = (IDescSelectCInfoCfg) cfg;
     }
 }

@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DescC extends JPanel implements BasicCard {
-    private final RootWindow rootWindow;
+    private final RootWindow rootWin;
     private final DescCDBuilder designBuilder;
     private final ConfigLoader<DescCInfoCfg> configLoader;
 
@@ -20,8 +20,8 @@ public class DescC extends JPanel implements BasicCard {
     private BasicPanel buttonsPanel;
     private BasicPanel descriptionPanel;
     private BasicPanel footerPanel;
-    public DescC(RootWindow rootWindow) {
-        this.rootWindow = rootWindow;
+    public DescC(RootWindow rootWin) {
+        this.rootWin = rootWin;
 
         this.designBuilder = new BasicDescCDBuilder(this);
         this.configLoader = new ConfigLoader<>(DescCInfoCfg.class);
@@ -45,14 +45,14 @@ public class DescC extends JPanel implements BasicCard {
         buttonsPanel.setParent(this);
         descriptionPanel.setParent(this);
         footerPanel.setParent(this);
-        headerPanel.setRootWindow(rootWindow);
-        buttonsPanel.setRootWindow(rootWindow);
-        descriptionPanel.setRootWindow(rootWindow);
-        footerPanel.setRootWindow(rootWindow);
-        headerPanel.setConfig(configLoader.getConfig());
-        buttonsPanel.setConfig(configLoader.getConfig());
-        descriptionPanel.setConfig(configLoader.getConfig());
-        footerPanel.setConfig(configLoader.getConfig());
+        headerPanel.setRootWin(rootWin);
+        buttonsPanel.setRootWin(rootWin);
+        descriptionPanel.setRootWin(rootWin);
+        footerPanel.setRootWin(rootWin);
+        headerPanel.setCfg(configLoader.getCfg());
+        buttonsPanel.setCfg(configLoader.getCfg());
+        descriptionPanel.setCfg(configLoader.getCfg());
+        footerPanel.setCfg(configLoader.getCfg());
     }
 
     @Override
