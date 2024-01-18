@@ -1,35 +1,36 @@
-package ru.app.project.windows.cards.selector.panels;
+package ru.app.project.windows.cards.iDescSelect.panels;
 
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.SelectCInfoCfg;
-import ru.app.project.design.select.impl.panels.BasicButtonsPDBuilder;
-import ru.app.project.design.select.interf.panels.ButtonsPDBuilder;
+import ru.app.project.config.window.IDescSelectCInfoCfg;
+import ru.app.project.design.iDescSelect.impl.panels.BasicHeaderPDBuilder;
+import ru.app.project.design.iDescSelect.interf.panels.HeaderPDBuilder;
 import ru.app.project.utility.TextSizeCalculator;
 import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.iDesc.IDescC;
+import ru.app.project.windows.cards.desc.DescC;
+import ru.app.project.windows.cards.selector.SelectC;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class ButtonsP extends JPanel implements BasicPanel {
+public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private final ButtonsPDBuilder designBuilder;
-    private SelectCInfoCfg config;
+    private final HeaderPDBuilder designBuilder;
+    private IDescSelectCInfoCfg config;
     private MutableComponent parent;
 
-    private JLabel description;
     private JButton button1;
+    private JLabel description;
     private JButton button2;
 
     private Double descriptionRatio = null;
     private Double buttonRatio = null;
 
-    public ButtonsP() {
-        this.designBuilder = new BasicButtonsPDBuilder(this);
+    public HeaderP() {
+        this.designBuilder = new BasicHeaderPDBuilder(this);
 
         this.rootWindow = null;
         this.config = null;
@@ -40,15 +41,15 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        description = designBuilder.buildDescription();
         button1 = designBuilder.buildJButtonDesign();
+        description = designBuilder.buildJLabelDesign();
         button2 = designBuilder.buildJButtonDesign();
     }
 
     @Override
-    public void applyLogic() {
-        button1.addActionListener(event -> rootWindow.showCard(IDescC.class, 1));
-        button2.addActionListener(event -> rootWindow.showCard(IDescC.class, 1));
+    public void applyLogic(){
+        button1.addActionListener(event -> rootWindow.showCard(DescC.class));
+        button2.addActionListener(event -> rootWindow.showCard(SelectC.class));
 
         if(AppProperties.isDynamicTextSizeOn()) {
             this.addComponentListener(new ComponentAdapter() {
@@ -78,9 +79,9 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        description.setText(config.getDesc());
-        button1.setText(config.getButton1());
-        button2.setText(config.getButton2());
+        button1.setText(config.getLButton());
+        description.setText(config.getHHeader());
+        button2.setText(config.getRButton());
     }
 
     @Override
@@ -90,6 +91,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-        this.config = (SelectCInfoCfg)config;
+        this.config = (IDescSelectCInfoCfg)config;
     }
 }

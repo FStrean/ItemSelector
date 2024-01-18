@@ -1,7 +1,6 @@
 package ru.app.project.utility;
 
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.ItemDescriptionCStateConfig;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;

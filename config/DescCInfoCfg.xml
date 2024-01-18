@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<descCInfoCfg>
+    <hHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 44px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Назначение комплекса КРС КПТВ.412168.002
+        </center>
+    </html>]]></hHeader>
+    <button1><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Состав комплекса
+        </center>
+    </html>]]></button1>
+    <button2><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Работа комплекса
+        </center>
+    </html>]]></button2>
+    <desc><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 16px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <ol>
+            <li>Экспрессная оценка в полевых условиях источника загрязнения (обнаружения, идентификации радионуклидного состава гамма-излучения)</li>
+            <li>Отбор и подготовка проб различных объектов окружающей среды, пищевых продуктов, фуража</li>
+            <li>Проведение радиометрических измерений проб по альфа- и бета-излучениям</li>
+            <li>Проведение спектрометрических измерений по гамма-излучению в полевых и лабораторных условиях</li>
+            <li>Идентификация и определение удельной, объемной, суммарной и эффективной активности радионуклидов в пробах грунта, воды, продовольствия, фуража и других материалов</li>
+            <li>Определение возраста продуктов ядерного взрыва</li>
+            <li>Подготовка форматизированных донесений по результатам радиационного контроля</li>
+        </ol>
+    </html>]]></desc>
+    <fHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Мультимедийное обучающее программное обеспечение
+        </center>
+    </html>]]></fHeader>
+</descCInfoCfg>

@@ -2,11 +2,11 @@ package ru.app.project.windows;
 
 import ru.app.project.config.AppProperties;
 import ru.app.project.config.SystemProperties;
-import ru.app.project.windows.cards.description.DescriptionC;
-import ru.app.project.windows.cards.itemDescription.ItemDescriptionC;
-import ru.app.project.windows.cards.itemDescriptionSelector.ItemDescriptionSelectorC;
-import ru.app.project.windows.cards.mainSelector.MainSelectorC;
-import ru.app.project.windows.cards.selector.SelectorC;
+import ru.app.project.windows.cards.desc.DescC;
+import ru.app.project.windows.cards.iDesc.IDescC;
+import ru.app.project.windows.cards.iDescSelect.IDescSelectC;
+import ru.app.project.windows.cards.mSelect.MSelectC;
+import ru.app.project.windows.cards.selector.SelectC;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,32 +38,32 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
 
     @Override
     public void applyLogic() {
-        MainSelectorC mainSelectorC = new MainSelectorC(this);
-        cards.put(MainSelectorC.class.getSimpleName(), mainSelectorC);
-        add(mainSelectorC, MainSelectorC.class.getSimpleName());
+        MSelectC mSelectC = new MSelectC(this);
+        cards.put(MSelectC.class.getSimpleName(), mSelectC);
+        add(mSelectC, MSelectC.class.getSimpleName());
 
-        DescriptionC descriptionC = new DescriptionC(this);
-        cards.put(DescriptionC.class.getSimpleName(), descriptionC);
-        add(descriptionC, DescriptionC.class.getSimpleName());
+        DescC descC = new DescC(this);
+        cards.put(DescC.class.getSimpleName(), descC);
+        add(descC, DescC.class.getSimpleName());
 
-        ItemDescriptionSelectorC itemDescriptionSelectorC = new ItemDescriptionSelectorC(this);
-        cards.put(ItemDescriptionSelectorC.class.getSimpleName(), itemDescriptionSelectorC);
-        add(itemDescriptionSelectorC, ItemDescriptionSelectorC.class.getSimpleName());
+        IDescSelectC iDescSelectC = new IDescSelectC(this);
+        cards.put(IDescSelectC.class.getSimpleName(), iDescSelectC);
+        add(iDescSelectC, IDescSelectC.class.getSimpleName());
 
-        SelectorC selectorC = new SelectorC(this);
-        cards.put(SelectorC.class.getSimpleName(), selectorC);
-        add(selectorC, SelectorC.class.getSimpleName());
+        SelectC selectC = new SelectC(this);
+        cards.put(SelectC.class.getSimpleName(), selectC);
+        add(selectC, SelectC.class.getSimpleName());
 
-        ItemDescriptionC itemDescriptionC = new ItemDescriptionC(this);
-        cards.put(ItemDescriptionC.class.getSimpleName(), itemDescriptionC);
-        add(itemDescriptionC, ItemDescriptionC.class.getSimpleName());
+        IDescC iDescC = new IDescC(this);
+        cards.put(IDescC.class.getSimpleName(), iDescC);
+        add(iDescC, IDescC.class.getSimpleName());
     }
 
     @Override
     public void showCard(Class<?> cardClass, int i) {
-        if(cardClass == ItemDescriptionC.class) {
+        if(cardClass == IDescC.class) {
             cardLayout.show(this.getContentPane(), cardClass.getSimpleName());
-            ((ItemDescriptionC)(cards.get(cardClass.getSimpleName()))).showState(i);
+            ((IDescC)(cards.get(cardClass.getSimpleName()))).showState(i);
         } else {
             showCard(cardClass);
         }

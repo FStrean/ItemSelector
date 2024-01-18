@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<selectCInfoCfg>
+    <hHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 44px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Работа комплекса КРС КПТВ.412168.002
+        </center>
+    </html>]]></hHeader>
+    <desc><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Использование изделия КРС
+        </center>
+    </html>]]></desc>
+    <button1><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Описание ПО КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button1>
+    <button2><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Измерения КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button2>
+    <lButton1><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 10.5px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Состав комплекса
+        </center>
+    </html>]]></lButton1>
+    <lButton2><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 10.5px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Назначение комплекса
+        </center>
+    </html>]]></lButton2>
+    <fHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Мультимедийное обучающее программное обеспечение
+        </center>
+    </html>]]></fHeader>
+</selectCInfoCfg>

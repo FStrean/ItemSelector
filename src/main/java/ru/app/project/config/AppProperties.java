@@ -3,6 +3,7 @@ package ru.app.project.config;
 public class AppProperties {
     private static final int winW = (int)((double)SystemProperties.getScreenWidth() / 1.2);
     private static final int winH = (int)((double)SystemProperties.getScreenHeight() / 1.2);
+    private static final String configFolderPath = "config";
     public static int getWinW() {
         return winW;
     }
@@ -10,15 +11,18 @@ public class AppProperties {
         return winH;
     }
     public static String getConfigFolderPath() {
-        return "config";
+        return configFolderPath;
     }
-    public static int getNumberOfItemsInItemDescriptionWindow() {
+    public static int getNumOfItemsInIDesc() {
         return 15;
     }
-    public static int getMaxNumberOfImagesInItemDescriptionWindow() {
+    public static int getMaxNumOfImgInItemDescription() {
         return 3;
     }
-    public static int getMaxNumberOfVideosInItemDescriptionWindow() {
+    public static int getMaxNumOfVidInItemDescription() {
         return 2;
+    }
+    public static boolean isDynamicTextSizeOn() {
+        return true;
     }
 }

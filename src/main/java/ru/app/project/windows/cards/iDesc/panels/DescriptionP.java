@@ -1,9 +1,9 @@
-package ru.app.project.windows.cards.selector.panels;
+package ru.app.project.windows.cards.iDesc.panels;
 
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.SelectCInfoCfg;
-import ru.app.project.design.select.impl.panels.BasicHeaderPDBuilder;
-import ru.app.project.design.select.interf.panels.HeaderPDBuilder;
+import ru.app.project.config.window.IDescCInfoCfg;
+import ru.app.project.design.iDesc.impl.panels.BasicDescriptionPDBuilder;
+import ru.app.project.design.iDesc.interf.panels.DescriptionPDBuilder;
 import ru.app.project.utility.TextSizeCalculator;
 import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
@@ -14,21 +14,21 @@ import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class HeaderP extends JPanel implements BasicPanel {
+public class DescriptionP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private final HeaderPDBuilder designBuilder;
-    private SelectCInfoCfg config;
+    private final DescriptionPDBuilder designBuilder;
+    private IDescCInfoCfg.Item config;
+    private IDescCInfoCfg additionalConfig;
     private MutableComponent parent;
-
     private JLabel description;
 
     private Double descriptionRatio = null;
 
-    public HeaderP() {
-        designBuilder = new BasicHeaderPDBuilder(this);
+    public DescriptionP() {
+        this.designBuilder = new BasicDescriptionPDBuilder(this);
 
-        this.rootWindow = null;
         this.config = null;
+        this.rootWindow = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -36,7 +36,7 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        this.description = designBuilder.buildJLabelDesign();
+        description = designBuilder.buildJLabelDesign();
     }
 
     @Override
@@ -46,12 +46,19 @@ public class HeaderP extends JPanel implements BasicPanel {
                 @Override
                 public void componentResized(ComponentEvent e) {
                     if (descriptionRatio == null) {
-                        descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
+                        descriptionRatio = RelativeTextSizeRatioCalculator.getTextRatio(additionalConfig.getDescStyle(), description.getWidth());
                     }
-
                     TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
                 }
             });
+        }
+    }
+
+    @Override
+    public void applyConfig() {
+        description.setText("<html>" + additionalConfig.getDescStyle() + config.getDesc() + "</html>");
+        if(descriptionRatio != null) {
+            TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
         }
     }
 
@@ -66,17 +73,16 @@ public class HeaderP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void applyConfig() {
-        description.setText(config.getHHeader());
-    }
-
-    @Override
     public void setRootWindow(RootWindow rootWindow) {
         this.rootWindow = rootWindow;
     }
 
     @Override
     public void setConfig(Object config) {
-        this.config = (SelectCInfoCfg)config;
+        this.config = (IDescCInfoCfg.Item)config;
+    }
+
+    public void setAdditionalConfig(Object config) {
+        this.additionalConfig = (IDescCInfoCfg)config;
     }
 }

@@ -1,35 +1,34 @@
-package ru.app.project.windows.cards.selector.panels;
+package ru.app.project.windows.cards.desc.panels;
 
+import ru.app.project.components.JImageButton;
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.SelectCInfoCfg;
-import ru.app.project.design.select.impl.panels.BasicButtonsPDBuilder;
-import ru.app.project.design.select.interf.panels.ButtonsPDBuilder;
+import ru.app.project.config.window.DescCInfoCfg;
+import ru.app.project.design.desc.impl.panels.BasicFooterPDBuilder;
+import ru.app.project.design.desc.interf.panels.FooterPDBuilder;
 import ru.app.project.utility.TextSizeCalculator;
 import ru.app.project.utility.RelativeTextSizeRatioCalculator;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.iDesc.IDescC;
+import ru.app.project.windows.cards.mSelect.MSelectC;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class ButtonsP extends JPanel implements BasicPanel {
+public class FooterP extends JPanel implements BasicPanel {
     private RootWindow rootWindow;
-    private final ButtonsPDBuilder designBuilder;
-    private SelectCInfoCfg config;
+    private final FooterPDBuilder designBuilder;
+    private DescCInfoCfg config;
     private MutableComponent parent;
 
     private JLabel description;
-    private JButton button1;
-    private JButton button2;
+    private JImageButton button;
 
     private Double descriptionRatio = null;
-    private Double buttonRatio = null;
 
-    public ButtonsP() {
-        this.designBuilder = new BasicButtonsPDBuilder(this);
+    public FooterP() {
+        this.designBuilder = new BasicFooterPDBuilder(this);
 
         this.rootWindow = null;
         this.config = null;
@@ -37,18 +36,19 @@ public class ButtonsP extends JPanel implements BasicPanel {
         this.applyDesign();
         this.applyLogic();
     }
-
     @Override
+
     public void applyDesign() {
-        description = designBuilder.buildDescription();
-        button1 = designBuilder.buildJButtonDesign();
-        button2 = designBuilder.buildJButtonDesign();
+        description = designBuilder.buildJLabelDesign();
+        button = designBuilder.buildJButtonDesign();
     }
 
     @Override
-    public void applyLogic() {
-        button1.addActionListener(event -> rootWindow.showCard(IDescC.class, 1));
-        button2.addActionListener(event -> rootWindow.showCard(IDescC.class, 1));
+    public void applyLogic(){
+        button.addActionListener(event -> {
+            parent.runOnLeaveAction();
+            rootWindow.showCard(MSelectC.class);
+        });
 
         if(AppProperties.isDynamicTextSizeOn()) {
             this.addComponentListener(new ComponentAdapter() {
@@ -56,11 +56,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
                 public void componentResized(ComponentEvent e) {
                     if (descriptionRatio == null) {
                         descriptionRatio = RelativeTextSizeRatioCalculator.getJLabelTextRatio(description);
-                        buttonRatio = RelativeTextSizeRatioCalculator.getJButtonTextRatio(button1);
                     }
                     TextSizeCalculator.calculateJLabelTextSize(description, descriptionRatio);
-                    TextSizeCalculator.calculateJButtonTextSize(button1, buttonRatio);
-                    TextSizeCalculator.calculateJButtonTextSize(button2, buttonRatio);
                 }
             });
         }
@@ -78,9 +75,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        description.setText(config.getDesc());
-        button1.setText(config.getButton1());
-        button2.setText(config.getButton2());
+        description.setText(config.getFHeader());
     }
 
     @Override
@@ -90,6 +85,6 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void setConfig(Object config) {
-        this.config = (SelectCInfoCfg)config;
+        this.config = (DescCInfoCfg)config;
     }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mSelectCInfoCfg>
+    <hHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 60px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Комплекс КРС
+        </center>
+    </html>]]></hHeader>
+    <button1><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Назначение комплекса КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button1>
+    <button2><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Состав и описание комплекса КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button2>
+    <button3><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Работа комплекса КРС КПТВ. 412168.002
+        </center>
+    </html>]]></button3>
+    <fHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 30px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Мультимедийное обучающее программное обеспечение
+        </center>
+    </html>]]></fHeader>
+</mSelectCInfoCfg>
