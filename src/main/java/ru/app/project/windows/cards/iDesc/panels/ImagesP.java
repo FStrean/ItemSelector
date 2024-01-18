@@ -38,8 +38,8 @@ public class ImagesP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        List<JImage> jImages = new ArrayList<>(AppProperties.getMaxNumOfImgInItemDescription());
-        for (int i = 0; i < AppProperties.getMaxNumOfImgInItemDescription(); i++) {
+        List<JImage> jImages = new ArrayList<>(AppProperties.getMaxNumOfImgInIDesc());
+        for (int i = 0; i < AppProperties.getMaxNumOfImgInIDesc(); i++) {
             JImage image = designBuilder.buildJImageDesign();
             jImages.add(image);
             image.setVisible(false);
@@ -104,7 +104,7 @@ public class ImagesP extends JPanel implements BasicPanel {
             throw new IOException("Image is null");
         }
 
-        jImage.setImage(image);
+        jImage.setImg(image);
         jImage.setVisible(true);
     }
 }

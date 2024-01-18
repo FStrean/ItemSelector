@@ -13,62 +13,73 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;
     private final JPanel leftButtonPanel;
     public BasicFooterPDBuilder(JPanel panel) {
-        leftButtonPanel = new JPanel();
-        leftButtonPanel.setLayout(new GridLayout(0,1));
         this.panel = panel;
-        this.panel.setOpaque(false);
-        leftButtonPanel.setOpaque(false);
+        this.leftButtonPanel = new JPanel();
         RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
+
         layout.setFill(true);
+        this.leftButtonPanel.setOpaque(false);
+        this.leftButtonPanel.setLayout(new GridLayout(0,1));
+        this.panel.setOpaque(false);
         this.panel.setLayout(layout);
+
         this.panel.add(leftButtonPanel, 10.0f);
     }
 
     @Override
     public JButton buildLeftButtonDesign() {
-        RoundButton button = new RoundButton("", 40, Color.BLACK);
-        button.setForeground(Color.WHITE);
-        JPanel jPanel = new JPanel(new BorderLayout());
-        jPanel.setOpaque(false);
-        jPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
-        jPanel.add(button);
-        leftButtonPanel.add(jPanel);
-        return button;
+        RoundButton btn = new RoundButton("", 40, Color.BLACK);
+        JPanel p = new JPanel(new BorderLayout());
+
+        btn.setForeground(Color.WHITE);
+        p.setOpaque(false);
+        p.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        p.add(btn);
+        leftButtonPanel.add(p);
+
+        return btn;
     }
 
     @Override
     public JLabel buildJLabelDesign() {
-        JPanel descriptionPanel = new JPanel();
-        descriptionPanel.setOpaque(false);
+        JPanel dp = new JPanel();
+        JLabel text = new JLabel();
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
+        JPanel p = new JPanel();
+
         layout.setFill(true);
-        descriptionPanel.setLayout(layout);
-        JPanel jPanel1  = new JPanel();
-        jPanel1.setOpaque(false);
-        descriptionPanel.add(jPanel1, 67.0f);
-        JLabel description = new JLabel();
-        description.setOpaque(false);
-        description.setHorizontalAlignment(SwingConstants.CENTER);
-        description.setVerticalAlignment(SwingConstants.CENTER);
-        descriptionPanel.add(description, 33.0f);
-        panel.add(descriptionPanel, 85.0f);
-        return description;
+        dp.setOpaque(false);
+        dp.setLayout(layout);
+        p.setOpaque(false);
+        text.setOpaque(false);
+        text.setVerticalAlignment(SwingConstants.CENTER);
+        text.setHorizontalAlignment(SwingConstants.CENTER);
+
+        dp.add(p, 67.0f);
+        dp.add(text, 33.0f);
+        panel.add(dp, 85.0f);
+
+        return text;
     }
 
     @Override
     public JImageButton buildJButtonDesign() {
-        JPanel homeButtonPanel = new JPanel();
-        homeButtonPanel.setOpaque(false);
+        JPanel hbp = new JPanel();
+        JPanel p = new JPanel();
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
+        JImageButton btn = new JImageButton("icons/home.png");
+
         layout.setFill(true);
-        homeButtonPanel.setLayout(layout);
-        JPanel jPanel1 = new JPanel();
-        jPanel1.setOpaque(false);
-        homeButtonPanel.add(jPanel1, 67.0f);
-        JImageButton button = new JImageButton("icons/home.png");
-        button.setAlign(BorderLayout.LINE_END, BorderLayout.LINE_END);
-        homeButtonPanel.add(button, 33.0f);
-        panel.add(homeButtonPanel, 5.0f);
-        return button;
+        hbp.setOpaque(false);
+        hbp.setLayout(layout);
+        p.setOpaque(false);
+        btn.setAlign(JImageButton.LINE_END, JImageButton.LINE_END);
+
+        hbp.add(p, 67.0f);
+        hbp.add(btn, 33.0f);
+        panel.add(hbp, 5.0f);
+
+        return btn;
     }
 }

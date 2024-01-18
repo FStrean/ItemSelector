@@ -51,7 +51,7 @@ public class HeaderP extends JPanel implements BasicPanel {
         button1.addActionListener(event -> rootWindow.showCard(DescC.class));
         button2.addActionListener(event -> rootWindow.showCard(SelectC.class));
 
-        if(AppProperties.isDynamicTextSizeOn()) {
+        if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {

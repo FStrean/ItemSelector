@@ -15,45 +15,53 @@ public class BasicMSelectCDBuilder implements MSelectCDBuilder {
     public BasicMSelectCDBuilder(JPanel panel) {
         this.panel = panel;
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
+
         layout.setFill(true);
         this.panel.setLayout(layout);
     }
 
     @Override
     public BasicPanel buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP();
-        panel.add(headerPanel, 15.0f);
-        return headerPanel;
+        HeaderP hp = new HeaderP();
+
+        panel.add(hp, 15.0f);
+
+        return hp;
     }
 
     @Override
     public BasicPanel buildCenterPanelDesign() {
-        ButtonsP buttonsPanel = new ButtonsP();
-        JPanel jPanel1 = new JPanel();
-        jPanel1.setOpaque(false);
-        JPanel jPanel2 = new JPanel();
-        jPanel2.setOpaque(false);
-        panel.add(jPanel1, 15.0f);
-        panel.add(buttonsPanel, 50.0f);
-        panel.add(jPanel2, 10.0f);
-        return buttonsPanel;
+        ButtonsP bp = new ButtonsP();
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
+
+        p1.setOpaque(false);
+        p2.setOpaque(false);
+
+        panel.add(p1, 15.0f);
+        panel.add(bp, 50.0f);
+        panel.add(p2, 10.0f);
+
+        return bp;
     }
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
-        FooterP footerPanel = new FooterP();
-        panel.add(footerPanel, 10.0f);
-        return footerPanel;
+        FooterP fp = new FooterP();
+
+        panel.add(fp, 10.0f);
+
+        return fp;
     }
 
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        Color c1 = Color.WHITE, c2 = Color.GRAY;
         int w = panel.getWidth(), h = panel.getHeight();
-        Color color1 = Color.WHITE;
-        Color color2 = Color.GRAY;
-        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);  // Изменены координаты здесь
+        GradientPaint gp = new GradientPaint(0, 0, c1, 0, h, c2);
+
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         g2d.setPaint(gp);
         g2d.fillRect(0, 0, w, h);
     }

@@ -57,7 +57,7 @@ public class FooterP extends JPanel implements BasicPanel {
         leftButton2.addActionListener(event -> rootWindow.showCard(DescC.class));
         button.addActionListener(event -> rootWindow.showCard(MSelectC.class));
 
-        if(AppProperties.isDynamicTextSizeOn()) {
+        if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {

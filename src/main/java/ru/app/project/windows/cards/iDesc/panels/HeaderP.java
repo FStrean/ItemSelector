@@ -60,7 +60,7 @@ public class HeaderP extends JPanel implements BasicPanel {
             rootWindow.showCard(IDescC.class, (id + 1) > maxId ? 1 : (id + 1));
         });
 
-        if(AppProperties.isDynamicTextSizeOn()) {
+        if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {

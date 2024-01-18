@@ -40,7 +40,7 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        if(AppProperties.isDynamicTextSizeOn()) {
+        if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {

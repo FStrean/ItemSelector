@@ -9,82 +9,86 @@ import java.awt.event.ComponentEvent;
 import java.awt.image.ImageObserver;
 
 public class JImageButton extends JPanel {
-    private JButton button;
-    private final Image image;
-    private final ImageObserver imageObserver;
+    public static final int LINE_START = 0;
+    public static final int CENTER = 1;
+    public static final int LINE_END = 2;
 
-    private final int imageWidth;
-    private final int imageHeight;
+    private JButton btn;
+    private final Image img;
+    private final ImageObserver imgObs;
 
-    private int newImageWidth = -1;
-    private int newImageHeight = -1;
+    private final int imgWidth;
+    private final int imgHeight;
 
-    private int x = 0;
-    private int y = 0;
-    private float topRatio = 0.5f, leftRatio = 0.5f, bottomRatio = 0.5f, rightRatio = 0.5f;
-    private int top = 0, left = 0, bottom = 0, right = 0;
+    private int newImgWidth = -1;
+    private int newImgHeight = -1;
+
+    private final int x = 0;
+    private final int y = 0;
+    private float tRatio = 0.5f, lRatio = 0.5f, bRatio = 0.5f, rRatio = 0.5f;
+    private int tPad = 0, lPad = 0, bPad = 0, rPad = 0;
 
     public JImageButton(String path){
         super();
         this.setOpaque(false);
         ImageIcon icon = new ImageIcon(path);
-        this.image = icon.getImage();
-        this.imageObserver = icon.getImageObserver();
+        this.img = icon.getImage();
+        this.imgObs = icon.getImageObserver();
 
-        this.imageWidth = this.image.getWidth(this.imageObserver);
-        this.imageHeight = this.image.getHeight(this.imageObserver);
+        this.imgWidth = this.img.getWidth(this.imgObs);
+        this.imgHeight = this.img.getHeight(this.imgObs);
 
         this.paintButton();
         this.initResizeLogic();
 
         this.setLayout(new BorderLayout());
-        this.add(button);
+        this.add(btn);
     }
 
-    public void setAlign(String xAlign, String yAlign) {
+    public void setAlign(int xAlign, int yAlign) {
         switch (xAlign) {
-            case BorderLayout.LINE_START -> {
-                leftRatio = 0.0f;
-                rightRatio = 1.0f;
+            case LINE_START -> {
+                lRatio = 0.0f;
+                rRatio = 1.0f;
             }
-            case BorderLayout.CENTER -> {
-                leftRatio = 0.5f;
-                rightRatio = 0.5f;
+            case CENTER -> {
+                lRatio = 0.5f;
+                rRatio = 0.5f;
             }
-            case BorderLayout.LINE_END -> {
-                leftRatio = 1.0f;
-                rightRatio = 0.0f;
+            case LINE_END -> {
+                lRatio = 1.0f;
+                rRatio = 0.0f;
             }
         }
 
         switch (yAlign) {
-            case BorderLayout.LINE_START -> {
-                topRatio = 0.0f;
-                bottomRatio = 1.0f;
+            case LINE_START -> {
+                tRatio = 0.0f;
+                bRatio = 1.0f;
             }
-            case BorderLayout.CENTER -> {
-                topRatio = 0.5f;
-                bottomRatio = 0.5f;
+            case CENTER -> {
+                tRatio = 0.5f;
+                bRatio = 0.5f;
             }
-            case BorderLayout.LINE_END -> {
-                topRatio = 1.0f;
-                bottomRatio = 0.0f;
+            case LINE_END -> {
+                tRatio = 1.0f;
+                bRatio = 0.0f;
             }
         }
     }
 
     public void addActionListener(ActionListener l) {
-        button.addActionListener(l);
+        btn.addActionListener(l);
     }
 
     private void paintButton() {
-        button = new JButton() {
+        btn = new JButton() {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                setSize(new Dimension(newImageWidth, newImageHeight));
+                setSize(new Dimension(newImgWidth, newImgHeight));
                 if(!getModel().isArmed()) {
-                    g.drawImage(image, x, y, newImageWidth, newImageHeight, imageObserver);
+                    g.drawImage(img, x, y, newImgWidth, newImgHeight, imgObs);
                 }
             }
         };
@@ -94,34 +98,34 @@ public class JImageButton extends JPanel {
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                int panelWidth = JImageButton.this.getWidth();
-                int panelHeight = JImageButton.this.getHeight();
+                int pWidth = JImageButton.this.getWidth();
+                int pHeight = JImageButton.this.getHeight();
 
-                double intermediateImageWidthRatio;
-                if (panelWidth == 0) {
-                    intermediateImageWidthRatio = imageWidth;
+                double wRatio;
+                if (pWidth == 0) {
+                    wRatio = imgWidth;
                 } else {
-                    intermediateImageWidthRatio = (double) imageWidth / panelWidth;
+                    wRatio = (double) imgWidth / pWidth;
                 }
 
-                double intermediateImageHeightRatio;
-                if (panelHeight == 0) {
-                    intermediateImageHeightRatio = imageHeight;
+                double hRatio;
+                if (pHeight == 0) {
+                    hRatio = imgHeight;
                 } else {
-                    intermediateImageHeightRatio = (double) imageHeight / panelHeight;
+                    hRatio = (double) imgHeight / pHeight;
                 }
 
-                double imageRatio = Math.max(intermediateImageWidthRatio, intermediateImageHeightRatio);
+                double imgRatio = Math.max(wRatio, hRatio);
 
-                newImageWidth = Math.min((int) ((double) imageWidth / imageRatio), imageWidth);
-                newImageHeight = Math.min((int) ((double) imageHeight / imageRatio), imageHeight);
+                newImgWidth = Math.min((int) ((double) imgWidth / imgRatio), imgWidth);
+                newImgHeight = Math.min((int) ((double) imgHeight / imgRatio), imgHeight);
 
-                top = (int) ((float) (panelHeight - newImageHeight) * topRatio);
-                left = (int) ((float) (panelWidth - newImageWidth) * leftRatio);
-                bottom = (int) ((float) (panelHeight - newImageHeight) * bottomRatio);
-                right = (int) ((float) (panelWidth - newImageWidth) * rightRatio);
+                tPad = (int) ((float) (pHeight - newImgHeight) * tRatio);
+                lPad = (int) ((float) (pWidth - newImgWidth) * lRatio);
+                bPad = (int) ((float) (pHeight - newImgHeight) * bRatio);
+                rPad = (int) ((float) (pWidth - newImgWidth) * rRatio);
 
-                JImageButton.this.setBorder(new EmptyBorder(top, left, bottom, right));
+                JImageButton.this.setBorder(new EmptyBorder(tPad, lPad, bPad, rPad));
                 if(isVisible()) {
                     JImageButton.this.updateUI();
                 }

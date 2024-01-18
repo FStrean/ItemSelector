@@ -14,7 +14,7 @@ public class App
     }
 
     private static void createFolders() {
-        File configPath = new File(AppProperties.getConfigFolderPath());
+        File configPath = new File(AppProperties.getCfgPath());
         if(configPath.mkdirs()) {
             JOptionPane.showMessageDialog(null,
                     "Отсутствует путь: " + configPath.getAbsolutePath() + "\n" +

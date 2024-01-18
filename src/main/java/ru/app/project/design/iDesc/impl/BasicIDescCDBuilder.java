@@ -4,60 +4,63 @@ import ru.app.project.design.iDesc.interf.IDescCDBuilder;
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.cards.iDesc.panels.*;
-//import ru.app.project.windows.cards.itemDescription.panels.VideosP;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class BasicIDescCDBuilder implements IDescCDBuilder {
     private final JPanel panel;
-
     private final JPanel contentPanel;
     public BasicIDescCDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setBackground(Color.WHITE);
         this.contentPanel = new JPanel();
-
-        this.contentPanel.setOpaque(false);
-
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
         RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
 
-        mainLayout.setFill(true);
         contentLayout.setFill(true);
-
+        mainLayout.setFill(true);
+        this.panel.setBackground(Color.WHITE);
         this.panel.setLayout(mainLayout);
+        this.contentPanel.setOpaque(false);
         this.contentPanel.setLayout(contentLayout);
     }
 
     @Override
     public BasicPanel buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP();
-        panel.add(headerPanel, 15.0f);
-        return headerPanel;
+        HeaderP hp = new HeaderP();
+
+        panel.add(hp, 15.0f);
+
+        return hp;
     }
 
     @Override
     public BasicPanel buildLeftPanelDesign() {
-        ImagesP imagesP = new ImagesP();
-        contentPanel.add(imagesP, 35.0f);
-        return imagesP;
+        ImagesP ip = new ImagesP();
+
+        contentPanel.add(ip, 35.0f);
+
+        return ip;
     }
 
     @Override
     public BasicPanel buildRightPanelDesign() {
-        DescriptionP descriptionPanel = new DescriptionP();
-        contentPanel.add(descriptionPanel, 65.0f);
+        DescriptionP dp = new DescriptionP();
+
+        contentPanel.add(dp, 65.0f);
         panel.add(contentPanel, 75.0f);
-        return descriptionPanel;
+
+        return dp;
     }
 
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
-        FooterP header1Panel = new FooterP();
-        panel.add(header1Panel, 10.0f);
-        return header1Panel;
+        FooterP fp = new FooterP();
+
+        panel.add(fp, 10.0f);
+
+        return fp;
     }
 
     @Override

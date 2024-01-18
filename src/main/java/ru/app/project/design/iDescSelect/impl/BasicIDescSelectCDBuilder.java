@@ -15,31 +15,38 @@ public class BasicIDescSelectCDBuilder implements IDescSelectCDBuilder {
 
     public BasicIDescSelectCDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setBackground(Color.WHITE);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
+
         layout.setFill(true);
         this.panel.setLayout(layout);
+        this.panel.setBackground(Color.WHITE);
     }
 
     @Override
     public BasicPanel buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP();
-        panel.add(headerPanel, 15.0f);
-        return headerPanel;
+        HeaderP hp = new HeaderP();
+
+        panel.add(hp, 15.0f);
+
+        return hp;
     }
 
     @Override
     public BasicPanel buildCenterPanelDesign() {
-        ButtonsP buttonsPanel = new ButtonsP();
-        panel.add(buttonsPanel, 75.0f);
-        return buttonsPanel;
+        ButtonsP bp = new ButtonsP();
+
+        panel.add(bp, 75.0f);
+
+        return bp;
     }
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
-        FooterP footerP = new FooterP();
-        panel.add(footerP, 10.0f);
-        return footerP;
+        FooterP fp = new FooterP();
+
+        panel.add(fp, 10.0f);
+
+        return fp;
     }
 
     @Override

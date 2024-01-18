@@ -10,19 +10,16 @@ public class AppProperties {
     public static int getWinH() {
         return winH;
     }
-    public static String getConfigFolderPath() {
+    public static String getCfgPath() {
         return configFolderPath;
     }
     public static int getNumOfItemsInIDesc() {
         return 15;
     }
-    public static int getMaxNumOfImgInItemDescription() {
+    public static int getMaxNumOfImgInIDesc() {
         return 3;
     }
-    public static int getMaxNumOfVidInItemDescription() {
-        return 2;
-    }
-    public static boolean isDynamicTextSizeOn() {
+    public static boolean isTextDynamic() {
         return true;
     }
 }

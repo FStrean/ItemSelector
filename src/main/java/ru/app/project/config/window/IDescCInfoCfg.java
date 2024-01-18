@@ -65,7 +65,7 @@ public final class IDescCInfoCfg {
             this.hHeader = "";
             this.desc = "";
             this.images = new ArrayList<>();
-            for (int i = 0; i < AppProperties.getMaxNumOfImgInItemDescription(); i++) {
+            for (int i = 0; i < AppProperties.getMaxNumOfImgInIDesc(); i++) {
                 this.images.add("");
             }
         }

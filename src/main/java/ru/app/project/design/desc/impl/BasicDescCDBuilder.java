@@ -16,60 +16,66 @@ public class BasicDescCDBuilder implements DescCDBuilder {
     private final JPanel contentPanel;
     public BasicDescCDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setBackground(Color.WHITE);
         this.contentPanel = new JPanel();
-
-        this.contentPanel.setOpaque(false);
-
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
         RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
 
         mainLayout.setFill(true);
         contentLayout.setFill(true);
-
+        this.panel.setBackground(Color.WHITE);
         this.panel.setLayout(mainLayout);
+        this.contentPanel.setOpaque(false);
         this.contentPanel.setLayout(contentLayout);
     }
 
     @Override
     public BasicPanel buildHeaderPanelDesign() {
-        HeaderP headerPanel = new HeaderP();
-        panel.add(headerPanel, 15.0f);
-        return headerPanel;
+        HeaderP hp = new HeaderP();
+
+        panel.add(hp, 15.0f);
+
+        return hp;
     }
 
     @Override
     public BasicPanel buildLeftPanelDesign() {
-        ButtonsP buttonsPanel = new ButtonsP();
-        JPanel jPanel = new JPanel();
-        jPanel.setOpaque(false);
-        RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
-        layout.setFill(true);
-        jPanel.setLayout(layout);
-        JPanel jPanel1 = new JPanel();
-        jPanel1.setOpaque(false);
-        jPanel.add(jPanel1, 10.0f);
-        jPanel.add(buttonsPanel, 80.0f);
-        JPanel jPanel2 = new JPanel();
-        jPanel2.setOpaque(false);
-        jPanel.add(jPanel2, 10.0f);
-        contentPanel.add(jPanel, 15.0f);
-        return buttonsPanel;
+        ButtonsP bp = new ButtonsP();
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
+        JPanel p3 = new JPanel();
+
+        p1.setOpaque(false);
+        RelativeLayout l = new RelativeLayout(RelativeLayout.Y_AXIS);
+        l.setFill(true);
+        p1.setLayout(l);
+        p2.setOpaque(false);
+        p3.setOpaque(false);
+
+        p1.add(p2, 10.0f);
+        p1.add(bp, 80.0f);
+        p1.add(p3, 10.0f);
+        contentPanel.add(p1, 15.0f);
+
+        return bp;
     }
 
     @Override
     public BasicPanel buildRightPanelDesign() {
-        DescriptionP descriptionPanel = new DescriptionP();
-        contentPanel.add(descriptionPanel, 85.0f);
+        DescriptionP dp = new DescriptionP();
+
+        contentPanel.add(dp, 85.0f);
         panel.add(contentPanel, 75.0f);
-        return descriptionPanel;
+
+        return dp;
     }
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
-        FooterP footerPanel = new FooterP();
-        panel.add(footerPanel, 10.0f);
-        return footerPanel;
+        FooterP fp = new FooterP();
+
+        panel.add(fp, 10.0f);
+
+        return fp;
     }
 
     @Override

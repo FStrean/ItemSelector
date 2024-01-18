@@ -10,20 +10,24 @@ public class BasicImagesPDBuilder implements ImagesPDBuilder {
     private final JPanel panel;
     public BasicImagesPDBuilder(JPanel panel) {
         this.panel = panel;
+
         this.panel.setOpaque(false);
         this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
     }
 
     @Override
     public JImage buildJImageDesign() {
-        JImage imagesPanel = new JImage();
-        imagesPanel.setOpaque(false);
-        JPanel jPanel = new JPanel();
-        jPanel.setOpaque(false);
-        jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
-        jPanel.add(imagesPanel);
-        jPanel.setBorder(new EmptyBorder(5, 0, 5, 0));
-        panel.add(jPanel);
-        return imagesPanel;
+        JImage ip = new JImage();
+        JPanel p = new JPanel();
+
+        ip.setOpaque(false);
+        p.setOpaque(false);
+        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+        p.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        p.add(ip);
+        panel.add(p);
+
+        return ip;
     }
 }

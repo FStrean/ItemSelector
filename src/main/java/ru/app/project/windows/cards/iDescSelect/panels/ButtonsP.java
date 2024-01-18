@@ -61,7 +61,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
             int id = i + 1;
             buttons.get(i).addActionListener(event -> rootWindow.showCard(IDescC.class, id));
 
-            if(AppProperties.isDynamicTextSizeOn()) {
+            if(AppProperties.isTextDynamic()) {
                 int finalI = i;
                 this.addComponentListener(new ComponentAdapter() {
                     @Override

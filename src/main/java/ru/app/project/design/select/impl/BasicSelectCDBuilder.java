@@ -15,6 +15,7 @@ public class BasicSelectCDBuilder implements SelectCDBuilder {
     public BasicSelectCDBuilder(JPanel panel) {
         this.panel = panel;
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
+
         layout.setFill(true);
         this.panel.setLayout(layout);
     }
@@ -22,32 +23,38 @@ public class BasicSelectCDBuilder implements SelectCDBuilder {
     @Override
     public BasicPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
+
         panel.add(headerPanel, 15.0f);
+
         return headerPanel;
     }
 
     @Override
     public BasicPanel buildCenterPanelDesign() {
         ButtonsP buttonsPanel = new ButtonsP();
+
         panel.add(buttonsPanel, 55.0f);
+
         return buttonsPanel;
     }
 
     @Override
     public BasicPanel buildFooterPanelDesign() {
         FooterP headerPanel = new FooterP();
+
         panel.add(headerPanel, 30.0f);
+
         return headerPanel;
     }
 
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        Color c1 = Color.WHITE, C2 = Color.GRAY;
         int w = panel.getWidth(), h = panel.getHeight();
-        Color color1 = Color.WHITE;
-        Color color2 = Color.GRAY;
-        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);  // Изменены координаты здесь
+        GradientPaint gp = new GradientPaint(0, 0, c1, 0, h, C2);  // Изменены координаты здесь
+
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         g2d.setPaint(gp);
         g2d.fillRect(0, 0, w, h);
     }

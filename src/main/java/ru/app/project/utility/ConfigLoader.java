@@ -21,7 +21,7 @@ public class ConfigLoader<T> {
 
     public ConfigLoader(Class<T> configObjectClass) {
         this.configObjectClass = configObjectClass;
-        this.filename = new StringBuilder(AppProperties.getConfigFolderPath());
+        this.filename = new StringBuilder(AppProperties.getCfgPath());
         this.load();
     }
 

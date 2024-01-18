@@ -10,26 +10,32 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;
     public BasicFooterPDBuilder(JPanel panel) {
         this.panel = panel;
-        this.panel.setOpaque(false);
         RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
+
         layout.setFill(true);
+        this.panel.setOpaque(false);
         this.panel.setLayout(layout);
     }
 
     @Override
     public JLabel buildJLabelDesign() {
-        JLabel description = new JLabel();
-        description.setOpaque(false);
-        description.setHorizontalAlignment(SwingConstants.CENTER);
-        description.setVerticalAlignment(SwingConstants.CENTER);
-        panel.add(description, 95.0f);
-        return description;
+        JLabel text = new JLabel();
+
+        text.setOpaque(false);
+        text.setHorizontalAlignment(SwingConstants.CENTER);
+        text.setVerticalAlignment(SwingConstants.CENTER);
+
+        panel.add(text, 95.0f);
+
+        return text;
     }
 
     @Override
     public JImageButton buildJButtonDesign() {
-        JImageButton button = new JImageButton("icons/home.png");
-        panel.add(button, 5.0f);
-        return button;
+        JImageButton btn = new JImageButton("icons/home.png");
+
+        panel.add(btn, 5.0f);
+
+        return btn;
     }
 }

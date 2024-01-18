@@ -48,7 +48,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
         button1.addActionListener(event -> rootWindow.showCard(IDescSelectC.class));
         button2.addActionListener(event -> rootWindow.showCard(SelectC.class));
 
-        if(AppProperties.isDynamicTextSizeOn()) {
+        if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
