@@ -1,7 +1,8 @@
-package ru.app.project.windows.cards.iDescSelect;
+package ru.app.project.windows.cards.select;
 
-import ru.app.project.config.window.IDescSelectCInfoCfg;
-import ru.app.project.design.iDescSelect.impl.BasicIDescSelectCDBuilder;
+import ru.app.project.config.window.SelectCInfoCfg;
+import ru.app.project.design.select.impl.BasicSelectCDBuilder;
+import ru.app.project.design.select.interf.SelectCDBuilder;
 import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicCard;
 import ru.app.project.windows.BasicPanel;
@@ -10,19 +11,19 @@ import ru.app.project.windows.RootWindow;
 import javax.swing.*;
 import java.awt.*;
 
-public class IDescSelectC extends JPanel implements BasicCard {
+public class SelectC extends JPanel implements BasicCard {
     private final RootWindow rootWin;
-    private final BasicIDescSelectCDBuilder designBuilder;
-    private final ConfigLoader<IDescSelectCInfoCfg> configLoader;
+    private final SelectCDBuilder designBuilder;
+    private final ConfigLoader<SelectCInfoCfg> configLoader;
 
     private BasicPanel headerPanel;
     private BasicPanel buttonsPanel;
     private BasicPanel footerPanel;
 
-    public IDescSelectC(RootWindow rootWIndow) {
-        this.rootWin = rootWIndow;
-        this.designBuilder = new BasicIDescSelectCDBuilder(this);
-        this.configLoader = new ConfigLoader<>(IDescSelectCInfoCfg.class);
+    public SelectC(RootWindow rootWin) throws HeadlessException {
+        this.rootWin = rootWin;
+        this.designBuilder = new BasicSelectCDBuilder(this);
+        this.configLoader = new ConfigLoader<>(SelectCInfoCfg.class);
 
         this.applyDesign();
         this.applyLogic();
@@ -51,7 +52,9 @@ public class IDescSelectC extends JPanel implements BasicCard {
 
     @Override
     public void runOnLeaveAction() {
-
+        headerPanel.runOnLeaveAction();
+        buttonsPanel.runOnLeaveAction();
+        footerPanel.runOnLeaveAction();
     }
 
     @Override

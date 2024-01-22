@@ -1,8 +1,8 @@
-package ru.app.project.design.iDescSelect.impl.panels;
+package ru.app.project.design.descSelect.impl.panels;
 
 import ru.app.project.components.JImageButton;
-import ru.app.project.design.iDescSelect.interf.panels.FooterPDBuilder;
 import ru.app.project.components.RelativeLayout;
+import ru.app.project.design.descSelect.interf.panels.FooterPDBuilder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +18,17 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         this.panel.setLayout(layout);
     }
     @Override
+    public JButton buildJButton1Design() {
+        JButton btn = new JButton();
+
+        btn.setForeground(Color.WHITE);
+        btn.setBackground(Color.BLACK);
+
+        panel.add(btn, 15.0f);
+
+        return btn;
+    }
+    @Override
     public JLabel buildJLabelDesign() {
         JLabel text = new JLabel();
         Font font = text.getFont();
@@ -31,14 +42,16 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         text.setHorizontalAlignment(SwingConstants.CENTER);
         text.setVerticalAlignment(SwingConstants.CENTER);
 
-        panel.add(text, 95.0f);
+        panel.add(text, 80.0f);
 
         return text;
     }
 
     @Override
-    public JImageButton buildJButtonDesign() {
+    public JImageButton buildJButton2Design() {
         JImageButton btn = new JImageButton("icons/home.png");
+
+        btn.setAlign(JImageButton.LINE_END, JImageButton.LINE_END);
 
         panel.add(btn, 5.0f);
 

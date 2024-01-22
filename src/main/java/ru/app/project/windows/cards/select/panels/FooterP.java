@@ -1,31 +1,40 @@
-package ru.app.project.windows.cards.selector.panels;
+package ru.app.project.windows.cards.select.panels;
 
+import ru.app.project.components.JImageButton;
 import ru.app.project.config.AppProperties;
 import ru.app.project.config.window.SelectCInfoCfg;
-import ru.app.project.design.select.impl.panels.BasicHeaderPDBuilder;
-import ru.app.project.design.select.interf.panels.HeaderPDBuilder;
+import ru.app.project.design.select.impl.panels.BasicFooterPDBuilder;
+import ru.app.project.design.select.interf.panels.FooterPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.cards.desc.DescC;
+import ru.app.project.windows.cards.iDescSelect.IDescSelectC;
+import ru.app.project.windows.cards.mSelect.MSelectC;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class HeaderP extends JPanel implements BasicPanel {
+public class FooterP extends JPanel implements BasicPanel {
     private RootWindow rootWin;
-    private final HeaderPDBuilder designBuilder;
+    private final FooterPDBuilder designBuilder;
     private SelectCInfoCfg cfg;
     private MutableComponent parent;
 
-    private JLabel desc;
 
+    private JButton lBtn1;
+    private JButton lBtn2;
+    private JLabel desc;
+    private JImageButton btn;
+
+    private Double lBtnRatio = null;
     private Double descRatio = null;
 
-    public HeaderP() {
-        designBuilder = new BasicHeaderPDBuilder(this);
+    public FooterP() {
+        this.designBuilder = new BasicFooterPDBuilder(this);
 
         this.rootWin = null;
         this.cfg = null;
@@ -33,23 +42,32 @@ public class HeaderP extends JPanel implements BasicPanel {
         this.applyDesign();
         this.applyLogic();
     }
-
     @Override
+
     public void applyDesign() {
-        this.desc = designBuilder.buildJLabelDesign();
+        lBtn1 = designBuilder.buildLeftButtonDesign();
+        lBtn2 = designBuilder.buildLeftButtonDesign();
+        desc = designBuilder.buildJLabelDesign();
+        btn = designBuilder.buildJButtonDesign();
     }
 
     @Override
-    public void applyLogic() {
+    public void applyLogic(){
+        lBtn1.addActionListener(event -> rootWin.showCard(IDescSelectC.class));
+        lBtn2.addActionListener(event -> rootWin.showCard(DescC.class));
+        btn.addActionListener(event -> rootWin.showCard(MSelectC.class));
+
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
                     if (descRatio == null) {
                         descRatio = RelTSRatioCalc.getTextRatio(desc);
+                        lBtnRatio = RelTSRatioCalc.getTextRatio(lBtn1);
                     }
-
                     TSCalc.calcTextSize(desc, descRatio);
+                    TSCalc.calcTextSize(lBtn1, lBtnRatio);
+                    TSCalc.calcTextSize(lBtn2, lBtnRatio);
                 }
             });
         }
@@ -67,7 +85,9 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        desc.setText(cfg.getHHeader());
+        lBtn1.setText(cfg.getLButton1());
+        lBtn2.setText(cfg.getLButton2());
+        desc.setText(cfg.getFHeader());
     }
 
     @Override

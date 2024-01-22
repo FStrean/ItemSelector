@@ -19,6 +19,12 @@ public class AppProperties {
     public static int getMaxNumOfImgInIDesc() {
         return 3;
     }
+    public static int getNumOfItemsInSelectDesc() {
+        return 5;
+    }
+    public static int getMaxNumOfImgInDescSelect() {
+        return 1;
+    }
     public static boolean isTextDynamic() {
         return true;
     }

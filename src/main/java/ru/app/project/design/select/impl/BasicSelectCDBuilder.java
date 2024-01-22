@@ -3,9 +3,9 @@ package ru.app.project.design.select.impl;
 import ru.app.project.design.select.interf.SelectCDBuilder;
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.cards.selector.panels.ButtonsP;
-import ru.app.project.windows.cards.selector.panels.FooterP;
-import ru.app.project.windows.cards.selector.panels.HeaderP;
+import ru.app.project.windows.cards.select.panels.ButtonsP;
+import ru.app.project.windows.cards.select.panels.FooterP;
+import ru.app.project.windows.cards.select.panels.HeaderP;
 
 import javax.swing.*;
 import java.awt.*;

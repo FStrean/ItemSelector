@@ -5,6 +5,7 @@ import ru.app.project.design.desc.interf.panels.FooterPDBuilder;
 import ru.app.project.components.RelativeLayout;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BasicFooterPDBuilder implements FooterPDBuilder {
     private final JPanel panel;
@@ -20,7 +21,13 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public JLabel buildJLabelDesign() {
         JLabel text = new JLabel();
+        Font font = text.getFont();
+        int style = font.getStyle();
 
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        text.setFont(font);
         text.setOpaque(false);
         text.setHorizontalAlignment(SwingConstants.CENTER);
         text.setVerticalAlignment(SwingConstants.CENTER);

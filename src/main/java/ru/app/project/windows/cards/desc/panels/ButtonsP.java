@@ -10,7 +10,7 @@ import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.iDescSelect.IDescSelectC;
-import ru.app.project.windows.cards.selector.SelectC;
+import ru.app.project.windows.cards.select.SelectC;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;

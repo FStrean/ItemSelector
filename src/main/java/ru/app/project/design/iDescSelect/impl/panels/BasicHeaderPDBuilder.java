@@ -21,7 +21,13 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     @Override
     public JButton buildJButtonDesign() {
         RoundButton btn = new RoundButton("", 40, Color.BLACK);
+        Font font = btn.getFont();
+        int style = font.getStyle();
 
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        btn.setFont(font);
         btn.setForeground(Color.WHITE);
 
         panel.add(btn, 15.0f);

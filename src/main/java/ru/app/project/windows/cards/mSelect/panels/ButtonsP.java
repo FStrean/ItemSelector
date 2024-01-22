@@ -11,7 +11,7 @@ import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.desc.DescC;
 import ru.app.project.windows.cards.iDescSelect.IDescSelectC;
-import ru.app.project.windows.cards.selector.SelectC;
+import ru.app.project.windows.cards.select.SelectC;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
@@ -25,13 +25,14 @@ public class ButtonsP extends JPanel implements BasicPanel {
     private MSelectCInfoCfg cfg;
     private MutableComponent parent;
 
-    private final List<JButton> buttons;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
 
     private Double buttonsRatio = null;
 
     public ButtonsP() {
         this.designBuilder = new BasicButtonsPDBuilder(this);
-        this.buttons = new ArrayList<>(3);
 
         this.rootWin = null;
         this.cfg = null;
@@ -42,28 +43,27 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        for(int i = 0; i < 3; i++) {
-            JButton jButton = designBuilder.buildJButtonDesign();
-            buttons.add(jButton);
-        }
+        button1 = designBuilder.buildJButtonDesign();
+        button2 = designBuilder.buildJButtonDesign();
+        button3 = designBuilder.buildJButtonDesign();
     }
 
     @Override
     public void applyLogic() {
-        buttons.get(0).addActionListener(event -> rootWin.showCard(DescC.class));
-        buttons.get(1).addActionListener(event -> rootWin.showCard(IDescSelectC.class));
-        buttons.get(2).addActionListener(event -> rootWin.showCard(SelectC.class));
+        button1.addActionListener(event -> rootWin.showCard(DescC.class));
+        button2.addActionListener(event -> rootWin.showCard(IDescSelectC.class));
+        button3.addActionListener(event -> rootWin.showCard(SelectC.class));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
                     if (buttonsRatio == null) {
-                        buttonsRatio = RelTSRatioCalc.getTextRatio(buttons.get(0));
+                        buttonsRatio = RelTSRatioCalc.getTextRatio(button1);
                     }
-                    TSCalc.calcTextSize(buttons.get(0), buttonsRatio);
-                    TSCalc.calcTextSize(buttons.get(1), buttonsRatio);
-                    TSCalc.calcTextSize(buttons.get(2), buttonsRatio);
+                    TSCalc.calcTextSize(button1, buttonsRatio);
+                    TSCalc.calcTextSize(button2, buttonsRatio);
+                    TSCalc.calcTextSize(button3, buttonsRatio);
                 }
             });
         }
@@ -81,9 +81,9 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        buttons.get(0).setText(cfg.getButton1());
-        buttons.get(1).setText(cfg.getButton2());
-        buttons.get(2).setText(cfg.getButton3());
+        button1.setText(cfg.getButton1());
+        button2.setText(cfg.getButton2());
+        button3.setText(cfg.getButton3());
     }
 
     @Override

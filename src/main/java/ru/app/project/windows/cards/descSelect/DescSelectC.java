@@ -1,8 +1,8 @@
-package ru.app.project.windows.cards.selector;
+package ru.app.project.windows.cards.descSelect;
 
-import ru.app.project.config.window.SelectCInfoCfg;
-import ru.app.project.design.select.impl.BasicSelectCDBuilder;
-import ru.app.project.design.select.interf.SelectCDBuilder;
+import ru.app.project.config.window.DescSelectCInfoCfg;
+import ru.app.project.design.descSelect.impl.BasicDescSelectCDBuilder;
+import ru.app.project.design.descSelect.interf.DescSelectCDBuilder;
 import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicCard;
 import ru.app.project.windows.BasicPanel;
@@ -11,19 +11,20 @@ import ru.app.project.windows.RootWindow;
 import javax.swing.*;
 import java.awt.*;
 
-public class SelectC extends JPanel implements BasicCard {
+public class DescSelectC extends JPanel implements BasicCard {
     private final RootWindow rootWin;
-    private final SelectCDBuilder designBuilder;
-    private final ConfigLoader<SelectCInfoCfg> configLoader;
+    private final DescSelectCDBuilder designBuilder;
+    private final ConfigLoader<DescSelectCInfoCfg> configLoader;
 
     private BasicPanel headerPanel;
+    private BasicPanel imagesPanel;
     private BasicPanel buttonsPanel;
     private BasicPanel footerPanel;
 
-    public SelectC(RootWindow rootWin) throws HeadlessException {
+    public DescSelectC(RootWindow rootWin) {
         this.rootWin = rootWin;
-        this.designBuilder = new BasicSelectCDBuilder(this);
-        this.configLoader = new ConfigLoader<>(SelectCInfoCfg.class);
+        this.designBuilder = new BasicDescSelectCDBuilder(this);
+        this.configLoader = new ConfigLoader<>(DescSelectCInfoCfg.class);
 
         this.applyDesign();
         this.applyLogic();
@@ -33,33 +34,41 @@ public class SelectC extends JPanel implements BasicCard {
     @Override
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
-        buttonsPanel = designBuilder.buildCenterPanelDesign();
+        imagesPanel = designBuilder.buildLeftPanelDesign();
+        buttonsPanel = designBuilder.buildRightPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 
     @Override
     public void applyLogic() {
         headerPanel.setParent(this);
+        imagesPanel.setParent(this);
         buttonsPanel.setParent(this);
         footerPanel.setParent(this);
         headerPanel.setRootWin(rootWin);
+        imagesPanel.setRootWin(rootWin);
         buttonsPanel.setRootWin(rootWin);
         footerPanel.setRootWin(rootWin);
         headerPanel.setCfg(configLoader.getCfg());
+        imagesPanel.setCfg(configLoader.getCfg());
         buttonsPanel.setCfg(configLoader.getCfg());
         footerPanel.setCfg(configLoader.getCfg());
     }
 
     @Override
-    public void runOnLeaveAction() {
-
+    public void applyConfig() {
+        headerPanel.applyConfig();
+        imagesPanel.applyConfig();
+        buttonsPanel.applyConfig();
+        footerPanel.applyConfig();
     }
 
     @Override
-    public void applyConfig() {
-        headerPanel.applyConfig();
-        buttonsPanel.applyConfig();
-        footerPanel.applyConfig();
+    public void runOnLeaveAction() {
+        headerPanel.runOnLeaveAction();
+        imagesPanel.runOnLeaveAction();
+        buttonsPanel.runOnLeaveAction();
+        footerPanel.runOnLeaveAction();
     }
 
     @Override

@@ -20,7 +20,13 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     public JButton buildJButtonDesign() {
         RoundButton btn = new RoundButton("", 40, Color.BLACK);
         JPanel p = new JPanel(new BorderLayout());
+        Font font = btn.getFont();
+        int style = font.getStyle();
 
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        btn.setFont(font);
         btn.setBackground(Color.BLACK);
         btn.setForeground(Color.WHITE);
         p.setOpaque(false);

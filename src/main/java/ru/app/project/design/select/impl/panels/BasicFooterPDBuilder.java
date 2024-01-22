@@ -30,7 +30,13 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     public JButton buildLeftButtonDesign() {
         RoundButton btn = new RoundButton("", 40, Color.BLACK);
         JPanel p = new JPanel(new BorderLayout());
+        Font font = btn.getFont();
+        int style = font.getStyle();
 
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        btn.setFont(font);
         btn.setForeground(Color.WHITE);
         p.setOpaque(false);
         p.setBorder(new EmptyBorder(5, 0, 5, 0));
@@ -47,7 +53,13 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         JLabel text = new JLabel();
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
         JPanel p = new JPanel();
+        Font font = text.getFont();
+        int style = font.getStyle();
 
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        text.setFont(font);
         layout.setFill(true);
         dp.setOpaque(false);
         dp.setLayout(layout);

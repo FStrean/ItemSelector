@@ -16,7 +16,13 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
     @Override
     public JLabel buildJLabelDesign() {
         JLabel text = new JLabel();
+        Font font = text.getFont();
+        int style = font.getStyle();
 
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        text.setFont(font);
         text.setHorizontalAlignment(SwingConstants.CENTER);
         text.setVerticalAlignment(SwingConstants.CENTER);
 
