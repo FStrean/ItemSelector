@@ -3,7 +3,8 @@ package ru.app.project.windows;
 import ru.app.project.config.AppProperties;
 import ru.app.project.config.SystemProperties;
 import ru.app.project.windows.cards.desc.DescC;
-import ru.app.project.windows.cards.descSelect.DescSelectC;
+import ru.app.project.windows.cards.iSelect.ISelectC;
+import ru.app.project.windows.cards.iSelectSelect.ISelectSelectC;
 import ru.app.project.windows.cards.iDesc.IDescC;
 import ru.app.project.windows.cards.iDescSelect.IDescSelectC;
 import ru.app.project.windows.cards.mSelect.MSelectC;
@@ -42,35 +43,34 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
         IDescSelectC iDescSelectC = new IDescSelectC(this);
         SelectC selectC = new SelectC(this);
         IDescC iDescC = new IDescC(this);
-        DescSelectC descSelectC = new DescSelectC(this);
+        ISelectSelectC iSelectSelectC = new ISelectSelectC(this);
+        ISelectC iSelectC = new ISelectC(this);
 
         cards.put(MSelectC.class.getSimpleName(), mSelectC);
         cards.put(DescC.class.getSimpleName(), descC);
         cards.put(IDescSelectC.class.getSimpleName(), iDescSelectC);
         cards.put(SelectC.class.getSimpleName(), selectC);
         cards.put(IDescC.class.getSimpleName(), iDescC);
-        cards.put(DescSelectC.class.getSimpleName(), descSelectC);
+        cards.put(ISelectSelectC.class.getSimpleName(), iSelectSelectC);
+        cards.put(ISelectC.class.getSimpleName(), iSelectC);
 
         add(mSelectC, MSelectC.class.getSimpleName());
         add(descC, DescC.class.getSimpleName());
         add(iDescSelectC, IDescSelectC.class.getSimpleName());
         add(selectC, SelectC.class.getSimpleName());
         add(iDescC, IDescC.class.getSimpleName());
-        add(descSelectC, DescSelectC.class.getSimpleName());
+        add(iSelectSelectC, ISelectSelectC.class.getSimpleName());
+        add(iSelectC, ISelectC.class.getSimpleName());
     }
 
     @Override
-    public void showCard(Class<?> cardClass, int i) {
-        if(cardClass == IDescC.class) {
-            cardLayout.show(this.getContentPane(), cardClass.getSimpleName());
-            ((IDescC)(cards.get(cardClass.getSimpleName()))).showState(i);
-        } else {
-            showCard(cardClass);
-        }
+    public void showCard(Class<? extends MultipleStateCard> cardClass, int i) {
+        cardLayout.show(this.getContentPane(), cardClass.getSimpleName());
+        ((MultipleStateCard)(cards.get(cardClass.getSimpleName()))).showState(i);
     }
 
     @Override
-    public void showCard(Class<?> cardClass) {
+    public void showCard(Class<? extends BasicCard> cardClass) {
         cardLayout.show(this.getContentPane(), cardClass.getSimpleName());
     }
 

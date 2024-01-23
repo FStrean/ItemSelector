@@ -20,7 +20,7 @@ public final class IDescCInfoCfg {
         this.hHeaderStyle = "";
         this.descStyle = "";
         this.items = new ArrayList<>();
-        for(int i = 0; i < AppProperties.getNumOfItemsInIDesc(); i++) {
+        for(int i = 0; i < AppProperties.getNumOfItemsInIDescSelect(); i++) {
             this.items.add(new Item());
         }
         this.button = "";

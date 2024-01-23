@@ -1,30 +1,50 @@
 package ru.app.project.config;
 
 public class AppProperties {
+    //Window properties
     private static final int winW = (int)((double)SystemProperties.getScreenWidth() / 1.2);
     private static final int winH = (int)((double)SystemProperties.getScreenHeight() / 1.2);
-    private static final String configFolderPath = "config";
     public static int getWinW() {
         return winW;
     }
     public static int getWinH() {
         return winH;
     }
+
+
+    //Config properties
+    private static final String configFolderPath = "./config";
     public static String getCfgPath() {
         return configFolderPath;
     }
-    public static int getNumOfItemsInIDesc() {
-        return 15;
+
+
+    //App properties
+    //IDesc & IDescSelect
+    private static final int numOfItemsInIDescSelect = 15;
+    private static final int maxNumOfImgInIDesc = 3;
+    public static int getNumOfItemsInIDescSelect() {
+        return numOfItemsInIDescSelect;
     }
     public static int getMaxNumOfImgInIDesc() {
-        return 3;
+        return maxNumOfImgInIDesc;
     }
-    public static int getNumOfItemsInSelectDesc() {
-        return 5;
+
+    //ISelect & ISelectSelect
+    private static final int numOfItemsInISelectSelect = 5;
+    private static final int maxNumOfImgInISelectSelect = 1;
+    private static final int maxNumOfImgInISelect = 1;
+    public static int getNumOfItemsInISelectSelect() {
+        return numOfItemsInISelectSelect;
     }
-    public static int getMaxNumOfImgInDescSelect() {
-        return 1;
+    public static int getMaxNumOfImgInISelectSelect() {
+        return maxNumOfImgInISelectSelect;
     }
+    public static int getMaxNumOfImgInISelect() {
+        return maxNumOfImgInISelect;
+    }
+
+    //Other properties
     public static boolean isTextDynamic() {
         return true;
     }

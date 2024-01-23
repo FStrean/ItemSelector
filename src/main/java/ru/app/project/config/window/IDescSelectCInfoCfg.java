@@ -21,7 +21,7 @@ public class IDescSelectCInfoCfg {
         this.rButton = "";
 
         this.buttons = new ArrayList<>();
-        for (int i = 0; i < AppProperties.getNumOfItemsInIDesc(); i++) {
+        for (int i = 0; i < AppProperties.getNumOfItemsInIDescSelect(); i++) {
             this.buttons.add("");
         }
 

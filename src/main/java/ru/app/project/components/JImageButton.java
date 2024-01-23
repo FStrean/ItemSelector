@@ -91,7 +91,25 @@ public class JImageButton extends JPanel {
                     g.drawImage(img, x, y, newImgWidth, newImgHeight, imgObs);
                 }
             }
+
+            @Override
+            protected void paintBorder(Graphics g) {
+                Graphics2D g2 = (Graphics2D) g.create();
+                g2.setStroke(new BasicStroke(3f));
+                if (getModel().isRollover()) {
+                    g2.setColor(UIManager.getColor("Button.shadow"));
+                } else if(getModel().isArmed()) {
+                    g2.setColor(Color.GRAY);
+                    btn.setContentAreaFilled(true);
+                } else {
+                    g2.setColor(new Color(0, 0, 0, 0));
+                }
+
+                g2.drawRect(x, y, getWidth(), getHeight());
+                g2.dispose();
+            }
         };
+        btn.setContentAreaFilled(false);
     }
 
     private void initResizeLogic() {

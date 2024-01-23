@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<iSelectSelectCInfoCfg>
+    <hHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Описание ПО КРС КПТВ. 412168.002
+        </center>
+    </html>]]></hHeader>
+    <image>D:\Code\Projects\Multimedia-Software\images\Описание ПО КРС КПТВ. 412168.002.jpg</image>
+    <btnHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Вкладки:
+        </center>
+    </html>]]></btnHeader>
+    <selectButton><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 18px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            «Подключения»
+        </center>
+    </html>]]></selectButton>
+    <selectButton><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 18px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            «Поиск»
+        </center>
+    </html>]]></selectButton>
+    <selectButton><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 18px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            «Архив»
+        </center>
+    </html>]]></selectButton>
+    <selectButton><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 18px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            «Обработка»
+        </center>
+    </html>]]></selectButton>
+    <selectButton><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 18px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            «Меню»
+        </center>
+    </html>]]></selectButton>
+    <button><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 18px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Состав комплекса КРС
+        </center>
+    </html>]]></button>
+    <fHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Мультимедийное обучающее программное обеспечение
+        </center>
+    </html>]]></fHeader>
+</iSelectSelectCInfoCfg>

@@ -42,10 +42,6 @@ public class RoundButton extends JButton {
             g2.setColor(color);
         }
 
-        if(getModel().isArmed()) {
-            g2.setColor(Color.GRAY);
-        }
-
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, radius, radius);

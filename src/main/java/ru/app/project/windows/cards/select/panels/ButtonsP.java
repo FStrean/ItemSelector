@@ -9,7 +9,7 @@ import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.descSelect.DescSelectC;
+import ru.app.project.windows.cards.iSelectSelect.ISelectSelectC;
 import ru.app.project.windows.cards.iDesc.IDescC;
 
 import javax.swing.*;
@@ -48,7 +48,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic() {
-        btn1.addActionListener(event -> rootWin.showCard(DescSelectC.class));
+        btn1.addActionListener(event -> rootWin.showCard(ISelectSelectC.class));
         btn2.addActionListener(event -> rootWin.showCard(IDescC.class, 1));
 
         if(AppProperties.isTextDynamic()) {

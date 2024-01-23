@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<iSelectCInfoCfg>
+    <hHeaderStyle><![CDATA[<style>
+        span, ol, li, div, center {
+            font-size: 28px;
+            font-family: 'Calibri', sans-serif;
+        }
+    </style>]]></hHeaderStyle>
+    <descStyle></descStyle>
+    <leftDesc1Style></leftDesc1Style>
+    <leftDesc2Style></leftDesc2Style>
+    <rightDesc1Style></rightDesc1Style>
+    <rightDesc2Style></rightDesc2Style>
+    <item id="1">
+        <hHeader><![CDATA[
+            <center>
+                «Подключения»
+            </center>
+        ]]></hHeader>
+        <desc></desc>
+        <leftDesc1></leftDesc1>
+        <leftImg1></leftImg1>
+        <leftDesc2></leftDesc2>
+        <leftImg2></leftImg2>
+        <rightDesc1></rightDesc1>
+        <rightImg1></rightImg1>
+        <rightDesc2></rightDesc2>
+        <rightImg2></rightImg2>
+    </item>
+    <item id="2">
+        <hHeader><![CDATA[
+            <center>
+                «Поиск»
+            </center>
+        ]]></hHeader>
+        <desc></desc>
+        <leftDesc1></leftDesc1>
+        <leftImg1></leftImg1>
+        <leftDesc2></leftDesc2>
+        <leftImg2></leftImg2>
+        <rightDesc1></rightDesc1>
+        <rightImg1></rightImg1>
+        <rightDesc2></rightDesc2>
+        <rightImg2></rightImg2>
+    </item>
+    <item id="3">
+        <hHeader><![CDATA[
+            <center>
+                «Архив»
+            </center>
+        ]]></hHeader>
+        <desc></desc>
+        <leftDesc1></leftDesc1>
+        <leftImg1></leftImg1>
+        <leftDesc2></leftDesc2>
+        <leftImg2></leftImg2>
+        <rightDesc1></rightDesc1>
+        <rightImg1></rightImg1>
+        <rightDesc2></rightDesc2>
+        <rightImg2></rightImg2>
+    </item>
+    <item id="4">
+        <hHeader><![CDATA[
+            <center>
+                «Обработка»
+            </center>
+        ]]></hHeader>
+        <desc></desc>
+        <leftDesc1></leftDesc1>
+        <leftImg1></leftImg1>
+        <leftDesc2></leftDesc2>
+        <leftImg2></leftImg2>
+        <rightDesc1></rightDesc1>
+        <rightImg1></rightImg1>
+        <rightDesc2></rightDesc2>
+        <rightImg2></rightImg2>
+    </item>
+    <item id="5">
+        <hHeader><![CDATA[
+            <center>
+                «Меню»
+            </center>
+        ]]></hHeader>
+        <desc></desc>
+        <leftDesc1></leftDesc1>
+        <leftImg1></leftImg1>
+        <leftDesc2></leftDesc2>
+        <leftImg2></leftImg2>
+        <rightDesc1></rightDesc1>
+        <rightImg1></rightImg1>
+        <rightDesc2></rightDesc2>
+        <rightImg2></rightImg2>
+    </item>
+    <button></button>
+    <fHeader></fHeader>
+</iSelectCInfoCfg>

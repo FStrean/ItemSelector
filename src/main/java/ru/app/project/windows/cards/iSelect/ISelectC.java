@@ -1,35 +1,36 @@
-package ru.app.project.windows.cards.iDesc;
+package ru.app.project.windows.cards.iSelect;
 
-import ru.app.project.config.window.IDescCInfoCfg;
-import ru.app.project.design.iDesc.interf.IDescCDBuilder;
-import ru.app.project.design.iDesc.impl.BasicIDescCDBuilder;
+import ru.app.project.config.window.ISelectCInfoCfg;
+import ru.app.project.design.iSelect.impl.BasicISelectCDBuilder;
+import ru.app.project.design.iSelect.interf.ISelectCDBuilder;
 import ru.app.project.utility.ConfigLoader;
 import ru.app.project.windows.BasicCard;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MultipleStateCard;
 import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.iDesc.panels.DescriptionP;
-import ru.app.project.windows.cards.iDesc.panels.HeaderP;
+import ru.app.project.windows.cards.iSelect.panels.HeaderP;
+import ru.app.project.windows.cards.iSelect.panels.LeftP;
+import ru.app.project.windows.cards.iSelect.panels.RightP;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class IDescC extends JPanel implements BasicCard, MultipleStateCard {
+public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
     private final RootWindow rootWin;
-    private final IDescCDBuilder designBuilder;
-    private final ConfigLoader<IDescCInfoCfg> configLoader;
-    private IDescCInfoCfg.Item cfg;
-    private IDescCInfoCfg addCfg;
+    private final ISelectCDBuilder designBuilder;
+    private final ConfigLoader<ISelectCInfoCfg> configLoader;
+    private ISelectCInfoCfg.Item cfg;
+    private ISelectCInfoCfg addCfg;
 
     private BasicPanel headerPanel;
-    private BasicPanel imagesPanel;
-    private BasicPanel descriptionPanel;
+    private BasicPanel leftPanel;
+    private BasicPanel rightPanel;
     private BasicPanel footerPanel;
 
-    public IDescC(RootWindow rootWin) {
+    public ISelectC(RootWindow rootWin) {
         this.rootWin = rootWin;
-        this.designBuilder = new BasicIDescCDBuilder(this);
-        this.configLoader = new ConfigLoader<>(IDescCInfoCfg.class);
+        this.designBuilder = new BasicISelectCDBuilder(this);
+        this.configLoader = new ConfigLoader<>(ISelectCInfoCfg.class);
         this.cfg = null;
 
         this.applyDesign();
@@ -39,54 +40,55 @@ public class IDescC extends JPanel implements BasicCard, MultipleStateCard {
         this.footerPanel.applyConfig();
 
         this.addCfg = configLoader.getCfg();
-        ((DescriptionP)this.descriptionPanel).setAddCfg(addCfg);
         ((HeaderP)this.headerPanel).setAddCfg(addCfg);
+        ((LeftP)this.leftPanel).setAddCfg(addCfg);
+        ((RightP)this.rightPanel).setAddCfg(addCfg);
     }
 
     @Override
     public void showState(int id) {
         cfg = addCfg.getItems().stream()
                 .filter(listItem -> listItem.getId() == id).findFirst()
-                .orElse(new IDescCInfoCfg.Item());
+                .orElse(new ISelectCInfoCfg.Item());
 
         headerPanel.setCfg(cfg);
-        imagesPanel.setCfg(cfg);
-        descriptionPanel.setCfg(cfg);
+        leftPanel.setCfg(cfg);
+        rightPanel.setCfg(cfg);
         applyConfig();
     }
 
     @Override
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
-        imagesPanel = designBuilder.buildLeftPanelDesign();
-        descriptionPanel = designBuilder.buildRightPanelDesign();
+        leftPanel = designBuilder.buildLeftPanelDesign();
+        rightPanel = designBuilder.buildRightPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
     }
 
     @Override
     public void applyLogic() {
         headerPanel.setParent(this);
-        imagesPanel.setParent(this);
-        descriptionPanel.setParent(this);
+        leftPanel.setParent(this);
+        rightPanel.setParent(this);
         footerPanel.setParent(this);
         headerPanel.setRootWin(rootWin);
-        imagesPanel.setRootWin(rootWin);
-        descriptionPanel.setRootWin(rootWin);
+        leftPanel.setRootWin(rootWin);
+        rightPanel.setRootWin(rootWin);
         footerPanel.setRootWin(rootWin);
     }
 
     @Override
     public void applyConfig() {
         headerPanel.applyConfig();
-        descriptionPanel.applyConfig();
-        imagesPanel.applyConfig();
+        rightPanel.applyConfig();
+        leftPanel.applyConfig();
     }
 
     @Override
     public void runOnLeaveAction() {
         headerPanel.runOnLeaveAction();
-        imagesPanel.runOnLeaveAction();
-        descriptionPanel.runOnLeaveAction();
+        leftPanel.runOnLeaveAction();
+        rightPanel.runOnLeaveAction();
         footerPanel.runOnLeaveAction();
     }
 

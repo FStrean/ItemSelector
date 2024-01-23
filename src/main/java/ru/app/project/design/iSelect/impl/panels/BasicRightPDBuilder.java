@@ -1,0 +1,88 @@
+package ru.app.project.design.iSelect.impl.panels;
+
+import ru.app.project.components.JImage;
+import ru.app.project.design.iSelect.interf.panels.RightPDBuilder;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+
+public class BasicRightPDBuilder implements RightPDBuilder {
+    private final JPanel panel;
+    public BasicRightPDBuilder(JPanel panel) {
+        this.panel = panel;
+
+        this.panel.setOpaque(false);
+        this.panel.setLayout(new BorderLayout());
+    }
+
+    @Override
+    public JLabel buildJLabel1Design() {
+        JLabel text = new JLabel();
+        Font font = text.getFont();
+        int style = font.getStyle();
+
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        text.setFont(font);
+        text.setOpaque(false);
+        text.setHorizontalAlignment(SwingConstants.CENTER);
+        text.setVerticalAlignment(SwingConstants.CENTER);
+
+        panel.add(text);
+
+        return text;
+    }
+
+    @Override
+    public JImage buildJImage1Design() {
+        JImage ip = new JImage();
+        JPanel p = new JPanel();
+
+        ip.setOpaque(false);
+        p.setOpaque(false);
+        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+        p.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        p.add(ip);
+        panel.add(p);
+
+        return ip;
+    }
+
+    @Override
+    public JLabel buildJLabel2Design() {
+        JLabel text = new JLabel();
+        Font font = text.getFont();
+        int style = font.getStyle();
+
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        text.setFont(font);
+        text.setOpaque(false);
+        text.setHorizontalAlignment(SwingConstants.CENTER);
+        text.setVerticalAlignment(SwingConstants.CENTER);
+
+        panel.add(text);
+
+        return text;
+    }
+
+    @Override
+    public JImage buildJImage2Design() {
+        JImage ip = new JImage();
+        JPanel p = new JPanel();
+
+        ip.setOpaque(false);
+        p.setOpaque(false);
+        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+        p.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        p.add(ip);
+        panel.add(p);
+
+        return ip;
+    }
+}
