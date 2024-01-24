@@ -6,6 +6,7 @@ import java.awt.*;
 
 public interface ISelectCDBuilder {
     BasicPanel buildHeaderPanelDesign();
+    BasicPanel buildUnderHeaderPanelDesign();
     BasicPanel buildLeftPanelDesign();
     BasicPanel buildRightPanelDesign();
     BasicPanel buildFooterPanelDesign();

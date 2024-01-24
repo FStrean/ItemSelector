@@ -39,13 +39,11 @@ public class LeftP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        //desc = designBuilder.buildJLabelDesign();
         desc1 = designBuilder.buildJLabel1Design();
         img1 = designBuilder.buildJImage1Design();
         desc2 = designBuilder.buildJLabel2Design();
         img2 = designBuilder.buildJImage2Design();
 
-        //desc.setVisible(false);
         desc1.setVisible(false);
         img1.getParent().setVisible(false);
         desc2.setVisible(false);
@@ -83,7 +81,6 @@ public class LeftP extends JPanel implements BasicPanel {
 
     @Override
     public void runOnLeaveAction() {
-        //desc.getParent().setVisible(false);
         desc1.setVisible(false);
         img1.removeImage();
         img1.getParent().setVisible(false);

@@ -1,21 +1,36 @@
 package ru.app.project.design.iSelect.impl.panels;
 
-import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.iSelect.interf.panels.UnderHeaderPDBuilder;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class BasicUnderHeaderPDBuilder implements UnderHeaderPDBuilder {
     private final JPanel panel;
     public BasicUnderHeaderPDBuilder(JPanel panel) {
         this.panel = panel;
-        RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
 
+        this.panel.setBorder(new EmptyBorder(0, 5, 0, 5));
         this.panel.setOpaque(false);
-        this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        this.panel.setLayout(new BorderLayout());
     }
     @Override
     public JLabel buildJLabelDesign() {
-        return null;
+        JLabel text = new JLabel();
+        Font font = text.getFont();
+        int style = font.getStyle();
+
+        style ^= Font.BOLD;
+        font = font.deriveFont(style);
+
+        text.setFont(font);
+        text.setOpaque(false);
+        text.setHorizontalAlignment(SwingConstants.CENTER);
+        text.setVerticalAlignment(SwingConstants.CENTER);
+
+        panel.add(text);
+
+        return text;
     }
 }

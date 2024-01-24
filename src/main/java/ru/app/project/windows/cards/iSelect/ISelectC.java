@@ -11,6 +11,7 @@ import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.iSelect.panels.HeaderP;
 import ru.app.project.windows.cards.iSelect.panels.LeftP;
 import ru.app.project.windows.cards.iSelect.panels.RightP;
+import ru.app.project.windows.cards.iSelect.panels.UnderHeaderP;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +24,7 @@ public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
     private ISelectCInfoCfg addCfg;
 
     private BasicPanel headerPanel;
+    private BasicPanel underHeaderPanel;
     private BasicPanel leftPanel;
     private BasicPanel rightPanel;
     private BasicPanel footerPanel;
@@ -41,6 +43,7 @@ public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
 
         this.addCfg = configLoader.getCfg();
         ((HeaderP)this.headerPanel).setAddCfg(addCfg);
+        ((UnderHeaderP)this.underHeaderPanel).setAddCfg(addCfg);
         ((LeftP)this.leftPanel).setAddCfg(addCfg);
         ((RightP)this.rightPanel).setAddCfg(addCfg);
     }
@@ -52,6 +55,7 @@ public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
                 .orElse(new ISelectCInfoCfg.Item());
 
         headerPanel.setCfg(cfg);
+        underHeaderPanel.setCfg(cfg);
         leftPanel.setCfg(cfg);
         rightPanel.setCfg(cfg);
         applyConfig();
@@ -60,6 +64,7 @@ public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
     @Override
     public void applyDesign() {
         headerPanel = designBuilder.buildHeaderPanelDesign();
+        underHeaderPanel = designBuilder.buildUnderHeaderPanelDesign();
         leftPanel = designBuilder.buildLeftPanelDesign();
         rightPanel = designBuilder.buildRightPanelDesign();
         footerPanel = designBuilder.buildFooterPanelDesign();
@@ -68,10 +73,12 @@ public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
     @Override
     public void applyLogic() {
         headerPanel.setParent(this);
+        underHeaderPanel.setParent(this);
         leftPanel.setParent(this);
         rightPanel.setParent(this);
         footerPanel.setParent(this);
         headerPanel.setRootWin(rootWin);
+        underHeaderPanel.setRootWin(rootWin);
         leftPanel.setRootWin(rootWin);
         rightPanel.setRootWin(rootWin);
         footerPanel.setRootWin(rootWin);
@@ -80,6 +87,7 @@ public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
     @Override
     public void applyConfig() {
         headerPanel.applyConfig();
+        underHeaderPanel.applyConfig();
         rightPanel.applyConfig();
         leftPanel.applyConfig();
     }
@@ -87,6 +95,7 @@ public class ISelectC extends JPanel implements BasicCard, MultipleStateCard {
     @Override
     public void runOnLeaveAction() {
         headerPanel.runOnLeaveAction();
+        underHeaderPanel.runOnLeaveAction();
         leftPanel.runOnLeaveAction();
         rightPanel.runOnLeaveAction();
         footerPanel.runOnLeaveAction();

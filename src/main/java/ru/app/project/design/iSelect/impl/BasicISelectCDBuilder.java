@@ -3,10 +3,7 @@ package ru.app.project.design.iSelect.impl;
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.iSelect.interf.ISelectCDBuilder;
 import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.cards.iSelect.panels.RightP;
-import ru.app.project.windows.cards.iSelect.panels.FooterP;
-import ru.app.project.windows.cards.iSelect.panels.HeaderP;
-import ru.app.project.windows.cards.iSelect.panels.LeftP;
+import ru.app.project.windows.cards.iSelect.panels.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +15,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
         this.panel = panel;
         this.contentPanel = new JPanel();
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
-        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
+        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 5);
 
         contentLayout.setFill(true);
         mainLayout.setFill(true);
@@ -38,11 +35,20 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     }
 
     @Override
+    public BasicPanel buildUnderHeaderPanelDesign() {
+        UnderHeaderP uhp = new UnderHeaderP();
+
+        panel.add(uhp, 10f);
+
+        return uhp;
+    }
+
+    @Override
     public BasicPanel buildLeftPanelDesign() {
         LeftP ip = new LeftP();
 
         contentPanel.add(ip, 50.0f);
-        panel.add(contentPanel, 75.0f);
+        panel.add(contentPanel, 65f);
 
         return ip;
     }

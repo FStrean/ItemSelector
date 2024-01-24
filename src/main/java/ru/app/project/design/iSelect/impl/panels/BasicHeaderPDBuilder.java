@@ -11,7 +11,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
     private final JPanel panel;
     public BasicHeaderPDBuilder(JPanel panel) {
         this.panel = panel;
-        RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
+        RelativeLayout layout = new RelativeLayout(RelativeLayout.X_AXIS, 10);
 
         layout.setFill(true);
         this.panel.setOpaque(false);

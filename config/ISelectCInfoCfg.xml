@@ -6,7 +6,12 @@
             font-family: 'Calibri', sans-serif;
         }
     </style>]]></hHeaderStyle>
-    <descStyle></descStyle>
+    <descStyle><![CDATA[<style>
+        span, ol, li, div, center {
+            font-size: 16px;
+            font-family: 'Liberation Serif';
+        }
+    </style>]]></descStyle>
     <leftDesc1Style><![CDATA[<style>
         span, ol, li, div, center {
             font-size: 16px;
@@ -65,7 +70,11 @@
                 «Поиск»
             </center>
         ]]></hHeader>
-        <desc></desc>
+        <desc><![CDATA[
+            <div>
+                Вкладка режима «Поиск» состоит из нескольких областей. В верхней части экрана отображается временная развертка изменения измеренной блоком детектирования МЭД. Слева посередине текущий измеренный спектр. Справа карта с полученными от датчика GPS координатами на местности. Снизу ряд кнопок, для управления режимом поиска.
+            </div>
+        ]]></desc>
         <leftDesc1></leftDesc1>
         <leftImg1>.\images\Поиск.png</leftImg1>
         <leftDesc2></leftDesc2>
@@ -135,7 +144,11 @@
                 «Обработка»
             </center>
         ]]></hHeader>
-        <desc></desc>
+        <desc><![CDATA[
+            <div>
+                Вкладка «Обработка» основного окна программы предназначена для обработки выбранных измерений, анализа радионуклидного состава, расчета активностей, создания эталонных измерений, градуировки БД и прочее.
+            </div>
+        ]]></desc>
         <leftDesc1></leftDesc1>
         <leftImg1>.\images\Обработка1.png</leftImg1>
         <leftDesc2></leftDesc2>
