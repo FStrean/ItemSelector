@@ -57,6 +57,6 @@ public class AppProperties {
 
     //Other properties
     public static boolean isTextDynamic() {
-        return true;
+        return false;
     }
 }
