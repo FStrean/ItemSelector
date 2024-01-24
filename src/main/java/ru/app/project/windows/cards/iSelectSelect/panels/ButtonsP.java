@@ -72,7 +72,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
                 }
             });
         }
-        for(int i = 0; i < AppProperties.getNumOfItemsInISelectSelect(); i++) {
+        for(int i = 0; i < AppProperties.getNumOfItemsInISelectSelect();) {
             int id = i + 1;
             buttons.get(i).addActionListener(event -> rootWin.showCard(ISelectC.class, id));
 
@@ -85,6 +85,8 @@ public class ButtonsP extends JPanel implements BasicPanel {
                     }
                 });
             }
+            //In case if item has several pages
+            i += AppProperties.getNumOfPagesInISelect()[i];
         }
     }
 

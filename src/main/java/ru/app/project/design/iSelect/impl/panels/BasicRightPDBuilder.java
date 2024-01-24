@@ -33,7 +33,7 @@ public class BasicRightPDBuilder implements RightPDBuilder {
         text.setHorizontalAlignment(SwingConstants.CENTER);
         text.setVerticalAlignment(SwingConstants.CENTER);
 
-        panel.add(text, 10.0f);
+        panel.add(text, 15.0f);
 
         return text;
     }
@@ -49,7 +49,7 @@ public class BasicRightPDBuilder implements RightPDBuilder {
         p.setBorder(new EmptyBorder(5, 0, 5, 0));
 
         p.add(ip);
-        panel.add(p, 10.0f);
+        panel.add(p, 50.0f);
 
         return ip;
     }
@@ -68,7 +68,7 @@ public class BasicRightPDBuilder implements RightPDBuilder {
         text.setHorizontalAlignment(SwingConstants.CENTER);
         text.setVerticalAlignment(SwingConstants.CENTER);
 
-        panel.add(text, 10.0f);
+        panel.add(text, 15.0f);
 
         return text;
     }
@@ -84,7 +84,7 @@ public class BasicRightPDBuilder implements RightPDBuilder {
         p.setBorder(new EmptyBorder(5, 0, 5, 0));
 
         p.add(ip);
-        panel.add(p, 10.0f);
+        panel.add(p, 20.0f);
 
         return ip;
     }

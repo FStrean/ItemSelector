@@ -29,7 +29,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     public BasicPanel buildHeaderPanelDesign() {
         HeaderP hp = new HeaderP();
 
-        panel.add(hp, 15.0f);
+        panel.add(hp, 10.0f);
 
         return hp;
     }
@@ -48,7 +48,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
         LeftP ip = new LeftP();
 
         contentPanel.add(ip, 50.0f);
-        panel.add(contentPanel, 65f);
+        panel.add(contentPanel, 70.f);
 
         return ip;
     }

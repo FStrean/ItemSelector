@@ -15,6 +15,7 @@ import ru.app.project.windows.cards.iSelect.ISelectC;
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.Arrays;
 
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWin;
@@ -30,12 +31,14 @@ public class HeaderP extends JPanel implements BasicPanel {
     private Double descRatio = null;
 
     private int id;
+    private int maxId;
 
     public HeaderP() {
         this.designBuilder = new BasicHeaderPDBuilder(this);
 
         this.cfg = null;
         this.rootWin = null;
+        this.maxId = Arrays.stream(AppProperties.getNumOfPagesInISelect()).sum();
 
         this.applyDesign();
         this.applyLogic();
@@ -50,7 +53,6 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyLogic(){
-        int maxId = AppProperties.getNumOfItemsInISelectSelect();
         lBtn.addActionListener(event -> {
             parent.runOnLeaveAction();
             rootWin.showCard(ISelectC.class, (id - 1) < 1 ? maxId : (id - 1));

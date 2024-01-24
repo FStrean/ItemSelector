@@ -32,16 +32,17 @@ public class AppProperties {
 
     //ISelect & ISelectSelect
     private static final int numOfItemsInISelectSelect = 5;
+    private static final int[] numOfPagesInISelect = {1, 1, 1, 1, 4};
     private static final int maxNumOfImgInISelectSelect = 1;
     private static final int maxNumOfImgInISelect = 1;
     public static int getNumOfItemsInISelectSelect() {
         return numOfItemsInISelectSelect;
     }
+    public static int[] getNumOfPagesInISelect() {
+        return numOfPagesInISelect;
+    }
     public static int getMaxNumOfImgInISelectSelect() {
         return maxNumOfImgInISelectSelect;
-    }
-    public static int getMaxNumOfImgInISelect() {
-        return maxNumOfImgInISelect;
     }
 
     //Other properties
