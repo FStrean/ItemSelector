@@ -532,6 +532,7 @@ public class RelativeLayout implements LayoutManager2, java.io.Serializable
             else
             {
                 relativeTotal += constraint.doubleValue();
+
             }
         }
 
@@ -607,7 +608,6 @@ public class RelativeLayout implements LayoutManager2, java.io.Serializable
         int spaceUsed = 0;
         int components = parent.getComponentCount();
         int[] relativeSpace = new int[components];
-
         for (int i = 0 ; i < components ; i++)
         {
             relativeSpace[i] = 0;
@@ -615,6 +615,8 @@ public class RelativeLayout implements LayoutManager2, java.io.Serializable
             if (relativeTotal > 0 && spaceAvailable > 0)
             {
                 Component component = parent.getComponent(i);
+
+                if(! component.isVisible()) continue;
 
                 Float constraint = constraints.get(component);
 
