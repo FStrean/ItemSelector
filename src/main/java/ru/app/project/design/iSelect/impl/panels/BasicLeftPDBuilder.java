@@ -1,6 +1,7 @@
 package ru.app.project.design.iSelect.impl.panels;
 
 import ru.app.project.components.JImage;
+import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.iSelect.interf.panels.LeftPDBuilder;
 
 import javax.swing.*;
@@ -11,9 +12,11 @@ public class BasicLeftPDBuilder implements LeftPDBuilder {
     private final JPanel panel;
     public BasicLeftPDBuilder(JPanel panel) {
         this.panel = panel;
+        RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
 
+        layout.setFill(true);
         this.panel.setOpaque(false);
-        this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        this.panel.setLayout(layout);
     }
 
     @Override
@@ -30,7 +33,7 @@ public class BasicLeftPDBuilder implements LeftPDBuilder {
         text.setHorizontalAlignment(SwingConstants.CENTER);
         text.setVerticalAlignment(SwingConstants.CENTER);
 
-        panel.add(text, 80.0f);
+        panel.add(text, 10.0f);
 
         return text;
     }
@@ -46,7 +49,7 @@ public class BasicLeftPDBuilder implements LeftPDBuilder {
         p.setBorder(new EmptyBorder(5, 0, 5, 0));
 
         p.add(ip);
-        panel.add(p);
+        panel.add(p, 60.0f);
 
         return ip;
     }
@@ -65,7 +68,7 @@ public class BasicLeftPDBuilder implements LeftPDBuilder {
         text.setHorizontalAlignment(SwingConstants.CENTER);
         text.setVerticalAlignment(SwingConstants.CENTER);
 
-        panel.add(text, 80.0f);
+        panel.add(text, 10.0f);
 
         return text;
     }
@@ -81,7 +84,7 @@ public class BasicLeftPDBuilder implements LeftPDBuilder {
         p.setBorder(new EmptyBorder(5, 0, 5, 0));
 
         p.add(ip);
-        panel.add(p);
+        panel.add(p, 20.0f);
 
         return ip;
     }

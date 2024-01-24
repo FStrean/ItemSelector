@@ -8,5 +8,4 @@ public interface HeaderPDBuilder {
     JImageButton buildJButton1Design();
     JLabel buildJLabelDesign();
     JImageButton buildJButton2Design();
-    JLabel buildJLabel1Design();
 }

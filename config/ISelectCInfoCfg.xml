@@ -7,10 +7,30 @@
         }
     </style>]]></hHeaderStyle>
     <descStyle></descStyle>
-    <leftDesc1Style></leftDesc1Style>
-    <leftDesc2Style></leftDesc2Style>
-    <rightDesc1Style></rightDesc1Style>
-    <rightDesc2Style></rightDesc2Style>
+    <leftDesc1Style><![CDATA[<style>
+        span, ol, li, div, center {
+            font-size: 16px;
+            font-family: 'Liberation Serif';
+        }
+    </style>]]></leftDesc1Style>
+    <leftDesc2Style><![CDATA[<style>
+        span, ol, li, div, center {
+            font-size: 16px;
+            font-family: 'Liberation Serif';
+        }
+    </style>]]></leftDesc2Style>
+    <rightDesc1Style><![CDATA[<style>
+        span, ol, li, div, center {
+            font-size: 16px;
+            font-family: 'Liberation Serif';
+        }
+    </style>]]></rightDesc1Style>
+    <rightDesc2Style><![CDATA[<style>
+        span, ol, li, div, center {
+            font-size: 16px;
+            font-family: 'Liberation Serif';
+        }
+    </style>]]></rightDesc2Style>
     <item id="1">
         <hHeader><![CDATA[
             <center>
@@ -19,10 +39,20 @@
         ]]></hHeader>
         <desc></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1></leftImg1>
+        <leftImg1>.\images\Подключения.png</leftImg1>
         <leftDesc2></leftDesc2>
         <leftImg2></leftImg2>
-        <rightDesc1></rightDesc1>
+        <rightDesc1><![CDATA[
+            <div>
+                В верхнем списке отображаются подключенный к БОИ в данный момент блок(блоки) и их текущее состояние. Вся дальнейшая работа (поиск и измерение) выполняется с выбранным в этом списке БД.
+            </div>
+            <div>
+                Слева три графика изменения во времени датчиков выбранного из списка БД (температура детектора, код чувствительности и код репера).
+            </div>
+            <div>
+                С помощью кнопок «Калибровка БД» и «Параметры БД» можно соответственно откалибровать выбранный БД, либо посмотреть/изменить его текущие параметры и настройки.
+            </div>
+        ]]></rightDesc1>
         <rightImg1></rightImg1>
         <rightDesc2></rightDesc2>
         <rightImg2></rightImg2>
@@ -35,7 +65,7 @@
         ]]></hHeader>
         <desc></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1></leftImg1>
+        <leftImg1>.\images\Поиск.png</leftImg1>
         <leftDesc2></leftDesc2>
         <leftImg2></leftImg2>
         <rightDesc1></rightDesc1>
@@ -51,13 +81,13 @@
         ]]></hHeader>
         <desc></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1></leftImg1>
+        <leftImg1>.\images\Архив1.png</leftImg1>
         <leftDesc2></leftDesc2>
-        <leftImg2></leftImg2>
+        <leftImg2>.\images\Архив2.png</leftImg2>
         <rightDesc1></rightDesc1>
         <rightImg1></rightImg1>
         <rightDesc2></rightDesc2>
-        <rightImg2></rightImg2>
+        <rightImg2>.\images\Архив3.png</rightImg2>
     </item>
     <item id="4">
         <hHeader><![CDATA[
@@ -67,7 +97,7 @@
         ]]></hHeader>
         <desc></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1></leftImg1>
+        <leftImg1>.\images\Обработка1.png</leftImg1>
         <leftDesc2></leftDesc2>
         <leftImg2></leftImg2>
         <rightDesc1></rightDesc1>
@@ -91,6 +121,26 @@
         <rightDesc2></rightDesc2>
         <rightImg2></rightImg2>
     </item>
-    <button></button>
-    <fHeader></fHeader>
+    <button><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 18px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Описание ПО КРС
+        </center>
+    </html>]]></button>
+    <fHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Мультимедийное обучающее программное обеспечение
+        </center>
+    </html>]]></fHeader>
 </iSelectCInfoCfg>

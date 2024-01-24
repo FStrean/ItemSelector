@@ -39,7 +39,7 @@ public class ImagesP extends JPanel implements BasicPanel {
     @Override
     public void applyDesign() {
         List<JImage> jImages = new ArrayList<>(AppProperties.getMaxNumOfImgInISelectSelect());
-        for (int i = 0; i < AppProperties.getMaxNumOfImgInIDesc(); i++) {
+        for (int i = 0; i < AppProperties.getMaxNumOfImgInISelectSelect(); i++) {
             JImage image = designBuilder.buildJImageDesign();
             jImages.add(image);
             image.setVisible(false);
@@ -63,11 +63,7 @@ public class ImagesP extends JPanel implements BasicPanel {
 
     @Override
     public void runOnLeaveAction() {
-        images.reset();
-        for(JImage image : images.getElements()) {
-            image.removeImage();
-            image.setVisible(false);
-        }
+
     }
 
     @Override

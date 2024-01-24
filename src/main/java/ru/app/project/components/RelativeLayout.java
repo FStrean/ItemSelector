@@ -435,7 +435,6 @@ public class RelativeLayout implements LayoutManager2, java.io.Serializable
         }
 
         //  Allocate space to each component using relative sizing
-
         int[] relativeSpace = allocateRelativeSpace(parent, spaceAvailable, relativeTotal);
 
         //  Position each component in the container
@@ -616,6 +615,7 @@ public class RelativeLayout implements LayoutManager2, java.io.Serializable
             if (relativeTotal > 0 && spaceAvailable > 0)
             {
                 Component component = parent.getComponent(i);
+
                 Float constraint = constraints.get(component);
 
                 if (constraint != null)

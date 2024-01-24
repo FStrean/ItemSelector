@@ -53,17 +53,4 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
 
         return btn;
     }
-
-    @Override
-    public JLabel buildJLabel1Design() {
-        JLabel text = new JLabel();
-
-        text.setOpaque(false);
-        text.setHorizontalAlignment(SwingConstants.CENTER);
-        text.setVerticalAlignment(SwingConstants.CENTER);
-
-        panel.add(text, 90.0f);
-
-        return text;
-    }
 }

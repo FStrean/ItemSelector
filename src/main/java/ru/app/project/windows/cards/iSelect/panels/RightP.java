@@ -38,11 +38,13 @@ public class RightP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
+        //desc = designBuilder.buildJLabelDesign();
         desc1 = designBuilder.buildJLabel1Design();
         img1 = designBuilder.buildJImage1Design();
         desc2 = designBuilder.buildJLabel2Design();
         img2 = designBuilder.buildJImage2Design();
 
+        //desc.setVisible(false);
         desc1.setVisible(false);
         img1.setVisible(false);
         desc2.setVisible(false);
@@ -55,23 +57,31 @@ public class RightP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        desc1.setText(cfg.getLeftDesc1());
-        if(!cfg.getLeftImg1().isEmpty()) {
-            addImageToFrame(img1, cfg.getLeftImg1());
+        if(!cfg.getRightDesc1().isEmpty()) {
+            desc1.setText("<html>" + addCfg.getRightDesc1Style() + cfg.getRightDesc1() + "</html>");
+            desc1.setVisible(true);
         }
-        desc2.setText(cfg.getLeftDesc1());
-        if(!cfg.getLeftImg2().isEmpty()) {
-            addImageToFrame(img2, cfg.getLeftImg2());
+        if(!cfg.getRightImg1().isEmpty()) {
+            addImageToFrame(img1, cfg.getRightImg1());
+        }
+        if(!cfg.getRightDesc2().isEmpty()) {
+            desc2.setText("<html>" + addCfg.getRightDesc2Style() + cfg.getRightDesc2() + "</html>");
+            desc2.setVisible(true);
+        }
+        if(!cfg.getRightImg2().isEmpty()) {
+            addImageToFrame(img2, cfg.getRightImg2());
         }
     }
 
     @Override
     public void runOnLeaveAction() {
+        //desc.setVisible(false);
+        desc1.setVisible(false);
         img1.removeImage();
         img1.setVisible(false);
-
+        desc2.setVisible(false);
         img2.removeImage();
-        img2.removeImage();
+        img2.setVisible(false);
     }
 
     @Override

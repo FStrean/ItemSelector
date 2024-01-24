@@ -21,6 +21,7 @@ public class LeftP extends JPanel implements BasicPanel {
     private ISelectCInfoCfg addCfg;
     private MutableComponent parent;
 
+    private JLabel desc;
     private JLabel desc1;
     private JImage img1;
     private JLabel desc2;
@@ -38,11 +39,13 @@ public class LeftP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
+        //desc = designBuilder.buildJLabelDesign();
         desc1 = designBuilder.buildJLabel1Design();
         img1 = designBuilder.buildJImage1Design();
         desc2 = designBuilder.buildJLabel2Design();
         img2 = designBuilder.buildJImage2Design();
 
+        //desc.setVisible(false);
         desc1.setVisible(false);
         img1.setVisible(false);
         desc2.setVisible(false);
@@ -55,11 +58,17 @@ public class LeftP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
-        desc1.setText(cfg.getLeftDesc1());
+        if(!cfg.getLeftDesc1().isEmpty()) {
+            desc1.setText("<html>" + addCfg.getLeftDesc1Style() + cfg.getLeftDesc1() + "</html>");
+            desc1.setVisible(true);
+        }
         if(!cfg.getLeftImg1().isEmpty()) {
             addImageToFrame(img1, cfg.getLeftImg1());
         }
-        desc2.setText(cfg.getLeftDesc1());
+        if(!cfg.getLeftDesc2().isEmpty()) {
+            desc2.setText("<html>" + addCfg.getLeftDesc2Style() + cfg.getLeftDesc2() + "</html>");
+            desc2.setVisible(true);
+        }
         if(!cfg.getLeftImg2().isEmpty()) {
             addImageToFrame(img2, cfg.getLeftImg2());
         }
@@ -67,11 +76,13 @@ public class LeftP extends JPanel implements BasicPanel {
 
     @Override
     public void runOnLeaveAction() {
+        //desc.setVisible(false);
+        desc1.setVisible(false);
         img1.removeImage();
         img1.setVisible(false);
-
+        desc2.setVisible(false);
         img2.removeImage();
-        img2.removeImage();
+        img2.setVisible(false);
     }
 
     @Override

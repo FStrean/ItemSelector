@@ -38,12 +38,12 @@ public class JImage extends JPanel {
 
     public void setImg(BufferedImage img) {
         this.img = img;
-        this.imgPanel.repaint();
-
         if(img != null) {
             imgWidth = img.getWidth();
             imgHeight = img.getHeight();
+            resizeEvent();
         }
+        this.imgPanel.repaint();
     }
 
     public void removeImage() {
@@ -96,34 +96,38 @@ public class JImage extends JPanel {
         };
     }
 
+    private void resizeEvent() {
+        if(img != null) {
+            int panWidth = getWidth();
+            int panHeight = getHeight();
+
+            double wRatio = (double) imgWidth / panWidth;
+            double hRatio = (double) imgHeight / panHeight;
+
+            double imgRatio = Math.max(wRatio, hRatio);
+
+            newImgWidth = Math.min((int) ((double) imgWidth / imgRatio), imgWidth);
+            newImgHeight = Math.min((int) ((double) imgHeight / imgRatio), imgHeight);
+
+            tPad = (int) ((float) (panHeight - newImgHeight) * tRatio);
+            lPad = (int) ((float) (panWidth - newImgWidth) * lRatio);
+            bPad = (int) ((float) (panHeight - newImgHeight) * bRatio);
+            rPad = (int) ((float) (panWidth - newImgWidth) * rRatio);
+
+            JImage.this.setBorder(new EmptyBorder(tPad, lPad, bPad, rPad));
+
+            if(JImage.this.isVisible()) {
+                JImage.this.updateUI();
+            }
+        }
+    }
+
     private void initResizeLogic() {
         addComponentListener(
                 new ComponentAdapter() {
                     @Override
                     public void componentResized(ComponentEvent e) {
-                        if(img != null) {
-                            int panWidth = getWidth();
-                            int panHeight = getHeight();
-
-                            double wRatio = (double) imgWidth / panWidth;
-                            double hRatio = (double) imgHeight / panHeight;
-
-                            double imgRatio = Math.max(wRatio, hRatio);
-
-                            newImgWidth = Math.min((int) ((double) imgWidth / imgRatio), imgWidth);
-                            newImgHeight = Math.min((int) ((double) imgHeight / imgRatio), imgHeight);
-
-                            tPad = (int) ((float) (panHeight - newImgHeight) * tRatio);
-                            lPad = (int) ((float) (panWidth - newImgWidth) * lRatio);
-                            bPad = (int) ((float) (panHeight - newImgHeight) * bRatio);
-                            rPad = (int) ((float) (panWidth - newImgWidth) * rRatio);
-
-                            JImage.this.setBorder(new EmptyBorder(tPad, lPad, bPad, rPad));
-
-                            if(JImage.this.isVisible()) {
-                                JImage.this.updateUI();
-                            }
-                        }
+                        resizeEvent();
                     }
                 }
         );

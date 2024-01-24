@@ -41,7 +41,8 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     public BasicPanel buildLeftPanelDesign() {
         LeftP ip = new LeftP();
 
-        contentPanel.add(ip, 35.0f);
+        contentPanel.add(ip, 50.0f);
+        panel.add(contentPanel, 75.0f);
 
         return ip;
     }
@@ -50,8 +51,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     public BasicPanel buildRightPanelDesign() {
         RightP dp = new RightP();
 
-        contentPanel.add(dp, 65.0f);
-        panel.add(contentPanel, 75.0f);
+        contentPanel.add(dp, 50.0f);
 
         return dp;
     }
