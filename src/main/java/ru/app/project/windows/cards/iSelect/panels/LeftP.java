@@ -47,9 +47,9 @@ public class LeftP extends JPanel implements BasicPanel {
 
         //desc.setVisible(false);
         desc1.setVisible(false);
-        img1.setVisible(false);
+        img1.getParent().setVisible(false);
         desc2.setVisible(false);
-        img2.setVisible(false);
+        img2.getParent().setVisible(false);
     }
 
     @Override
@@ -58,31 +58,38 @@ public class LeftP extends JPanel implements BasicPanel {
 
     @Override
     public void applyConfig() {
+        boolean allInvisible = true;
         if(!cfg.getLeftDesc1().isEmpty()) {
             desc1.setText("<html>" + addCfg.getLeftDesc1Style() + cfg.getLeftDesc1() + "</html>");
             desc1.setVisible(true);
+            allInvisible = false;
         }
         if(!cfg.getLeftImg1().isEmpty()) {
             addImageToFrame(img1, cfg.getLeftImg1());
+            allInvisible = false;
         }
         if(!cfg.getLeftDesc2().isEmpty()) {
             desc2.setText("<html>" + addCfg.getLeftDesc2Style() + cfg.getLeftDesc2() + "</html>");
             desc2.setVisible(true);
+            allInvisible = false;
         }
         if(!cfg.getLeftImg2().isEmpty()) {
             addImageToFrame(img2, cfg.getLeftImg2());
+            allInvisible = false;
         }
+
+        setVisible(!allInvisible);
     }
 
     @Override
     public void runOnLeaveAction() {
-        //desc.setVisible(false);
+        //desc.getParent().setVisible(false);
         desc1.setVisible(false);
         img1.removeImage();
-        img1.setVisible(false);
+        img1.getParent().setVisible(false);
         desc2.setVisible(false);
         img2.removeImage();
-        img2.setVisible(false);
+        img2.getParent().setVisible(false);
     }
 
     @Override
@@ -122,6 +129,6 @@ public class LeftP extends JPanel implements BasicPanel {
         }
 
         jImage.setImg(image);
-        jImage.setVisible(true);
+        jImage.getParent().setVisible(true);
     }
 }
