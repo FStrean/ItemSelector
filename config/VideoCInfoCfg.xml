@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<videoCInfoCfg>
+    <hHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 28px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Видео работы комплекса КРС КПТВ. 412168.002
+        </center>
+    </html>]]></hHeader>
+    <video>D:\Video\Movies\Apocalypto.2006.BDRip.1080p.Rus.mkv</video>
+    <video>D:\Video\Movies\Beguschiy.po.lezviyu.2049.2017.DUAL.BDRip.1080p.-HELLYWOOD.mkv</video>
+    <video>D:\Video\Movies\Braveheart (1995) BDRip 1080p HEVC от TURG  lisence.mkv</video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <video></video>
+    <button1><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 16px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Состав комплекса
+        </center>
+    </html>]]></button1>
+    <button2><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 16px;
+              font-family: 'Calibri', sans-serif;
+            }
+        </style>
+        <center>
+            Работа комплекса
+        </center>
+    </html>]]></button2>
+    <fHeader><![CDATA[<html>
+        <style>
+            span, ol, li, div, center {
+              font-size: 24px;
+              font-family: 'Calibri Light', sans-serif;
+            }
+        </style>
+        <center>
+            Мультимедийное обучающее программное обеспечение
+        </center>
+    </html>]]></fHeader>
+</videoCInfoCfg>

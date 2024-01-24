@@ -1,27 +1,26 @@
-package ru.app.project.windows.cards.iSelect.panels;
+package ru.app.project.windows.cards.video.panels;
 
 import ru.app.project.components.JImageButton;
 import ru.app.project.config.AppProperties;
-import ru.app.project.config.window.ISelectCInfoCfg;
-import ru.app.project.design.iSelect.impl.panels.BasicHeaderPDBuilder;
-import ru.app.project.design.iSelect.interf.panels.HeaderPDBuilder;
+import ru.app.project.config.window.VideoCInfoCfg;
+import ru.app.project.design.video.impl.panels.BasicHeaderPDBuilder;
+import ru.app.project.design.video.interf.panels.HeaderPDBuilder;
 import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.windows.BasicPanel;
 import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.iSelect.ISelectC;
+import ru.app.project.windows.cards.video.VideoC;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.util.Arrays;
 
 public class HeaderP extends JPanel implements BasicPanel {
     private RootWindow rootWin;
     private final HeaderPDBuilder designBuilder;
-    private ISelectCInfoCfg.Item cfg;
-    private ISelectCInfoCfg addCfg;
+    private VideoCInfoCfg cfg;
     private MutableComponent parent;
 
     private JImageButton lBtn;
@@ -30,15 +29,11 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     private Double descRatio = null;
 
-    private int id;
-    private int maxId;
-
     public HeaderP() {
-        this.designBuilder = new BasicHeaderPDBuilder(this);
+        designBuilder = new BasicHeaderPDBuilder(this);
 
-        this.cfg = null;
         this.rootWin = null;
-        this.maxId = Arrays.stream(AppProperties.getNumOfPagesInISelect()).sum();
+        this.cfg = null;
 
         this.applyDesign();
         this.applyLogic();
@@ -46,42 +41,32 @@ public class HeaderP extends JPanel implements BasicPanel {
 
     @Override
     public void applyDesign() {
-        lBtn = designBuilder.buildJButton1Design();
-        desc = designBuilder.buildJLabelDesign();
-        rBtn = designBuilder.buildJButton2Design();
+        this.lBtn = designBuilder.buildJButton1Design();
+        this.desc = designBuilder.buildJLabelDesign();
+        this.rBtn = designBuilder.buildJButton2Design();
     }
 
     @Override
-    public void applyLogic(){
+    public void applyLogic() {
         lBtn.addActionListener(event -> {
             parent.runOnLeaveAction();
-            rootWin.showCard(ISelectC.class, (id - 1) < 1 ? maxId : (id - 1));
+            rootWin.showCard(VideoC.class, -1);
         });
         rBtn.addActionListener(event -> {
             parent.runOnLeaveAction();
-            rootWin.showCard(ISelectC.class, (id + 1) > maxId ? 1 : (id + 1));
+            rootWin.showCard(VideoC.class, 1);
         });
-
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
                     if (descRatio == null) {
-                        descRatio = RelTSRatioCalc.getTextRatio(addCfg.getHHeaderStyle(), desc.getWidth());
+                        descRatio = RelTSRatioCalc.getTextRatio(desc);
                     }
+
                     TSCalc.calcTextSize(desc, descRatio);
                 }
             });
-        }
-    }
-
-    @Override
-    public void applyConfig() {
-        id = cfg.getId();
-
-        desc.setText("<html>" + addCfg.getHHeaderStyle() + cfg.getHHeader() + "</html>");
-        if(descRatio != null) {
-            TSCalc.calcTextSize(desc, descRatio);
         }
     }
 
@@ -96,16 +81,17 @@ public class HeaderP extends JPanel implements BasicPanel {
     }
 
     @Override
+    public void applyConfig() {
+        desc.setText(cfg.getHHeader());
+    }
+
+    @Override
     public void setRootWin(RootWindow rootWin) {
         this.rootWin = rootWin;
     }
 
     @Override
     public void setCfg(Object cfg) {
-        this.cfg = (ISelectCInfoCfg.Item) cfg;
-    }
-
-    public void setAddCfg(Object config) {
-        this.addCfg = (ISelectCInfoCfg)config;
+        this.cfg = (VideoCInfoCfg) cfg;
     }
 }

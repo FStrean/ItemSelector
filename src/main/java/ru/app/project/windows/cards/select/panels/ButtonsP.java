@@ -11,6 +11,7 @@ import ru.app.project.windows.MutableComponent;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.iSelectSelect.ISelectSelectC;
 import ru.app.project.windows.cards.iDesc.IDescC;
+import ru.app.project.windows.cards.video.VideoC;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
@@ -49,7 +50,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
     @Override
     public void applyLogic() {
         btn1.addActionListener(event -> rootWin.showCard(ISelectSelectC.class));
-        btn2.addActionListener(event -> rootWin.showCard(IDescC.class, 1));
+        btn2.addActionListener(event -> rootWin.showCard(VideoC.class, 0));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {

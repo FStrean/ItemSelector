@@ -45,6 +45,16 @@ public class AppProperties {
         return maxNumOfImgInISelectSelect;
     }
 
+    //Video
+    private static final int numOfVideos = 19;
+    private static final int maxNumOfVideosInScreen = 3;
+    public static int getNumOfVidInVideo() {
+        return numOfVideos;
+    }
+    public static int getMaxNumOfVideosInScreen() {
+        return maxNumOfVideosInScreen;
+    }
+
     //Other properties
     public static boolean isTextDynamic() {
         return true;

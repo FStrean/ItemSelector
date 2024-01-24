@@ -9,6 +9,7 @@ import ru.app.project.windows.cards.iDesc.IDescC;
 import ru.app.project.windows.cards.iDescSelect.IDescSelectC;
 import ru.app.project.windows.cards.mSelect.MSelectC;
 import ru.app.project.windows.cards.select.SelectC;
+import ru.app.project.windows.cards.video.VideoC;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,6 +46,7 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
         IDescC iDescC = new IDescC(this);
         ISelectSelectC iSelectSelectC = new ISelectSelectC(this);
         ISelectC iSelectC = new ISelectC(this);
+        VideoC videoC = new VideoC(this);
 
         cards.put(MSelectC.class.getSimpleName(), mSelectC);
         cards.put(DescC.class.getSimpleName(), descC);
@@ -53,6 +55,7 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
         cards.put(IDescC.class.getSimpleName(), iDescC);
         cards.put(ISelectSelectC.class.getSimpleName(), iSelectSelectC);
         cards.put(ISelectC.class.getSimpleName(), iSelectC);
+        cards.put(VideoC.class.getSimpleName(), videoC);
 
         add(mSelectC, MSelectC.class.getSimpleName());
         add(descC, DescC.class.getSimpleName());
@@ -61,6 +64,7 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
         add(iDescC, IDescC.class.getSimpleName());
         add(iSelectSelectC, ISelectSelectC.class.getSimpleName());
         add(iSelectC, ISelectC.class.getSimpleName());
+        add(videoC, VideoC.class.getSimpleName());
     }
 
     @Override
