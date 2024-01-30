@@ -3,8 +3,6 @@ package ru.app.project.design.impl;
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.interf.ISelectCDBuilder;
 import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.cards.iSelect.*;
-import ru.app.project.windows.cards.iSelect.panels.*;
 import ru.app.project.windows.cards.panels.iSelect.*;
 
 import javax.swing.*;

@@ -7,7 +7,6 @@ import ru.app.project.windows.cards.panels.iDesc.DescriptionP;
 import ru.app.project.windows.cards.panels.iDesc.FooterP;
 import ru.app.project.windows.cards.panels.iDesc.HeaderP;
 import ru.app.project.windows.cards.panels.iDesc.ImagesP;
-import ru.app.project.windows.cards.iDesc.panels.*;
 
 import javax.swing.*;
 import java.awt.*;
