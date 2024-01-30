@@ -2,14 +2,14 @@ package ru.app.project.windows;
 
 import ru.app.project.config.AppProperties;
 import ru.app.project.config.SystemProperties;
-import ru.app.project.windows.cards.desc.DescC;
-import ru.app.project.windows.cards.iSelect.ISelectC;
-import ru.app.project.windows.cards.iSelectSelect.ISelectSelectC;
-import ru.app.project.windows.cards.iDesc.IDescC;
-import ru.app.project.windows.cards.iDescSelect.IDescSelectC;
-import ru.app.project.windows.cards.mSelect.MSelectC;
-import ru.app.project.windows.cards.select.SelectC;
-import ru.app.project.windows.cards.video.VideoC;
+import ru.app.project.windows.cards.DescC;
+import ru.app.project.windows.cards.ISelectC;
+import ru.app.project.windows.cards.ISelectSelectC;
+import ru.app.project.windows.cards.IDescC;
+import ru.app.project.windows.cards.IDescSelectC;
+import ru.app.project.windows.cards.MSelectC;
+import ru.app.project.windows.cards.SelectC;
+import ru.app.project.windows.cards.VideoC;
 
 import javax.swing.*;
 import java.awt.*;
