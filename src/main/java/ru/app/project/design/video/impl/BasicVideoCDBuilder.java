@@ -24,7 +24,7 @@ public class BasicVideoCDBuilder implements VideoCDBuilder {
     public BasicPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
 
-        panel.add(headerPanel, 15.0f);
+        panel.add(headerPanel, 10.0f);
 
         return headerPanel;
     }
@@ -33,7 +33,7 @@ public class BasicVideoCDBuilder implements VideoCDBuilder {
     public BasicPanel buildCenterPanelDesign() {
         VideosP videosPanel = new VideosP();
 
-        panel.add(videosPanel, 55.0f);
+        panel.add(videosPanel, 60.0f);
 
         return videosPanel;
     }

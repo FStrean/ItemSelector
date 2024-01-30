@@ -22,7 +22,7 @@ public class BasicDescriptionPDBuilder implements DescriptionPDBuilder {
 
         style ^= Font.BOLD;
         font = font.deriveFont(style);
-
+        
         text.setFont(font);
         text.setOpaque(false);
         text.setHorizontalAlignment(SwingConstants.CENTER);
