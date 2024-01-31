@@ -6,8 +6,8 @@ import ru.app.project.design.impl.panels.iDescSelect.BasicHeaderPDBuilder;
 import ru.app.project.design.interf.panels.iDescSelect.HeaderPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
+import ru.app.project.windows.StaticCard;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.DescC;
 import ru.app.project.windows.cards.SelectC;
@@ -16,11 +16,11 @@ import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class HeaderP extends JPanel implements BasicPanel {
+public class HeaderP extends JPanel implements StaticPanel {
     private RootWindow rootWin;
     private final HeaderPDBuilder designBuilder;
     private IDescSelectCInfoCfg cfg;
-    private MutableComponent parent;
+    private StaticCard parent;
 
     private JButton btn1;
     private JLabel desc;
@@ -73,7 +73,7 @@ public class HeaderP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
+    public void setParent(StaticCard parent) {
         this.parent = parent;
     }
 

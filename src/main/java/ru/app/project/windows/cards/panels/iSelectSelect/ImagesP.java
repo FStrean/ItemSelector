@@ -6,8 +6,8 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.cards.ISelectSelectCInfoCfg;
 import ru.app.project.design.impl.panels.iSelectSelect.BasicImagesPDBuilder;
 import ru.app.project.design.interf.panels.iSelectSelect.ImagesPDBuilder;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
+import ru.app.project.windows.StaticCard;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.RootWindow;
 
 import javax.imageio.ImageIO;
@@ -18,11 +18,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImagesP extends JPanel implements BasicPanel {
+public class ImagesP extends JPanel implements StaticPanel {
     private RootWindow rootWin;
     private final ImagesPDBuilder designBuilder;
     private ISelectSelectCInfoCfg cfg;
-    private MutableComponent parent;
+    private StaticCard parent;
 
     private RingBuffer<JImage> images;
 
@@ -67,7 +67,7 @@ public class ImagesP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
+    public void setParent(StaticCard parent) {
         this.parent = parent;
     }
 

@@ -51,7 +51,7 @@ public class AppProperties {
     public static int getNumOfVidInVideo() {
         return numOfVideos;
     }
-    public static int getMaxNumOfVideosInScreen() {
+    public static int getMaxNumOfVidInScreen() {
         return maxNumOfVideosInScreen;
     }
 

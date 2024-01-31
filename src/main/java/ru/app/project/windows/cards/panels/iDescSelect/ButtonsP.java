@@ -6,8 +6,8 @@ import ru.app.project.design.impl.panels.iDescSelect.BasicButtonsPDBuilder;
 import ru.app.project.design.interf.panels.iDescSelect.ButtonsPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
+import ru.app.project.windows.StaticCard;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.IDescC;
 
@@ -17,11 +17,11 @@ import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ButtonsP extends JPanel implements BasicPanel {
+public class ButtonsP extends JPanel implements StaticPanel {
     private RootWindow rootWin;
     private final ButtonsPDBuilder designBuilder;
     private IDescSelectCInfoCfg cfg;
-    private MutableComponent parent;
+    private StaticCard parent;
 
     private final List<JButton> buttons;
 
@@ -81,7 +81,7 @@ public class ButtonsP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
+    public void setParent(StaticCard parent) {
         this.parent = parent;
     }
 

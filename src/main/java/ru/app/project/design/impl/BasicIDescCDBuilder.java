@@ -2,7 +2,7 @@ package ru.app.project.design.impl;
 
 import ru.app.project.design.interf.IDescCDBuilder;
 import ru.app.project.components.RelativeLayout;
-import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.cards.panels.iDesc.DescriptionP;
 import ru.app.project.windows.cards.panels.iDesc.FooterP;
 import ru.app.project.windows.cards.panels.iDesc.HeaderP;
@@ -29,7 +29,7 @@ public class BasicIDescCDBuilder implements IDescCDBuilder {
     }
 
     @Override
-    public BasicPanel buildHeaderPanelDesign() {
+    public StaticPanel buildHeaderPanelDesign() {
         HeaderP hp = new HeaderP();
 
         panel.add(hp, 15.0f);
@@ -38,7 +38,7 @@ public class BasicIDescCDBuilder implements IDescCDBuilder {
     }
 
     @Override
-    public BasicPanel buildLeftPanelDesign() {
+    public StaticPanel buildLeftPanelDesign() {
         ImagesP ip = new ImagesP();
 
         contentPanel.add(ip, 35.0f);
@@ -47,7 +47,7 @@ public class BasicIDescCDBuilder implements IDescCDBuilder {
     }
 
     @Override
-    public BasicPanel buildRightPanelDesign() {
+    public StaticPanel buildRightPanelDesign() {
         DescriptionP dp = new DescriptionP();
 
         contentPanel.add(dp, 65.0f);
@@ -58,7 +58,7 @@ public class BasicIDescCDBuilder implements IDescCDBuilder {
 
 
     @Override
-    public BasicPanel buildFooterPanelDesign() {
+    public StaticPanel buildFooterPanelDesign() {
         FooterP fp = new FooterP();
 
         panel.add(fp, 10.0f);

@@ -2,7 +2,7 @@ package ru.app.project.design.impl;
 
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.interf.ISelectCDBuilder;
-import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.cards.panels.iSelect.*;
 
 import javax.swing.*;
@@ -26,7 +26,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     }
 
     @Override
-    public BasicPanel buildHeaderPanelDesign() {
+    public StaticPanel buildHeaderPanelDesign() {
         HeaderP hp = new HeaderP();
 
         panel.add(hp, 10.0f);
@@ -35,7 +35,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     }
 
     @Override
-    public BasicPanel buildUnderHeaderPanelDesign() {
+    public StaticPanel buildUnderHeaderPanelDesign() {
         UnderHeaderP uhp = new UnderHeaderP();
 
         panel.add(uhp, 10f);
@@ -44,7 +44,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     }
 
     @Override
-    public BasicPanel buildLeftPanelDesign() {
+    public StaticPanel buildLeftPanelDesign() {
         LeftP ip = new LeftP();
 
         contentPanel.add(ip, 50.0f);
@@ -54,7 +54,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     }
 
     @Override
-    public BasicPanel buildRightPanelDesign() {
+    public StaticPanel buildRightPanelDesign() {
         RightP dp = new RightP();
 
         contentPanel.add(dp, 50.0f);
@@ -64,7 +64,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
 
 
     @Override
-    public BasicPanel buildFooterPanelDesign() {
+    public StaticPanel buildFooterPanelDesign() {
         FooterP fp = new FooterP();
 
         panel.add(fp, 10.0f);

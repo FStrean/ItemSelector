@@ -3,26 +3,21 @@ package ru.app.project.windows.cards;
 import ru.app.project.config.cards.IDescSelectCInfoCfg;
 import ru.app.project.design.impl.BasicIDescSelectCDBuilder;
 import ru.app.project.utility.ConfigLoader;
-import ru.app.project.windows.BasicCard;
-import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.StaticCard;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.RootWindow;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-public class IDescSelectC extends JPanel implements BasicCard {
-    private final RootWindow rootWin;
+public class IDescSelectC extends StaticCard {
     private final BasicIDescSelectCDBuilder designBuilder;
-    private final ConfigLoader<IDescSelectCInfoCfg> configLoader;
-
-    private BasicPanel headerPanel;
-    private BasicPanel buttonsPanel;
-    private BasicPanel footerPanel;
 
     public IDescSelectC(RootWindow rootWIndow) {
-        this.rootWin = rootWIndow;
+        super(rootWIndow);
         this.designBuilder = new BasicIDescSelectCDBuilder(this);
-        this.configLoader = new ConfigLoader<>(IDescSelectCInfoCfg.class);
+        ConfigLoader<IDescSelectCInfoCfg> configLoader = new ConfigLoader<>(IDescSelectCInfoCfg.class);
+        this.cfg = configLoader.getCfg();
 
         this.applyDesign();
         this.applyLogic();
@@ -31,34 +26,11 @@ public class IDescSelectC extends JPanel implements BasicCard {
 
     @Override
     public void applyDesign() {
-        headerPanel = designBuilder.buildHeaderPanelDesign();
-        buttonsPanel = designBuilder.buildCenterPanelDesign();
-        footerPanel = designBuilder.buildFooterPanelDesign();
-    }
+        StaticPanel headerPanel = designBuilder.buildHeaderPanelDesign();
+        StaticPanel buttonsPanel = designBuilder.buildCenterPanelDesign();
+        StaticPanel footerPanel = designBuilder.buildFooterPanelDesign();
 
-    @Override
-    public void applyLogic() {
-        headerPanel.setParent(this);
-        buttonsPanel.setParent(this);
-        footerPanel.setParent(this);
-        headerPanel.setRootWin(rootWin);
-        buttonsPanel.setRootWin(rootWin);
-        footerPanel.setRootWin(rootWin);
-        headerPanel.setCfg(configLoader.getCfg());
-        buttonsPanel.setCfg(configLoader.getCfg());
-        footerPanel.setCfg(configLoader.getCfg());
-    }
-
-    @Override
-    public void runOnLeaveAction() {
-
-    }
-
-    @Override
-    public void applyConfig() {
-        headerPanel.applyConfig();
-        buttonsPanel.applyConfig();
-        footerPanel.applyConfig();
+        panels = List.of(headerPanel, buttonsPanel, footerPanel);
     }
 
     @Override

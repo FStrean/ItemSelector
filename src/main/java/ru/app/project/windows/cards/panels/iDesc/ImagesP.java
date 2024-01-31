@@ -6,9 +6,7 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.cards.IDescCInfoCfg;
 import ru.app.project.design.impl.panels.iDesc.BasicImagesPDBuilder;
 import ru.app.project.design.interf.panels.iDesc.ImagesPDBuilder;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,11 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImagesP extends JPanel implements BasicPanel {
+public class ImagesP extends JPanel implements DynamicPanel {
     private RootWindow rootWin;
     private final ImagesPDBuilder designBuilder;
     private IDescCInfoCfg.Item cfg;
-    private MutableComponent parent;
+    private DynamicCard parent;
 
     private RingBuffer<JImage> images;
 
@@ -71,8 +69,8 @@ public class ImagesP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
-        this.parent = parent;
+    public void setParent(StaticCard parent) {
+        this.parent = (DynamicCard) parent;
     }
 
     @Override
@@ -83,6 +81,10 @@ public class ImagesP extends JPanel implements BasicPanel {
     @Override
     public void setCfg(Object cfg) {
         this.cfg = (IDescCInfoCfg.Item) cfg;
+    }
+    @Override
+    public void setAddCfg(Object config) {
+
     }
 
     private void addImageToFrame(String path) {

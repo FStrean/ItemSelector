@@ -6,20 +6,18 @@ import ru.app.project.design.impl.panels.iSelect.BasicUnderHeaderPDBuilder;
 import ru.app.project.design.interf.panels.iSelect.UnderHeaderPDBuilder;
 import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.utility.TSCalc;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.*;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class UnderHeaderP extends JPanel implements BasicPanel {
+public class UnderHeaderP extends JPanel implements DynamicPanel {
     private RootWindow rootWin;
     private final UnderHeaderPDBuilder designBuilder;
     private ISelectCInfoCfg.Item cfg;
     private ISelectCInfoCfg addCfg;
-    private MutableComponent parent;
+    private DynamicCard parent;
 
     private JLabel desc;
 
@@ -73,8 +71,8 @@ public class UnderHeaderP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
-        this.parent = parent;
+    public void setParent(StaticCard parent) {
+        this.parent = (DynamicCard) parent;
     }
 
     @Override
@@ -87,6 +85,7 @@ public class UnderHeaderP extends JPanel implements BasicPanel {
         this.cfg = (ISelectCInfoCfg.Item) cfg;
     }
 
+    @Override
     public void setAddCfg(Object config) {
         this.addCfg = (ISelectCInfoCfg)config;
     }

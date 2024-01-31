@@ -16,7 +16,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RootWindowImpl extends JFrame implements RootWindow, CustomizableComponent {
+public class RootWindowImpl extends JFrame implements RootWindow {
     private final CardLayout cardLayout;
 
     private final Map<String, JPanel> cards = new HashMap<>();
@@ -68,13 +68,13 @@ public class RootWindowImpl extends JFrame implements RootWindow, CustomizableCo
     }
 
     @Override
-    public void showCard(Class<? extends MultipleStateCard> cardClass, int i) {
+    public void showCard(Class<? extends DynamicCard> cardClass, int i) {
         cardLayout.show(this.getContentPane(), cardClass.getSimpleName());
-        ((MultipleStateCard)(cards.get(cardClass.getSimpleName()))).showState(i);
+        ((DynamicCard)(cards.get(cardClass.getSimpleName()))).showState(i);
     }
 
     @Override
-    public void showCard(Class<? extends BasicCard> cardClass) {
+    public void showCard(Class<? extends StaticCard> cardClass) {
         cardLayout.show(this.getContentPane(), cardClass.getSimpleName());
     }
 

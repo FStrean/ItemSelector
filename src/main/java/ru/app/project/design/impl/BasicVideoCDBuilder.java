@@ -2,7 +2,7 @@ package ru.app.project.design.impl;
 
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.interf.VideoCDBuilder;
-import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.cards.panels.video.VideosP;
 import ru.app.project.windows.cards.panels.video.FooterP;
 import ru.app.project.windows.cards.panels.video.HeaderP;
@@ -21,7 +21,7 @@ public class BasicVideoCDBuilder implements VideoCDBuilder {
     }
 
     @Override
-    public BasicPanel buildHeaderPanelDesign() {
+    public StaticPanel buildHeaderPanelDesign() {
         HeaderP headerPanel = new HeaderP();
 
         panel.add(headerPanel, 10.0f);
@@ -30,7 +30,7 @@ public class BasicVideoCDBuilder implements VideoCDBuilder {
     }
 
     @Override
-    public BasicPanel buildCenterPanelDesign() {
+    public StaticPanel buildCenterPanelDesign() {
         VideosP videosPanel = new VideosP();
 
         panel.add(videosPanel, 60.0f);
@@ -39,7 +39,7 @@ public class BasicVideoCDBuilder implements VideoCDBuilder {
     }
 
     @Override
-    public BasicPanel buildFooterPanelDesign() {
+    public StaticPanel buildFooterPanelDesign() {
         FooterP headerPanel = new FooterP();
 
         panel.add(headerPanel, 30.0f);

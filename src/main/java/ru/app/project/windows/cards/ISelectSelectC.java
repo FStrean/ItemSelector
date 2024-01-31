@@ -4,27 +4,21 @@ import ru.app.project.config.cards.ISelectSelectCInfoCfg;
 import ru.app.project.design.impl.BasicISelectSelectCDBuilder;
 import ru.app.project.design.interf.ISelectSelectCDBuilder;
 import ru.app.project.utility.ConfigLoader;
-import ru.app.project.windows.BasicCard;
-import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.StaticCard;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.RootWindow;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-public class ISelectSelectC extends JPanel implements BasicCard {
-    private final RootWindow rootWin;
+public class ISelectSelectC extends StaticCard {
     private final ISelectSelectCDBuilder designBuilder;
-    private final ConfigLoader<ISelectSelectCInfoCfg> configLoader;
-
-    private BasicPanel headerPanel;
-    private BasicPanel imagesPanel;
-    private BasicPanel buttonsPanel;
-    private BasicPanel footerPanel;
 
     public ISelectSelectC(RootWindow rootWin) {
-        this.rootWin = rootWin;
+        super(rootWin);
         this.designBuilder = new BasicISelectSelectCDBuilder(this);
-        this.configLoader = new ConfigLoader<>(ISelectSelectCInfoCfg.class);
+        ConfigLoader<ISelectSelectCInfoCfg> configLoader = new ConfigLoader<>(ISelectSelectCInfoCfg.class);
+        this.cfg = configLoader.getCfg();
 
         this.applyDesign();
         this.applyLogic();
@@ -33,42 +27,12 @@ public class ISelectSelectC extends JPanel implements BasicCard {
 
     @Override
     public void applyDesign() {
-        headerPanel = designBuilder.buildHeaderPanelDesign();
-        imagesPanel = designBuilder.buildLeftPanelDesign();
-        buttonsPanel = designBuilder.buildRightPanelDesign();
-        footerPanel = designBuilder.buildFooterPanelDesign();
-    }
+        StaticPanel headerPanel = designBuilder.buildHeaderPanelDesign();
+        StaticPanel imagesPanel = designBuilder.buildLeftPanelDesign();
+        StaticPanel buttonsPanel = designBuilder.buildRightPanelDesign();
+        StaticPanel footerPanel = designBuilder.buildFooterPanelDesign();
 
-    @Override
-    public void applyLogic() {
-        headerPanel.setParent(this);
-        imagesPanel.setParent(this);
-        buttonsPanel.setParent(this);
-        footerPanel.setParent(this);
-        headerPanel.setRootWin(rootWin);
-        imagesPanel.setRootWin(rootWin);
-        buttonsPanel.setRootWin(rootWin);
-        footerPanel.setRootWin(rootWin);
-        headerPanel.setCfg(configLoader.getCfg());
-        imagesPanel.setCfg(configLoader.getCfg());
-        buttonsPanel.setCfg(configLoader.getCfg());
-        footerPanel.setCfg(configLoader.getCfg());
-    }
-
-    @Override
-    public void applyConfig() {
-        headerPanel.applyConfig();
-        imagesPanel.applyConfig();
-        buttonsPanel.applyConfig();
-        footerPanel.applyConfig();
-    }
-
-    @Override
-    public void runOnLeaveAction() {
-        headerPanel.runOnLeaveAction();
-        imagesPanel.runOnLeaveAction();
-        buttonsPanel.runOnLeaveAction();
-        footerPanel.runOnLeaveAction();
+        panels = List.of(headerPanel, imagesPanel, buttonsPanel, footerPanel);
     }
 
     @Override

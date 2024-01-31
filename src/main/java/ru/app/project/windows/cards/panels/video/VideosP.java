@@ -3,10 +3,7 @@ package ru.app.project.windows.cards.panels.video;
 import ru.app.project.config.cards.VideoCInfoCfg;
 import ru.app.project.design.impl.panels.video.BasicVideosPDBuilder;
 import ru.app.project.design.interf.panels.video.VideosPDBuilder;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
-import ru.app.project.windows.RootWindow;
-import ru.app.project.windows.cards.VideoC;
+import ru.app.project.windows.*;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;
@@ -15,11 +12,11 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 
-public class VideosP extends JPanel implements BasicPanel {
+public class VideosP extends JPanel implements DynamicPanel {
     private RootWindow rootWin;
     private final VideosPDBuilder designBuilder;
     private VideoCInfoCfg cfg;
-    private MutableComponent parent;
+    private DynamicCard parent;
 
     private List<EmbeddedMediaPlayerComponent> videos;
 
@@ -93,15 +90,15 @@ public class VideosP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
-        this.parent = parent;
+    public void setParent(StaticCard parent) {
+        this.parent = (DynamicCard) parent;
     }
 
     @Override
     public void applyConfig() {
-        int id1 = ((VideoC)parent).getId() * 3 - 3;
-        int id2 = ((VideoC)parent).getId() * 3 - 2;
-        int id3 = ((VideoC)parent).getId() * 3 - 1;
+        int id1 = parent.getId() * 3 - 3;
+        int id2 = parent.getId() * 3 - 2;
+        int id3 = parent.getId() * 3 - 1;
 
         int size = cfg.getVideos().size();
 
@@ -138,6 +135,11 @@ public class VideosP extends JPanel implements BasicPanel {
     @Override
     public void setCfg(Object cfg) {
         this.cfg = (VideoCInfoCfg) cfg;
+    }
+
+    @Override
+    public void setAddCfg(Object config) {
+        this.cfg = (VideoCInfoCfg) config;
     }
 
     private void addVideoToFrame(EmbeddedMediaPlayerComponent video, String path) {

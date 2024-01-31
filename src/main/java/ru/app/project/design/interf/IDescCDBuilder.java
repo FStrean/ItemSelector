@@ -1,15 +1,15 @@
 package ru.app.project.design.interf;
 
-import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.StaticPanel;
 
 import java.awt.*;
 
 public interface IDescCDBuilder {
-    BasicPanel buildHeaderPanelDesign();
+    StaticPanel buildHeaderPanelDesign();
 
-    BasicPanel buildLeftPanelDesign();
-    BasicPanel buildRightPanelDesign();
-    BasicPanel buildFooterPanelDesign();
+    StaticPanel buildLeftPanelDesign();
+    StaticPanel buildRightPanelDesign();
+    StaticPanel buildFooterPanelDesign();
 
     void paint(Graphics g);
 }

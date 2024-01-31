@@ -5,66 +5,38 @@ import ru.app.project.config.cards.VideoCInfoCfg;
 import ru.app.project.design.impl.BasicVideoCDBuilder;
 import ru.app.project.design.interf.VideoCDBuilder;
 import ru.app.project.utility.ConfigLoader;
-import ru.app.project.windows.BasicCard;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MultipleStateCard;
+import ru.app.project.windows.DynamicPanel;
+import ru.app.project.windows.StaticPanel;
+import ru.app.project.windows.DynamicCard;
 import ru.app.project.windows.RootWindow;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-public class VideoC extends JPanel implements BasicCard, MultipleStateCard {
-    private final RootWindow rootWin;
+public class VideoC extends DynamicCard {
     private final VideoCDBuilder designBuilder;
-    private final ConfigLoader<VideoCInfoCfg> configLoader;
 
-    private BasicPanel headerPanel;
-    private BasicPanel videosPanel;
-    private BasicPanel footerPanel;
-
-    private int id;
-
-    public VideoC(RootWindow rootWin) throws HeadlessException {
-        this.rootWin = rootWin;
+    public VideoC(RootWindow rootWin)  {
+        super(rootWin);
         this.designBuilder = new BasicVideoCDBuilder(this);
-        this.configLoader = new ConfigLoader<>(VideoCInfoCfg.class);
+        ConfigLoader<VideoCInfoCfg> configLoader = new ConfigLoader<>(VideoCInfoCfg.class);
+        this.cfg = configLoader.getCfg();
+        this.addCfg = configLoader.getCfg();
 
         this.applyDesign();
         this.applyLogic();
+        this.applyDynamicLogic();
         this.applyConfig();
     }
 
     @Override
     public void applyDesign() {
-        headerPanel = designBuilder.buildHeaderPanelDesign();
-        videosPanel = designBuilder.buildCenterPanelDesign();
-        footerPanel = designBuilder.buildFooterPanelDesign();
-    }
+        StaticPanel headerPanel = designBuilder.buildHeaderPanelDesign();
+        StaticPanel videosPanel = designBuilder.buildCenterPanelDesign();
+        StaticPanel footerPanel = designBuilder.buildFooterPanelDesign();
 
-    @Override
-    public void applyLogic() {
-        headerPanel.setParent(this);
-        videosPanel.setParent(this);
-        footerPanel.setParent(this);
-        headerPanel.setRootWin(rootWin);
-        videosPanel.setRootWin(rootWin);
-        footerPanel.setRootWin(rootWin);
-        headerPanel.setCfg(configLoader.getCfg());
-        videosPanel.setCfg(configLoader.getCfg());
-        footerPanel.setCfg(configLoader.getCfg());
-    }
-
-    @Override
-    public void runOnLeaveAction() {
-        headerPanel.runOnLeaveAction();
-        videosPanel.runOnLeaveAction();
-        footerPanel.runOnLeaveAction();
-    }
-
-    @Override
-    public void applyConfig() {
-        headerPanel.applyConfig();
-        footerPanel.applyConfig();
+        panels = List.of(headerPanel, footerPanel);
+        dynamicPanels = List.of((DynamicPanel) videosPanel);
     }
 
     @Override
@@ -79,17 +51,13 @@ public class VideoC extends JPanel implements BasicCard, MultipleStateCard {
             this.id = 1;
         } else {
             this.id += id;
-            if(this.id > AppProperties.getNumOfVidInVideo() / AppProperties.getMaxNumOfVideosInScreen() + 1) {
+            if(this.id > AppProperties.getNumOfVidInVideo() / AppProperties.getMaxNumOfVidInScreen() + 1) {
                 this.id = 1;
             }
             if(this.id < 1) {
-                this.id = AppProperties.getNumOfVidInVideo() / AppProperties.getMaxNumOfVideosInScreen() + 1;
+                this.id = AppProperties.getNumOfVidInVideo() / AppProperties.getMaxNumOfVidInScreen() + 1;
             }
         }
-        videosPanel.applyConfig();
-    }
-
-    public int getId() {
-        return id;
+        applyDynamicConfig();
     }
 }

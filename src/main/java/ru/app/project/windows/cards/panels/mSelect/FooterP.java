@@ -6,19 +6,19 @@ import ru.app.project.design.impl.panels.mSelect.BasicFooterPDBuilder;
 import ru.app.project.design.interf.panels.mSelect.FooterPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
+import ru.app.project.windows.StaticCard;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.RootWindow;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class FooterP extends JPanel implements BasicPanel {
+public class FooterP extends JPanel implements StaticPanel {
     private RootWindow rootWin;
     private final FooterPDBuilder designBuilder;
     private MSelectCInfoCfg cfg;
-    private MutableComponent parent;
+    private StaticCard parent;
 
     private JLabel desc;
 
@@ -60,7 +60,7 @@ public class FooterP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
+    public void setParent(StaticCard parent) {
         this.parent = parent;
     }
 

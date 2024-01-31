@@ -7,9 +7,7 @@ import ru.app.project.design.impl.panels.iSelect.BasicHeaderPDBuilder;
 import ru.app.project.design.interf.panels.iSelect.HeaderPDBuilder;
 import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.utility.TSCalc;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.*;
 import ru.app.project.windows.cards.ISelectC;
 
 import javax.swing.*;
@@ -17,12 +15,12 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.Arrays;
 
-public class HeaderP extends JPanel implements BasicPanel {
+public class HeaderP extends JPanel implements DynamicPanel {
     private RootWindow rootWin;
     private final HeaderPDBuilder designBuilder;
     private ISelectCInfoCfg.Item cfg;
     private ISelectCInfoCfg addCfg;
-    private MutableComponent parent;
+    private DynamicCard parent;
 
     private JImageButton lBtn;
     private JLabel desc;
@@ -91,8 +89,8 @@ public class HeaderP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
-        this.parent = parent;
+    public void setParent(StaticCard parent) {
+        this.parent = (DynamicCard) parent;;
     }
 
     @Override
@@ -105,6 +103,7 @@ public class HeaderP extends JPanel implements BasicPanel {
         this.cfg = (ISelectCInfoCfg.Item) cfg;
     }
 
+    @Override
     public void setAddCfg(Object config) {
         this.addCfg = (ISelectCInfoCfg)config;
     }

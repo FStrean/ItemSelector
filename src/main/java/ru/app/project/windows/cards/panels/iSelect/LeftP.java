@@ -4,9 +4,7 @@ import ru.app.project.components.JImage;
 import ru.app.project.config.cards.ISelectCInfoCfg;
 import ru.app.project.design.impl.panels.iSelect.BasicLeftPDBuilder;
 import ru.app.project.design.interf.panels.iSelect.LeftPDBuilder;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,12 +12,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class LeftP extends JPanel implements BasicPanel {
+public class LeftP extends JPanel implements DynamicPanel {
     private RootWindow rootWin;
     private final LeftPDBuilder designBuilder;
     private ISelectCInfoCfg.Item cfg;
     private ISelectCInfoCfg addCfg;
-    private MutableComponent parent;
+    private DynamicCard parent;
 
     private JLabel desc;
     private JLabel desc1;
@@ -90,8 +88,8 @@ public class LeftP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
-        this.parent = parent;
+    public void setParent(StaticCard parent) {
+        this.parent = (DynamicCard) parent;
     }
 
     @Override
@@ -104,6 +102,7 @@ public class LeftP extends JPanel implements BasicPanel {
         this.cfg = (ISelectCInfoCfg.Item) cfg;
     }
 
+    @Override
     public void setAddCfg(Object cfg) {
         this.addCfg = (ISelectCInfoCfg) cfg;
     }

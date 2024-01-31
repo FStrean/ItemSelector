@@ -2,7 +2,7 @@ package ru.app.project.design.impl;
 
 import ru.app.project.design.interf.MSelectCDBuilder;
 import ru.app.project.components.RelativeLayout;
-import ru.app.project.windows.BasicPanel;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.cards.panels.mSelect.ButtonsP;
 import ru.app.project.windows.cards.panels.mSelect.FooterP;
 import ru.app.project.windows.cards.panels.mSelect.HeaderP;
@@ -21,7 +21,7 @@ public class BasicMSelectCDBuilder implements MSelectCDBuilder {
     }
 
     @Override
-    public BasicPanel buildHeaderPanelDesign() {
+    public StaticPanel buildHeaderPanelDesign() {
         HeaderP hp = new HeaderP();
 
         panel.add(hp, 15.0f);
@@ -30,7 +30,7 @@ public class BasicMSelectCDBuilder implements MSelectCDBuilder {
     }
 
     @Override
-    public BasicPanel buildCenterPanelDesign() {
+    public StaticPanel buildCenterPanelDesign() {
         ButtonsP bp = new ButtonsP();
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
@@ -46,7 +46,7 @@ public class BasicMSelectCDBuilder implements MSelectCDBuilder {
     }
 
     @Override
-    public BasicPanel buildFooterPanelDesign() {
+    public StaticPanel buildFooterPanelDesign() {
         FooterP fp = new FooterP();
 
         panel.add(fp, 10.0f);

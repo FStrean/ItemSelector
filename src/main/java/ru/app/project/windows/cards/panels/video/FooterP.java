@@ -7,8 +7,8 @@ import ru.app.project.design.impl.panels.video.BasicFooterPDBuilder;
 import ru.app.project.design.interf.panels.video.FooterPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
+import ru.app.project.windows.StaticCard;
+import ru.app.project.windows.StaticPanel;
 import ru.app.project.windows.RootWindow;
 import ru.app.project.windows.cards.DescC;
 import ru.app.project.windows.cards.IDescSelectC;
@@ -18,11 +18,11 @@ import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class FooterP extends JPanel implements BasicPanel {
+public class FooterP extends JPanel implements StaticPanel {
     private RootWindow rootWin;
     private final FooterPDBuilder designBuilder;
     private VideoCInfoCfg cfg;
-    private MutableComponent parent;
+    private StaticCard parent;
 
 
     private JButton lBtn1;
@@ -79,7 +79,7 @@ public class FooterP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
+    public void setParent(StaticCard parent) {
         this.parent = parent;
     }
 

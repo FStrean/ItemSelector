@@ -6,20 +6,18 @@ import ru.app.project.design.impl.panels.iDesc.BasicDescriptionPDBuilder;
 import ru.app.project.design.interf.panels.iDesc.DescriptionPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.BasicPanel;
-import ru.app.project.windows.MutableComponent;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.*;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class DescriptionP extends JPanel implements BasicPanel {
+public class DescriptionP extends JPanel implements DynamicPanel {
     private RootWindow rootWin;
     private final DescriptionPDBuilder designBuilder;
     private IDescCInfoCfg.Item cfg;
     private IDescCInfoCfg addCfg;
-    private MutableComponent parent;
+    private DynamicCard parent;
     private JLabel desc;
 
     private Double descRatio = null;
@@ -68,8 +66,8 @@ public class DescriptionP extends JPanel implements BasicPanel {
     }
 
     @Override
-    public void setParent(MutableComponent parent) {
-        this.parent = parent;
+    public void setParent(StaticCard parent) {
+        this.parent = (DynamicCard) parent;
     }
 
     @Override
@@ -82,6 +80,7 @@ public class DescriptionP extends JPanel implements BasicPanel {
         this.cfg = (IDescCInfoCfg.Item) cfg;
     }
 
+    @Override
     public void setAddCfg(Object config) {
         this.addCfg = (IDescCInfoCfg)config;
     }
