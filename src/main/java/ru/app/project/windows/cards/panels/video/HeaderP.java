@@ -7,9 +7,9 @@ import ru.app.project.design.impl.panels.video.BasicHeaderPDBuilder;
 import ru.app.project.design.interf.panels.video.HeaderPDBuilder;
 import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.utility.TSCalc;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 import ru.app.project.windows.cards.VideoC;
 
 import javax.swing.*;
@@ -47,14 +47,8 @@ public class HeaderP extends JPanel implements StaticPanel {
 
     @Override
     public void applyLogic() {
-        lBtn.addActionListener(event -> {
-            parent.runOnLeaveAction();
-            rootWin.showCard(VideoC.class, -1);
-        });
-        rBtn.addActionListener(event -> {
-            parent.runOnLeaveAction();
-            rootWin.showCard(VideoC.class, 1);
-        });
+        lBtn.addActionListener(event -> rootWin.showCard(parent, VideoC.class, -1));
+        rBtn.addActionListener(event -> rootWin.showCard(parent, VideoC.class, 1));
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {
                 @Override

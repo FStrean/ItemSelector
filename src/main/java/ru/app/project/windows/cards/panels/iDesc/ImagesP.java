@@ -6,7 +6,10 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.cards.IDescCInfoCfg;
 import ru.app.project.design.impl.panels.iDesc.BasicImagesPDBuilder;
 import ru.app.project.design.interf.panels.iDesc.ImagesPDBuilder;
-import ru.app.project.windows.*;
+import ru.app.project.windows.root.RootWindow;
+import ru.app.project.windows.template.DynamicCard;
+import ru.app.project.windows.template.DynamicPanel;
+import ru.app.project.windows.template.StaticCard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

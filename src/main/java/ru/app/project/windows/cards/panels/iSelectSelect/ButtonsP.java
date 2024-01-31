@@ -6,9 +6,9 @@ import ru.app.project.design.impl.panels.iSelectSelect.BasicButtonsPDBuilder;
 import ru.app.project.design.interf.panels.iSelectSelect.ButtonsPDBuilder;
 import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.utility.TSCalc;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 import ru.app.project.windows.cards.ISelectC;
 
 import javax.swing.*;
@@ -74,7 +74,7 @@ public class ButtonsP extends JPanel implements StaticPanel {
         }
         for(int i = 0; i < AppProperties.getNumOfItemsInISelectSelect();) {
             int id = i + 1;
-            buttons.get(i).addActionListener(event -> rootWin.showCard(ISelectC.class, id));
+            buttons.get(i).addActionListener(event -> rootWin.showCard(parent, ISelectC.class, id));
 
             if(AppProperties.isTextDynamic()) {
                 int finalI = i;

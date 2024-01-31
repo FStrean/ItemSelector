@@ -6,9 +6,9 @@ import ru.app.project.config.AppProperties;
 import ru.app.project.config.cards.ISelectSelectCInfoCfg;
 import ru.app.project.design.impl.panels.iSelectSelect.BasicImagesPDBuilder;
 import ru.app.project.design.interf.panels.iSelectSelect.ImagesPDBuilder;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

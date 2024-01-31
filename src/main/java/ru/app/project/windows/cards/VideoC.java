@@ -5,10 +5,10 @@ import ru.app.project.config.cards.VideoCInfoCfg;
 import ru.app.project.design.impl.BasicVideoCDBuilder;
 import ru.app.project.design.interf.VideoCDBuilder;
 import ru.app.project.utility.ConfigLoader;
-import ru.app.project.windows.DynamicPanel;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.DynamicCard;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.DynamicPanel;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.template.DynamicCard;
+import ru.app.project.windows.root.RootWindow;
 
 import java.awt.*;
 import java.util.List;

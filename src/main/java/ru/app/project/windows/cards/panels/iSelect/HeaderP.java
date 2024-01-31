@@ -7,8 +7,11 @@ import ru.app.project.design.impl.panels.iSelect.BasicHeaderPDBuilder;
 import ru.app.project.design.interf.panels.iSelect.HeaderPDBuilder;
 import ru.app.project.utility.RelTSRatioCalc;
 import ru.app.project.utility.TSCalc;
-import ru.app.project.windows.*;
 import ru.app.project.windows.cards.ISelectC;
+import ru.app.project.windows.root.RootWindow;
+import ru.app.project.windows.template.DynamicCard;
+import ru.app.project.windows.template.DynamicPanel;
+import ru.app.project.windows.template.StaticCard;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
@@ -29,7 +32,7 @@ public class HeaderP extends JPanel implements DynamicPanel {
     private Double descRatio = null;
 
     private int id;
-    private int maxId;
+    private final int maxId;
 
     public HeaderP() {
         this.designBuilder = new BasicHeaderPDBuilder(this);
@@ -51,14 +54,8 @@ public class HeaderP extends JPanel implements DynamicPanel {
 
     @Override
     public void applyLogic(){
-        lBtn.addActionListener(event -> {
-            parent.runOnLeaveAction();
-            rootWin.showCard(ISelectC.class, (id - 1) < 1 ? maxId : (id - 1));
-        });
-        rBtn.addActionListener(event -> {
-            parent.runOnLeaveAction();
-            rootWin.showCard(ISelectC.class, (id + 1) > maxId ? 1 : (id + 1));
-        });
+        lBtn.addActionListener(event -> rootWin.showCard(parent, ISelectC.class, (id - 1) < 1 ? maxId : (id - 1)));
+        rBtn.addActionListener(event -> rootWin.showCard(parent, ISelectC.class, (id + 1) > maxId ? 1 : (id + 1)));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {

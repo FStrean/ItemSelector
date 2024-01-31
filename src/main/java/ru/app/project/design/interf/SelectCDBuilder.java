@@ -1,6 +1,6 @@
 package ru.app.project.design.interf;
 
-import ru.app.project.windows.StaticPanel;
+import ru.app.project.windows.template.StaticPanel;
 
 import java.awt.*;
 

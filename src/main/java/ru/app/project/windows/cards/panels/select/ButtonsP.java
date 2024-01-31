@@ -6,9 +6,9 @@ import ru.app.project.design.impl.panels.select.BasicButtonsPDBuilder;
 import ru.app.project.design.interf.panels.select.ButtonsPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 import ru.app.project.windows.cards.ISelectSelectC;
 import ru.app.project.windows.cards.VideoC;
 
@@ -48,8 +48,8 @@ public class ButtonsP extends JPanel implements StaticPanel {
 
     @Override
     public void applyLogic() {
-        btn1.addActionListener(event -> rootWin.showCard(ISelectSelectC.class));
-        btn2.addActionListener(event -> rootWin.showCard(VideoC.class, 0));
+        btn1.addActionListener(event -> rootWin.showCard(parent, ISelectSelectC.class));
+        btn2.addActionListener(event -> rootWin.showCard(parent, VideoC.class, 0));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {

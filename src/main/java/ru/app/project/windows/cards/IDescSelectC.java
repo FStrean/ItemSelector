@@ -3,9 +3,9 @@ package ru.app.project.windows.cards;
 import ru.app.project.config.cards.IDescSelectCInfoCfg;
 import ru.app.project.design.impl.BasicIDescSelectCDBuilder;
 import ru.app.project.utility.ConfigLoader;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 
 import java.awt.*;
 import java.util.List;

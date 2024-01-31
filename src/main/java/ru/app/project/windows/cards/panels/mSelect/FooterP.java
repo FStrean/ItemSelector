@@ -6,9 +6,9 @@ import ru.app.project.design.impl.panels.mSelect.BasicFooterPDBuilder;
 import ru.app.project.design.interf.panels.mSelect.FooterPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;

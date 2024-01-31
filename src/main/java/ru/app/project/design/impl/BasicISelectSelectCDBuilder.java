@@ -2,7 +2,7 @@ package ru.app.project.design.impl;
 
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.interf.ISelectSelectCDBuilder;
-import ru.app.project.windows.StaticPanel;
+import ru.app.project.windows.template.StaticPanel;
 import ru.app.project.windows.cards.panels.iSelectSelect.ButtonsP;
 import ru.app.project.windows.cards.panels.iSelectSelect.FooterP;
 import ru.app.project.windows.cards.panels.iSelectSelect.HeaderP;

@@ -7,9 +7,9 @@ import ru.app.project.design.impl.panels.select.BasicFooterPDBuilder;
 import ru.app.project.design.interf.panels.select.FooterPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 import ru.app.project.windows.cards.DescC;
 import ru.app.project.windows.cards.IDescSelectC;
 import ru.app.project.windows.cards.MSelectC;
@@ -53,9 +53,9 @@ public class FooterP extends JPanel implements StaticPanel {
 
     @Override
     public void applyLogic(){
-        lBtn1.addActionListener(event -> rootWin.showCard(IDescSelectC.class));
-        lBtn2.addActionListener(event -> rootWin.showCard(DescC.class));
-        btn.addActionListener(event -> rootWin.showCard(MSelectC.class));
+        lBtn1.addActionListener(event -> rootWin.showCard(parent, IDescSelectC.class));
+        lBtn2.addActionListener(event -> rootWin.showCard(parent, DescC.class));
+        btn.addActionListener(event -> rootWin.showCard(parent, MSelectC.class));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {

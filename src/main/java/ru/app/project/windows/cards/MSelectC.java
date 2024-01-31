@@ -4,9 +4,9 @@ import ru.app.project.config.cards.MSelectCInfoCfg;
 import ru.app.project.design.impl.BasicMSelectCDBuilder;
 import ru.app.project.design.interf.MSelectCDBuilder;
 import ru.app.project.utility.ConfigLoader;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 
 import java.awt.*;
 import java.util.List;

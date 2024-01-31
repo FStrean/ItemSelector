@@ -6,9 +6,9 @@ import ru.app.project.design.impl.panels.iDescSelect.BasicHeaderPDBuilder;
 import ru.app.project.design.interf.panels.iDescSelect.HeaderPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.StaticCard;
-import ru.app.project.windows.StaticPanel;
-import ru.app.project.windows.RootWindow;
+import ru.app.project.windows.template.StaticCard;
+import ru.app.project.windows.template.StaticPanel;
+import ru.app.project.windows.root.RootWindow;
 import ru.app.project.windows.cards.DescC;
 import ru.app.project.windows.cards.SelectC;
 
@@ -48,8 +48,8 @@ public class HeaderP extends JPanel implements StaticPanel {
 
     @Override
     public void applyLogic(){
-        btn1.addActionListener(event -> rootWin.showCard(DescC.class));
-        btn2.addActionListener(event -> rootWin.showCard(SelectC.class));
+        btn1.addActionListener(event -> rootWin.showCard(parent, DescC.class));
+        btn2.addActionListener(event -> rootWin.showCard(parent, SelectC.class));
 
         if(AppProperties.isTextDynamic()) {
             this.addComponentListener(new ComponentAdapter() {

@@ -3,7 +3,10 @@ package ru.app.project.windows.cards.panels.video;
 import ru.app.project.config.cards.VideoCInfoCfg;
 import ru.app.project.design.impl.panels.video.BasicVideosPDBuilder;
 import ru.app.project.design.interf.panels.video.VideosPDBuilder;
-import ru.app.project.windows.*;
+import ru.app.project.windows.root.RootWindow;
+import ru.app.project.windows.template.DynamicCard;
+import ru.app.project.windows.template.DynamicPanel;
+import ru.app.project.windows.template.StaticCard;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;

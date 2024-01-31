@@ -6,7 +6,10 @@ import ru.app.project.design.impl.panels.iDesc.BasicDescriptionPDBuilder;
 import ru.app.project.design.interf.panels.iDesc.DescriptionPDBuilder;
 import ru.app.project.utility.TSCalc;
 import ru.app.project.utility.RelTSRatioCalc;
-import ru.app.project.windows.*;
+import ru.app.project.windows.root.RootWindow;
+import ru.app.project.windows.template.DynamicCard;
+import ru.app.project.windows.template.DynamicPanel;
+import ru.app.project.windows.template.StaticCard;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
