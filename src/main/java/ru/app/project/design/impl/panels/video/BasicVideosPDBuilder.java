@@ -2,6 +2,7 @@ package ru.app.project.design.impl.panels.video;
 
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.design.interf.panels.video.VideosPDBuilder;
+import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 import javax.swing.*;

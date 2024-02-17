@@ -7,9 +7,14 @@ import ru.app.project.windows.root.RootWindow;
 import ru.app.project.windows.template.DynamicCard;
 import ru.app.project.windows.template.DynamicPanel;
 import ru.app.project.windows.template.StaticCard;
+import uk.co.caprica.vlcj.player.base.Marquee;
+import uk.co.caprica.vlcj.player.base.MarqueePosition;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
+import static uk.co.caprica.vlcj.player.base.Marquee.marquee;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -55,27 +60,87 @@ public class VideosP extends JPanel implements DynamicPanel {
         video1.mediaPlayer().controls().setRepeat(true);
         video1.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseReleased(MouseEvent e) {
-                video1.mediaPlayer().controls()
-                        .setPause(video1.mediaPlayer().status().isPlaying());
+            public void mouseClicked(MouseEvent e) {
+                video1.mediaPlayer().controls().pause();
+                if(video1.mediaPlayer().status().isPlaying()) {
+                    Marquee marquee = Marquee.marquee()
+                            .text("Paused")
+                            .size(100)
+                            .colour(Color.WHITE)
+                            .position(MarqueePosition.CENTRE)
+                            .opacity(0.5f)
+                            .timeout(0)
+                            .enable();
+                    video1.mediaPlayer().marquee().set(marquee);
+                } else {
+                    Marquee marquee = Marquee.marquee()
+                            .text("Playing")
+                            .size(100)
+                            .colour(Color.WHITE)
+                            .position(MarqueePosition.CENTRE)
+                            .opacity(0.5f)
+                            .timeout(1500)
+                            .enable();
+                    video1.mediaPlayer().marquee().set(marquee);
+                }
             }
         });
 
         video2.mediaPlayer().controls().setRepeat(true);
         video2.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseReleased(MouseEvent e) {
-                video2.mediaPlayer().controls()
-                        .setPause(video2.mediaPlayer().status().isPlaying());
+            public void mouseClicked(MouseEvent e) {
+                video2.mediaPlayer().controls().pause();
+                if(video2.mediaPlayer().status().isPlaying()) {
+                    Marquee marquee = Marquee.marquee()
+                            .text("Paused")
+                            .size(100)
+                            .colour(Color.WHITE)
+                            .position(MarqueePosition.CENTRE)
+                            .opacity(0.5f)
+                            .timeout(0)
+                            .enable();
+                    video2.mediaPlayer().marquee().set(marquee);
+                } else {
+                    Marquee marquee = Marquee.marquee()
+                            .text("Playing")
+                            .size(100)
+                            .colour(Color.WHITE)
+                            .position(MarqueePosition.CENTRE)
+                            .opacity(0.5f)
+                            .timeout(1500)
+                            .enable();
+                    video2.mediaPlayer().marquee().set(marquee);
+                }
             }
         });
 
         video3.mediaPlayer().controls().setRepeat(true);
         video3.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseReleased(MouseEvent e) {
-                video3.mediaPlayer().controls()
-                        .setPause(video3.mediaPlayer().status().isPlaying());
+            public void mouseClicked(MouseEvent e) {
+                video3.mediaPlayer().controls().pause();
+                if(video3.mediaPlayer().status().isPlaying()) {
+                    Marquee marquee = Marquee.marquee()
+                            .text("Paused")
+                            .size(100)
+                            .colour(Color.WHITE)
+                            .position(MarqueePosition.CENTRE)
+                            .opacity(0.5f)
+                            .timeout(0)
+                            .enable();
+                    video3.mediaPlayer().marquee().set(marquee);
+                } else {
+                    Marquee marquee = Marquee.marquee()
+                            .text("Playing")
+                            .size(100)
+                            .colour(Color.WHITE)
+                            .position(MarqueePosition.CENTRE)
+                            .opacity(0.5f)
+                            .timeout(1500)
+                            .enable();
+                    video3.mediaPlayer().marquee().set(marquee);
+                }
             }
         });
     }
@@ -156,6 +221,15 @@ public class VideosP extends JPanel implements DynamicPanel {
 
     private void load(EmbeddedMediaPlayerComponent video, String path) throws IOException {
         video.setVisible(true);
-        video.mediaPlayer().media().play(path);
+        video.mediaPlayer().media().startPaused(path);
+        Marquee marquee = Marquee.marquee()
+                .text("Paused")
+                .size(100)
+                .colour(Color.WHITE)
+                .position(MarqueePosition.CENTRE)
+                .opacity(0.5f)
+                .timeout(0)
+                .enable();
+        video.mediaPlayer().marquee().set(marquee);
     }
 }
