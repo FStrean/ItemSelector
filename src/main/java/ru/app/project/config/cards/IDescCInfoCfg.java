@@ -55,8 +55,11 @@ public final class IDescCInfoCfg {
     public static class Item {
         private int id;
         private String hHeader;
-        private List<String> images;
         private String desc;
+        private String descRatio;
+        private List<String> images;
+        private String imagesRatio;
+
         private static int id_count = 1;
 
 
@@ -64,10 +67,12 @@ public final class IDescCInfoCfg {
             this.id = id_count++;
             this.hHeader = "";
             this.desc = "";
+            this.descRatio = "";
             this.images = new ArrayList<>();
             for (int i = 0; i < AppProperties.getMaxNumOfImgInIDesc(); i++) {
                 this.images.add("");
             }
+            this.imagesRatio = "";
         }
 
         @XmlAttribute
@@ -85,9 +90,19 @@ public final class IDescCInfoCfg {
             return desc;
         }
 
+        @XmlElement(name = "descRatio")
+        public String getDescRatio() {
+            return descRatio;
+        }
+
         @XmlElement(name = "image")
         public List<String> getImages() {
             return images;
+        }
+
+        @XmlElement(name = "imagesRatio")
+        public String getImagesRatio() {
+            return imagesRatio;
         }
 
         public void setId(int id) {
@@ -102,8 +117,16 @@ public final class IDescCInfoCfg {
             this.desc = desc;
         }
 
+        public void setDescRatio(String descRatio) {
+            this.descRatio = descRatio;
+        }
+
         public void setImages(List<String> images) {
             this.images = images;
+        }
+
+        public void setImagesRatio(String imagesRatio) {
+            this.imagesRatio = imagesRatio;
         }
     }
     public void setHHeaderStyle(String hHeaderStyle) {

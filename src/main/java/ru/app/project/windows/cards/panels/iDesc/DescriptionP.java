@@ -57,6 +57,7 @@ public class DescriptionP extends JPanel implements DynamicPanel {
 
     @Override
     public void applyConfig() {
+        this.setVisible(!cfg.getDesc().isEmpty());
         desc.setText("<html>" + addCfg.getDescStyle() + cfg.getDesc() + "</html>");
         if(descRatio != null) {
             TSCalc.calcTextSize(desc, descRatio);

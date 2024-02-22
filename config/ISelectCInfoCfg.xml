@@ -44,7 +44,7 @@
         ]]></hHeader>
         <desc></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1>.\images\Подключения.png</leftImg1>
+        <leftImg1>./images/Подключения.png</leftImg1>
         <leftDesc2></leftDesc2>
         <leftImg2></leftImg2>
         <rightDesc1><![CDATA[
@@ -76,7 +76,7 @@
             </div>
         ]]></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1>.\images\Поиск.png</leftImg1>
+        <leftImg1>./images/Поиск.png</leftImg1>
         <leftDesc2></leftDesc2>
         <leftImg2></leftImg2>
         <rightDesc1><![CDATA[
@@ -108,13 +108,13 @@
         ]]></hHeader>
         <desc></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1>.\images\Архив1.png</leftImg1>
+        <leftImg1>./images/Архив1.png</leftImg1>
         <leftDesc2><![CDATA[
             <div>
                 Кнопка «Действия» позволяет выбрать одно из дополнительных действий при работе с файлами архива поиска:
             </div>
         ]]></leftDesc2>
-        <leftImg2>.\images\Архив2.png</leftImg2>
+        <leftImg2>./images/Архив2.png</leftImg2>
         <rightDesc1><![CDATA[
             <div>
                 Вкладка «Архив» предназначена для просмотра архивных записей режима «Поиск».
@@ -136,7 +136,7 @@
                 Дополнительные кнопки «Установить защиту от записи» и «Снять защиту от записи» позволяют после подтверждения установить/снять защиту от записи:
             </div>
         ]]></rightDesc2>
-        <rightImg2>.\images\Архив3.png</rightImg2>
+        <rightImg2>./images/Архив3.png</rightImg2>
     </item>
     <item id="4">
         <hHeader><![CDATA[
@@ -150,7 +150,7 @@
             </div>
         ]]></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1>.\images\Обработка1.png</leftImg1>
+        <leftImg1>./images/Обработка1.png</leftImg1>
         <leftDesc2></leftDesc2>
         <leftImg2></leftImg2>
         <rightDesc1><![CDATA[
@@ -186,7 +186,7 @@
             </div>
         ]]></desc>
         <leftDesc1></leftDesc1>
-        <leftImg1>.\images\Меню1.jpg</leftImg1>
+        <leftImg1>./images/Меню1.jpg</leftImg1>
         <leftDesc2></leftDesc2>
         <leftImg2></leftImg2>
         <rightDesc1></rightDesc1>
@@ -206,7 +206,7 @@
                 При нажатии кнопки «Нуклиды» открывается окно со списком известных нуклидов и табличными значениями их энергетических пиков:
             </div>
         ]]></leftDesc1>
-        <leftImg1>.\images\Меню2.png</leftImg1>
+        <leftImg1>./images/Меню2.png</leftImg1>
         <leftDesc2><![CDATA[
             <div>
                 Данное окно позволяет редактировать список нуклидов, добавлять и удалять из списка как радионуклиды, так и их энергетические пики, редактировать их характеристики.
@@ -218,7 +218,7 @@
                 При нажатии на кнопку «Геометрия» открывается окно редактора геометрий:
             </div>
         ]]></rightDesc1>
-        <rightImg1>.\images\Меню3.png</rightImg1>
+        <rightImg1>./images/Меню3.png</rightImg1>
         <rightDesc2><![CDATA[
             <div>
                 В левой части окна представлены существующие геометрии (условия измерений) и их состояние (используется или не используется). В правой части окна расположены кнопки управления геометриями и информация о выбранной геометрии.
@@ -244,13 +244,13 @@
                 Для градуировки БД по энергии и по ширине пика необходимо выбрать несколько измерений с известными радионуклидами (и пиками в разных частях спектра) и нажать кнопку «Градуировка БД»
             </div>
         ]]></leftDesc2>
-        <leftImg2>.\images\Меню4.png</leftImg2>
+        <leftImg2>./images/Меню4.png</leftImg2>
         <rightDesc1><![CDATA[
             <div>
                 При нажатии кнопки «Эталоны» откроется окно «Редактор эталонов»:
             </div>
         ]]></rightDesc1>
-        <rightImg1>.\images\Меню5.png</rightImg1>
+        <rightImg1>./images/Меню5.png</rightImg1>
         <rightDesc2><![CDATA[
             <div>
                 В данном окне представлены все эталоны присутствующие в базе с помощью которых программа производит анализ спектров и рассчитывает активность выявленных радионуклидов.
@@ -270,19 +270,19 @@
                 При нажатии кнопки «Геолокация» появляется соответствующее окно:
             </div>
         ]]></leftDesc1>
-        <leftImg1>.\images\Меню6.png</leftImg1>
+        <leftImg1>./images/Меню6.png</leftImg1>
         <leftDesc2><![CDATA[
             <div>
                 Выход из программы «Повадка БОИ» осуществляется при нажатии на кнопку «Выход». При установленном флажке «Подтверждение выхода из программы» в настройках отображения появится окно подтверждения выхода:
             </div>
         ]]></leftDesc2>
-        <leftImg2>.\images\Меню7.png</leftImg2>
+        <leftImg2>./images/Меню7.png</leftImg2>
         <rightDesc1><![CDATA[
             <div>
                 При нажатии кнопки «Настройки» появляется окно настроек программы.Настройки вкладки «Поиск пиков» задают критерии идентификации и распознавания пиков спектра:
             </div>
         ]]></rightDesc1>
-        <rightImg1>.\images\Меню8.png</rightImg1>
+        <rightImg1>./images/Меню8.png</rightImg1>
         <rightDesc2><![CDATA[
             <div>
                 В данном окне представлены все эталоны присутствующие в базе с помощью которых программа производит анализ спектров и рассчитывает активность выявленных радионуклидов.

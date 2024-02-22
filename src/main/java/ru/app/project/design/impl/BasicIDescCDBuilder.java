@@ -14,11 +14,16 @@ import java.awt.*;
 public class BasicIDescCDBuilder implements IDescCDBuilder {
     private final JPanel panel;
     private final JPanel contentPanel;
+
+    private final RelativeLayout contentLayout;
+
+    private ImagesP ip;
+    private DescriptionP dp;
     public BasicIDescCDBuilder(JPanel panel) {
         this.panel = panel;
         this.contentPanel = new JPanel();
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
-        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
+        contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 20);
 
         contentLayout.setFill(true);
         mainLayout.setFill(true);
@@ -39,16 +44,20 @@ public class BasicIDescCDBuilder implements IDescCDBuilder {
 
     @Override
     public StaticPanel buildLeftPanelDesign() {
-        ImagesP ip = new ImagesP();
+        ip = new ImagesP();
 
         contentPanel.add(ip, 35.0f);
 
         return ip;
     }
 
+    public void updateLeftPanelDesign(float ratio) {
+        contentLayout.addLayoutComponent(ip, ratio);
+    }
+
     @Override
     public StaticPanel buildRightPanelDesign() {
-        DescriptionP dp = new DescriptionP();
+        dp = new DescriptionP();
 
         contentPanel.add(dp, 65.0f);
         panel.add(contentPanel, 75.0f);
@@ -56,6 +65,9 @@ public class BasicIDescCDBuilder implements IDescCDBuilder {
         return dp;
     }
 
+    public void updateRightPanelDesign(float ratio) {
+        contentLayout.addLayoutComponent(dp, ratio);
+    }
 
     @Override
     public StaticPanel buildFooterPanelDesign() {

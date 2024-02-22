@@ -54,4 +54,11 @@ public class IDescC extends DynamicCard {
 
         applyDynamicConfig();
     }
+
+    @Override
+    public void applyDynamicConfig() {
+        super.applyDynamicConfig();
+        designBuilder.updateLeftPanelDesign(Float.parseFloat(((IDescCInfoCfg.Item)cfg).getDescRatio()));
+        designBuilder.updateRightPanelDesign(Float.parseFloat(((IDescCInfoCfg.Item)cfg).getImagesRatio()));
+    }
 }

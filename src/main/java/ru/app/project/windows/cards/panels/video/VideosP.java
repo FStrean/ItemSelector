@@ -11,8 +11,6 @@ import uk.co.caprica.vlcj.player.base.Marquee;
 import uk.co.caprica.vlcj.player.base.MarqueePosition;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
-import static uk.co.caprica.vlcj.player.base.Marquee.marquee;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

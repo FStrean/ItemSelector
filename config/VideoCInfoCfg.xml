@@ -11,25 +11,25 @@
             Видео работы комплекса КРС КПТВ. 412168.002
         </center>
     </html>]]></hHeader>
-    <video>.\videos\процесс подключения БД.mp4</video>
-    <video>.\videos\поиск 1.mp4</video>
-    <video>.\videos\настройки графиков спектра.mp4</video>
-    <video>.\videos\калибровка.mp4</video>
-    <video>.\videos\градуировка по энергии.mp4</video>
-    <video>.\videos\объемная-удельная.mp4</video>
-    <video>.\videos\действия с архивом.mp4</video>
-    <video>.\videos\архив - просмотр архива.mp4</video>
-    <video>.\videos\меню - геолокация.mp4</video>
-    <video>.\videos\меню - геометрия.mp4</video>
-    <video>.\videos\меню - градуировка.mp4</video>
-    <video>.\videos\меню - настройки.mp4</video>
-    <video>.\videos\меню - нуклиды.mp4</video>
-    <video>.\videos\меню - хранение.mkv</video>
-    <video>.\videos\меню - эталоны.mp4</video>
-    <video>.\videos\обработка - анализ состава (для пяв).mp4</video>
-    <video>.\videos\обработка - анализ состава.mp4</video>
-    <video>.\videos\обработка - изменение данных.mp4</video>
-    <video>.\videos\обработка - расчет активности - все вкладки.mp4</video>
+    <video>./videos/процесс подключения БД.mp4</video>
+    <video>./videos/поиск 1.mp4</video>
+    <video>./videos/настройки графиков спектра.mp4</video>
+    <video>./videos/калибровка.mp4</video>
+    <video>./videos/градуировка по энергии.mp4</video>
+    <video>./videos/объемная-удельная.mp4</video>
+    <video>./videos/действия с архивом.mp4</video>
+    <video>./videos/архив - просмотр архива.mp4</video>
+    <video>./videos/меню - геолокация.mp4</video>
+    <video>./videos/меню - геометрия.mp4</video>
+    <video>./videos/меню - градуировка.mp4</video>
+    <video>./videos/меню - настройки.mp4</video>
+    <video>./videos/меню - нуклиды.mp4</video>
+    <video>./videos/меню - хранение.mkv</video>
+    <video>./videos/меню - эталоны.mp4</video>
+    <video>./videos/обработка - анализ состава (для пяв).mp4</video>
+    <video>./videos/обработка - анализ состава.mp4</video>
+    <video>./videos/обработка - изменение данных.mp4</video>
+    <video>./videos/обработка - расчет активности - все вкладки.mp4</video>
     <button1><![CDATA[<html>
         <style>
             span, ol, li, div, center {
