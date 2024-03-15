@@ -13,8 +13,6 @@ public class App
     public static void main(String[] args) {
         RootWindowImpl mainWindow = null;
         try {
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/win64");
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/deb");
             App.createFolders();
             mainWindow = new RootWindowImpl("Multimedia-Software");
         } catch (Exception e) {
