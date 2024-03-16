@@ -1,14 +1,22 @@
 package ru.app.project.config.cards;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DescCInfoCfg {
+    @XmlElement(name = "hHeader")
     private String hHeader;
+    @XmlElement(name = "button1")
     private String button1;
+    @XmlElement(name = "button2")
     private String button2;
+    @XmlElement(name = "desc")
     private String desc;
+    @XmlElement(name = "fHeader")
     private String fHeader;
 
     public DescCInfoCfg() {
@@ -19,27 +27,22 @@ public class DescCInfoCfg {
         fHeader = "";
     }
 
-    @XmlElement(name = "hHeader")
     public String getHHeader() {
         return hHeader;
     }
 
-    @XmlElement(name = "button1")
     public String getButton1() {
         return button1;
     }
 
-    @XmlElement(name = "button2")
     public String getButton2() {
         return button2;
     }
 
-    @XmlElement(name = "desc")
     public String getDesc() {
         return desc;
     }
 
-    @XmlElement(name = "fHeader")
     public String getFHeader() {
         return fHeader;
     }

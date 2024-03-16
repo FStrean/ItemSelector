@@ -1,23 +1,31 @@
 package ru.app.project.config.cards;
 
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 import ru.app.project.config.AppProperties;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ISelectCInfoCfg {
+    @XmlElement(name = "hHeaderStyle")
     private String hHeaderStyle;
+    @XmlElement(name = "descStyle")
     private String descStyle;
+    @XmlElement(name = "leftDesc1Style")
     private String leftDesc1Style;
+    @XmlElement(name = "leftDesc2Style")
     private String leftDesc2Style;
+    @XmlElement(name = "rightDesc1Style")
     private String rightDesc1Style;
+    @XmlElement(name = "rightDesc2Style")
     private String rightDesc2Style;
+    @XmlElement(name = "item")
     private List<Item> items;
+    @XmlElement(name = "button")
     private String button;
+    @XmlElement(name = "fHeader")
     private String fHeader;
 
     public ISelectCInfoCfg() {
@@ -35,61 +43,64 @@ public class ISelectCInfoCfg {
         this.fHeader = "";
     }
 
-    @XmlElement(name = "hHeaderStyle")
     public String getHHeaderStyle() {
         return hHeaderStyle;
     }
 
-    @XmlElement(name = "descStyle")
     public String getDescStyle() {
         return descStyle;
     }
 
-    @XmlElement(name = "leftDesc1Style")
     public String getLeftDesc1Style() {
         return leftDesc1Style;
     }
 
-    @XmlElement(name = "leftDesc2Style")
     public String getLeftDesc2Style() {
         return leftDesc2Style;
     }
 
-    @XmlElement(name = "rightDesc1Style")
     public String getRightDesc1Style() {
         return rightDesc1Style;
     }
 
-    @XmlElement(name = "rightDesc2Style")
     public String getRightDesc2Style() {
         return rightDesc2Style;
     }
 
-    @XmlElement(name = "item")
     public List<Item> getItems() {
         return items;
     }
 
-    @XmlElement(name = "button")
     public String getButton() {
         return button;
     }
-    @XmlElement(name = "fHeader")
     public String getFHeader() {
         return fHeader;
     }
 
+    @XmlAccessorType(XmlAccessType.FIELD)
     public static class Item {
+        @XmlAttribute
         private int id;
+        @XmlElement(name = "hHeader")
         private String hHeader;
+        @XmlElement(name = "desc")
         private String desc;
+        @XmlElement(name = "leftDesc1")
         private String leftDesc1;
+        @XmlElement(name = "leftImg1")
         private String leftImg1;
+        @XmlElement(name = "leftDesc2")
         private String leftDesc2;
+        @XmlElement(name = "leftImg2")
         private String leftImg2;
+        @XmlElement(name = "rightDesc1")
         private String rightDesc1;
+        @XmlElement(name = "rightImg1")
         private String rightImg1;
+        @XmlElement(name = "rightDesc2")
         private String rightDesc2;
+        @XmlElement(name = "rightImg2")
         private String rightImg2;
         private static int id_count = 1;
 
@@ -107,57 +118,46 @@ public class ISelectCInfoCfg {
             this.rightImg2 = "";
         }
 
-        @XmlAttribute
         public int getId() {
             return id;
         }
 
-        @XmlElement(name = "hHeader")
         public String getHHeader() {
             return hHeader;
         }
 
-        @XmlElement(name = "desc")
         public String getDesc() {
             return desc;
         }
 
-        @XmlElement(name = "leftDesc1")
         public String getLeftDesc1() {
             return leftDesc1;
         }
 
-        @XmlElement(name = "leftImg1")
         public String getLeftImg1() {
             return leftImg1;
         }
 
-        @XmlElement(name = "leftDesc2")
         public String getLeftDesc2() {
             return leftDesc2;
         }
 
-        @XmlElement(name = "leftImg2")
         public String getLeftImg2() {
             return leftImg2;
         }
 
-        @XmlElement(name = "rightDesc1")
         public String getRightDesc1() {
             return rightDesc1;
         }
 
-        @XmlElement(name = "rightImg1")
         public String getRightImg1() {
             return rightImg1;
         }
 
-        @XmlElement(name = "rightDesc2")
         public String getRightDesc2() {
             return rightDesc2;
         }
 
-        @XmlElement(name = "rightImg2")
         public String getRightImg2() {
             return rightImg2;
         }

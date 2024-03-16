@@ -1,5 +1,7 @@
 package ru.app.project.config.cards;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import ru.app.project.config.AppProperties;
@@ -8,11 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class IDescSelectCInfoCfg {
+    @XmlElement(name = "lButton")
     private String lButton;
+    @XmlElement(name = "hHeader")
     private String hHeader;
+    @XmlElement(name = "rButton")
     private String rButton;
+    @XmlElement(name = "button")
     private List<String> buttons;
+    @XmlElement(name = "fHeader")
     private String fHeader;
 
     public IDescSelectCInfoCfg() {
@@ -27,27 +35,22 @@ public class IDescSelectCInfoCfg {
 
         this.fHeader = "";
     }
-    @XmlElement(name = "lButton")
     public String getLButton() {
         return lButton;
     }
 
-    @XmlElement(name = "hHeader")
     public String getHHeader() {
         return hHeader;
     }
 
-    @XmlElement(name = "rButton")
     public String getRButton() {
         return rButton;
     }
 
-    @XmlElement(name = "button")
     public List<String> getButtons() {
         return buttons;
     }
 
-    @XmlElement(name = "fHeader")
     public String getFHeader() {
         return fHeader;
     }

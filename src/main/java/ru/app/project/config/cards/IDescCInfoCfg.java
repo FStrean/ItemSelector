@@ -1,19 +1,23 @@
 package ru.app.project.config.cards;
 
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 import ru.app.project.config.AppProperties;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public final class IDescCInfoCfg {
+    @XmlElement(name = "hHeaderStyle")
     private String hHeaderStyle;
+    @XmlElement(name = "descStyle")
     private String descStyle;
+    @XmlElement(name = "item")
     private List<Item> items;
+    @XmlElement(name = "button")
     private String button;
+    @XmlElement(name = "fHeader")
     private String fHeader;
 
     public IDescCInfoCfg() {
@@ -27,37 +31,39 @@ public final class IDescCInfoCfg {
         this.fHeader = "";
     }
 
-    @XmlElement(name = "hHeaderStyle")
     public String getHHeaderStyle() {
         return hHeaderStyle;
     }
 
-    @XmlElement(name = "descStyle")
     public String getDescStyle() {
         return descStyle;
     }
 
-    @XmlElement(name = "item")
     public List<Item> getItems() {
         return items;
     }
 
-    @XmlElement(name = "button")
     public String getButton() {
         return button;
     }
 
-    @XmlElement(name = "fHeader")
     public String getFHeader() {
         return fHeader;
     }
 
+    @XmlAccessorType(XmlAccessType.FIELD)
     public static class Item {
+        @XmlAttribute
         private int id;
+        @XmlElement(name = "hHeader")
         private String hHeader;
+        @XmlElement(name = "desc")
         private String desc;
+        @XmlElement(name = "descRatio")
         private String descRatio;
+        @XmlElement(name = "image")
         private List<String> images;
+        @XmlElement(name = "imagesRatio")
         private String imagesRatio;
 
         private static int id_count = 1;
@@ -75,32 +81,26 @@ public final class IDescCInfoCfg {
             this.imagesRatio = "";
         }
 
-        @XmlAttribute
         public int getId() {
             return id;
         }
 
-        @XmlElement(name = "hHeader")
         public String getHHeader() {
             return hHeader;
         }
 
-        @XmlElement(name = "desc")
         public String getDesc() {
             return desc;
         }
 
-        @XmlElement(name = "descRatio")
         public String getDescRatio() {
             return descRatio;
         }
 
-        @XmlElement(name = "image")
         public List<String> getImages() {
             return images;
         }
 
-        @XmlElement(name = "imagesRatio")
         public String getImagesRatio() {
             return imagesRatio;
         }

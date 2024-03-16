@@ -1,20 +1,16 @@
 package ru.app.project;
 
-import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-/**
- * Unit test for simple App.
- */
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    @DisplayName("Returns false")
+    void testItWorks() {
+        assertFalse(false);
     }
 }

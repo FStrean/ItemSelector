@@ -1,5 +1,7 @@
 package ru.app.project.config.cards;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import ru.app.project.config.AppProperties;
@@ -8,12 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ISelectSelectCInfoCfg {
+    @XmlElement(name = "hHeader")
     private String hHeader;
+    @XmlElement(name = "image")
     private List<String> images;
+    @XmlElement(name = "selectButton")
     private List<String> selectButtons;
+    @XmlElement(name = "btnHeader")
     private String btnHeader;
+    @XmlElement(name = "button")
     private String button;
+    @XmlElement(name = "fHeader")
     private String fHeader;
     public ISelectSelectCInfoCfg() {
         this.hHeader = "";
@@ -30,32 +39,26 @@ public class ISelectSelectCInfoCfg {
         this.fHeader = "";
     }
 
-    @XmlElement(name = "hHeader")
     public String getHHeader() {
         return hHeader;
     }
 
-    @XmlElement(name = "image")
     public List<String> getImages() {
         return images;
     }
 
-    @XmlElement(name = "btnHeader")
     public String getBtnHeader() {
         return btnHeader;
     }
 
-    @XmlElement(name = "selectButton")
     public List<String> getSelectButtons() {
         return selectButtons;
     }
 
-    @XmlElement(name = "button")
     public String getButton() {
         return button;
     }
 
-    @XmlElement(name = "fHeader")
     public String getFHeader() {
         return fHeader;
     }

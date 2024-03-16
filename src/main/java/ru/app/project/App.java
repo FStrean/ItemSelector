@@ -8,11 +8,11 @@ import uk.co.caprica.vlcj.binding.support.runtime.RuntimeUtil;
 import javax.swing.*;
 import java.io.File;
 
-public class App
-{
+public class App {
     public static void main(String[] args) {
         RootWindowImpl mainWindow = null;
         try {
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/win64");
             App.createFolders();
             mainWindow = new RootWindowImpl("Multimedia-Software");
         } catch (Exception e) {
