@@ -10,9 +10,13 @@ import java.io.File;
 
 public class App {
     public static void main(String[] args) {
+        if (System.getProperty("java.home") == null) {
+            System.out.println("No Java Home set, assuming that we are running from GraalVM. Fixing...");
+            System.setProperty("java.home", new File(".").getAbsolutePath());
+        }
         RootWindowImpl mainWindow = null;
         try {
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/win64");
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./libvlc_win64");
             App.createFolders();
             mainWindow = new RootWindowImpl("Multimedia-Software");
         } catch (Exception e) {

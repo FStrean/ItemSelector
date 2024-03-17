@@ -6,14 +6,15 @@
 
   <groupId>ru.app.project</groupId>
   <artifactId>Multimedia-Software</artifactId>
-  <version>3.0.1</version>
+  <version>3.0.2</version>
 
   <name>Multimedia-Software</name>
   <url>https://multimedia-software.com</url>
 
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <native.maven.plugin.version>0.10.0</native.maven.plugin.version>
+    <native.maven.plugin.version>0.10.1</native.maven.plugin.version>
     <maven.compiler.source>${java.specification.version}</maven.compiler.source>
     <maven.compiler.target>${java.specification.version}</maven.compiler.target>
     <imageName>Multimedia-Software</imageName>
@@ -25,33 +26,33 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>5.10.1</version>
+      <version>5.10.2</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
       <artifactId>jakarta.xml.bind-api</artifactId>
-      <version>4.0.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-controls</artifactId>
-      <version>21.0.1</version>
+      <version>4.0.2</version>
     </dependency>
 
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
-      <version>4.0.3</version>
+      <version>4.0.5</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-collections4</artifactId>
-      <version>4.4</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.openjfx</groupId>-->
+<!--      <artifactId>javafx-controls</artifactId>-->
+<!--      <version>23-ea+3</version>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.apache.commons</groupId>-->
+<!--      <artifactId>commons-collections4</artifactId>-->
+<!--      <version>4.4</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>uk.co.caprica</groupId>
@@ -67,7 +68,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>3.12.1</version>
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.source}</target>
@@ -91,7 +92,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.6.0</version>
+        <version>3.7.0</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -122,7 +123,7 @@
         <dependency>
           <groupId>org.junit.platform</groupId>
           <artifactId>junit-platform-launcher</artifactId>
-          <version>1.10.0</version>
+          <version>1.10.2</version>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -150,12 +151,26 @@
               </execution>
             </executions>
             <configuration>
+              <metadataRepository>
+                <enabled>true</enabled>
+              </metadataRepository>
               <fallback>false</fallback>
+              <buildArgs>
+                <buildArg>-march=compatibility</buildArg>
+              </buildArgs>
               <agent>
                 <enabled>true</enabled>
+                <defaultMode>Standard</defaultMode>
+                <options>
+                  <builtinCallerFilter>true</builtinCallerFilter>
+                  <builtinHeuristicFilter>true</builtinHeuristicFilter>
+                  <enableExperimentalPredefinedClasses>true</enableExperimentalPredefinedClasses>
+                  <enableExperimentalUnsafeAllocationTracing>true</enableExperimentalUnsafeAllocationTracing>
+                  <trackReflectionMetadata>true</trackReflectionMetadata>
+                </options>
                 <metadataCopy>
                   <merge>true</merge>
-                </metadataCopy>>
+                </metadataCopy>
               </agent>
             </configuration>
           </plugin>
@@ -163,7 +178,7 @@
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
-            <version>3.1.1</version>
+            <version>3.2.0</version>
             <executions>
               <execution>
                 <id>java-agent</id>
