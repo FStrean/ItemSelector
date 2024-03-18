@@ -16,8 +16,8 @@ public class App {
         }
         RootWindowImpl mainWindow = null;
         try {
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./libvlc_win64");
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./libvlc_astra");
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/libvlc_win64");
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/libvlc_astra");
             App.createFolders();
             mainWindow = new RootWindowImpl("Multimedia-Software");
         } catch (Exception e) {
