@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) {
         if (System.getProperty("java.home") == null) {
             System.out.println("No Java Home set, assuming that we are running from GraalVM. Fixing...");
-            System.setProperty("java.home", new File(".").getAbsolutePath());
+            System.setProperty("java.home", new File("./lib/libjvm").getAbsolutePath());
         }
         RootWindowImpl mainWindow = null;
         try {
