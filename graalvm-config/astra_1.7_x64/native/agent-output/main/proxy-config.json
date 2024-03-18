@@ -1,0 +1,8 @@
+[
+  {
+    "interfaces":["uk.co.caprica.vlcj.binding.lib.LibC"]
+  },
+  {
+    "interfaces":["uk.co.caprica.vlcj.binding.lib.LibX11"]
+  }
+]
