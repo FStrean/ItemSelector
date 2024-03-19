@@ -39,7 +39,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
 
     @Override
     public JImageButton buildJButtonDesign() {
-        JImageButton btn = new JImageButton("icons/home.png");
+        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/home.png");
 
         panel.add(btn, 5.0f);
 

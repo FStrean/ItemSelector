@@ -64,7 +64,7 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     public JButton buildJButtonDesign() {
         JPanel bp = new JPanel();
         JImage jImg = new JImage();
-        File imageFile = new File("icons/arrow_down.png");
+        File imageFile = new File(System.getProperty("user.dir") + "/icons/arrow_down.png");
         BufferedImage img;
         try {
             img = ImageIO.read(imageFile);

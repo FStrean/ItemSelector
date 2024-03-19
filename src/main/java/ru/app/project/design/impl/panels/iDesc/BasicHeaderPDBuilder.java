@@ -19,7 +19,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
 
     @Override
     public JImageButton buildJButton1Design() {
-        JImageButton btn = new JImageButton("icons/arrow_left.png");
+        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/arrow_left.png");
 
         btn.setAlign(JImageButton.LINE_START, JImageButton.LINE_START);
 
@@ -30,7 +30,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
 
     @Override
     public JImageButton buildJButton2Design() {
-        JImageButton btn = new JImageButton("icons/arrow_right.png");
+        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/arrow_right.png");
 
         btn.setAlign(JImageButton.LINE_START, JImageButton.LINE_START);
 

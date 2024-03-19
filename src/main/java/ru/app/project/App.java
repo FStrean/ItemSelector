@@ -14,19 +14,19 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws UnknownHostException {
+    public static void main(String[] args) {
         if (System.getProperty("java.home") == null) {
             System.out.println("No Java Home set, assuming that we are running from GraalVM. Fixing...");
+            System.setProperty("user.home", new File(System.getProperty("user.dir")).getAbsolutePath());
             if(System.getProperty("os.name").equals("Linux")) {
                 App.renameFontConfigFiles();
             }
-            System.setProperty("user.home", new File(".").getAbsolutePath());
-            System.setProperty("java.home", new File("./lib/libjvm").getAbsolutePath());
+            System.setProperty("java.home", new File(System.getProperty("user.dir") + "/lib/libjvm").getAbsolutePath());
         }
         RootWindowImpl mainWindow = null;
         try {
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/libvlc_win_x64");
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "./lib/libvlc_astra_x64");
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), System.getProperty("user.dir") + "/lib/libvlc_win_x64");
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), System.getProperty("user.dir") + "/lib/libvlc_astra_x64");
             App.createFolders();
             mainWindow = new RootWindowImpl("Multimedia-Software");
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class App {
         return null;
     }
 
-    private static void renameFontConfigFiles() throws UnknownHostException {
+    private static void renameFontConfigFiles() {
         String osName = "";
         String osVersion = "";
         try {
@@ -79,6 +79,7 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        osName = osName.substring(1, osName.length() - 1);
 
         String hostname;
         try {
@@ -86,7 +87,7 @@ public class App {
         } catch (UnknownHostException e) {
             hostname = "localhost";
         }
-        String userDir = System.getProperty("user.home");
+        String userDir = ".";
         String version = System.getProperty("java.version");
         String fs = File.separator;
         String dir = userDir+fs+".java"+fs+"fonts"+fs+version;

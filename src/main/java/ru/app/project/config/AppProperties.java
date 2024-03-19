@@ -13,7 +13,7 @@ public class AppProperties {
 
 
     //Config properties
-    private static final String configFolderPath = "./config";
+    private static final String configFolderPath = System.getProperty("user.dir") + "/config";
     public static String getCfgPath() {
         return configFolderPath;
     }

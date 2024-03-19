@@ -80,7 +80,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         JPanel hbp = new JPanel();
         JPanel p = new JPanel();
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
-        JImageButton btn = new JImageButton("icons/home.png");
+        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/home.png");
 
         layout.setFill(true);
         hbp.setOpaque(false);

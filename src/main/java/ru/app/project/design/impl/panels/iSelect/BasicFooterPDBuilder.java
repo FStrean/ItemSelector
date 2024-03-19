@@ -49,7 +49,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
 
     @Override
     public JImageButton buildJButton2Design() {
-        JImageButton btn = new JImageButton("icons/home.png");
+        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/home.png");
 
         btn.setAlign(JImageButton.LINE_END, JImageButton.LINE_END);
 
