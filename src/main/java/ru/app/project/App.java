@@ -104,17 +104,14 @@ public class App {
             if(files == null) {
                 return;
             }
-            if(!files[0].getName().equals(ru) && !files[0].getName().equals(en)) {
-                File newFile = new File(ru);
-                if (files[0].renameTo(newFile)) {
-                    System.out.println("Renamed file to " + files[0].getName());
-                }
+
+            File ruFile = new File(ru);
+            File enFile = new File(en);
+            if (files[0].renameTo(ruFile)) {
+                System.out.println("Renamed file to " + files[0].getName());
             }
-            if(!files[1].getName().equals(ru) && !files[1].getName().equals(en)) {
-                File newFile = new File(en);
-                if (files[1].renameTo(newFile)) {
-                    System.out.println("Renamed file to " + files[1].getName());
-                }
+            if (files[1].renameTo(enFile)) {
+                System.out.println("Renamed file to " + files[1].getName());
             }
         }
     }
