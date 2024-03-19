@@ -87,18 +87,17 @@ public class App {
         } catch (UnknownHostException e) {
             hostname = "localhost";
         }
-        String userDir = ".";
+        String userDir = System.getProperty("user.home");
         String version = System.getProperty("java.version");
         String fs = File.separator;
         String dir = userDir+fs+".java"+fs+"fonts"+fs+version;
         String name_ru = "fcinfo-1-"+hostname+"-"+
-                osName+"-"+osVersion+"-"+"ru-RU"+".properties";
+                osName+"-"+osVersion+"-ru-RU.properties";
         String name_en = "fcinfo-1-"+hostname+"-"+
-                osName+"-"+osVersion+"-"+"en-"+".properties";
+                osName+"-"+osVersion+"-en-.properties";
         String ru = dir+fs+name_ru;
         String en = dir+fs+name_en;
-        String directoryPath = ".java/fonts/21.0.2/";
-        File directory = new File(directoryPath);
+        File directory = new File(dir);
         if(directory.exists()) {
             File[] files = directory.listFiles();
             if(files == null) {
@@ -107,11 +106,21 @@ public class App {
 
             File ruFile = new File(ru);
             File enFile = new File(en);
-            if (files[0].renameTo(ruFile)) {
-                System.out.println("Renamed file to " + files[0].getName());
-            }
-            if (files[1].renameTo(enFile)) {
-                System.out.println("Renamed file to " + files[1].getName());
+            renameFiles(files, enFile, ruFile);
+            renameFiles(files, ruFile, enFile);
+        }
+    }
+
+    private static void renameFiles(File[] files, File anotherFile, File newFile) {
+        if(!newFile.exists()) {
+            if(!files[0].getName().equals(anotherFile.getName())) {
+                if (files[0].renameTo(newFile)) {
+                    System.out.println("Renamed file to " + files[0].getName());
+                }
+            } else {
+                if (files[1].renameTo(newFile)) {
+                    System.out.println("Renamed file to " + files[1].getName());
+                }
             }
         }
     }
