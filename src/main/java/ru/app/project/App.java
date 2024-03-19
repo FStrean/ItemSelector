@@ -6,16 +6,20 @@ import ru.app.project.windows.root.RootWindowImpl;
 import uk.co.caprica.vlcj.binding.support.runtime.RuntimeUtil;
 
 import javax.swing.*;
-import java.io.File;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
+import java.util.Properties;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws UnknownHostException {
         if (System.getProperty("java.home") == null) {
             System.out.println("No Java Home set, assuming that we are running from GraalVM. Fixing...");
-
-            App.renameFontConfigFiles();
+            if(System.getProperty("os.name").equals("Linux")) {
+                App.renameFontConfigFiles();
+            }
             System.setProperty("user.home", new File(".").getAbsolutePath());
             System.setProperty("java.home", new File("./lib/libjvm").getAbsolutePath());
         }
@@ -41,22 +45,75 @@ public class App {
         }
     }
 
+    private static String getVersionString(File f) {
+        try (Scanner sc  = new Scanner(f)) {
+            return sc.findInLine("(\\d)+((\\.)(\\d)+)*");
+        } catch (Exception ignored) {
+        }
+        return null;
+    }
+
     private static void renameFontConfigFiles() throws UnknownHostException {
-        String hostname = InetAddress.getLocalHost().getHostName();
+        String osName = "";
+        String osVersion = "";
+        try {
+            File f;
+            if ((f = new File("/etc/lsb-release")).canRead()) {
+                Properties props = new Properties();
+                props.load(new FileInputStream(f));
+                osName = props.getProperty("DISTRIB_ID");
+                osVersion =  props.getProperty("DISTRIB_RELEASE");
+            } else if ((f = new File("/etc/redhat-release")).canRead()) {
+                osName = "RedHat";
+                osVersion = getVersionString(f);
+            } else if ((f = new File("/etc/SuSE-release")).canRead()) {
+                osName = "SuSE";
+                osVersion = getVersionString(f);
+            } else if ((f = new File("/etc/turbolinux-release")).canRead()) {
+                osName = "Turbo";
+                osVersion = getVersionString(f);
+            } else if ((f = new File("/etc/fedora-release")).canRead()) {
+                osName = "Fedora";
+                osVersion = getVersionString(f);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        String hostname;
+        try {
+            hostname = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            hostname = "localhost";
+        }
+        String userDir = System.getProperty("user.home");
+        String version = System.getProperty("java.version");
+        String fs = File.separator;
+        String dir = userDir+fs+".java"+fs+"fonts"+fs+version;
+        String name_ru = "fcinfo-1-"+hostname+"-"+
+                osName+"-"+osVersion+"-"+"ru-RU"+".properties";
+        String name_en = "fcinfo-1-"+hostname+"-"+
+                osName+"-"+osVersion+"-"+"en-"+".properties";
+        String ru = dir+fs+name_ru;
+        String en = dir+fs+name_en;
         String directoryPath = ".java/fonts/21.0.2/";
         File directory = new File(directoryPath);
-        File[] files = directory.listFiles();
-        for (File file : files) {
-            String fileName = file.getName();
-
-            int firstDashIndex = fileName.indexOf("-", 8);
-            fileName = fileName.substring(0, firstDashIndex + 1) + hostname + fileName.substring(fileName.indexOf("-", firstDashIndex + 1));
-
-            File newFile = new File(directoryPath + fileName);
-            if (file.renameTo(newFile)) {
-                System.out.println("Файл " + file.getName() + " успешно переименован.");
-            } else {
-                System.out.println("Не удалось переименовать файл " + file.getName() + ".");
+        if(directory.exists()) {
+            File[] files = directory.listFiles();
+            if(files == null) {
+                return;
+            }
+            if(!files[0].getName().equals(ru) && !files[0].getName().equals(en)) {
+                File newFile = new File(ru);
+                if (files[0].renameTo(newFile)) {
+                    System.out.println("Renamed file to " + files[0].getName());
+                }
+            }
+            if(!files[1].getName().equals(ru) && !files[1].getName().equals(en)) {
+                File newFile = new File(en);
+                if (files[1].renameTo(newFile)) {
+                    System.out.println("Renamed file to " + files[1].getName());
+                }
             }
         }
     }

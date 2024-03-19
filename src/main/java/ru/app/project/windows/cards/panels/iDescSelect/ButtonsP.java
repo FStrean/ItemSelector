@@ -53,7 +53,7 @@ public class ButtonsP extends JPanel implements StaticPanel {
                 @Override
                 public void componentResized(ComponentEvent e) {
                     if (btnRatio == null) {
-                        btnRatio = RelTSRatioCalc.getTextRatio(buttons.get(0));
+                        btnRatio = RelTSRatioCalc.getTextRatio(buttons.getFirst());
                     }
                 }
             });
