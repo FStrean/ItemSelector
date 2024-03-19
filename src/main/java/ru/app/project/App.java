@@ -17,16 +17,16 @@ public class App {
     public static void main(String[] args) {
         if (System.getProperty("java.home") == null) {
             System.out.println("No Java Home set, assuming that we are running from GraalVM. Fixing...");
-            System.setProperty("user.home", new File(System.getProperty("user.dir")).getAbsolutePath());
+            System.setProperty("user.home", new File(AppProperties.getWorkingDirPath()).getAbsolutePath());
             if(System.getProperty("os.name").equals("Linux")) {
                 App.renameFontConfigFiles();
             }
-            System.setProperty("java.home", new File(System.getProperty("user.dir") + "/lib/libjvm").getAbsolutePath());
+            System.setProperty("java.home", new File(AppProperties.getWorkingDirPath() + "/lib/libjvm").getAbsolutePath());
         }
         RootWindowImpl mainWindow = null;
         try {
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), System.getProperty("user.dir") + "/lib/libvlc_win_x64");
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), System.getProperty("user.dir") + "/lib/libvlc_astra_x64");
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), AppProperties.getWorkingDirPath() + "/lib/libvlc_win_x64");
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), AppProperties.getWorkingDirPath() + "/lib/libvlc_astra_x64");
             App.createFolders();
             mainWindow = new RootWindowImpl("Multimedia-Software");
         } catch (Exception e) {

@@ -1,6 +1,7 @@
 package ru.app.project.design.impl.panels.iDesc;
 
 import ru.app.project.components.JImageButton;
+import ru.app.project.config.AppProperties;
 import ru.app.project.design.interf.panels.iDesc.HeaderPDBuilder;
 import ru.app.project.components.RelativeLayout;
 
@@ -19,7 +20,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
 
     @Override
     public JImageButton buildJButton1Design() {
-        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/arrow_left.png");
+        JImageButton btn = new JImageButton(AppProperties.getWorkingDirPath() + "/icons/arrow_left.png");
 
         btn.setAlign(JImageButton.LINE_START, JImageButton.LINE_START);
 
@@ -30,7 +31,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
 
     @Override
     public JImageButton buildJButton2Design() {
-        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/arrow_right.png");
+        JImageButton btn = new JImageButton(AppProperties.getWorkingDirPath() + "/icons/arrow_right.png");
 
         btn.setAlign(JImageButton.LINE_START, JImageButton.LINE_START);
 

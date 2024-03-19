@@ -3,6 +3,7 @@ package ru.app.project.design.impl.panels.video;
 import ru.app.project.components.JImageButton;
 import ru.app.project.components.RelativeLayout;
 import ru.app.project.components.RoundButton;
+import ru.app.project.config.AppProperties;
 import ru.app.project.design.interf.panels.video.FooterPDBuilder;
 
 import javax.swing.*;
@@ -80,7 +81,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
         JPanel hbp = new JPanel();
         JPanel p = new JPanel();
         RelativeLayout layout = new RelativeLayout(RelativeLayout.Y_AXIS);
-        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/home.png");
+        JImageButton btn = new JImageButton(AppProperties.getWorkingDirPath() + "/icons/home.png");
 
         layout.setFill(true);
         hbp.setOpaque(false);

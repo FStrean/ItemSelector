@@ -1,5 +1,10 @@
 package ru.app.project.config;
 
+import ru.app.project.App;
+
+import java.io.File;
+import java.net.URISyntaxException;
+
 public class AppProperties {
     //Window properties
     private static final int winW = (int)((double)SystemProperties.getScreenWidth() / 1.2);
@@ -12,8 +17,23 @@ public class AppProperties {
     }
 
 
+    public static String getWorkingDirPath() {
+        String jarDirectory = "";
+        try {
+            String jarPath;
+            jarPath = App.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+            File jarFile = new File(jarPath);
+            jarDirectory = jarFile.getParent();
+        } catch (URISyntaxException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return jarDirectory;
+    }
+
+
     //Config properties
-    private static final String configFolderPath = System.getProperty("user.dir") + "/config";
+    private static final String configFolderPath = AppProperties.getWorkingDirPath() + "/config";
     public static String getCfgPath() {
         return configFolderPath;
     }

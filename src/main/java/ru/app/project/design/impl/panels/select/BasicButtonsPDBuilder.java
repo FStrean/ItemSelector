@@ -2,6 +2,7 @@ package ru.app.project.design.impl.panels.select;
 
 import ru.app.project.components.JImage;
 import ru.app.project.components.RelativeLayout;
+import ru.app.project.config.AppProperties;
 import ru.app.project.design.interf.panels.select.ButtonsPDBuilder;
 
 import javax.imageio.ImageIO;
@@ -64,7 +65,7 @@ public class BasicButtonsPDBuilder implements ButtonsPDBuilder {
     public JButton buildJButtonDesign() {
         JPanel bp = new JPanel();
         JImage jImg = new JImage();
-        File imageFile = new File(System.getProperty("user.dir") + "/icons/arrow_down.png");
+        File imageFile = new File(AppProperties.getWorkingDirPath() + "/icons/arrow_down.png");
         BufferedImage img;
         try {
             img = ImageIO.read(imageFile);

@@ -2,6 +2,7 @@ package ru.app.project.design.impl.panels.video;
 
 import ru.app.project.components.JImageButton;
 import ru.app.project.components.RelativeLayout;
+import ru.app.project.config.AppProperties;
 import ru.app.project.design.interf.panels.video.HeaderPDBuilder;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
 
     @Override
     public JImageButton buildJButton1Design() {
-        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/alt_arrow_left.png");
+        JImageButton btn = new JImageButton(AppProperties.getWorkingDirPath() + "/icons/alt_arrow_left.png");
 
         btn.setAlign(JImageButton.LINE_START, JImageButton.LINE_START);
         btn.setBackground(Color.WHITE);
@@ -44,7 +45,7 @@ public class BasicHeaderPDBuilder implements HeaderPDBuilder {
 
     @Override
     public JImageButton buildJButton2Design() {
-        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/alt_arrow_right.png");
+        JImageButton btn = new JImageButton(AppProperties.getWorkingDirPath() + "/icons/alt_arrow_right.png");
 
         btn.setAlign(JImageButton.LINE_END, JImageButton.LINE_START);
 

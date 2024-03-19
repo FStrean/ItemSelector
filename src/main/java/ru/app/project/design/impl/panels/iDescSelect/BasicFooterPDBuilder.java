@@ -1,6 +1,7 @@
 package ru.app.project.design.impl.panels.iDescSelect;
 
 import ru.app.project.components.JImageButton;
+import ru.app.project.config.AppProperties;
 import ru.app.project.design.interf.panels.iDescSelect.FooterPDBuilder;
 import ru.app.project.components.RelativeLayout;
 
@@ -38,7 +39,7 @@ public class BasicFooterPDBuilder implements FooterPDBuilder {
 
     @Override
     public JImageButton buildJButtonDesign() {
-        JImageButton btn = new JImageButton(System.getProperty("user.dir") + "/icons/home.png");
+        JImageButton btn = new JImageButton(AppProperties.getWorkingDirPath() + "/icons/home.png");
 
         panel.add(btn, 5.0f);
 
