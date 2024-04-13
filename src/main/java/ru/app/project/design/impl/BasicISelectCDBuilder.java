@@ -10,19 +10,25 @@ import java.awt.*;
 
 public class BasicISelectCDBuilder implements ISelectCDBuilder {
     private final JPanel panel;
-    private final JPanel contentPanel;
+    private final JPanel contentPanelH;
+    private final JPanel contentPanelV;
     public BasicISelectCDBuilder(JPanel panel) {
         this.panel = panel;
-        this.contentPanel = new JPanel();
+        this.contentPanelH = new JPanel();
+        this.contentPanelV = new JPanel();
         RelativeLayout mainLayout = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
-        RelativeLayout contentLayout = new RelativeLayout(RelativeLayout.X_AXIS, 5);
+        RelativeLayout contentLayoutH = new RelativeLayout(RelativeLayout.X_AXIS, 5);
+        RelativeLayout contentLayoutV = new RelativeLayout(RelativeLayout.Y_AXIS, 5);
 
-        contentLayout.setFill(true);
+        contentLayoutH.setFill(true);
+        contentLayoutV.setFill(true);
         mainLayout.setFill(true);
         this.panel.setBackground(Color.WHITE);
         this.panel.setLayout(mainLayout);
-        this.contentPanel.setOpaque(false);
-        this.contentPanel.setLayout(contentLayout);
+        this.contentPanelH.setOpaque(false);
+        this.contentPanelH.setLayout(contentLayoutH);
+        this.contentPanelV.setOpaque(false);
+        this.contentPanelV.setLayout(contentLayoutV);
     }
 
     @Override
@@ -38,7 +44,8 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     public StaticPanel buildUnderHeaderPanelDesign() {
         UnderHeaderP uhp = new UnderHeaderP();
 
-        panel.add(uhp, 10f);
+        contentPanelV.add(uhp, 20.0f);
+        panel.add(contentPanelV, 80.0f);
 
         return uhp;
     }
@@ -47,8 +54,8 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     public StaticPanel buildLeftPanelDesign() {
         LeftP ip = new LeftP();
 
-        contentPanel.add(ip, 50.0f);
-        panel.add(contentPanel, 70.f);
+        contentPanelH.add(ip, 50.0f);
+        contentPanelV.add(contentPanelH, 80.f);
 
         return ip;
     }
@@ -57,7 +64,7 @@ public class BasicISelectCDBuilder implements ISelectCDBuilder {
     public StaticPanel buildRightPanelDesign() {
         RightP dp = new RightP();
 
-        contentPanel.add(dp, 50.0f);
+        contentPanelH.add(dp, 50.0f);
 
         return dp;
     }
