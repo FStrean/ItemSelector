@@ -27,7 +27,7 @@ public class RootWindowImpl extends JFrame implements RootWindow {
         this.cardLayout = new CardLayout();
 
         this.setTitle(title);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
         this.defineInitialWindowSize();
         this.applyDesign();

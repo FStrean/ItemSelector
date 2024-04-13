@@ -8,7 +8,7 @@ import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public final class IDescCInfoCfg {
+public class IDescCInfoCfg {
     @XmlElement(name = "hHeaderStyle")
     private String hHeaderStyle;
     @XmlElement(name = "descStyle")

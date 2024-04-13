@@ -15,6 +15,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -55,41 +57,17 @@ public class VideosP extends JPanel implements DynamicPanel {
 
     @Override
     public void applyLogic() {
-        video1.mediaPlayer().controls().setRepeat(true);
-        video1.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                video1.mediaPlayer().controls().pause();
-                if(video1.mediaPlayer().status().isPlaying()) {
-                    Marquee marquee = Marquee.marquee()
-                            .text("Paused")
-                            .size(100)
-                            .colour(Color.WHITE)
-                            .position(MarqueePosition.CENTRE)
-                            .opacity(0.5f)
-                            .timeout(0)
-                            .enable();
-                    video1.mediaPlayer().marquee().set(marquee);
-                } else {
-                    Marquee marquee = Marquee.marquee()
-                            .text("Playing")
-                            .size(100)
-                            .colour(Color.WHITE)
-                            .position(MarqueePosition.CENTRE)
-                            .opacity(0.5f)
-                            .timeout(1500)
-                            .enable();
-                    video1.mediaPlayer().marquee().set(marquee);
-                }
-            }
-        });
+        applyVideoPlayerSettings(video1);
+        applyVideoPlayerSettings(video2);
+        applyVideoPlayerSettings(video3);
+    }
 
-        video2.mediaPlayer().controls().setRepeat(true);
-        video2.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
+    private void applyVideoPlayerSettings(EmbeddedMediaPlayerComponent video) {
+        video.mediaPlayer().controls().setRepeat(true);
+        video.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                video2.mediaPlayer().controls().pause();
-                if(video2.mediaPlayer().status().isPlaying()) {
+            public void mouseReleased(MouseEvent e) {
+                if(video.mediaPlayer().status().isPlaying()) {
                     Marquee marquee = Marquee.marquee()
                             .text("Paused")
                             .size(100)
@@ -98,7 +76,7 @@ public class VideosP extends JPanel implements DynamicPanel {
                             .opacity(0.5f)
                             .timeout(0)
                             .enable();
-                    video2.mediaPlayer().marquee().set(marquee);
+                    video.mediaPlayer().marquee().set(marquee);
                 } else {
                     Marquee marquee = Marquee.marquee()
                             .text("Playing")
@@ -108,37 +86,9 @@ public class VideosP extends JPanel implements DynamicPanel {
                             .opacity(0.5f)
                             .timeout(1500)
                             .enable();
-                    video2.mediaPlayer().marquee().set(marquee);
+                    video.mediaPlayer().marquee().set(marquee);
                 }
-            }
-        });
-
-        video3.mediaPlayer().controls().setRepeat(true);
-        video3.videoSurfaceComponent().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                video3.mediaPlayer().controls().pause();
-                if(video3.mediaPlayer().status().isPlaying()) {
-                    Marquee marquee = Marquee.marquee()
-                            .text("Paused")
-                            .size(100)
-                            .colour(Color.WHITE)
-                            .position(MarqueePosition.CENTRE)
-                            .opacity(0.5f)
-                            .timeout(0)
-                            .enable();
-                    video3.mediaPlayer().marquee().set(marquee);
-                } else {
-                    Marquee marquee = Marquee.marquee()
-                            .text("Playing")
-                            .size(100)
-                            .colour(Color.WHITE)
-                            .position(MarqueePosition.CENTRE)
-                            .opacity(0.5f)
-                            .timeout(1500)
-                            .enable();
-                    video3.mediaPlayer().marquee().set(marquee);
-                }
+                video.mediaPlayer().controls().pause();
             }
         });
     }
@@ -196,6 +146,16 @@ public class VideosP extends JPanel implements DynamicPanel {
     @Override
     public void setRootWin(RootWindow rootWin) {
         this.rootWin = rootWin;
+        ((JFrame)rootWin).addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("N");
+                video1.release();
+                video2.release();
+                video3.release();
+                System.out.println("I");
+            }
+        });
     }
 
     @Override

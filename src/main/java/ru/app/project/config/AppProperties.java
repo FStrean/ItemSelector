@@ -18,17 +18,21 @@ public class AppProperties {
 
 
     public static String getWorkingDirPath() {
-        String jarDirectory = "";
-        try {
-            String jarPath;
-            jarPath = App.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-            File jarFile = new File(jarPath);
-            jarDirectory = jarFile.getParent();
-        } catch (URISyntaxException e) {
-            System.out.println(e.getMessage());
-        }
+        if (System.getProperty("java.home") == null) {
+            String jarDirectory = "";
+            try {
+                String jarPath;
+                jarPath = App.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+                File jarFile = new File(jarPath);
+                jarDirectory = jarFile.getParent();
+            } catch (URISyntaxException e) {
+                System.out.println(e.getMessage());
+            }
 
-        return jarDirectory;
+            return jarDirectory;
+        } else {
+            return ".";
+        }
     }
 
 
