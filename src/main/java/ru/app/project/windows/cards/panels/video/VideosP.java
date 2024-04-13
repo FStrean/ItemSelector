@@ -149,11 +149,9 @@ public class VideosP extends JPanel implements DynamicPanel {
         ((JFrame)rootWin).addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                System.out.println("N");
                 video1.release();
                 video2.release();
                 video3.release();
-                System.out.println("I");
             }
         });
     }
